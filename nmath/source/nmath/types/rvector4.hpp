@@ -61,10 +61,11 @@ namespace nmath {
 
 
 
-    template<typename F_entry__ = f32>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
     struct TF_rvector4;
 
     using F_rvector4 = TF_rvector4<>;
+    using F_rvector4_i = TF_rvector4<NMATH_DEFAULT_INT_TYPE>;
 
 
 

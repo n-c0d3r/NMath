@@ -53,10 +53,11 @@ namespace nmath {
 
 
 
-    template<typename F_entry__ = f32>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
     struct TF_data3;
 
     using F_data3 = TF_data3<>;
+    using F_data3_i = TF_data3<NMATH_DEFAULT_INT_TYPE>;
 
 
 

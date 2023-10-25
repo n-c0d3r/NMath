@@ -7,6 +7,14 @@ include(NCPP/ConfigureCompiler)
 
 
 #####################################################################################
+#   Options
+#####################################################################################
+set(NMATH_DEFAULT_FP_TYPE "ncpp::f32" CACHE STRING "Default floating-point type")
+set(NMATH_DEFAULT_INT_TYPE "ncpp::i32" CACHE STRING "Default integer type")
+
+
+
+#####################################################################################
 #   Generated files
 #####################################################################################
 # nmath target configure file
