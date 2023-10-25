@@ -56,6 +56,8 @@ namespace nmath {
     template<typename F_entry__ = f32>
     struct TF_data3;
 
+    using F_data3 = TF_data3<>;
+
 
 
     template<>
