@@ -62,7 +62,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  F_rvector2_f32
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_rvector2_f32 operator + (const F_rvector2_f32& a, const F_rvector2_f32& b) {
+    inline F_rvector2_f32 operator + (const F_rvector2_f32& a, const F_rvector2_f32& b) noexcept {
         
         return {
             
@@ -71,7 +71,7 @@ namespace nmath {
             
         };
     }
-    inline F_rvector2_f32 operator - (const F_rvector2_f32& a, const F_rvector2_f32& b) {
+    inline F_rvector2_f32 operator - (const F_rvector2_f32& a, const F_rvector2_f32& b) noexcept {
         
         return {
             
@@ -80,7 +80,7 @@ namespace nmath {
             
         };
     }
-    inline F_rvector2_f32 operator * (const F_rvector2_f32& a, const F_rvector2_f32& b) {
+    inline F_rvector2_f32 operator * (const F_rvector2_f32& a, const F_rvector2_f32& b) noexcept {
         
         return {
             
@@ -89,7 +89,7 @@ namespace nmath {
             
         };
     }
-    inline F_rvector2_f32 operator / (const F_rvector2_f32& a, const F_rvector2_f32& b) {
+    inline F_rvector2_f32 operator / (const F_rvector2_f32& a, const F_rvector2_f32& b) noexcept {
         
         return {
             
@@ -104,7 +104,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  F_rvector3_f32
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_rvector3_f32 operator + (const F_rvector3_f32& a, const F_rvector3_f32& b) {
+    inline F_rvector3_f32 operator + (const F_rvector3_f32& a, const F_rvector3_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_add_ps(a.xyz_, b.xyz_);
@@ -118,7 +118,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector3_f32 operator - (const F_rvector3_f32& a, const F_rvector3_f32& b) {
+    inline F_rvector3_f32 operator - (const F_rvector3_f32& a, const F_rvector3_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_sub_ps(a.xyz_, b.xyz_);
@@ -132,7 +132,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector3_f32 operator * (const F_rvector3_f32& a, const F_rvector3_f32& b) {
+    inline F_rvector3_f32 operator * (const F_rvector3_f32& a, const F_rvector3_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_mul_ps(a.xyz_, b.xyz_);
@@ -146,7 +146,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector3_f32 operator / (const F_rvector3_f32& a, const F_rvector3_f32& b) {
+    inline F_rvector3_f32 operator / (const F_rvector3_f32& a, const F_rvector3_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_div_ps(a.xyz_, b.xyz_);
@@ -166,7 +166,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  F_rvector4_f32
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_rvector4_f32 operator + (const F_rvector4_f32& a, const F_rvector4_f32& b) {
+    inline F_rvector4_f32 operator + (const F_rvector4_f32& a, const F_rvector4_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_add_ps(a.xyzw_, b.xyzw_);
@@ -181,7 +181,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector4_f32 operator - (const F_rvector4_f32& a, const F_rvector4_f32& b) {
+    inline F_rvector4_f32 operator - (const F_rvector4_f32& a, const F_rvector4_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_sub_ps(a.xyzw_, b.xyzw_);
@@ -196,7 +196,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector4_f32 operator * (const F_rvector4_f32& a, const F_rvector4_f32& b) {
+    inline F_rvector4_f32 operator * (const F_rvector4_f32& a, const F_rvector4_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_mul_ps(a.xyzw_, b.xyzw_);
@@ -211,7 +211,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector4_f32 operator / (const F_rvector4_f32& a, const F_rvector4_f32& b) {
+    inline F_rvector4_f32 operator / (const F_rvector4_f32& a, const F_rvector4_f32& b) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return _mm_div_ps(a.xyzw_, b.xyzw_);
