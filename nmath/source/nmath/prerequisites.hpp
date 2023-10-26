@@ -94,3 +94,12 @@ namespace nmath {}
 
 
 #pragma endregion
+
+
+
+namespace nmath {
+
+	using F_fp = NMATH_DEFAULT_FP_TYPE;
+	using F_int = NMATH_DEFAULT_INT_TYPE;
+
+}
