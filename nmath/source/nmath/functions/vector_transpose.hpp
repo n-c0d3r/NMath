@@ -58,11 +58,11 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  cvector f32 transpose
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_rvector2_f32 transpose(const F_cvector2_f32& a) noexcept {
+    inline F_rvector2_f32 transpose(PA_cvector2_f32 a) noexcept {
         
         return { a.x, a.y };
     }
-    inline F_rvector3_f32 transpose(const F_cvector3_f32& a) noexcept {
+    inline F_rvector3_f32 transpose(PA_cvector3_f32 a) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return { a.xyz_ };
@@ -76,7 +76,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_rvector4_f32 transpose(const F_cvector4_f32& a) noexcept {
+    inline F_rvector4_f32 transpose(PA_cvector4_f32 a) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
         return { a.xyzw_ };
@@ -95,11 +95,11 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  rvector f32 transpose
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_cvector2_f32 transpose(const F_rvector2_f32& a) noexcept {
+    inline F_cvector2_f32 transpose(PA_rvector2_f32 a) noexcept {
         
         return { a.x, a.y };
     }
-    inline F_cvector3_f32 transpose(const F_rvector3_f32& a) noexcept {
+    inline F_cvector3_f32 transpose(PA_rvector3_f32 a) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
         return { a.xyz_ };
@@ -113,7 +113,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_cvector4_f32 transpose(const F_rvector4_f32& a) noexcept {
+    inline F_cvector4_f32 transpose(PA_rvector4_f32 a) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
         return { a.xyzw_ };

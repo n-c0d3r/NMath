@@ -56,7 +56,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //  nmath::F_cvector2_f32
 ////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_cvector2_f32 operator + (nmath::CR_cvector2_f32 a, nmath::CR_cvector2_f32 b) noexcept {
+inline nmath::F_cvector2_f32 operator + (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
     
     return {
         
@@ -65,7 +65,7 @@ inline nmath::F_cvector2_f32 operator + (nmath::CR_cvector2_f32 a, nmath::CR_cve
         
     };
 }
-inline nmath::F_cvector2_f32 operator - (nmath::CR_cvector2_f32 a, nmath::CR_cvector2_f32 b) noexcept {
+inline nmath::F_cvector2_f32 operator - (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
     
     return {
         
@@ -74,7 +74,7 @@ inline nmath::F_cvector2_f32 operator - (nmath::CR_cvector2_f32 a, nmath::CR_cve
         
     };
 }
-inline nmath::F_cvector2_f32 operator * (nmath::CR_cvector2_f32 a, nmath::CR_cvector2_f32 b) noexcept {
+inline nmath::F_cvector2_f32 operator * (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
     
     return {
         
@@ -83,7 +83,7 @@ inline nmath::F_cvector2_f32 operator * (nmath::CR_cvector2_f32 a, nmath::CR_cve
         
     };
 }
-inline nmath::F_cvector2_f32 operator / (nmath::CR_cvector2_f32 a, nmath::CR_cvector2_f32 b) noexcept {
+inline nmath::F_cvector2_f32 operator / (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
     
     return {
         
@@ -98,7 +98,7 @@ inline nmath::F_cvector2_f32 operator / (nmath::CR_cvector2_f32 a, nmath::CR_cve
 ////////////////////////////////////////////////////////////////////////////////////
 //  nmath::F_cvector3_f32
 ////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_cvector3_f32 operator + (nmath::CR_cvector3_f32 a, nmath::CR_cvector3_f32 b) noexcept {
+inline nmath::F_cvector3_f32 operator + (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_add_ps(a.xyz_, b.xyz_);
@@ -112,7 +112,7 @@ inline nmath::F_cvector3_f32 operator + (nmath::CR_cvector3_f32 a, nmath::CR_cve
     };
 #endif
 }
-inline nmath::F_cvector3_f32 operator - (nmath::CR_cvector3_f32 a, nmath::CR_cvector3_f32 b) noexcept {
+inline nmath::F_cvector3_f32 operator - (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_sub_ps(a.xyz_, b.xyz_);
@@ -126,7 +126,7 @@ inline nmath::F_cvector3_f32 operator - (nmath::CR_cvector3_f32 a, nmath::CR_cve
     };
 #endif
 }
-inline nmath::F_cvector3_f32 operator * (nmath::CR_cvector3_f32 a, nmath::CR_cvector3_f32 b) noexcept {
+inline nmath::F_cvector3_f32 operator * (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_mul_ps(a.xyz_, b.xyz_);
@@ -140,7 +140,7 @@ inline nmath::F_cvector3_f32 operator * (nmath::CR_cvector3_f32 a, nmath::CR_cve
     };
 #endif
 }
-inline nmath::F_cvector3_f32 operator / (nmath::CR_cvector3_f32 a, nmath::CR_cvector3_f32 b) noexcept {
+inline nmath::F_cvector3_f32 operator / (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_div_ps(a.xyz_, b.xyz_);
@@ -160,7 +160,7 @@ inline nmath::F_cvector3_f32 operator / (nmath::CR_cvector3_f32 a, nmath::CR_cve
 ////////////////////////////////////////////////////////////////////////////////////
 //  nmath::F_cvector4_f32
 ////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_cvector4_f32 operator + (nmath::CR_cvector4_f32 a, nmath::CR_cvector4_f32 b) noexcept {
+inline nmath::F_cvector4_f32 operator + (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_add_ps(a.xyzw_, b.xyzw_);
@@ -175,7 +175,7 @@ inline nmath::F_cvector4_f32 operator + (nmath::CR_cvector4_f32 a, nmath::CR_cve
     };
 #endif
 }
-inline nmath::F_cvector4_f32 operator - (nmath::CR_cvector4_f32 a, nmath::CR_cvector4_f32 b) noexcept {
+inline nmath::F_cvector4_f32 operator - (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_sub_ps(a.xyzw_, b.xyzw_);
@@ -190,7 +190,7 @@ inline nmath::F_cvector4_f32 operator - (nmath::CR_cvector4_f32 a, nmath::CR_cve
     };
 #endif
 }
-inline nmath::F_cvector4_f32 operator * (nmath::CR_cvector4_f32 a, nmath::CR_cvector4_f32 b) noexcept {
+inline nmath::F_cvector4_f32 operator * (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_mul_ps(a.xyzw_, b.xyzw_);
@@ -205,7 +205,7 @@ inline nmath::F_cvector4_f32 operator * (nmath::CR_cvector4_f32 a, nmath::CR_cve
     };
 #endif
 }
-inline nmath::F_cvector4_f32 operator / (nmath::CR_cvector4_f32 a, nmath::CR_cvector4_f32 b) noexcept {
+inline nmath::F_cvector4_f32 operator / (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
     
 #ifdef NCPP_ENABLE_SSE
     return _mm_div_ps(a.xyzw_, b.xyzw_);
