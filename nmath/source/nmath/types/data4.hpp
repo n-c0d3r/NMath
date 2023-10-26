@@ -179,24 +179,30 @@ namespace nmath {
 
 
 
-#ifdef NCPP_ENABLE_SSE
 template<typename F_flag__>
 inline ncpp::b8 operator == (const nmath::TF_data4<ncpp::f32, F_flag__>& a, const nmath::TF_data4<ncpp::f32, F_flag__>& b) noexcept
 {
-    
+
+#ifdef NCPP_ENABLE_SSE
     __m128 compare4 = _mm_cmpeq_ps(a.xyzw_, b.xyzw_);
     int mask = _mm_movemask_ps(compare4);
     
     return (mask == 0b1111);
+#else
+    return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
+#endif
 }
 template<typename F_flag__>
 inline ncpp::b8 operator != (const nmath::TF_data4<ncpp::f32, F_flag__>& a, const nmath::TF_data4<ncpp::f32, F_flag__>& b) noexcept
 {
-    
+
+#ifdef NCPP_ENABLE_SSE
     __m128 compare4 = _mm_cmpeq_ps(a.xyzw_, b.xyzw_);
     int mask = _mm_movemask_ps(compare4);
     
     return (mask != 0b1111);
-}
+#else
+    return (a.x != b.x) || (a.y != b.y) || (a.z != b.z) || (a.w != b.w);
 #endif
+}
 
