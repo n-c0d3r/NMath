@@ -34,6 +34,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data2.hpp>
+#include <nmath/types/rvector_flag.hpp>
 
 #pragma endregion
 
@@ -60,71 +61,10 @@ namespace nmath {
 
 
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
-    struct TF_rvector2;
+    using TF_rvector2 = TF_data2<F_entry__, F_rvector_flag>;
 
     using F_rvector2 = TF_rvector2<>;
     using F_rvector2_i = TF_rvector2<NMATH_DEFAULT_INT_TYPE>;
-
-
-
-    template<>
-    struct TF_rvector2<f32> {
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Typedefs
-        ////////////////////////////////////////////////////////////////////////////////////
-        using F_entry = f32;
-        using F_data = TF_data2<f32>;
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Arguments
-        ////////////////////////////////////////////////////////////////////////////////////
-        F_entry x;
-        F_entry y;
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Basic constructors
-        ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_rvector2() noexcept :
-            x(0.0f),
-            y(0.0f)
-        {
-            
-            
-            
-        }
-        inline TF_rvector2(F_entry x, F_entry y) noexcept :
-            x(x),
-            y(y)
-        {
-            
-            
-            
-        }
-        inline TF_rvector2(const F_data& data) noexcept :
-            x(data.x),
-            y(data.y)
-        {
-            
-            
-            
-        }
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Convert functions
-        ////////////////////////////////////////////////////////////////////////////////////
-        inline F_data data() const {
-            
-            return { x, y };
-        }
-        
-    };
 
     using F_rvector2_f32 = TF_rvector2<f32>;
 

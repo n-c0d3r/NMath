@@ -35,6 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data3.hpp>
+#include <nmath/types/cvector_flag.hpp>
 
 #pragma endregion
 
@@ -61,114 +62,10 @@ namespace nmath {
 
 
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
-    struct TF_cvector3;
+    using TF_cvector3 = TF_data3<F_entry__, F_cvector_flag>;
 
     using F_cvector3 = TF_cvector3<>;
     using F_cvector3_i = TF_cvector3<NMATH_DEFAULT_INT_TYPE>;
-
-
-
-    template<>
-    struct NCPP_ALIGN(16) TF_cvector3<f32> {
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Typedefs
-        ////////////////////////////////////////////////////////////////////////////////////
-        using F_entry = f32;
-        using F_data = TF_data3<f32>;
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Arguments
-        ////////////////////////////////////////////////////////////////////////////////////
-        union {
-            
-            struct {
-                
-                F_entry x;
-                F_entry y;
-                F_entry z;
-                F_entry pad_w_;
-                
-            };
-            
-#ifdef NCPP_ENABLE_SSE
-            __m128 xyz_;
-#endif
-            
-        };
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Basic constructors
-        ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_cvector3() noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyz_(_mm_setzero_ps())
-#else
-            x(0.0f),
-            y(0.0f),
-            z(0.0f),
-            pad_w_(0.0f)
-#endif
-        {
-            
-            
-            
-        }
-        inline TF_cvector3(F_entry x, F_entry y, F_entry z) noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyz_(_mm_set_ps(0.0f, z, y, x))
-#else
-            x(x),
-            y(y),
-            z(z),
-            pad_w_(0.0f)
-#endif
-        {
-            
-            
-            
-        }
-        inline TF_cvector3(const F_data& data) noexcept :
-            x(data.x),
-            y(data.y),
-            z(data.z),
-            pad_w_(0.0f)
-        {
-            
-            
-            
-        }
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Constructors with platform specific instruction extension
-        ////////////////////////////////////////////////////////////////////////////////////
-#ifdef NCPP_ENABLE_SSE
-        inline TF_cvector3(__m128 m128) noexcept :
-            xyz_(m128)
-        {
-            
-            
-            
-        }
-#endif
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Convert functions
-        ////////////////////////////////////////////////////////////////////////////////////
-        inline F_data data() const {
-            
-            return { x, y, z };
-        }
-        
-    };
 
     using F_cvector3_f32 = TF_cvector3<f32>;
 

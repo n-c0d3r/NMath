@@ -36,6 +36,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data4.hpp>
+#include <nmath/types/cvector_flag.hpp>
 
 #pragma endregion
 
@@ -62,118 +63,10 @@ namespace nmath {
 
 
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
-    struct TF_cvector4;
+    using TF_cvector4 = TF_data4<F_entry__, F_cvector_flag>;
 
     using F_cvector4 = TF_cvector4<>;
     using F_cvector4_i = TF_cvector4<NMATH_DEFAULT_INT_TYPE>;
-
-
-
-    template<>
-    struct NCPP_ALIGN(16) TF_cvector4<f32> {
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Typedefs
-        ////////////////////////////////////////////////////////////////////////////////////
-        using F_entry = f32;
-        using F_data = TF_data4<f32>;
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Arguments
-        ////////////////////////////////////////////////////////////////////////////////////
-        union {
-            
-            struct {
-                
-                F_entry x;
-                F_entry y;
-                F_entry z;
-                F_entry w;
-                
-            };
-            
-#ifdef NCPP_ENABLE_SSE
-            __m128 xyzw_;
-#endif
-            
-        };
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Basic constructors
-        ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_cvector4() noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyzw_(_mm_setzero_ps())
-#else
-            x(0.0f),
-            y(0.0f),
-            z(0.0f),
-            w(0.0f)
-#endif
-        {
-            
-            
-            
-        }
-        inline TF_cvector4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyzw_(_mm_set_ps(w, z, y, x))
-#else
-            x(x),
-            y(y),
-            z(z),
-            w(w)
-#endif
-        {
-            
-            
-            
-        }
-        inline TF_cvector4(const F_data& data) noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyzw_(_mm_load_ps((f32*)&data))
-#else
-            x(data.x),
-            y(data.y),
-            z(data.z),
-            w(data.w)
-#endif
-        {
-            
-            
-            
-        }
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Constructors with platform specific instruction extension
-        ////////////////////////////////////////////////////////////////////////////////////
-#ifdef NCPP_ENABLE_SSE
-        inline TF_cvector4(__m128 m128) noexcept :
-            xyzw_(m128)
-        {
-            
-            
-            
-        }
-#endif
-        
-        
-        
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Convert functions
-        ////////////////////////////////////////////////////////////////////////////////////
-        inline F_data data() const {
-            
-            return { x, y, z, w };
-        }
-        
-    };
 
     using F_cvector4_f32 = TF_cvector4<f32>;
 

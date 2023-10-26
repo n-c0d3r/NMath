@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/types/cvector.hpp
+/** @file nmath/types/rvector_flag.hpp
 *
-*   Implement cvector.
+*   Implement rvector flag.
 */
 
 
@@ -29,14 +29,12 @@
 
 #include <nmath/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nmath/types/cvector_flag.hpp>
-
-#include <nmath/types/cvector2.hpp>
-#include <nmath/types/cvector3.hpp>
-#include <nmath/types/cvector4.hpp>
-
 #pragma endregion
+
+
+
+namespace nmath {
+
+    struct F_rvector_flag {};
+
+}
