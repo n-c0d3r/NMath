@@ -127,12 +127,6 @@ namespace nmath {
             
             
         }
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Constructors with platform specific instruction extension
-        ////////////////////////////////////////////////////////////////////////////////////
 #ifdef NCPP_ENABLE_SSE
         inline TF_data4(__m128 m128) noexcept :
             xyzw_(m128)
@@ -150,18 +144,39 @@ namespace nmath {
             
             
         }
+#else
+        inline TF_data4(const TF_data4& o) noexcept :
+            x(o.x),
+            y(o.y),
+            z(o.z),
+            w(o.w)
+        {
+            
+            
+            
+        }
 #endif
         
         
         
         ////////////////////////////////////////////////////////////////////////////////////
-        //  Operators with platform specific instruction extension
+        //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
 #ifdef NCPP_ENABLE_SSE
         inline TF_data4& operator = (const TF_data4& o) noexcept
         {
             
             xyzw_ = o.xyzw_;
+            
+        }
+#else
+        inline TF_data4& operator = (const TF_data4& o) noexcept
+        {
+            
+            x = o.x;
+            y = o.y;
+            z = o.z;
+            w = o.w;
             
         }
 #endif
