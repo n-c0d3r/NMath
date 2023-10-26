@@ -132,48 +132,38 @@ namespace nmath {
             
         }
 #endif
+        inline TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
-        inline TF_data3(const TF_data3& o) noexcept :
             xyz_(o.xyz_)
-        {
-            
-            
-            
-        }
 #else
-        inline TF_data3(const TF_data3& o) noexcept :
             x(o.x),
             y(o.y),
             z(o.z)
-        {
-            
-            
-            
-        }
 #endif
+        {
+
+
+
+        }
         
         
         
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
+        inline TF_data3& operator = (const TF_data3& o) noexcept
+        {
+
 #ifdef NCPP_ENABLE_SSE
-        inline TF_data3& operator = (const TF_data3& o) noexcept
-        {
-            
             xyz_ = o.xyz_;
-            
-        }
 #else
-        inline TF_data3& operator = (const TF_data3& o) noexcept
-        {
-            
             x = o.x;
             y = o.y;
             z = o.z;
-            
-        }
 #endif
+
+            return *this;
+        }
         
     };
 

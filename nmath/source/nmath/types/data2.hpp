@@ -118,7 +118,8 @@ namespace nmath {
             
             x = o.x;
             y = o.y;
-            
+
+            return *this;
         }
         
     };
