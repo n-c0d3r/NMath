@@ -23,15 +23,6 @@ int main() {
     b8 e3 = (c3 == F_cvector3{ 2.0f, 4.0f, 6.0f });
     b8 e4 = (c4 == F_cvector4{ 2.0f, 4.0f, 6.0f, 8.0f });
 
-    {
-
-        NCPP_SCOPED_PROFILER_SAMPLE("Assignment test ");
-
-        for (i32 i = 0; i < 10000; ++i)
-            a4 = a4 + b4;
-
-    }
-
     std::cout << a4.x << std::endl;
 
 	ncpp::pause_console();
