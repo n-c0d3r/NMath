@@ -19,9 +19,9 @@ int main() {
     F_cvector3 c3 = a3 + b3;
     F_cvector4 c4 = a4 + b4;
     
-    b8 e2 = (c2 == F_cvector2 { 2.0f, 4.0f });
-    b8 e3 = (c3 == F_cvector3 { 2.0f, 4.0f, 6.0f });
-    b8 e4 = (c4 == F_cvector4 { 2.0f, 4.0f, 6.0f, 8.0f });
+    b8 e2 = (c2 == F_cvector2{ 2.0f, 4.0f });
+    b8 e3 = (c3 == F_cvector3{ 2.0f, 4.0f, 6.0f });
+    b8 e4 = (c4 == F_cvector4{ 2.0f, 4.0f, 6.0f, 8.0f });
 
     {
 

@@ -56,8 +56,8 @@ namespace nmath {
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
     struct TF_data2;
 
-    using F_data2 = TF_data2<>;
-    using F_data2_i = TF_data2<NMATH_DEFAULT_INT_TYPE>;
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
+    using TCR_data2 = typename TF_data2<F_entry__, F_flag__>::F_const_reference;
 
 
 
@@ -69,6 +69,8 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = f32;
         using F_flag = F_flag__;
+
+        using F_const_reference = const TF_data2<f32, F_flag__>&;
         
         
 
@@ -113,7 +115,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2& operator = (const TF_data2& o) noexcept
+        inline TF_data2& operator = (F_const_reference o) noexcept
         {
             
             x = o.x;
@@ -121,24 +123,19 @@ namespace nmath {
 
             return *this;
         }
+        friend inline ncpp::b8 operator == (F_const_reference a, F_const_reference b) noexcept
+        {
+
+            return a.x == b.x && a.y == b.y;
+        }
+        friend inline ncpp::b8 operator != (F_const_reference a, F_const_reference b) noexcept
+        {
+
+            return a.x != b.x || a.y != b.y;
+        }
         
     };
 
     using F_data2_f32 = TF_data2<f32>;
 
-}
-
-
-
-template<typename F_flag__>
-inline ncpp::b8 operator == (const nmath::TF_data2<ncpp::f32, F_flag__>& a, const nmath::TF_data2<ncpp::f32, F_flag__>& b) noexcept
-{
-    
-    return a.x == b.x && a.y == b.y;
-}
-template<typename F_flag__>
-inline ncpp::b8 operator != (const nmath::TF_data2<ncpp::f32, F_flag__>& a, const nmath::TF_data2<ncpp::f32, F_flag__>& b) noexcept
-{
-    
-    return a.x != b.x || a.y != b.y;
 }

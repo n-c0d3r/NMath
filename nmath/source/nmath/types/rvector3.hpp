@@ -64,9 +64,15 @@ namespace nmath {
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
     using TF_rvector3 = TF_data3<F_entry__, F_rvector_flag>;
 
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
+    using TCR_rvector3 = TCR_data3<F_entry__, F_rvector_flag>;
+
     using F_rvector3 = TF_rvector3<>;
+    using CR_rvector3 = TCR_rvector3<>;
+
     using F_rvector3_i = TF_rvector3<NMATH_DEFAULT_INT_TYPE>;
 
     using F_rvector3_f32 = TF_rvector3<f32>;
+    using CR_rvector3_f32 = TCR_rvector3<f32>;
 
 }

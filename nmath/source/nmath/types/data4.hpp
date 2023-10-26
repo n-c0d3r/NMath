@@ -58,8 +58,8 @@ namespace nmath {
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
     struct TF_data4;
 
-    using F_data4 = TF_data4<>;
-    using F_data4_i = TF_data4<NMATH_DEFAULT_INT_TYPE>;
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
+    using TCR_data4 = typename TF_data4<F_entry__, F_flag__>::F_const_reference;
 
 
 
@@ -71,6 +71,12 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = f32;
         using F_flag = F_flag__;
+
+#ifdef NCPP_ENABLE_SSE
+        using F_const_reference = const TF_data4<f32, F_flag__>;
+#else
+        using F_const_reference = const TF_data4<f32, F_flag__>&;
+#endif
         
         
         
@@ -156,7 +162,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4& operator = (const TF_data4& o) noexcept
+        inline TF_data4& operator = (F_const_reference o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE
@@ -170,39 +176,31 @@ namespace nmath {
 
             return *this;
         }
+        friend inline ncpp::b8 operator == (F_const_reference a, F_const_reference b) noexcept
+        {
+
+#ifdef NCPP_ENABLE_SSE
+            __m128 compare4 = _mm_cmpeq_ps(a.xyzw_, b.xyzw_);
+            int mask = _mm_movemask_ps(compare4);
+
+            return (mask == 0b1111);
+#else
+            return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
+#endif
+        }
+        friend inline ncpp::b8 operator != (F_const_reference a, F_const_reference b) noexcept
+        {
+
+#ifdef NCPP_ENABLE_SSE
+            __m128 compare4 = _mm_cmpeq_ps(a.xyzw_, b.xyzw_);
+            int mask = _mm_movemask_ps(compare4);
+
+            return (mask != 0b1111);
+#else
+            return (a.x != b.x) || (a.y != b.y) || (a.z != b.z) || (a.w != b.w);
+#endif
+        }
         
     };
 
-    using F_data4_f32 = TF_data4<f32>;
-
 }
-
-
-
-template<typename F_flag__>
-inline ncpp::b8 operator == (const nmath::TF_data4<ncpp::f32, F_flag__>& a, const nmath::TF_data4<ncpp::f32, F_flag__>& b) noexcept
-{
-
-#ifdef NCPP_ENABLE_SSE
-    __m128 compare4 = _mm_cmpeq_ps(a.xyzw_, b.xyzw_);
-    int mask = _mm_movemask_ps(compare4);
-    
-    return (mask == 0b1111);
-#else
-    return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
-#endif
-}
-template<typename F_flag__>
-inline ncpp::b8 operator != (const nmath::TF_data4<ncpp::f32, F_flag__>& a, const nmath::TF_data4<ncpp::f32, F_flag__>& b) noexcept
-{
-
-#ifdef NCPP_ENABLE_SSE
-    __m128 compare4 = _mm_cmpeq_ps(a.xyzw_, b.xyzw_);
-    int mask = _mm_movemask_ps(compare4);
-    
-    return (mask != 0b1111);
-#else
-    return (a.x != b.x) || (a.y != b.y) || (a.z != b.z) || (a.w != b.w);
-#endif
-}
-
