@@ -136,6 +136,4 @@ namespace nmath {
         
     };
 
-    using F_data2_f32 = TF_data2<f32>;
-
 }
