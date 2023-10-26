@@ -61,3 +61,11 @@ constexpr nmath::F_fp operator"" pi(unsigned long long v) noexcept {
 
     return nmath::PI * ((nmath::F_fp)v);
 }
+constexpr nmath::F_fp operator"" e(long double v) noexcept {
+
+    return nmath::E * v;
+}
+constexpr nmath::F_fp operator"" e(unsigned long long v) noexcept {
+
+    return nmath::E * ((nmath::F_fp)v);
+}
