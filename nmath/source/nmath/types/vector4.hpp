@@ -1,8 +1,10 @@
+
+
 #pragma once
 
-/** @file nmath/operators/cvector_cvector.hpp
+/** @file nmath/types/vector4.hpp
 *
-*   Implement operators between cvector and cvector.
+*   Implement vector4.
 */
 
 
@@ -33,7 +35,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/cvector.hpp>
+#include <nmath/types/data4.hpp>
+#include <nmath/types/vector_flag.hpp>
 
 #pragma endregion
 
@@ -52,171 +55,37 @@
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    
-////////////////////////////////////////////////////////////////////////////////////
-//  nmath::F_cvector2_f32
-////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_cvector2_f32 operator + (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x + b.x,
-        a.y + b.y
-        
-    };
-}
-inline nmath::F_cvector2_f32 operator - (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x - b.x,
-        a.y - b.y
-        
-    };
-}
-inline nmath::F_cvector2_f32 operator * (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x * b.x,
-        a.y * b.y
-        
-    };
-}
-inline nmath::F_cvector2_f32 operator / (nmath::PA_cvector2_f32 a, nmath::PA_cvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x / b.x,
-        a.y / b.y
-        
-    };
-}
+
+namespace nmath {
+
+    NMATH_USING_NLIB_NAMESPACES();
 
 
 
-////////////////////////////////////////////////////////////////////////////////////
-//  nmath::F_cvector3_f32
-////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_cvector3_f32 operator + (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_add_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x + b.x,
-        a.y + b.y,
-        a.z + b.z
-        
-    };
-#endif
-}
-inline nmath::F_cvector3_f32 operator - (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_sub_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x - b.x,
-        a.y - b.y,
-        a.z - b.z
-        
-    };
-#endif
-}
-inline nmath::F_cvector3_f32 operator * (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_mul_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x * b.x,
-        a.y * b.y,
-        a.z * b.z
-        
-    };
-#endif
-}
-inline nmath::F_cvector3_f32 operator / (nmath::PA_cvector3_f32 a, nmath::PA_cvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_div_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x / b.x,
-        a.y / b.y,
-        a.z / b.z
-        
-    };
-#endif
-}
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
+    using TF_vector4 = TF_data4<F_entry__, F_vector_flag>;
 
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
+    using TPA_vector4 = TPA_data4<F_entry__, F_vector_flag>;
 
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////
-//  nmath::F_cvector4_f32
-////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_cvector4_f32 operator + (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_add_ps(a.xyzw_, b.xyzw_);
-#else
-    return {
-        
-        a.x + b.x,
-        a.y + b.y,
-        a.z + b.z,
-        a.w + b.w
-        
-    };
-#endif
-}
-inline nmath::F_cvector4_f32 operator - (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_sub_ps(a.xyzw_, b.xyzw_);
-#else
-    return {
-        
-        a.x - b.x,
-        a.y - b.y,
-        a.z - b.z,
-        a.w - b.w
-        
-    };
-#endif
-}
-inline nmath::F_cvector4_f32 operator * (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_mul_ps(a.xyzw_, b.xyzw_);
-#else
-    return {
-        
-        a.x * b.x,
-        a.y * b.y,
-        a.z * b.z,
-        a.w * b.w
-        
-    };
-#endif
-}
-inline nmath::F_cvector4_f32 operator / (nmath::PA_cvector4_f32 a, nmath::PA_cvector4_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_div_ps(a.xyzw_, b.xyzw_);
-#else
-    return {
-        
-        a.x / b.x,
-        a.y / b.y,
-        a.z / b.z,
-        a.w / b.w
-        
-    };
-#endif
+    using F_vector4 = TF_vector4<>;
+    using PA_vector4 = TPA_vector4<>;
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    using F_vector4_i = TF_vector4<NMATH_DEFAULT_INT_TYPE>;
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    using F_vector4_f32 = TF_vector4<f32>;
+    using PA_vector4_f32 = TPA_vector4<f32>;
+
 }

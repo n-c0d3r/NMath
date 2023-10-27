@@ -50,7 +50,7 @@ namespace nmath { }
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/operators/literal.hpp>
-#include <nmath/operators/rvector_rvector.hpp>
-#include <nmath/operators/cvector_cvector.hpp>
+#include <nmath/operators/helper.hpp>
+#include <nmath/operators/vector_vector.hpp>
 
 #pragma endregion

@@ -33,7 +33,10 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/cvector.hpp>
-#include <nmath/types/rvector.hpp>
+#include <nmath/types/vector_flag.hpp>
+
+#include <nmath/types/vector2.hpp>
+#include <nmath/types/vector3.hpp>
+#include <nmath/types/vector4.hpp>
 
 #pragma endregion

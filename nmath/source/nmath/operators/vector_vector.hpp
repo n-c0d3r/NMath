@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/operators/rvector_rvector.hpp
+/** @file nmath/operators/vector_vector.hpp
 *
-*   Implement operators between rvector and rvector.
+*   Implement operators between vector and vector.
 */
 
 
@@ -33,7 +33,14 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/rvector.hpp>
+#include <nmath/types/vector.hpp>
+#include <nmath/operators/helper.hpp>
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+#include <nmath/simd_helper.hpp>
 
 #pragma endregion
 
@@ -54,169 +61,235 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-//  nmath::F_rvector2_f32
+//  nmath::F_vector2_f32
 ////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_rvector2_f32 operator + (nmath::PA_rvector2_f32 a, nmath::PA_rvector2_f32 b) noexcept {
+namespace nmath {
     
-    return {
-        
-        a.x + b.x,
-        a.y + b.y
-        
-    };
-}
-inline nmath::F_rvector2_f32 operator - (nmath::PA_rvector2_f32 a, nmath::PA_rvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x - b.x,
-        a.y - b.y
-        
-    };
-}
-inline nmath::F_rvector2_f32 operator * (nmath::PA_rvector2_f32 a, nmath::PA_rvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x * b.x,
-        a.y * b.y
-        
-    };
-}
-inline nmath::F_rvector2_f32 operator / (nmath::PA_rvector2_f32 a, nmath::PA_rvector2_f32 b) noexcept {
-    
-    return {
-        
-        a.x / b.x,
-        a.y / b.y
-        
-    };
-}
+    inline F_vector2_f32 minus(nmath::PA_vector2_f32 a) noexcept
+    {
+        return {
 
+            -a.x,
+            -a.y
 
+        };
+    }
+    inline F_vector2_f32 add(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    {
+        return {
 
-////////////////////////////////////////////////////////////////////////////////////
-//  nmath::F_rvector3_f32
-////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_rvector3_f32 operator + (nmath::PA_rvector3_f32 a, nmath::PA_rvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_add_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x + b.x,
-        a.y + b.y,
-        a.z + b.z
-        
-    };
-#endif
+            a.x + b.x,
+            a.y + b.y
+
+        };
+    }
+    inline F_vector2_f32 subtract(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    {
+        return {
+
+            a.x - b.x,
+            a.y - b.y
+
+        };
+    }
+
+    inline F_vector2_f32 multiply(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    {
+        return {
+
+            a.x * b.x,
+            a.y * b.y
+
+        };
+    }
+    inline F_vector2_f32 divide(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    {
+        return {
+
+            a.x / b.x,
+            a.y / b.y
+
+        };
+    }
+
 }
-inline nmath::F_rvector3_f32 operator - (nmath::PA_rvector3_f32 a, nmath::PA_rvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_sub_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x - b.x,
-        a.y - b.y,
-        a.z - b.z
-        
-    };
-#endif
-}
-inline nmath::F_rvector3_f32 operator * (nmath::PA_rvector3_f32 a, nmath::PA_rvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_mul_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x * b.x,
-        a.y * b.y,
-        a.z * b.z
-        
-    };
-#endif
-}
-inline nmath::F_rvector3_f32 operator / (nmath::PA_rvector3_f32 a, nmath::PA_rvector3_f32 b) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-    return _mm_div_ps(a.xyz_, b.xyz_);
-#else
-    return {
-        
-        a.x / b.x,
-        a.y / b.y,
-        a.z / b.z
-        
-    };
-#endif
-}
+NMATH_DEFINE_SIMPLE_OPERATORS(nmath::F_vector2_f32);
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-//  nmath::F_rvector4_f32
+//  nmath::F_vector3_f32
 ////////////////////////////////////////////////////////////////////////////////////
-inline nmath::F_rvector4_f32 operator + (nmath::PA_rvector4_f32 a, nmath::PA_rvector4_f32 b) noexcept {
-    
+namespace nmath {
+
+    inline F_vector3_f32 minus(nmath::PA_vector3_f32 a) noexcept
+    {
+
 #ifdef NCPP_ENABLE_SSE
-    return _mm_add_ps(a.xyzw_, b.xyzw_);
+        return _mm_mul_ps(a.xyz_, m128_f32x4_minus_one);
 #else
-    return {
-        
-        a.x + b.x,
-        a.y + b.y,
-        a.z + b.z,
-        a.w + b.w
-        
-    };
+        return {
+
+            -a.x,
+            -a.y,
+            -a.z,
+
+        };
 #endif
-}
-inline nmath::F_rvector4_f32 operator - (nmath::PA_rvector4_f32 a, nmath::PA_rvector4_f32 b) noexcept {
-    
+    }
+    inline F_vector3_f32 add(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    {
+
 #ifdef NCPP_ENABLE_SSE
-    return _mm_sub_ps(a.xyzw_, b.xyzw_);
+        return _mm_add_ps(a.xyz_, b.xyz_);
 #else
-    return {
-        
-        a.x - b.x,
-        a.y - b.y,
-        a.z - b.z,
-        a.w - b.w
-        
-    };
+        return {
+
+            a.x + b.x,
+            a.y + b.y,
+            a.z + b.z
+
+        };
 #endif
-}
-inline nmath::F_rvector4_f32 operator * (nmath::PA_rvector4_f32 a, nmath::PA_rvector4_f32 b) noexcept {
-    
+    }
+    inline F_vector3_f32 subtract(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    {
+
 #ifdef NCPP_ENABLE_SSE
-    return _mm_mul_ps(a.xyzw_, b.xyzw_);
+        return _mm_sub_ps(a.xyz_, b.xyz_);
 #else
-    return {
-        
-        a.x * b.x,
-        a.y * b.y,
-        a.z * b.z,
-        a.w * b.w
-        
-    };
+        return {
+
+            a.x - b.x,
+            a.y - b.y,
+            a.z - b.z
+
+        };
 #endif
-}
-inline nmath::F_rvector4_f32 operator / (nmath::PA_rvector4_f32 a, nmath::PA_rvector4_f32 b) noexcept {
-    
+    }
+
+    inline F_vector3_f32 multiply(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    {
+
 #ifdef NCPP_ENABLE_SSE
-    return _mm_div_ps(a.xyzw_, b.xyzw_);
+        return _mm_mul_ps(a.xyz_, b.xyz_);
 #else
-    return {
-        
-        a.x / b.x,
-        a.y / b.y,
-        a.z / b.z,
-        a.w / b.w
-        
-    };
+        return {
+
+            a.x * b.x,
+            a.y * b.y,
+            a.z * b.z
+
+        };
 #endif
+    }
+    inline F_vector3_f32 divide(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_div_ps(a.xyz_, b.xyz_);
+#else
+        return {
+
+            a.x / b.x,
+            a.y / b.y,
+            a.z / b.z
+
+        };
+#endif
+    }
+
 }
+NMATH_DEFINE_SIMPLE_OPERATORS(nmath::F_vector3_f32);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  nmath::F_vector4_f32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    inline F_vector4_f32 minus(nmath::PA_vector4_f32 a) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_mul_ps(a.xyzw_, m128_f32x4_minus_one);
+#else
+        return {
+
+            -a.x,
+            -a.y,
+            -a.z,
+            -a.w
+
+        };
+#endif
+    }
+    inline F_vector4_f32 add(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_add_ps(a.xyzw_, b.xyzw_);
+#else
+        return {
+
+            a.x + b.x,
+            a.y + b.y,
+            a.z + b.z,
+            a.w + b.w
+
+        };
+#endif
+    }
+    inline F_vector4_f32 subtract(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_sub_ps(a.xyzw_, b.xyzw_);
+#else
+        return {
+
+            a.x - b.x,
+            a.y - b.y,
+            a.z - b.z,
+            a.w - b.w
+
+        };
+#endif
+    }
+
+    inline F_vector4_f32 multiply(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_mul_ps(a.xyzw_, b.xyzw_);
+#else
+        return {
+
+            a.x * b.x,
+            a.y * b.y,
+            a.z * b.z,
+            a.w * b.w
+
+        };
+#endif
+    }
+    inline F_vector4_f32 divide(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_div_ps(a.xyzw_, b.xyzw_);
+#else
+        return {
+
+            a.x / b.x,
+            a.y / b.y,
+            a.z / b.z,
+            a.w / b.w
+
+        };
+#endif
+    }
+
+}
+NMATH_DEFINE_SIMPLE_OPERATORS(nmath::F_vector4_f32);

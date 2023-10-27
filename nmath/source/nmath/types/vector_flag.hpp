@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/types/rvector_flag.hpp
+/** @file nmath/types/vector_flag.hpp
 *
-*   Implement rvector flag.
+*   Implement vector flag.
 */
 
 
@@ -35,6 +35,6 @@
 
 namespace nmath {
 
-    struct F_rvector_flag {};
+    struct F_vector_flag {};
 
 }

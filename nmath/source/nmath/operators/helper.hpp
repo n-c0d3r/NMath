@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/vector_transpose.hpp
+/** @file nmath/operators/helper.hpp
 *
-*   Implement vector transpose.
+*   Implement helper.
 */
 
 
@@ -29,12 +29,6 @@
 
 #include <nmath/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nmath/types/vector.hpp>
-
 #pragma endregion
 
 
@@ -52,81 +46,88 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-namespace nmath {
-
-    ////////////////////////////////////////////////////////////////////////////////////
-    //  cvector f32 transpose
-    ////////////////////////////////////////////////////////////////////////////////////
-    inline F_rvector2_f32 transpose(PA_cvector2_f32 a) noexcept {
-        
-        return { a.x, a.y };
-    }
-    inline F_rvector3_f32 transpose(PA_cvector3_f32 a) noexcept {
-        
-#ifdef NCPP_ENABLE_SSE
-        return { a.xyz_ };
-#else
-        return {
-            
-            a.x,
-            a.y,
-            a.z
-            
-        };
-#endif
-    }
-    inline F_rvector4_f32 transpose(PA_cvector4_f32 a) noexcept {
-        
-#ifdef NCPP_ENABLE_SSE
-        return { a.xyzw_ };
-#else
-        return {
-            
-            a.x,
-            a.y,
-            a.z,
-            a.w
-            
-        };
-#endif
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////
-    //  rvector f32 transpose
-    ////////////////////////////////////////////////////////////////////////////////////
-    inline F_cvector2_f32 transpose(PA_rvector2_f32 a) noexcept {
-        
-        return { a.x, a.y };
-    }
-    inline F_cvector3_f32 transpose(PA_rvector3_f32 a) noexcept {
     
-#ifdef NCPP_ENABLE_SSE
-        return { a.xyz_ };
-#else
-        return {
-            
-            a.x,
-            a.y,
-            a.z
-            
-        };
-#endif
+#define NMATH_DEFINE_SIMPLE_ADD_OPERATOR(Type) \
+    inline Type operator + (typename Type::F_passed_argument a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        return nmath::add(a, b);\
     }
-    inline F_cvector4_f32 transpose(PA_rvector4_f32 a) noexcept {
-    
-#ifdef NCPP_ENABLE_SSE
-        return { a.xyzw_ };
-#else
-        return {
-            
-            a.x,
-            a.y,
-            a.z,
-            a.w
-            
-        };
-#endif
+#define NMATH_DEFINE_SIMPLE_SELF_ADD_OPERATOR(Type) \
+    inline Type& operator += (Type& a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        a = nmath::add(a, b);\
+        \
+        return a;\
+    }   
+
+#define NMATH_DEFINE_SIMPLE_SUBTRACT_OPERATOR(Type) \
+    inline Type operator - (typename Type::F_passed_argument a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        return nmath::subtract(a, b);\
+    }
+#define NMATH_DEFINE_SIMPLE_SELF_SUBTRACT_OPERATOR(Type) \
+    inline Type& operator -= (Type& a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        a = nmath::subtract(a, b);\
+        \
+        return a;\
     }
 
-}
+#define NMATH_DEFINE_SIMPLE_MULTIPLY_OPERATOR(Type) \
+    inline Type operator * (typename Type::F_passed_argument a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        return nmath::multiply(a, b);\
+    }
+#define NMATH_DEFINE_SIMPLE_SELF_MULTIPLY_OPERATOR(Type) \
+    inline Type& operator *= (Type& a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        a = nmath::multiply(a, b);\
+        \
+        return a;\
+    }   
+
+#define NMATH_DEFINE_SIMPLE_DIVIDE_OPERATOR(Type) \
+    inline Type operator / (typename Type::F_passed_argument a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        return nmath::divide(a, b);\
+    }
+#define NMATH_DEFINE_SIMPLE_SELF_DIVIDE_OPERATOR(Type) \
+    inline Type& operator /= (Type& a, typename Type::F_passed_argument b) noexcept \
+    {\
+        \
+        a = nmath::divide(a, b);\
+        \
+        return a;\
+    }
+
+#define NMATH_DEFINE_SIMPLE_PLUS_OPERATOR(Type) \
+    inline typename Type::F_passed_argument operator + (typename Type::F_passed_argument a) noexcept \
+    {\
+        \
+        return a;\
+    }
+#define NMATH_DEFINE_SIMPLE_MINUS_OPERATOR(Type) \
+    inline typename Type::F_passed_argument operator - (typename Type::F_passed_argument a) noexcept \
+    {\
+        \
+        return nmath::minus(a);\
+    }
+
+#define NMATH_DEFINE_SIMPLE_OPERATORS(Type) \
+    NMATH_DEFINE_SIMPLE_PLUS_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_MINUS_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_ADD_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_SELF_ADD_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_SUBTRACT_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_SELF_SUBTRACT_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_MULTIPLY_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_SELF_MULTIPLY_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_DIVIDE_OPERATOR(Type);\
+    NMATH_DEFINE_SIMPLE_SELF_DIVIDE_OPERATOR(Type);
