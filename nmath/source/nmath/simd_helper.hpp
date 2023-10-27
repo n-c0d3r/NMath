@@ -53,6 +53,23 @@ namespace nmath {
     extern const __m128 m128_zero;
     extern const __m128 m128_f32x4_one;
     extern const __m128 m128_f32x4_minus_one;
+
+    extern const __m128 m128_f32x4_1110;
+    extern const __m128 m128_f32x4_1101;
+    extern const __m128 m128_f32x4_1011;
+    extern const __m128 m128_f32x4_0111;
+
+    extern const __m128 m128_f32x4_1100;
+    extern const __m128 m128_f32x4_1001;
+    extern const __m128 m128_f32x4_0011;
+    extern const __m128 m128_f32x4_0110;
+    extern const __m128 m128_f32x4_1010;
+    extern const __m128 m128_f32x4_0101;
+
+    extern const __m128 m128_f32x4_0001;
+    extern const __m128 m128_f32x4_0010;
+    extern const __m128 m128_f32x4_0100;
+    extern const __m128 m128_f32x4_1000;
 #endif
 
 }
