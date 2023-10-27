@@ -44,6 +44,10 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	//  f32. Not use SIMD maunally because the compiler optimization can use SIMD automatically to gain better performance than the maunal one.
 	////////////////////////////////////////////////////////////////////////////////////
+	inline float cross(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
+
+		return a.x * b.y - a.y * b.x;
+	}
 	inline F_vector3_f32 cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
 		return {
