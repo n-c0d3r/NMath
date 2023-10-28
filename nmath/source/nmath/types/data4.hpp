@@ -106,19 +106,27 @@ namespace nmath {
 
 
 #ifdef NCPP_ENABLE_SSE
-#define DATA4_SIMD() \
-    __m128 xyzw_;\
-    __m128i xyzw_i_;
-#define DATA4_SIMD_CONSTRUCTORS()\
+#define NMATH_DATA4_SIMD_M128() \
+    __m128 xyzw_;
+#define NMATH_DATA4_SIMD_CONSTRUCTOR_M128()\
     inline TF_data4(__m128 xyzw) : \
         xyzw_(xyzw)\
-    {}\
-    inline TF_data4(__m128i xyzw_i) : \
-        xyzw_i_(xyzw_i)\
     {}
 #else
-#define DATA4_SIMD() ;
-#define DATA4_SIMD_CONSTRUCTORS() ;
+#define NMATH_DATA4_SIMD_M128() ;
+#define NMATH_DATA4_SIMD_CONSTRUCTOR_M128() ;
+#endif
+
+#ifdef NCPP_ENABLE_SSE2
+#define NMATH_DATA4_SIMD_M128I() \
+    __m128 xyzw_i_;
+#define NMATH_DATA4_SIMD_CONSTRUCTOR_M128I()\
+    inline TF_data4(__m128i xyzw) : \
+        xyzw_i_(xyzw)\
+    {}
+#else
+#define NMATH_DATA4_SIMD_M128I() ;
+#define NMATH_DATA4_SIMD_CONSTRUCTOR_M128I() ;
 #endif
 
 
@@ -175,7 +183,7 @@ namespace nmath {
                 
             };
             
-            DATA4_SIMD();
+            NMATH_DATA4_SIMD_M128();
             
         };
         
@@ -315,7 +323,7 @@ namespace nmath {
             
         }
 
-        DATA4_SIMD_CONSTRUCTORS();
+        NMATH_DATA4_SIMD_CONSTRUCTOR_M128();
         
         
         
@@ -417,7 +425,7 @@ namespace nmath {
                 
             };
 
-            DATA4_SIMD();
+            NMATH_DATA4_SIMD_M128I();
             
         };
         
@@ -557,7 +565,7 @@ namespace nmath {
 
         }
 
-        DATA4_SIMD_CONSTRUCTORS();
+        NMATH_DATA4_SIMD_CONSTRUCTOR_M128I();
         
         
         
@@ -659,7 +667,7 @@ namespace nmath {
                 
             };
 
-            DATA4_SIMD();
+            NMATH_DATA4_SIMD_M128I();
             
         };
         
@@ -799,7 +807,7 @@ namespace nmath {
 
         }
 
-        DATA4_SIMD_CONSTRUCTORS();
+        NMATH_DATA4_SIMD_CONSTRUCTOR_M128I();
         
         
         

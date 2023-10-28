@@ -104,19 +104,27 @@ namespace nmath {
 
 
 #ifdef NCPP_ENABLE_SSE
-#define DATA3_SIMD() \
-    __m128 xyz_;\
-    __m128i xyz_i_;
-#define DATA3_SIMD_CONSTRUCTORS()\
+#define NMATH_DATA3_SIMD_M128() \
+    __m128 xyz_;
+#define NMATH_DATA3_SIMD_CONSTRUCTOR_M128()\
     inline TF_data3(__m128 xyz) : \
         xyz_(xyz)\
-    {}\
-    inline TF_data3(__m128i xyz_i) : \
-        xyz_i_(xyz_i)\
     {}
 #else
-#define DATA3_SIMD() ;
-#define DATA3_SIMD_CONSTRUCTORS() ;
+#define NMATH_DATA3_SIMD_M128() ;
+#define NMATH_DATA3_SIMD_CONSTRUCTOR_M128() ;
+#endif
+
+#ifdef NCPP_ENABLE_SSE2
+#define NMATH_DATA3_SIMD_M128I() \
+    __m128 xyz_i_;
+#define NMATH_DATA3_SIMD_CONSTRUCTOR_M128I()\
+    inline TF_data3(__m128i xyz) : \
+        xyz_i_(xyz)\
+    {}
+#else
+#define NMATH_DATA3_SIMD_M128I() ;
+#define NMATH_DATA3_SIMD_CONSTRUCTOR_M128I() ;
 #endif
 
 
@@ -169,7 +177,7 @@ namespace nmath {
                 
             };
             
-            DATA3_SIMD();
+            NMATH_DATA3_SIMD_M128();
             
         };
 
@@ -242,9 +250,9 @@ namespace nmath {
 
 
 
-    }
+        }
 
-        DATA3_SIMD_CONSTRUCTORS();
+        NMATH_DATA3_SIMD_CONSTRUCTOR_M128();
         
         
         
@@ -320,7 +328,7 @@ namespace nmath {
         using F_data2 = TF_data2<F_entry, F_flag__>;
         using PA_data2 = TPA_data2<F_entry, F_flag__>;
 
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
         using F_passed_argument = const F_this;
 #else
         using F_passed_argument = const F_this&;
@@ -341,7 +349,7 @@ namespace nmath {
 
             };
 
-            DATA3_SIMD();
+            NMATH_DATA3_SIMD_M128I();
 
         };
 
@@ -351,7 +359,7 @@ namespace nmath {
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
         inline TF_data3() noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(simd_i32x4_0000)
 #else
             x(0),
@@ -364,7 +372,7 @@ namespace nmath {
 
         }
         inline TF_data3(F_entry x, F_entry y, F_entry z) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(_mm_set_epi32(0, z, y, x))
 #else
             x(x),
@@ -377,7 +385,7 @@ namespace nmath {
 
         }
         inline TF_data3(PA_data2 xy, F_entry z) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(_mm_set_epi32(0, z, xy.y, xy.x))
 #else
             x(xy.x),
@@ -390,7 +398,7 @@ namespace nmath {
 
         }
         inline TF_data3(F_entry x, PA_data2 yz) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(_mm_set_epi32(0, yz.y, yz.x, x))
 #else
             x(x),
@@ -403,7 +411,7 @@ namespace nmath {
 
         }
         inline TF_data3(const TF_data3& o) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(o.xyz_i_)
 #else
             x(o.x),
@@ -416,7 +424,7 @@ namespace nmath {
 
         }
 
-        DATA3_SIMD_CONSTRUCTORS();
+        NMATH_DATA3_SIMD_CONSTRUCTOR_M128I();
 
 
 
@@ -426,7 +434,7 @@ namespace nmath {
         inline TF_data3& operator = (F_passed_argument o) noexcept
         {
 
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_ = o.xyz_i_;
 #else
             x = o.x;
@@ -492,7 +500,7 @@ namespace nmath {
         using F_data2 = TF_data2<F_entry, F_flag__>;
         using PA_data2 = TPA_data2<F_entry, F_flag__>;
 
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
         using F_passed_argument = const F_this;
 #else
         using F_passed_argument = const F_this&;
@@ -513,7 +521,7 @@ namespace nmath {
                 
             };
 
-            DATA3_SIMD();
+            NMATH_DATA3_SIMD_M128I();
             
         };
         
@@ -523,7 +531,7 @@ namespace nmath {
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
         inline TF_data3() noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(simd_i32x4_0000)
 #else
             x(0),
@@ -536,7 +544,7 @@ namespace nmath {
             
         }
         inline TF_data3(F_entry x, F_entry y, F_entry z) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(_mm_set_epi32(0, z, y, x))
 #else
             x(x),
@@ -549,7 +557,7 @@ namespace nmath {
             
         }
         inline TF_data3(PA_data2 xy, F_entry z) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(_mm_set_epi32(0, z, xy.y, xy.x))
 #else
             x(xy.x),
@@ -562,7 +570,7 @@ namespace nmath {
 
         }
         inline TF_data3(F_entry x, PA_data2 yz) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(_mm_set_epi32(0, yz.y, yz.x, x))
 #else
             x(x),
@@ -575,7 +583,7 @@ namespace nmath {
 
         }
         inline TF_data3(const TF_data3& o) noexcept :
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_(o.xyz_i_)
 #else
             x(o.x),
@@ -588,7 +596,7 @@ namespace nmath {
 
         }
 
-        DATA3_SIMD_CONSTRUCTORS();
+        NMATH_DATA3_SIMD_CONSTRUCTOR_M128I();
         
         
         
@@ -598,7 +606,7 @@ namespace nmath {
         inline TF_data3& operator = (F_passed_argument o) noexcept
         {
 
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_SSE2
             xyz_i_ = o.xyz_i_;
 #else
             x = o.x;
