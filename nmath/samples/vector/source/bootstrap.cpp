@@ -3,6 +3,8 @@
 
 using namespace nmath;
 
+#include <DirectXMath.h>
+
 
 
 int main() {
@@ -19,9 +21,18 @@ int main() {
     F_vector3 c3 = a3 + b3;
     F_vector4 c4 = a4 + b4;
     
-    b8 e2 = (c2 == F_vector2 { 2.0f, 4.0f });
-    b8 e3 = (c3 == F_vector3 { 2.0f, 4.0f, 6.0f });
-    b8 e4 = (c4 == F_vector4 { 2.0f, 4.0f, 6.0f, 8.0f });
+    b8 e2 = (c2 == F_vector2{ 2.0f, 4.0f });
+    b8 e3 = (c3 == F_vector3{ 2.0f, 4.0f, 6.0f });
+    b8 e4 = (c4 == F_vector4{ 2.0f, 4.0f, 6.0f, 8.0f });
+
+
+    F_vector4_i c41 = { 1,2,3,4 };
+    F_vector4_i c42 = { 1,2,3,4 };
+
+    F_vector3 c31 = { -5.0f, 4.0f, 6.0f };
+    F_vector3 c32 = { 2.0f, 4.0f, 0.0f };
+
+    F_vector3 c33 = -cross(c31, c32);
 
 	ncpp::pause_console();
 

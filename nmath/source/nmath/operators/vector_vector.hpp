@@ -36,12 +36,6 @@
 #include <nmath/types/vector.hpp>
 #include <nmath/operators/helper.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nmath/simd_helper.hpp>
-
 #pragma endregion
 
 
@@ -126,7 +120,7 @@ namespace nmath {
     {
 
 #ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyz_, m128_f32x4_minus_one);
+        return _mm_mul_ps(a.xyz_, simd_f32x4_1111_negative);
 #else
         return {
 
@@ -213,7 +207,7 @@ namespace nmath {
     {
 
 #ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyzw_, m128_f32x4_minus_one);
+        return _mm_mul_ps(a.xyzw_, simd_f32x4_1111_negative);
 #else
         return {
 
