@@ -35,6 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/simd_helper.hpp>
+#include <nmath/types/data2.hpp>
 
 #pragma endregion
 
@@ -144,6 +145,9 @@ namespace nmath {
         using F_flag = F_flag__;
         using F_this = TF_data3<F_entry, F_flag__>;
 
+        using F_data2 = TF_data2<F_entry, F_flag__>;
+        using PA_data2 = TPA_data2<F_entry, F_flag__>;
+
 #ifdef NCPP_ENABLE_SSE
         using F_passed_argument = const F_this;
 #else
@@ -200,9 +204,32 @@ namespace nmath {
             
             
         }
+        inline TF_data3(PA_data2 xy, F_entry z) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_(_mm_set_ps(0.0f, z, xy.y, xy.x))
+#else
+            x(xy.x),
+            y(xy.y),
+            z(z)
+#endif
+        {
 
-        DATA3_SIMD_CONSTRUCTORS();
 
+
+        }
+        inline TF_data3(F_entry x, PA_data2 yz) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_(_mm_set_ps(0.0f, yz.y, yz.x, x))
+#else
+            x(x),
+            y(yz.x),
+            z(yz.y)
+#endif
+        {
+
+
+
+        }
         inline TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(o.xyz_)
@@ -215,7 +242,9 @@ namespace nmath {
 
 
 
-        }
+    }
+
+        DATA3_SIMD_CONSTRUCTORS();
         
         
         
@@ -288,6 +317,9 @@ namespace nmath {
         using F_flag = F_flag__;
         using F_this = TF_data3<F_entry, F_flag__>;
 
+        using F_data2 = TF_data2<F_entry, F_flag__>;
+        using PA_data2 = TPA_data2<F_entry, F_flag__>;
+
 #ifdef NCPP_ENABLE_SSE
         using F_passed_argument = const F_this;
 #else
@@ -344,9 +376,32 @@ namespace nmath {
 
 
         }
+        inline TF_data3(PA_data2 xy, F_entry z) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_i_(_mm_set_epi32(0, z, xy.y, xy.x))
+#else
+            x(xy.x),
+            y(xy.y),
+            z(z)
+#endif
+        {
 
-        DATA3_SIMD_CONSTRUCTORS();
 
+
+        }
+        inline TF_data3(F_entry x, PA_data2 yz) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_i_(_mm_set_epi32(0, yz.y, yz.x, x))
+#else
+            x(x),
+            y(yz.x),
+            z(yz.y)
+#endif
+        {
+
+
+
+        }
         inline TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_i_(o.xyz_i_)
@@ -360,6 +415,8 @@ namespace nmath {
 
 
         }
+
+        DATA3_SIMD_CONSTRUCTORS();
 
 
 
@@ -432,6 +489,9 @@ namespace nmath {
         using F_flag = F_flag__;
         using F_this = TF_data3<F_entry, F_flag__>;
 
+        using F_data2 = TF_data2<F_entry, F_flag__>;
+        using PA_data2 = TPA_data2<F_entry, F_flag__>;
+
 #ifdef NCPP_ENABLE_SSE
         using F_passed_argument = const F_this;
 #else
@@ -488,9 +548,32 @@ namespace nmath {
             
             
         }
+        inline TF_data3(PA_data2 xy, F_entry z) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_i_(_mm_set_epi32(0, z, xy.y, xy.x))
+#else
+            x(xy.x),
+            y(xy.y),
+            z(z)
+#endif
+        {
 
-        DATA3_SIMD_CONSTRUCTORS();
 
+
+        }
+        inline TF_data3(F_entry x, PA_data2 yz) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_i_(_mm_set_epi32(0, yz.y, yz.x, x))
+#else
+            x(x),
+            y(yz.x),
+            z(yz.y)
+#endif
+        {
+
+
+
+        }
         inline TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_i_(o.xyz_i_)
@@ -504,6 +587,8 @@ namespace nmath {
 
 
         }
+
+        DATA3_SIMD_CONSTRUCTORS();
         
         
         
@@ -547,7 +632,7 @@ namespace nmath {
             return (a.x != b.x) || (a.y != b.y) || (a.z != b.z);
 #endif
         }
-        
+
     };
 
 
