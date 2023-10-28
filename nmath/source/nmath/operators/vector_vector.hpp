@@ -107,7 +107,21 @@ namespace nmath {
     }
 
 }
-NMATH_DEFINE_SIMPLE_OPERATORS(nmath::F_vector2_f32);
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector2_f32, nmath::F_vector2_f32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector2_f32, nmath::F_vector2_f32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
 
 
 
@@ -194,7 +208,21 @@ namespace nmath {
     }
 
 }
-NMATH_DEFINE_SIMPLE_OPERATORS(nmath::F_vector3_f32);
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector3_f32, nmath::F_vector3_f32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector3_f32, nmath::F_vector3_f32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32);
 
 
 
@@ -286,4 +314,18 @@ namespace nmath {
     }
 
 }
-NMATH_DEFINE_SIMPLE_OPERATORS(nmath::F_vector4_f32);
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector4_f32, nmath::F_vector4_f32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector4_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector4_f32, nmath::PA_vector4_f32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector4_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector4_f32, nmath::PA_vector4_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector4_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector4_f32, nmath::PA_vector4_f32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector4_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector4_f32, nmath::PA_vector4_f32);

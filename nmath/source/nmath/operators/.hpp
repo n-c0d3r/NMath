@@ -52,5 +52,6 @@ namespace nmath { }
 #include <nmath/operators/literal.hpp>
 #include <nmath/operators/helper.hpp>
 #include <nmath/operators/vector_vector.hpp>
+#include <nmath/operators/vector_scalar.hpp>
 
 #pragma endregion
