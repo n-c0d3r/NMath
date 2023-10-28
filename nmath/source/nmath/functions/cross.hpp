@@ -51,7 +51,7 @@ namespace nmath {
 	}
 	inline F_vector3_f32 cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_FMA3
 		// y1,z1,x1,w1
 		__m128 vTemp1 = _mm_permute_ps(a.xyz_, _MM_SHUFFLE(3, 0, 2, 1));
 		// z2,x2,y2,w2
@@ -78,7 +78,7 @@ namespace nmath {
 	}
 	inline F_vector4_f32 cross(PA_vector4_f32 a, PA_vector4_f32 b, PA_vector4_f32 c) noexcept {
 
-#ifdef NCPP_ENABLE_SSE
+#ifdef NCPP_ENABLE_FMA3
 		// V2zwyz * V3wzwy
 		__m128 vResult = _mm_permute_ps(b.xyzw_, _MM_SHUFFLE(2, 1, 3, 2));
 		__m128 vTemp3 = _mm_permute_ps(c.xyzw_, _MM_SHUFFLE(1, 3, 2, 3));
