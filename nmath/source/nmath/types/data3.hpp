@@ -156,6 +156,8 @@ namespace nmath {
         using F_data2 = TF_data2<F_entry, F_flag__>;
         using PA_data2 = TPA_data2<F_entry, F_flag__>;
 
+        static constexpr u32 component_count_s = 3;
+
 #ifdef NCPP_ENABLE_SSE
         using F_passed_argument = const F_this;
 #else
@@ -328,6 +330,8 @@ namespace nmath {
         using F_data2 = TF_data2<F_entry, F_flag__>;
         using PA_data2 = TPA_data2<F_entry, F_flag__>;
 
+        static constexpr u32 component_count_s = 3;
+
 #ifdef NCPP_ENABLE_SSE2
         using F_passed_argument = const F_this;
 #else
@@ -499,6 +503,8 @@ namespace nmath {
 
         using F_data2 = TF_data2<F_entry, F_flag__>;
         using PA_data2 = TPA_data2<F_entry, F_flag__>;
+
+        static constexpr u32 component_count_s = 3;
 
 #ifdef NCPP_ENABLE_SSE2
         using F_passed_argument = const F_this;

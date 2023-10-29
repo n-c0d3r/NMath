@@ -3,6 +3,10 @@
 
 using namespace nmath;
 
+#include <DirectXMath.h>
+
+using namespace DirectX;
+
 
 
 int main() {
@@ -22,6 +26,8 @@ int main() {
     b8 e2 = (c2 == F_vector2{ 2.0f, 4.0f });
     b8 e3 = (c3 == F_vector3{ 2.0f, 4.0f, 6.0f });
     b8 e4 = (c4 == F_vector4{ 2.0f, 4.0f, 6.0f, 8.0f });
+
+
 
 	ncpp::pause_console();
 
