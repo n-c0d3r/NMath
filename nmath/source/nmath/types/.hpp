@@ -50,6 +50,7 @@ namespace nmath { }
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/vector.hpp>
+#include <nmath/types/quaternion.hpp>
 
 #pragma endregion
 
