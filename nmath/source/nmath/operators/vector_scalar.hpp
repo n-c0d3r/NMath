@@ -59,7 +59,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
     
-    inline F_vector2_f32 multiply(nmath::PA_vector2_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 multiply(nmath::PA_vector2_f32 a, float b) noexcept
     {
         return {
 
@@ -68,7 +68,7 @@ namespace nmath {
 
         };
     }
-    inline F_vector2_f32 multiply(float b, nmath::PA_vector2_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 multiply(float b, nmath::PA_vector2_f32 a) noexcept
     {
         return {
 
@@ -78,7 +78,7 @@ namespace nmath {
         };
     }
 
-    inline F_vector2_f32 divide(nmath::PA_vector2_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 divide(nmath::PA_vector2_f32 a, float b) noexcept
     {
         return {
 
@@ -118,7 +118,7 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_f32, float);
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    inline F_vector3_f32 multiply(nmath::F_vector3_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector3_f32 a, float b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -135,7 +135,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_vector3_f32 multiply(float b, nmath::F_vector3_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector3_f32 a) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -153,7 +153,7 @@ namespace nmath {
 #endif
     }
 
-    inline F_vector3_f32 divide(nmath::F_vector3_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(nmath::F_vector3_f32 a, float b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -201,7 +201,7 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_f32, float);
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    inline F_vector4_f32 multiply(nmath::F_vector4_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector4_f32 a, float b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -219,7 +219,7 @@ namespace nmath {
         };
 #endif
     }
-    inline F_vector4_f32 multiply(float b, nmath::F_vector4_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector4_f32 a) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -238,7 +238,7 @@ namespace nmath {
 #endif
     }
 
-    inline F_vector4_f32 divide(nmath::F_vector4_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(nmath::F_vector4_f32 a, float b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE

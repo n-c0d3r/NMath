@@ -109,7 +109,7 @@ namespace nmath {
 #define NMATH_DATA4_SIMD_M128() \
     __m128 xyzw_;
 #define NMATH_DATA4_SIMD_CONSTRUCTOR_M128()\
-    inline TF_data4(__m128 xyzw) : \
+    NCPP_FORCE_INLINE TF_data4(__m128 xyzw) : \
         xyzw_(xyzw)\
     {}
 #else
@@ -121,7 +121,7 @@ namespace nmath {
 #define NMATH_DATA4_SIMD_M128I() \
     __m128 xyzw_i_;
 #define NMATH_DATA4_SIMD_CONSTRUCTOR_M128I()\
-    inline TF_data4(__m128i xyzw) : \
+    NCPP_FORCE_INLINE TF_data4(__m128i xyzw) : \
         xyzw_i_(xyzw)\
     {}
 #else
@@ -194,7 +194,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Basic constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4() noexcept :
+        NCPP_FORCE_INLINE TF_data4() noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(simd_f32x4_0000)
 #else
@@ -208,7 +208,7 @@ namespace nmath {
             
             
         }
-        inline TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_set_ps(w, z, y, x))
 #else
@@ -222,7 +222,7 @@ namespace nmath {
             
             
         }
-        inline TF_data4(F_entry x, F_entry y, PA_data2 zw) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, PA_data2 zw) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_set_ps(zw.w, zw.z, y, x))
 #else
@@ -236,7 +236,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(F_entry x, PA_data2 yz, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, PA_data2 yz, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_set_ps(w, yz.y, yz.x, x))
 #else
@@ -250,7 +250,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data2 xy, PA_data2 zw) noexcept :
+        NCPP_FORCE_INLINE TF_data4(PA_data2 xy, PA_data2 zw) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_set_ps(zw.y, zw.x, xy.y, xy.x))
 #else
@@ -264,7 +264,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data2 xy, F_entry z, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(PA_data2 xy, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_set_ps(w, z, xy.y, xy.x))
 #else
@@ -278,7 +278,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data3 xyz, F_entry w) noexcept :
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(PA_data3 xyz, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(xyz.xyz_)
 #else
@@ -294,7 +294,7 @@ namespace nmath {
 #endif
 
         }
-        inline TF_data4(F_entry x, PA_data3 yzw) noexcept :
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(F_entry x, PA_data3 yzw) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_shuffle_ps(yzw.xyz_, yzw.xyz_, _MM_SHUFFLE(2, 1, 0, 3)))
 #else
@@ -310,7 +310,7 @@ namespace nmath {
 #endif
 
         }
-        inline TF_data4(const TF_data4& o) noexcept :
+        NCPP_FORCE_INLINE TF_data4(const TF_data4& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(o.xyzw_)
 #else
@@ -332,7 +332,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4& operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data4& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE
@@ -346,7 +346,7 @@ namespace nmath {
 
             return *this;
         }
-        friend inline ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE
@@ -358,7 +358,7 @@ namespace nmath {
             return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
 #endif
         }
-        friend inline ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE
@@ -438,7 +438,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4() noexcept :
+        NCPP_FORCE_INLINE TF_data4() noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(simd_i32x4_0000)
 #else
@@ -452,7 +452,7 @@ namespace nmath {
             
             
         }
-        inline TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(w, z, y, x))
 #else
@@ -466,7 +466,7 @@ namespace nmath {
             
             
         }
-        inline TF_data4(F_entry x, F_entry y, PA_data2 zw) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, PA_data2 zw) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(zw.w, zw.z, y, x))
 #else
@@ -480,7 +480,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(F_entry x, PA_data2 yz, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, PA_data2 yz, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(w, yz.y, yz.x, x))
 #else
@@ -494,7 +494,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data2 xy, F_entry z, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(PA_data2 xy, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(w, z, xy.y, xy.x))
 #else
@@ -508,7 +508,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data2 xy, PA_data2 zw) noexcept :
+        NCPP_FORCE_INLINE TF_data4(PA_data2 xy, PA_data2 zw) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(zw.y, zw.x, xy.y, xy.x))
 #else
@@ -522,7 +522,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data3 xyz, F_entry w) noexcept :
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(PA_data3 xyz, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(xyz.xyz_)
 #else
@@ -538,7 +538,7 @@ namespace nmath {
 #endif
 
         }
-        inline TF_data4(F_entry x, PA_data3 yzw) noexcept :
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(F_entry x, PA_data3 yzw) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_shuffle_epi32(yzw.xyz_, yzw.xyz_, _MM_SHUFFLE(2, 1, 0, 3)))
 #else
@@ -554,7 +554,7 @@ namespace nmath {
 #endif
 
         }
-        inline TF_data4(const TF_data4& o) noexcept :
+        NCPP_FORCE_INLINE TF_data4(const TF_data4& o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(o.xyzw_i_)
 #else
@@ -576,7 +576,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4& operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data4& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -590,7 +590,7 @@ namespace nmath {
 
             return *this;
         }
-        friend inline ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -602,7 +602,7 @@ namespace nmath {
             return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
 #endif
         }
-        friend inline ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -682,7 +682,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4() noexcept :
+        NCPP_FORCE_INLINE TF_data4() noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(simd_i32x4_0000)
 #else
@@ -696,7 +696,7 @@ namespace nmath {
             
             
         }
-        inline TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(w, z, y, x))
 #else
@@ -710,7 +710,7 @@ namespace nmath {
             
             
         }
-        inline TF_data4(F_entry x, F_entry y, PA_data2 zw) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, PA_data2 zw) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(zw.w, zw.z, y, x))
 #else
@@ -724,7 +724,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(F_entry x, PA_data2 yz, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(F_entry x, PA_data2 yz, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(w, yz.y, yz.x, x))
 #else
@@ -738,7 +738,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data2 xy, F_entry z, F_entry w) noexcept :
+        NCPP_FORCE_INLINE TF_data4(PA_data2 xy, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(w, z, xy.y, xy.x))
 #else
@@ -752,7 +752,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data2 xy, PA_data2 zw) noexcept :
+        NCPP_FORCE_INLINE TF_data4(PA_data2 xy, PA_data2 zw) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_set_epi32(zw.y, zw.x, xy.y, xy.x))
 #else
@@ -766,7 +766,7 @@ namespace nmath {
 
 
         }
-        inline TF_data4(PA_data3 xyz, F_entry w) noexcept :
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(PA_data3 xyz, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(xyz.xyz_)
 #else
@@ -782,7 +782,7 @@ namespace nmath {
 #endif
 
         }
-        inline TF_data4(F_entry x, PA_data3 yzw) noexcept :
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(F_entry x, PA_data3 yzw) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(_mm_shuffle_epi32(yzw.xyz_, yzw.xyz_, _MM_SHUFFLE(2, 1, 0, 3)))
 #else
@@ -798,7 +798,7 @@ namespace nmath {
 #endif
 
         }
-        inline TF_data4(const TF_data4& o) noexcept :
+        NCPP_FORCE_INLINE TF_data4(const TF_data4& o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_i_(o.xyzw_i_)
 #else
@@ -820,7 +820,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data4& operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data4& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -834,7 +834,7 @@ namespace nmath {
 
             return *this;
         }
-        friend inline ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -846,7 +846,7 @@ namespace nmath {
             return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
 #endif
         }
-        friend inline ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2

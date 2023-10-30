@@ -44,11 +44,11 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	//  f32
 	////////////////////////////////////////////////////////////////////////////////////
-	inline f32 dot(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
+	NCPP_FORCE_INLINE f32 dot(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
 
 		return a.x * a.x + a.y * a.y;
 	}
-	inline f32 dot(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
 #ifdef NCPP_ENABLE_SSE4
 		return _mm_cvtss_f32(_mm_dp_ps(a.xyz_, b.xyz_, 0x71));
@@ -81,7 +81,7 @@ namespace nmath {
 		return a.x * a.x + a.y * a.y + a.z * a.z;
 #endif
 	}
-	inline f32 dot(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
 
 #ifdef NCPP_ENABLE_SSE4
 		return _mm_cvtss_f32(_mm_dp_ps(a.xyzw_, b.xyzw_, 0xFF));

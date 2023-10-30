@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/NCPP_VECTOR_CALL operators/helper.hpp
+/** @file nmath/operators/quaternion_quaternion.hpp
 *
-*   Implement helper.
+*   Implement operators between quaternion and quaternion.
 */
 
 
@@ -29,6 +29,14 @@
 
 #include <nmath/prerequisites.hpp>
 
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+#include <nmath/types/quaternion.hpp>
+#include <nmath/functions/complex4_multiply.hpp>
+#include <nmath/operators/helper.hpp>
+
 #pragma endregion
 
 
@@ -46,76 +54,77 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    
-#define NMATH_DEFINE_ADD_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator + (Type1 a, Type2 b) noexcept \
-    {\
-        \
-        return nmath::add(a, b);\
-    }
-#define NMATH_DEFINE_SELF_ADD_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator += (Type1& a, Type2 b) noexcept \
-    {\
-        \
-        a = nmath::add(a, b);\
-        \
-        return a;\
-    }   
 
-#define NMATH_DEFINE_SUBTRACT_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator - (Type1 a, Type2 b) noexcept \
-    {\
-        \
-        return nmath::subtract(a, b);\
-    }
-#define NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator -= (Type1& a, Type2 b) noexcept \
-    {\
-        \
-        a = nmath::subtract(a, b);\
-        \
-        return a;\
-    }
+////////////////////////////////////////////////////////////////////////////////////
+//  nmath::F_quaternion_f32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
 
-#define NMATH_DEFINE_MULTIPLY_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator * (Type1 a, Type2 b) noexcept \
-    {\
-        \
-        return nmath::multiply(a, b);\
-    }
-#define NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator *= (Type1& a, Type2 b) noexcept \
-    {\
-        \
-        a = nmath::multiply(a, b);\
-        \
-        return a;\
-    }   
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL minus(nmath::PA_quaternion_f32 a) noexcept
+    {
 
-#define NMATH_DEFINE_DIVIDE_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator / (Type1 a, Type2 b) noexcept \
-    {\
-        \
-        return nmath::divide(a, b);\
+#ifdef NCPP_ENABLE_SSE
+        return _mm_mul_ps(a.xyzw_, simd_f32x4_1111_negative);
+#else
+        return {
+
+            -a.x,
+            -a.y,
+            -a.z,
+            -a.w
+
+        };
+#endif
     }
-#define NMATH_DEFINE_SELF_DIVIDE_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator /= (Type1& a, Type2 b) noexcept \
-    {\
-        \
-        a = nmath::divide(a, b);\
-        \
-        return a;\
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL add(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_add_ps(a.xyzw_, b.xyzw_);
+#else
+        return {
+
+            a.x + b.x,
+            a.y + b.y,
+            a.z + b.z,
+            a.w + b.w
+
+        };
+#endif
+    }
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL subtract(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_sub_ps(a.xyzw_, b.xyzw_);
+#else
+        return {
+
+            a.x - b.x,
+            a.y - b.y,
+            a.z - b.z,
+            a.w - b.w
+
+        };
+#endif
     }
 
-#define NMATH_DEFINE_PLUS_OPERATOR(Type1, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator + (Type1 a) noexcept \
-    {\
-        \
-        return a;\
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
+    {
+        
+        return complex4_multiply<PA_quaternion_f32, PA_quaternion_f32, F_quaternion_f32>(a, b);
     }
-#define NMATH_DEFINE_MINUS_OPERATOR(Type1, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator - (Type1 a) noexcept \
-    {\
-        \
-        return nmath::minus(a);\
-    }
+
+}
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_quaternion_f32, nmath::PA_quaternion_f32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_quaternion_f32, nmath::PA_quaternion_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_quaternion_f32, nmath::PA_quaternion_f32);

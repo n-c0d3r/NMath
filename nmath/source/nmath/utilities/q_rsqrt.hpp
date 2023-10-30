@@ -39,7 +39,7 @@ namespace nmath {
 
 
 
-	inline f32 q_rsqrt(f32 x) noexcept {
+	NCPP_FORCE_INLINE f32 q_rsqrt(f32 x) noexcept {
 
 		i32 i;
 		f32 x2, y;

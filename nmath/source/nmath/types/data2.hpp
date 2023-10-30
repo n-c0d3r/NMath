@@ -122,7 +122,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2() noexcept :
+        NCPP_FORCE_INLINE TF_data2() noexcept :
             x(0.0f),
             y(0.0f)
         {
@@ -130,7 +130,7 @@ namespace nmath {
             
             
         }
-        inline TF_data2(F_entry x, F_entry y) noexcept :
+        NCPP_FORCE_INLINE TF_data2(F_entry x, F_entry y) noexcept :
             x(x),
             y(y)
         {
@@ -138,7 +138,7 @@ namespace nmath {
             
             
         }
-        inline TF_data2(const TF_data2& o) noexcept :
+        NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
         {
@@ -152,7 +152,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2& operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data2& operator = (F_passed_argument o) noexcept
         {
             
             x = o.x;
@@ -160,12 +160,12 @@ namespace nmath {
 
             return *this;
         }
-        friend inline ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
             return a.x == b.x && a.y == b.y;
         }
-        friend inline ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
             return a.x != b.x || a.y != b.y;
@@ -216,7 +216,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2() noexcept :
+        NCPP_FORCE_INLINE TF_data2() noexcept :
             x(0),
             y(0)
         {
@@ -224,7 +224,7 @@ namespace nmath {
 
 
         }
-        inline TF_data2(F_entry x, F_entry y) noexcept :
+        NCPP_FORCE_INLINE TF_data2(F_entry x, F_entry y) noexcept :
             x(x),
             y(y)
         {
@@ -232,7 +232,7 @@ namespace nmath {
 
 
         }
-        inline TF_data2(const TF_data2& o) noexcept :
+        NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
         {
@@ -246,7 +246,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2& operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data2& operator = (F_passed_argument o) noexcept
         {
 
             x = o.x;
@@ -254,12 +254,12 @@ namespace nmath {
 
             return *this;
         }
-        friend inline ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
             return a.x == b.x && a.y == b.y;
         }
-        friend inline ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
             return a.x != b.x || a.y != b.y;
@@ -310,7 +310,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2() noexcept :
+        NCPP_FORCE_INLINE TF_data2() noexcept :
             x(0),
             y(0)
         {
@@ -318,7 +318,7 @@ namespace nmath {
 
 
         }
-        inline TF_data2(F_entry x, F_entry y) noexcept :
+        NCPP_FORCE_INLINE TF_data2(F_entry x, F_entry y) noexcept :
             x(x),
             y(y)
         {
@@ -326,7 +326,7 @@ namespace nmath {
 
 
         }
-        inline TF_data2(const TF_data2& o) noexcept :
+        NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
         {
@@ -340,7 +340,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        inline TF_data2& operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data2& operator = (F_passed_argument o) noexcept
         {
 
             x = o.x;
@@ -348,12 +348,12 @@ namespace nmath {
 
             return *this;
         }
-        friend inline ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
             return a.x == b.x && a.y == b.y;
         }
-        friend inline ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
             return a.x != b.x || a.y != b.y;

@@ -45,27 +45,27 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	//  f32
 	////////////////////////////////////////////////////////////////////////////////////
-	inline f32 length_sq(PA_vector2_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 length_sq(PA_vector2_f32 a) noexcept {
 
 		return dot(a, a);
 	}
-	inline f32 length(PA_vector2_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 length(PA_vector2_f32 a) noexcept {
 
 		return std::sqrtf(length_sq(a));
 	}
-	inline f32 length_sq(PA_vector3_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_vector3_f32 a) noexcept {
 
 		return dot(a, a);
 	}
-	inline f32 length(PA_vector3_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_vector3_f32 a) noexcept {
 
 		return std::sqrtf(length_sq(a));
 	}
-	inline f32 length_sq(PA_vector4_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_vector4_f32 a) noexcept {
 
 		return dot(a, a);
 	}
-	inline f32 length(PA_vector4_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_vector4_f32 a) noexcept {
 
 		return std::sqrtf(length_sq(a));
 	}

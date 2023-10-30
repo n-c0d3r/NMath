@@ -66,11 +66,11 @@ namespace nmath {
 #ifdef NCPP_ENABLE_SSE
     using F_simd_f32x4 = __m128;
 
-    inline F_simd_f32x4 make_simd_f32x4(f32 x, f32 y, f32 z, f32 w) {
+    NCPP_FORCE_INLINE F_simd_f32x4 make_simd_f32x4(f32 x, f32 y, f32 z, f32 w) {
 
         return _mm_set_ps(w, z, y, x);
     }
-    inline F_simd_f32x4 make_simd_f32x4(u32 x, u32 y, u32 z, u32 w) {
+    NCPP_FORCE_INLINE F_simd_f32x4 make_simd_f32x4(u32 x, u32 y, u32 z, u32 w) {
 
         F_simd_f32x4 result;
 
@@ -86,7 +86,7 @@ namespace nmath {
 #ifdef NCPP_ENABLE_SSE2
     using F_simd_i32x4 = __m128i;
 
-    inline F_simd_i32x4 make_simd_i32x4(i32 x, i32 y, i32 z, i32 w) {
+    NCPP_FORCE_INLINE F_simd_i32x4 make_simd_i32x4(i32 x, i32 y, i32 z, i32 w) {
 
         return _mm_set_epi32(w, z, y, x);
     }

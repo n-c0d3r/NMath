@@ -45,11 +45,11 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	//  f32
 	////////////////////////////////////////////////////////////////////////////////////
-	inline float cross(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
+	NCPP_FORCE_INLINE float cross(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
 
 		return a.x * b.y - a.y * b.x;
 	}
-	inline F_vector3_f32 cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
+	NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
 #ifdef NCPP_ENABLE_FMA3
 		// y1,z1,x1,w1
@@ -76,7 +76,7 @@ namespace nmath {
 		};
 #endif
 	}
-	inline F_vector4_f32 cross(PA_vector4_f32 a, PA_vector4_f32 b, PA_vector4_f32 c) noexcept {
+	NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL cross(PA_vector4_f32 a, PA_vector4_f32 b, PA_vector4_f32 c) noexcept {
 
 #ifdef NCPP_ENABLE_FMA3
 		// V2zwyz * V3wzwy
