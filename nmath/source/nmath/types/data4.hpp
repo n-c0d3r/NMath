@@ -752,7 +752,323 @@ namespace nmath {
             };
 #endif
         }
-        
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return xyzw_;
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
+#else
+            return {
+                x,
+                y,
+                w,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzyw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
+#else
+            return {
+                x,
+                z,
+                y,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzwy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
+#else
+            return {
+                x,
+                z,
+                w,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwyz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
+#else
+            return {
+                x,
+                w,
+                y,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwzy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
+#else
+            return {
+                x,
+                w,
+                z,
+                y
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxzw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
+#else
+            return {
+                y,
+                x,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxwz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
+#else
+            return {
+                y,
+                x,
+                w,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzxw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
+#else
+            return {
+                y,
+                z,
+                x,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzwx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
+#else
+            return {
+                y,
+                z,
+                w,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywxz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
+#else
+            return {
+                y,
+                w,
+                x,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywzx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
+#else
+            return {
+                y,
+                w,
+                z,
+                x
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxyw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
+#else
+            return {
+                z,
+                x,
+                y,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxwy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
+#else
+            return {
+                z,
+                x,
+                w,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyxw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
+#else
+            return {
+                z,
+                y,
+                x,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zywx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
+#else
+            return {
+                z,
+                y,
+                w,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwxy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
+#else
+            return {
+                z,
+                w,
+                x,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwyx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
+#else
+            return {
+                z,
+                w,
+                y,
+                x
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxyz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
+#else
+            return {
+                w,
+                x,
+                y,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxzy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
+#else
+            return {
+                w,
+                x,
+                z,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyxz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
+#else
+            return {
+                w,
+                y,
+                x,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyzx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
+#else
+            return {
+                w,
+                y,
+                z,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzxy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
+#else
+            return {
+                w,
+                z,
+                x,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzyx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_shuffle_ps(xyzw_, xyzw_, _MM_SHUFFLE(0, 1, 2, 3));
+#else
+            return {
+                w,
+                z,
+                y,
+                x
+            };
+#endif
+        }
+                
     };
 
 
@@ -1375,6 +1691,322 @@ namespace nmath {
                 w,
                 z,
                 y
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyzw_;
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
+#else
+            return {
+                x,
+                y,
+                w,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzyw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
+#else
+            return {
+                x,
+                z,
+                y,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzwy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
+#else
+            return {
+                x,
+                z,
+                w,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwyz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
+#else
+            return {
+                x,
+                w,
+                y,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwzy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
+#else
+            return {
+                x,
+                w,
+                z,
+                y
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxzw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
+#else
+            return {
+                y,
+                x,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxwz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
+#else
+            return {
+                y,
+                x,
+                w,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzxw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
+#else
+            return {
+                y,
+                z,
+                x,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzwx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
+#else
+            return {
+                y,
+                z,
+                w,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywxz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
+#else
+            return {
+                y,
+                w,
+                x,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywzx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
+#else
+            return {
+                y,
+                w,
+                z,
+                x
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxyw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
+#else
+            return {
+                z,
+                x,
+                y,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxwy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
+#else
+            return {
+                z,
+                x,
+                w,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyxw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
+#else
+            return {
+                z,
+                y,
+                x,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zywx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
+#else
+            return {
+                z,
+                y,
+                w,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwxy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
+#else
+            return {
+                z,
+                w,
+                x,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwyx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
+#else
+            return {
+                z,
+                w,
+                y,
+                x
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxyz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
+#else
+            return {
+                w,
+                x,
+                y,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxzy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
+#else
+            return {
+                w,
+                x,
+                z,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyxz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
+#else
+            return {
+                w,
+                y,
+                x,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyzx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
+#else
+            return {
+                w,
+                y,
+                z,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzxy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
+#else
+            return {
+                w,
+                z,
+                x,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzyx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 1, 2, 3));
+#else
+            return {
+                w,
+                z,
+                y,
+                x
             };
 #endif
         }
@@ -2001,6 +2633,322 @@ namespace nmath {
                 w,
                 z,
                 y
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyzw_;
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
+#else
+            return {
+                x,
+                y,
+                w,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzyw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
+#else
+            return {
+                x,
+                z,
+                y,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzwy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
+#else
+            return {
+                x,
+                z,
+                w,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwyz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
+#else
+            return {
+                x,
+                w,
+                y,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwzy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
+#else
+            return {
+                x,
+                w,
+                z,
+                y
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxzw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
+#else
+            return {
+                y,
+                x,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxwz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
+#else
+            return {
+                y,
+                x,
+                w,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzxw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
+#else
+            return {
+                y,
+                z,
+                x,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzwx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
+#else
+            return {
+                y,
+                z,
+                w,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywxz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
+#else
+            return {
+                y,
+                w,
+                x,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywzx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
+#else
+            return {
+                y,
+                w,
+                z,
+                x
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxyw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
+#else
+            return {
+                z,
+                x,
+                y,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxwy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
+#else
+            return {
+                z,
+                x,
+                w,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyxw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
+#else
+            return {
+                z,
+                y,
+                x,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zywx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
+#else
+            return {
+                z,
+                y,
+                w,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwxy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
+#else
+            return {
+                z,
+                w,
+                x,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwyx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
+#else
+            return {
+                z,
+                w,
+                y,
+                x
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxyz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
+#else
+            return {
+                w,
+                x,
+                y,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxzy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
+#else
+            return {
+                w,
+                x,
+                z,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyxz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
+#else
+            return {
+                w,
+                y,
+                x,
+                z
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyzx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
+#else
+            return {
+                w,
+                y,
+                z,
+                x
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzxy() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
+#else
+            return {
+                w,
+                z,
+                x,
+                y
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzyx() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return _mm_shuffle_epi32(xyzw_, xyzw_, _MM_SHUFFLE(0, 1, 2, 3));
+#else
+            return {
+                w,
+                z,
+                y,
+                x
             };
 #endif
         }
