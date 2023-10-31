@@ -53,6 +53,6 @@ namespace nmath { }
 #include <nmath/functions/cross.hpp>
 #include <nmath/functions/length.hpp>
 #include <nmath/functions/transpose.hpp>
-#include <nmath/functions/complex4_multiply.hpp>
+#include <nmath/functions/complex_multiply.hpp>
 
 #pragma endregion

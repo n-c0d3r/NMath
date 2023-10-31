@@ -105,7 +105,7 @@ namespace nmath {
         using F_flag = F_flag__;
         using F_this = TF_data2<F_entry, F_flag__>;
 
-        static constexpr u32 component_count_s = 2;
+        static constexpr u32 entry_count_s = 2;
 
         using F_passed_argument = const F_this&;
         
@@ -199,7 +199,7 @@ namespace nmath {
         using F_flag = F_flag__;
         using F_this = TF_data2<F_entry, F_flag__>;
 
-        static constexpr u32 component_count_s = 2;
+        static constexpr u32 entry_count_s = 2;
 
         using F_passed_argument = const F_this&;
 
@@ -293,7 +293,7 @@ namespace nmath {
         using F_flag = F_flag__;
         using F_this = TF_data2<F_entry, F_flag__>;
 
-        static constexpr u32 component_count_s = 2;
+        static constexpr u32 entry_count_s = 2;
 
         using F_passed_argument = const F_this&;
 

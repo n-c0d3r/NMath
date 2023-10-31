@@ -34,7 +34,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/quaternion.hpp>
-#include <nmath/functions/complex4_multiply.hpp>
+#include <nmath/functions/complex_multiply.hpp>
 #include <nmath/operators/helper.hpp>
 
 #pragma endregion
@@ -112,7 +112,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
     {
         
-        return complex4_multiply<PA_quaternion_f32, PA_quaternion_f32, F_quaternion_f32>(a, b);
+        return complex_multiply<PA_quaternion_f32, PA_quaternion_f32, F_quaternion_f32>(a, b);
     }
 
 }

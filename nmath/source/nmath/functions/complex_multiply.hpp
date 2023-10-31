@@ -41,29 +41,28 @@
 
 namespace nmath {
 
-	template<typename F_a__, typename F_b__, typename F_return__>
-	NCPP_FORCE_INLINE F_return__ NCPP_VECTOR_CALL complex4_multiply(F_a__ a, F_b__ b) noexcept {
+	template<typename F_a__, typename F_b__, typename F_return__ = std::remove_const_t<std::remove_reference_t<F_a__>>>
+	NCPP_FORCE_INLINE F_return__ NCPP_VECTOR_CALL complex_multiply(F_a__ a, F_b__ b) noexcept {
 
 		using F_no_const_ref_a = std::remove_const_t<std::remove_reference_t<F_a__>>;
 		using F_no_const_ref_b = std::remove_const_t<std::remove_reference_t<F_b__>>;
 		using F_no_const_ref_return = std::remove_const_t<std::remove_reference_t<F_return__>>;
 
 		using F_entry = typename F_no_const_ref_a::F_entry;
+		static constexpr u32 entry_count_s = F_no_const_ref_a::entry_count_s;
 
-		static_assert((F_no_const_ref_a::component_count_s == 4), "wrong component count (a type)");
-		static_assert((F_no_const_ref_b::component_count_s == 4), "wrong component count (b type)");
-		static_assert((F_no_const_ref_return::component_count_s == 4), "wrong component count (return type)");
+		static_assert((F_no_const_ref_b::entry_count_s == entry_count_s), "wrong entry count (b type)");
+		static_assert((F_no_const_ref_return::entry_count_s == entry_count_s), "wrong entry count (return type)");
 
-		static_assert(std::is_same_v<typename F_no_const_ref_b::F_entry, F_entry>, "wrong component count (b type)");
-		static_assert(std::is_same_v<typename F_no_const_ref_return::F_entry, F_entry>, "wrong component count (return type)");
+		static_assert(std::is_same_v<typename F_no_const_ref_b::F_entry, F_entry>, "wrong entry type (b type)");
+		static_assert(std::is_same_v<typename F_no_const_ref_return::F_entry, F_entry>, "wrong entry type (return type)");
 
 
 
 		////////////////////////////////////////////////////////////////////////////////////
-		//  f32
+		//  f32x4
 		////////////////////////////////////////////////////////////////////////////////////
-
-		if constexpr (std::is_same_v<F_entry, f32>) {
+		if constexpr (std::is_same_v<F_entry, f32> && (entry_count_s == 4)) {
 #ifdef NCPP_ENABLE_FMA3
 			static const F_simd_f32x4 ControlWZYX = make_simd_f32x4(1.0f, -1.0f, 1.0f, -1.0f);
 			static const F_simd_f32x4 ControlZWXY = make_simd_f32x4(1.0f, 1.0f, -1.0f, -1.0f);
