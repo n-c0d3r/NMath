@@ -62,39 +62,29 @@
 //  f32
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
-    
+
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(nmath::PA_vector3_f32 a, nmath::PA_quaternion_f32 b) noexcept
     {
 
-        return complex_multiply<PA_data4_f32, PA_quaternion_f32, F_vector3_f32>(
+        return complex_multiply<PA_data4_f32, PA_quaternion_f32, F_vector4_f32>(
             complex_multiply<PA_quaternion_f32, PA_vector4_f32, F_data4_f32>(
                 conjugate(b),
                 F_vector4_f32(a, 0.0f)
             ),
             b
-        );
+        ).xyz();
     }
 
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(nmath::PA_vector4_f32 a, nmath::PA_quaternion_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        static const F_simd_f32x4 preserve_w_factor = make_simd_f32x4(0, 0, 0, NCPP_U32_MAX);
-        static const F_simd_f32x4 xyz_mask = make_simd_f32x4(NCPP_U32_MAX, NCPP_U32_MAX, NCPP_U32_MAX, 0);
-
-        return _mm_blend_ps(
-            complex_multiply<PA_data4_f32, PA_quaternion_f32, F_vector4_f32>(
-                complex_multiply<PA_quaternion_f32, PA_data4_f32, F_data4_f32>(
-                    conjugate(b),
-                    _mm_and_ps(a.xyzw_, xyz_mask)
-                ),
-                b
-            ).xyzw_,
-            a.xyzw_,
-            0b1000
+        return complex_multiply<PA_vector4_f32, PA_quaternion_f32, F_vector4_f32>(
+            complex_multiply<PA_quaternion_f32, PA_vector4_f32, F_vector4_f32>(
+                conjugate(b),
+                a
+            ),
+            b
         );
-#else
-#endif
     }
     
 }
