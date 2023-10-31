@@ -753,19 +753,6 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
-
-#ifdef NCPP_ENABLE_SSE
-            return xyzw_;
-#else
-            return {
-                x,
-                y,
-                z,
-                w
-            };
-#endif
-        }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
 
 #ifdef NCPP_ENABLE_SSE
@@ -1695,19 +1682,6 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
-
-#ifdef NCPP_ENABLE_SSE2
-            return xyzw_;
-#else
-            return {
-                x,
-                y,
-                z,
-                w
-            };
-#endif
-        }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -2637,19 +2611,6 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
-
-#ifdef NCPP_ENABLE_SSE2
-            return xyzw_;
-#else
-            return {
-                x,
-                y,
-                z,
-                w
-            };
-#endif
-        }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
 
 #ifdef NCPP_ENABLE_SSE2
