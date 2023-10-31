@@ -138,6 +138,14 @@ namespace nmath {
             
             
         }
+        NCPP_FORCE_INLINE TF_data2(F_entry x) noexcept :
+            x(x),
+            y(0.0f)
+        {
+
+
+
+        }
         NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
@@ -245,6 +253,14 @@ namespace nmath {
 
 
         }
+        NCPP_FORCE_INLINE TF_data2(F_entry x) noexcept :
+            x(x),
+            y(0)
+        {
+
+
+
+        }
         NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
@@ -347,6 +363,14 @@ namespace nmath {
         NCPP_FORCE_INLINE TF_data2(F_entry x, F_entry y) noexcept :
             x(x),
             y(y)
+        {
+
+
+
+        }
+        NCPP_FORCE_INLINE TF_data2(F_entry x) noexcept :
+            x(x),
+            y(0)
         {
 
 

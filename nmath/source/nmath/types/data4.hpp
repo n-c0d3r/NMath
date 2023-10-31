@@ -310,6 +310,18 @@ namespace nmath {
 #endif
 
         }
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(PA_data3 xyz) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyzw_(_mm_and_ps(xyz.xyz_, simd_f32x4_FFF0))
+#else
+            x(xyz.x),
+            y(xyz.y),
+            z(xyz.z),
+            w(0.0f)
+#endif
+        {
+
+        }
         NCPP_FORCE_INLINE TF_data4(const TF_data4& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(o.xyzw_)
@@ -1239,6 +1251,18 @@ namespace nmath {
 #endif
 
         }
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(PA_data3 xyz) noexcept :
+#ifdef NCPP_ENABLE_SSE2
+            xyzw_(_mm_and_epi32(xyz.xyz_, simd_i32x4_FFF0))
+#else
+            x(xyz.x),
+            y(xyz.y),
+            z(xyz.z),
+            w(0)
+#endif
+        {
+
+        }
         NCPP_FORCE_INLINE TF_data4(const TF_data4& o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyzw_(o.xyzw_)
@@ -2166,6 +2190,18 @@ namespace nmath {
 #ifdef NCPP_ENABLE_SSE2
             this->x = x;
 #endif
+
+        }
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data4(PA_data3 xyz) noexcept :
+#ifdef NCPP_ENABLE_SSE2
+            xyzw_(_mm_and_epi32(xyz.xyz_, simd_i32x4_FFF0))
+#else
+            x(xyz.x),
+            y(xyz.y),
+            z(xyz.z),
+            w(0)
+#endif
+        {
 
         }
         NCPP_FORCE_INLINE TF_data4(const TF_data4& o) noexcept :

@@ -240,6 +240,19 @@ namespace nmath {
 
 
         }
+        NCPP_FORCE_INLINE TF_data3(PA_data2 xy) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_(_mm_set_ps(0.0f, 0.0f, xy.y, xy.x))
+#else
+            x(xy.x),
+            y(xy.y),
+            z(0.0f)
+#endif
+        {
+
+
+
+        }
         NCPP_FORCE_INLINE TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(o.xyz_)
@@ -522,6 +535,19 @@ namespace nmath {
 
 
         }
+        NCPP_FORCE_INLINE TF_data3(PA_data2 xy) noexcept :
+#ifdef NCPP_ENABLE_SSE2
+            xyz_(_mm_set_epi32(0, 0, xy.y, xy.x))
+#else
+            x(xy.x),
+            y(xy.y),
+            z(0)
+#endif
+        {
+
+
+
+        }
         NCPP_FORCE_INLINE TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyz_(o.xyz_)
@@ -798,6 +824,19 @@ namespace nmath {
             x(x),
             y(yz.x),
             z(yz.y)
+#endif
+        {
+
+
+
+        }
+        NCPP_FORCE_INLINE TF_data3(PA_data2 xy) noexcept :
+#ifdef NCPP_ENABLE_SSE2
+            xyz_(_mm_set_epi32(0, 0, xy.y, xy.x))
+#else
+            x(xy.x),
+            y(xy.y),
+            z(0)
 #endif
         {
 
