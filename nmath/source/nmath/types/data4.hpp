@@ -299,9 +299,9 @@ namespace nmath {
             xyzw_(_mm_shuffle_ps(yzw.xyz_, yzw.xyz_, _MM_SHUFFLE(2, 1, 0, 3)))
 #else
             x(x),
-            y(xyz.x),
-            z(xyz.y),
-            w(xyz.z)
+            y(yzw.x),
+            z(yzw.y),
+            w(yzw.z)
 #endif
         {
 
@@ -543,9 +543,9 @@ namespace nmath {
             xyzw_i_(_mm_shuffle_epi32(yzw.xyz_, yzw.xyz_, _MM_SHUFFLE(2, 1, 0, 3)))
 #else
             x(x),
-            y(xyz.x),
-            z(xyz.y),
-            w(xyz.z)
+            y(yzw.x),
+            z(yzw.y),
+            w(yzw.z)
 #endif
         {
 
@@ -787,9 +787,9 @@ namespace nmath {
             xyzw_i_(_mm_shuffle_epi32(yzw.xyz_, yzw.xyz_, _MM_SHUFFLE(2, 1, 0, 3)))
 #else
             x(x),
-            y(xyz.x),
-            z(xyz.y),
-            w(xyz.z)
+            y(yzw.x),
+            z(yzw.y),
+            w(yzw.z)
 #endif
         {
 
