@@ -52,7 +52,6 @@ namespace nmath {
 		static constexpr u32 entry_count_s = F_no_const_ref_a::entry_count_s;
 
 		static_assert((F_no_const_ref_b::entry_count_s == entry_count_s), "wrong entry count (b type)");
-		static_assert((F_no_const_ref_return::entry_count_s == entry_count_s), "wrong entry count (return type)");
 
 		static_assert(std::is_same_v<typename F_no_const_ref_b::F_entry, F_entry>, "wrong entry type (b type)");
 		static_assert(std::is_same_v<typename F_no_const_ref_return::F_entry, F_entry>, "wrong entry type (return type)");
@@ -63,6 +62,9 @@ namespace nmath {
 		//  f32x4
 		////////////////////////////////////////////////////////////////////////////////////
 		if constexpr (std::is_same_v<F_entry, f32> && (entry_count_s == 4)) {
+
+			static_assert((F_no_const_ref_return::entry_count_s == 4) || (F_no_const_ref_return::entry_count_s == 3), "wrong entry count (return type)");
+
 #ifdef NCPP_ENABLE_FMA3
 			static const F_simd_f32x4 ControlWZYX = make_simd_f32x4(1.0f, -1.0f, 1.0f, -1.0f);
 			static const F_simd_f32x4 ControlZWXY = make_simd_f32x4(1.0f, 1.0f, -1.0f, -1.0f);
@@ -99,12 +101,19 @@ namespace nmath {
 			vResult = _mm_add_ps(vResult, Q2Y);
 			return vResult;
 #else
-			return {
-				(b.w * a.x) + (b.x * a.w) + (b.y * a.z) - (b.z * a.y),
-				(b.w * a.y) - (b.x * a.z) + (b.y * a.w) + (b.z * a.x),
-				(b.w * a.z) + (b.x * a.y) - (b.y * a.x) + (b.z * a.w),
-				(b.w * a.w) - (b.x * a.x) - (b.y * a.y) - (b.z * a.z)
-			};
+			if constexpr (F_no_const_ref_return::entry_count_s == 4)
+				return {
+					(b.w * a.x) + (b.x * a.w) + (b.y * a.z) - (b.z * a.y),
+					(b.w * a.y) - (b.x * a.z) + (b.y * a.w) + (b.z * a.x),
+					(b.w * a.z) + (b.x * a.y) - (b.y * a.x) + (b.z * a.w),
+					(b.w * a.w) - (b.x * a.x) - (b.y * a.y) - (b.z * a.z)
+				};
+			else
+				return {
+					(b.w * a.x) + (b.x * a.w) + (b.y * a.z) - (b.z * a.y),
+					(b.w * a.y) - (b.x * a.z) + (b.y * a.w) + (b.z * a.x),
+					(b.w * a.z) + (b.x * a.y) - (b.y * a.x) + (b.z * a.w)
+				};
 #endif
 		}
 

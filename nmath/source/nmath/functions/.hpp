@@ -54,5 +54,6 @@ namespace nmath { }
 #include <nmath/functions/length.hpp>
 #include <nmath/functions/transpose.hpp>
 #include <nmath/functions/complex_multiply.hpp>
+#include <nmath/functions/conjugate.hpp>
 
 #pragma endregion
