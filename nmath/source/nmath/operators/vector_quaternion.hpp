@@ -69,7 +69,7 @@ namespace nmath {
         return complex_multiply<PA_data4_f32, PA_quaternion_f32, F_vector4_f32>(
             complex_multiply<PA_quaternion_f32, PA_vector4_f32, F_data4_f32>(
                 conjugate(b),
-                F_vector4_f32(a, 0.0f)
+                F_vector4_f32(a)
             ),
             b
         ).xyz();
