@@ -72,14 +72,17 @@ namespace nmath {
     }
     NCPP_FORCE_INLINE F_simd_f32x4 make_simd_f32x4(u32 x, u32 y, u32 z, u32 w) {
 
-        F_simd_f32x4 result;
-
-        result.m128_u32[0] = x;
-        result.m128_u32[1] = y;
-        result.m128_u32[2] = z;
-        result.m128_u32[3] = w;
-
-        return result;
+        union {
+            u32 u[4];
+            F_simd_f32x4 f32x4;
+        } t;
+        
+        t.u[0] = x;
+        t.u[1] = y;
+        t.u[2] = z;
+        t.u[3] = w;
+        
+        return t.f32x4;
     }
 #endif
 

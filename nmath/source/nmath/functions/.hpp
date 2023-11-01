@@ -55,5 +55,7 @@ namespace nmath { }
 #include <nmath/functions/transpose.hpp>
 #include <nmath/functions/complex_multiply.hpp>
 #include <nmath/functions/conjugate.hpp>
+#include <nmath/functions/permute.hpp>
+#include <nmath/functions/quaternion_creators.hpp>
 
 #pragma endregion

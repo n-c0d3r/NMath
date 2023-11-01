@@ -114,8 +114,18 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Arguments
         ////////////////////////////////////////////////////////////////////////////////////
-        F_entry x;
-        F_entry y;
+        union {
+
+            struct {
+
+                F_entry x;
+                F_entry y;
+
+            };
+
+            F_entry m[2];
+
+        };
 
 
 
@@ -168,6 +178,11 @@ namespace nmath {
 
             return *this;
         }
+        NCPP_FORCE_INLINE F_entry operator [] (i32 index) noexcept
+        {
+
+            return m[index];
+        }
         friend NCPP_FORCE_INLINE ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
@@ -184,6 +199,13 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE F_this xy() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this yx() const {
 
             return {
@@ -223,14 +245,24 @@ namespace nmath {
         static constexpr u32 entry_count_s = 2;
 
         using F_passed_argument = const F_this&;
-
-
-
+        
+        
+        
         ////////////////////////////////////////////////////////////////////////////////////
         //  Arguments
         ////////////////////////////////////////////////////////////////////////////////////
-        F_entry x;
-        F_entry y;
+        union {
+
+            struct {
+
+                F_entry x;
+                F_entry y;
+
+            };
+
+            F_entry m[2];
+
+        };
 
 
 
@@ -283,6 +315,11 @@ namespace nmath {
 
             return *this;
         }
+        NCPP_FORCE_INLINE F_entry operator [] (i32 index) noexcept
+        {
+
+            return m[index];
+        }
         friend NCPP_FORCE_INLINE ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
@@ -299,6 +336,13 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE F_this xy() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this yx() const {
 
             return {
@@ -338,14 +382,24 @@ namespace nmath {
         static constexpr u32 entry_count_s = 2;
 
         using F_passed_argument = const F_this&;
-
-
-
+        
+        
+        
         ////////////////////////////////////////////////////////////////////////////////////
         //  Arguments
         ////////////////////////////////////////////////////////////////////////////////////
-        F_entry x;
-        F_entry y;
+        union {
+
+            struct {
+
+                F_entry x;
+                F_entry y;
+
+            };
+
+            F_entry m[2];
+
+        };
 
 
 
@@ -398,6 +452,11 @@ namespace nmath {
 
             return *this;
         }
+        NCPP_FORCE_INLINE F_entry operator [] (i32 index) noexcept
+        {
+
+            return m[index];
+        }
         friend NCPP_FORCE_INLINE ncpp::b8 operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
@@ -414,6 +473,13 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE F_this xy() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this yx() const {
 
             return {

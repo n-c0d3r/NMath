@@ -178,6 +178,8 @@ namespace nmath {
                 F_entry z;
                 
             };
+
+            F_entry m[3];
             
             NMATH_DATA3_SIMD_M128();
             
@@ -287,6 +289,11 @@ namespace nmath {
 
             return *this;
         }
+        NCPP_FORCE_INLINE F_entry operator [] (i32 index) noexcept
+        {
+
+            return m[index];
+        }
         friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
@@ -358,6 +365,18 @@ namespace nmath {
                 z,
                 y
             };
+        }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyz() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return xyz_;
+#else
+            return {
+                x,
+                y,
+                z
+            };
+#endif
         }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzy() const {
 
@@ -474,6 +493,8 @@ namespace nmath {
 
             };
 
+            F_entry m[3];
+
             NMATH_DATA3_SIMD_M128I();
 
         };
@@ -581,6 +602,11 @@ namespace nmath {
 #endif
 
             return *this;
+        }
+        NCPP_FORCE_INLINE F_entry operator [] (i32 index) noexcept
+        {
+
+            return m[index];
         }
         friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
@@ -654,10 +680,22 @@ namespace nmath {
                 y
             };
         }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyz_;
+#else
+            return {
+                x,
+                y,
+                z
+            };
+#endif
+        }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzy() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 1, 2, 0));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 1, 2, 0));
 #else
             return {
                 x,
@@ -669,7 +707,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxz() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 2, 0, 1));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 2, 0, 1));
 #else
             return {
                 y,
@@ -681,7 +719,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzx() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 0, 2, 1));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 0, 2, 1));
 #else
             return {
                 y,
@@ -693,7 +731,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxy() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 1, 0, 2));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 1, 0, 2));
 #else
             return {
                 z,
@@ -705,7 +743,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyx() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 0, 1, 2));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 0, 1, 2));
 #else
             return {
                 z,
@@ -768,6 +806,8 @@ namespace nmath {
                 F_entry z;
                 
             };
+
+            F_entry m[3];
 
             NMATH_DATA3_SIMD_M128I();
             
@@ -877,6 +917,11 @@ namespace nmath {
 
             return *this;
         }
+        NCPP_FORCE_INLINE F_entry operator [] (i32 index) noexcept
+        {
+
+            return m[index];
+        }
         friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
@@ -949,10 +994,22 @@ namespace nmath {
                 y
             };
         }
+        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyz() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyz_;
+#else
+            return {
+                x,
+                y,
+                z
+            };
+#endif
+        }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzy() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 1, 2, 0));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 1, 2, 0));
 #else
             return {
                 x,
@@ -964,7 +1021,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxz() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 2, 0, 1));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 2, 0, 1));
 #else
             return {
                 y,
@@ -976,7 +1033,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzx() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 0, 2, 1));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 0, 2, 1));
 #else
             return {
                 y,
@@ -988,7 +1045,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxy() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 1, 0, 2));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 1, 0, 2));
 #else
             return {
                 z,
@@ -1000,7 +1057,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyx() const {
 
 #ifdef NCPP_ENABLE_SSE2
-            return _mm_shuffle_epi32(xyz_, xyz_, _MM_SHUFFLE(3, 0, 1, 2));
+            return _mm_shuffle_epi32(xyz_, _MM_SHUFFLE(3, 0, 1, 2));
 #else
             return {
                 z,
