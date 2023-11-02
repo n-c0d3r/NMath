@@ -48,7 +48,7 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	NCPP_FORCE_INLINE f32 dot(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
 
-		return a.x * a.x + a.y * a.y;
+		return data2_dot(a, b);
 	}
 	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 

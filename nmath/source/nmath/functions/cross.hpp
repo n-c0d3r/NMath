@@ -49,7 +49,7 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	NCPP_FORCE_INLINE float cross(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
 
-		return a.x * b.y - a.y * b.x;
+		return data2_cross(a, b);
 	}
 	NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
