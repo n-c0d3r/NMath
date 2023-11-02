@@ -34,6 +34,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/vector.hpp>
+#include <nmath/functions/data_functions.hpp>
 #include <nmath/operators/helper.hpp>
 
 #pragma endregion
@@ -59,51 +60,26 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
     
-    NCPP_FORCE_INLINE F_vector2_f32 minus(nmath::PA_vector2_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 minus(PA_vector2_f32 a) noexcept
     {
-        return {
-
-            -a.x,
-            -a.y
-
-        };
+        return data2_minus(a);
     }
-    NCPP_FORCE_INLINE F_vector2_f32 add(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 add(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return {
-
-            a.x + b.x,
-            a.y + b.y
-
-        };
+        return data2_add(a, b);
     }
-    NCPP_FORCE_INLINE F_vector2_f32 subtract(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 subtract(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return {
-
-            a.x - b.x,
-            a.y - b.y
-
-        };
+        return data2_subtract(a, b);
     }
 
-    NCPP_FORCE_INLINE F_vector2_f32 multiply(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return {
-
-            a.x * b.x,
-            a.y * b.y
-
-        };
+        return data2_multiply(a, b);
     }
-    NCPP_FORCE_INLINE F_vector2_f32 divide(nmath::PA_vector2_f32 a, nmath::PA_vector2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 divide(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return {
-
-            a.x / b.x,
-            a.y / b.y
-
-        };
+        return data2_divide(a, b);
     }
 
 }
@@ -130,81 +106,31 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL minus(nmath::PA_vector3_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL minus(PA_vector3_f32 a) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyz_, simd_f32x4_1111_negative);
-#else
-        return {
-
-            -a.x,
-            -a.y,
-            -a.z,
-
-        };
-#endif
+        return data3_minus(a);
     }
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL add(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL add(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_add_ps(a.xyz_, b.xyz_);
-#else
-        return {
-
-            a.x + b.x,
-            a.y + b.y,
-            a.z + b.z
-
-        };
-#endif
+        return data3_add(a, b);
     }
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL subtract(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL subtract(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_sub_ps(a.xyz_, b.xyz_);
-#else
-        return {
-
-            a.x - b.x,
-            a.y - b.y,
-            a.z - b.z
-
-        };
-#endif
+        return data3_subtract(a, b);
     }
 
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyz_, b.xyz_);
-#else
-        return {
-
-            a.x * b.x,
-            a.y * b.y,
-            a.z * b.z
-
-        };
-#endif
+        return data3_multiply(a, b);
     }
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(nmath::PA_vector3_f32 a, nmath::PA_vector3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_div_ps(a.xyz_, b.xyz_);
-#else
-        return {
-
-            a.x / b.x,
-            a.y / b.y,
-            a.z / b.z
-
-        };
-#endif
+        return data3_divide(a, b);
     }
 
 }
@@ -231,86 +157,31 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32);
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL minus(nmath::PA_vector4_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL minus(PA_vector4_f32 a) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyzw_, simd_f32x4_1111_negative);
-#else
-        return {
-
-            -a.x,
-            -a.y,
-            -a.z,
-            -a.w
-
-        };
-#endif
+        return data4_minus(a);
     }
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL add(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL add(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_add_ps(a.xyzw_, b.xyzw_);
-#else
-        return {
-
-            a.x + b.x,
-            a.y + b.y,
-            a.z + b.z,
-            a.w + b.w
-
-        };
-#endif
+        return data4_add(a, b);
     }
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL subtract(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL subtract(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_sub_ps(a.xyzw_, b.xyzw_);
-#else
-        return {
-
-            a.x - b.x,
-            a.y - b.y,
-            a.z - b.z,
-            a.w - b.w
-
-        };
-#endif
+        return data4_subtract(a, b);
     }
 
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyzw_, b.xyzw_);
-#else
-        return {
-
-            a.x * b.x,
-            a.y * b.y,
-            a.z * b.z,
-            a.w * b.w
-
-        };
-#endif
+        return data4_multiply(a, b);
     }
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(nmath::PA_vector4_f32 a, nmath::PA_vector4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_div_ps(a.xyzw_, b.xyzw_);
-#else
-        return {
-
-            a.x / b.x,
-            a.y / b.y,
-            a.z / b.z,
-            a.w / b.w
-
-        };
-#endif
+        return data4_divide(a, b);
     }
 
 }

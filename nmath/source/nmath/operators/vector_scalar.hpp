@@ -59,7 +59,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
     
-    NCPP_FORCE_INLINE F_vector2_f32 multiply(nmath::PA_vector2_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_vector2_f32 a, float b) noexcept
     {
         return {
 
@@ -68,7 +68,7 @@ namespace nmath {
 
         };
     }
-    NCPP_FORCE_INLINE F_vector2_f32 multiply(float b, nmath::PA_vector2_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 multiply(float b, PA_vector2_f32 a) noexcept
     {
         return {
 
@@ -78,7 +78,7 @@ namespace nmath {
         };
     }
 
-    NCPP_FORCE_INLINE F_vector2_f32 divide(nmath::PA_vector2_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 divide(PA_vector2_f32 a, float b) noexcept
     {
         return {
 

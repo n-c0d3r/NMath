@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/vector_length.hpp
+/** @file nmath/utilities/basic_arithmetic.hpp
 *
-*   Implement vector length.
+*   Implement basic arithmetic.
 */
 
 
@@ -29,45 +29,56 @@
 
 #include <nmath/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nmath/types/vector.hpp>
-#include <nmath/functions/dot.hpp>
-
 #pragma endregion
 
 
 
 namespace nmath {
 
-	////////////////////////////////////////////////////////////////////////////////////
-	//  f32
-	////////////////////////////////////////////////////////////////////////////////////
-	NCPP_FORCE_INLINE f32 length_sq(PA_vector2_f32 a) noexcept {
+	NMATH_USING_NLIB_NAMESPACES();
 
-		return dot(a, a);
-	}
-	NCPP_FORCE_INLINE f32 length(PA_vector2_f32 a) noexcept {
 
-		return std::sqrtf(length_sq(a));
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_vector3_f32 a) noexcept {
 
-		return dot(a, a);
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_vector3_f32 a) noexcept {
+	inline f32 round_to_nearest(f32 x) noexcept {
 
-		return std::sqrtf(length_sq(a));
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_vector4_f32 a) noexcept {
+        float i = floorf(x);
+        x -= i;
+        if (x < 0.5f)
+            return i;
+        if (x > 0.5f)
+            return i + 1.f;
 
-		return dot(a, a);
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_vector4_f32 a) noexcept {
+        float int_part;
+        (void)modff(i / 2.f, &int_part);
+        if ((2.f * int_part) == i)
+        {
+            return i;
+        }
 
-		return std::sqrtf(length_sq(a));
+        return i + 1.f;
 	}
+
+    inline f32 reinterpret_cast_i32_to_f32(i32 a) noexcept {
+
+        union {
+            f32 f;
+            i32 i;
+        } temp;
+
+        temp.i = a;
+
+        return temp.f;
+    }
+    inline f32 reinterpret_cast_u32_to_f32(u32 a) noexcept {
+
+        union {
+            f32 f;
+            u32 u;
+        } temp;
+
+        temp.u = a;
+
+        return temp.f;
+    }
 
 }

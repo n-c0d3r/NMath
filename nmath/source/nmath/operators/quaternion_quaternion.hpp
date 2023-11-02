@@ -60,7 +60,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL minus(nmath::PA_quaternion_f32 a) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL minus(PA_quaternion_f32 a) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -76,7 +76,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL add(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL add(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -92,7 +92,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL subtract(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL subtract(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -109,7 +109,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(nmath::PA_quaternion_f32 a, nmath::PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
     
         return data4_complex_multiply(a, b);
