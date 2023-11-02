@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/types/data.hpp
+/** @file nmath/types/data_constants.hpp
 *
-*   Implement data.
+*   Implement data constants.
 */
 
 
@@ -33,11 +33,50 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/data_helper.hpp>
-#include <nmath/types/data_constants.hpp>
-
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data3.hpp>
 #include <nmath/types/data4.hpp>
+#include <nmath/operators/literal.hpp>
 
 #pragma endregion
+
+
+
+namespace nmath {
+
+    NMATH_USING_NLIB_NAMESPACES();
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data2
+    ////////////////////////////////////////////////////////////////////////////////////
+    extern const F_data2_f32 reciprocal_two_pi_x2;
+    extern const F_data2_f32 two_pi_x2;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data3
+    ////////////////////////////////////////////////////////////////////////////////////
+    extern const F_data3_f32 reciprocal_two_pi_x3;
+    extern const F_data3_f32 two_pi_x3;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data4
+    ////////////////////////////////////////////////////////////////////////////////////
+    extern const F_data4_f32 reciprocal_two_pi_x4;
+    extern const F_data4_f32 two_pi_x4;
+    extern const F_data4_f32 pi_x4;
+    extern const F_data4_f32 half_pi_x4;
+    extern const F_data4_f32 negative_zero_x4;
+    extern const F_data4_f32 abs_mask_x4;
+    extern const F_data4_f32 no_fraction_x4;
+    extern const F_data4_f32 sin_coefficient_s1_x4;
+    extern const F_data4_f32 sin_coefficient_s0_x4;
+    extern const F_data4_f32 cos_coefficient_s1_x4;
+    extern const F_data4_f32 cos_coefficient_s0_x4;
+
+}

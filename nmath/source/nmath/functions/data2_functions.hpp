@@ -34,6 +34,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data2.hpp>
+#include <nmath/types/data_constants.hpp>
 #include <nmath/types/data_helper.hpp>
 #include <nmath/utilities/basic_arithmetic.hpp>
 
@@ -352,16 +353,13 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     NCPP_FORCE_INLINE F_data2_f32 data2_mod_angles(PA_data2_f32 a) noexcept {
 
-        static const F_data2_f32 reciprocal_two_pi = F_data2_f32(1.0f / 2pi, 1.0f / 2pi);
-        static const F_data2_f32 two_pi = F_data2_f32(2pi, 2pi);
-
         F_data2_f32 V;
         F_data2_f32 Result;
 
         // Modulo the range of the given angles such that -XM_PI <= Angles < XM_PI
-        V = data2_multiply(a, reciprocal_two_pi);
+        V = data2_multiply(a, reciprocal_two_pi_x2);
         V = data2_round(V);
-        Result = data2_negative_multiply_sub(two_pi, V, a);
+        Result = data2_negative_multiply_sub(two_pi_x2, V, a);
         return Result;
     }
 

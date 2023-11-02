@@ -34,6 +34,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data4.hpp>
+#include <nmath/types/data_constants.hpp>
 #include <nmath/types/data_helper.hpp>
 #include <nmath/utilities/basic_arithmetic.hpp>
 
@@ -262,20 +263,6 @@ namespace nmath {
 #ifdef NCPP_ENABLE_SSE4
         return _mm_round_ps(a.xyzw_, _MM_FROUND_TO_NEAREST_INT | _MM_FROUND_NO_EXC);
 #elif defined(NCPP_ENABLE_SSE)
-        static const F_data4_f32 negative_zero_x4 = F_data4_f32(
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000)
-        );
-        static const F_data4_f32 abs_mask_x4 = F_data4_f32(
-            reinterpret_cast_u32_to_f32(0x7FFFFFFF),
-            reinterpret_cast_u32_to_f32(0x7FFFFFFF),
-            reinterpret_cast_u32_to_f32(0x7FFFFFFF),
-            reinterpret_cast_u32_to_f32(0x7FFFFFFF)
-        );
-        static const F_data4_f32 no_fraction_x4 = F_data4_f32{ 8388608.0f, 8388608.0f, 8388608.0f, 8388608.0f };
-
         __m128 sign = _mm_and_ps(a.xyzw_, negative_zero_x4.xyzw_);
         __m128 sMagic = _mm_or_ps(no_fraction_x4.xyzw_, sign);
         __m128 R1 = _mm_add_ps(a.xyzw_, sMagic);
@@ -608,9 +595,6 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     NCPP_FORCE_INLINE F_data4_f32 NCPP_VECTOR_CALL data4_mod_angles(PA_data4_f32 a) noexcept {
 
-        static const F_data4_f32 reciprocal_two_pi_x4 = F_data4_f32(1.0f / 2pi, 1.0f / 2pi, 1.0f / 2pi, 1.0f / 2pi);
-        static const F_data4_f32 two_pi_x4 = F_data4_f32(2pi, 2pi, 2pi, 2pi);
-
 #ifdef NCPP_ENABLE_SSE
         F_data4_f32 vResult = _mm_mul_ps(a.xyzw_, reciprocal_two_pi_x4.xyzw_);
         // Use the inline function due to complexity for rounding
@@ -629,17 +613,6 @@ namespace nmath {
     }
 
     NCPP_FORCE_INLINE F_data4_f32 NCPP_VECTOR_CALL data4_sin_angles(PA_data4_f32 a) noexcept {
-
-        static const F_data4_f32 two_pi_x4 = F_data4_f32(2pi, 2pi, 2pi, 2pi);
-        static const F_data4_f32 half_pi_x4 = F_data4_f32(0.5pi, 0.5pi, 0.5pi, 0.5pi);
-        static const F_data4_f32 negative_zero_x4 = F_data4_f32(
-            reinterpret_cast_u32_to_f32(0x80000000), 
-            reinterpret_cast_u32_to_f32(0x80000000), 
-            reinterpret_cast_u32_to_f32(0x80000000), 
-            reinterpret_cast_u32_to_f32(0x80000000)
-        );
-        static const F_data4_f32 sin_coefficient_s1_x4 = F_data4_f32(-2.3889859e-08f, -0.16665852f /*Est1*/, +0.0083139502f /*Est2*/, -0.00018524670f /*Est3*/);
-        static const F_data4_f32 sin_coefficient_s0_x4 = F_data4_f32(-0.16666667f, +0.0083333310f, -0.00019840874f, +2.7525562e-06f);
 
 #ifdef NCPP_ENABLE_SSE
         // Force the value within the bounds of pi
@@ -687,17 +660,6 @@ namespace nmath {
     }
 
     NCPP_FORCE_INLINE F_data4_f32 NCPP_VECTOR_CALL data4_cos_angles(PA_data4_f32 a) noexcept {
-
-        static const F_data4_f32 pi_x4 = F_data4_f32(1pi, 1pi, 1pi, 1pi);
-        static const F_data4_f32 half_pi_x4 = F_data4_f32(0.5pi, 0.5pi, 0.5pi, 0.5pi);
-        static const F_data4_f32 negative_zero_x4 = F_data4_f32(
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000)
-        );
-        static const F_data4_f32 cos_coefficient_s1_x4 = F_data4_f32(-2.6051615e-07f, -0.49992746f /*Est1*/, +0.041493919f /*Est2*/, -0.0012712436f /*Est3*/);
-        static const F_data4_f32 cos_coefficient_s0_x4 = F_data4_f32(-0.5f, +0.041666638f, -0.0013888378f, +2.4760495e-05f);
 
 #ifdef NCPP_ENABLE_SSE
         // Map V to x in [-pi,pi].
@@ -748,19 +710,6 @@ namespace nmath {
     }
 
     NCPP_FORCE_INLINE void NCPP_VECTOR_CALL data4_sin_cos_angles(PA_data4_f32 a, F_data4_f32& out_sin, F_data4_f32& out_cos) noexcept {
-
-        static const F_data4_f32 pi_x4 = F_data4_f32(1pi, 1pi, 1pi, 1pi);
-        static const F_data4_f32 half_pi_x4 = F_data4_f32(0.5pi, 0.5pi, 0.5pi, 0.5pi);
-        static const F_data4_f32 negative_zero_x4 = F_data4_f32(
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000),
-            reinterpret_cast_u32_to_f32(0x80000000)
-        );
-        static const F_data4_f32 sin_coefficient_s1_x4 = F_data4_f32(-2.3889859e-08f, -0.16665852f /*Est1*/, +0.0083139502f /*Est2*/, -0.00018524670f /*Est3*/);
-        static const F_data4_f32 sin_coefficient_s0_x4 = F_data4_f32(-0.16666667f, +0.0083333310f, -0.00019840874f, +2.7525562e-06f);
-        static const F_data4_f32 cos_coefficient_s1_x4 = F_data4_f32(-2.6051615e-07f, -0.49992746f /*Est1*/, +0.041493919f /*Est2*/, -0.0012712436f /*Est3*/);
-        static const F_data4_f32 cos_coefficient_s0_x4 = F_data4_f32(-0.5f, +0.041666638f, -0.0013888378f, +2.4760495e-05f);
 
 #ifdef NCPP_ENABLE_SSE    // Force the value within the bounds of pi
         F_data4_f32 x = data4_mod_angles(a.xyzw_);
