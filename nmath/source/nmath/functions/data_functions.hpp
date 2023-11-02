@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/quaternion_creator.hpp
+/** @file nmath/functions/data_functions.hpp
 *
-*   Implement quaternion creators.
+*   Implement data_functions.
 */
 
 
@@ -33,17 +33,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/quaternion.hpp>
+#include <nmath/functions/data4_functions.hpp>
 
 #pragma endregion
-
-
-
-namespace nmath {
-
-    // NCPP_FORCE_INLINE F_quaternion NCPP_VECTOR_CALL quaternion_rotation_roll_pitch_yaw(F_vector roll_pitch_yaw) noexcepts {
-
-        
-    // }
-
-}

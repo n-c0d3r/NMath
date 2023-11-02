@@ -3,10 +3,6 @@
 
 using namespace nmath;
 
-#include <DirectXMath.h>
-
-using namespace DirectX;
-
 
 
 int main() {

@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/permute.hpp
+/** @file nmath/functions/quaternion_creator.hpp
 *
-*   Implement permute.
+*   Implement quaternion creators.
 */
 
 
@@ -33,14 +33,19 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/data4.hpp>
+#include <nmath/types/data_helper.hpp>
+#include <nmath/types/quaternion.hpp>
 
 #pragma endregion
 
 
 
 namespace nmath {
+     
+     template<typename F_data3__, typename F_quaternion__ = TF_quaternion<TF_entry_cast<F_data3__>>>
+     NCPP_FORCE_INLINE F_quaternion__ NCPP_VECTOR_CALL T_quaternion_rotation_roll_pitch_yaw(F_data3__ roll_pitch_yaw) noexcept {
 
-    
+          return F_quaternion__ {};
+     }
 
 }

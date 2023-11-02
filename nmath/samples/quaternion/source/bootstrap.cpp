@@ -11,7 +11,7 @@ int main() {
 	F_quaternion q2 = F_quaternion{ -1.0f, 6.0f, 0.0f, -2.0f};
 
 	F_quaternion q3 = q1 * q2;
-
+    
 	ncpp::pause_console();
 
 	return 0;

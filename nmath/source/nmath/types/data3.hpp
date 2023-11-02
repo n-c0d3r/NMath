@@ -36,6 +36,7 @@
 
 #include <nmath/simd_helper.hpp>
 #include <nmath/types/data2.hpp>
+#include <nmath/types/data_helper.hpp>
 
 #pragma endregion
 
@@ -66,6 +67,14 @@ namespace nmath {
 
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
     using TPA_data3 = typename TF_data3<F_entry__, F_flag__>::F_passed_argument;
+
+    NCPP_RTTI_CREATE_FLAG(F_data3_f32_flag);
+    NCPP_RTTI_CREATE_FLAG(F_data3_i32_flag);
+    NCPP_RTTI_CREATE_FLAG(F_data3_u32_flag);
+
+    NCPP_RTTI_CREATE_FLAG(F_data3_f64_flag);
+    NCPP_RTTI_CREATE_FLAG(F_data3_i64_flag);
+    NCPP_RTTI_CREATE_FLAG(F_data3_u64_flag);
 
 
 
@@ -163,6 +172,8 @@ namespace nmath {
 #else
         using F_passed_argument = const F_this&;
 #endif
+        
+        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data3_f32_flag);
         
         
         
@@ -268,6 +279,26 @@ namespace nmath {
 
 
         }
+        template<
+            typename F_another_data3__,
+            std::enable_if_t<
+                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_f32_flag),
+                i32
+            > = 0
+        >
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+#ifdef NCPP_ENABLE_SSE
+            xyz_(o.xyz_)
+#else
+            x(o.x),
+            y(o.y),
+            z(o.z)
+#endif
+        {
+            
+            
+            
+        }
 
         NMATH_DATA3_SIMD_CONSTRUCTOR_M128();
         
@@ -277,6 +308,26 @@ namespace nmath {
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
         NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
+        {
+
+#ifdef NCPP_ENABLE_SSE
+            xyz_ = o.xyz_;
+#else
+            x = o.x;
+            y = o.y;
+            z = o.z;
+#endif
+
+            return *this;
+        }
+        template<
+            typename F_another_data3__,
+            std::enable_if_t<
+                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_f32_flag),
+                i32
+            > = 0
+        >
+        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_PA(F_another_data3__) o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE
@@ -477,6 +528,8 @@ namespace nmath {
 #else
         using F_passed_argument = const F_this&;
 #endif
+        
+        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data3_i32_flag);
 
 
 
@@ -582,6 +635,26 @@ namespace nmath {
 
 
         }
+        template<
+            typename F_another_data3__,
+            std::enable_if_t<
+                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_i32_flag),
+                i32
+            > = 0
+        >
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+#ifdef NCPP_ENABLE_SSE2
+            xyz_(o.xyz_)
+#else
+            x(o.x),
+            y(o.y),
+            z(o.z)
+#endif
+        {
+            
+            
+            
+        }
 
         NMATH_DATA3_SIMD_CONSTRUCTOR_M128I();
 
@@ -591,6 +664,26 @@ namespace nmath {
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
         NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
+        {
+
+#ifdef NCPP_ENABLE_SSE2
+            xyz_ = o.xyz_;
+#else
+            x = o.x;
+            y = o.y;
+            z = o.z;
+#endif
+
+            return *this;
+        }
+        template<
+            typename F_another_data3__,
+            std::enable_if_t<
+                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_i32_flag),
+                i32
+            > = 0
+        >
+        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_PA(F_another_data3__) o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -792,6 +885,8 @@ namespace nmath {
         using F_passed_argument = const F_this&;
 #endif
         
+        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data3_u32_flag);
+        
         
         
         ////////////////////////////////////////////////////////////////////////////////////
@@ -896,6 +991,26 @@ namespace nmath {
 
 
         }
+        template<
+            typename F_another_data3__,
+            std::enable_if_t<
+                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_u32_flag),
+                i32
+            > = 0
+        >
+        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+#ifdef NCPP_ENABLE_SSE2
+            xyz_(o.xyz_)
+#else
+            x(o.x),
+            y(o.y),
+            z(o.z)
+#endif
+        {
+            
+            
+            
+        }
 
         NMATH_DATA3_SIMD_CONSTRUCTOR_M128I();
         
@@ -905,6 +1020,26 @@ namespace nmath {
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
         NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
+        {
+
+#ifdef NCPP_ENABLE_SSE2
+            xyz_ = o.xyz_;
+#else
+            x = o.x;
+            y = o.y;
+            z = o.z;
+#endif
+
+            return *this;
+        }
+        template<
+            typename F_another_data3__,
+            std::enable_if_t<
+                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_u32_flag),
+                i32
+            > = 0
+        >
+        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_PA(F_another_data3__) o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2

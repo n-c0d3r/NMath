@@ -53,9 +53,8 @@ namespace nmath { }
 #include <nmath/functions/cross.hpp>
 #include <nmath/functions/length.hpp>
 #include <nmath/functions/transpose.hpp>
-#include <nmath/functions/complex_multiply.hpp>
 #include <nmath/functions/conjugate.hpp>
-#include <nmath/functions/permute.hpp>
-#include <nmath/functions/quaternion_creators.hpp>
+#include <nmath/functions/rotation.hpp>
+#include <nmath/functions/data_functions.hpp>
 
 #pragma endregion

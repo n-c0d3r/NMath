@@ -34,6 +34,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/vector.hpp>
+#include <nmath/types/quaternion.hpp>
+#include <nmath/functions/data_functions.hpp>
 
 #pragma endregion
 
@@ -83,34 +85,11 @@ namespace nmath {
 	}
 	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
 
-#ifdef NCPP_ENABLE_SSE4
-		return _mm_cvtss_f32(_mm_dp_ps(a.xyzw_, b.xyzw_, 0xFF));
-#elif defined(NCPP_ENABLE_SSE3)
-		__m128 mul_res, shuf_reg, sums_reg;
-		mul_res = _mm_mul_ps(a.xyzw_, b.xyzw_);
+		return data4_dot(a, b);
+	}
+	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept {
 
-		shuf_reg = _mm_movehdup_ps(mul_res);
-		sums_reg = _mm_add_ps(mul_res, shuf_reg);
-		shuf_reg = _mm_movehl_ps(shuf_reg, sums_reg);
-		sums_reg = _mm_add_ss(sums_reg, shuf_reg);
-
-		return  _mm_cvtss_f32(sums_reg);
-#elif defined(NCPP_ENABLE_SSE)
-		__m128 mul_res, shuf_reg, sums_reg;
-		mul_res = _mm_mul_ps(a.xyz_, b.xyz_);
-
-		// Replacing _mm_movehdup_ps(mul_res)
-		shuf_reg = _mm_shuffle_ps(mul_res, mul_res, _MM_SHUFFLE(3, 3, 1, 1));
-		sums_reg = _mm_add_ps(mul_res, shuf_reg);
-
-		// Replacing _mm_movehl_ps(shuf_reg, sums_reg)
-		shuf_reg = _mm_shuffle_ps(shuf_reg, sums_reg, _MM_SHUFFLE(3, 1, 2, 0));
-		sums_reg = _mm_add_ss(sums_reg, shuf_reg);
-
-		return  _mm_cvtss_f32(sums_reg);
-#else
-		return a.x * a.x + a.y * a.y + a.z * a.z + a.w * a.w;
-#endif
+		return data4_dot(a, b);
 	}
 
 }
