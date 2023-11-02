@@ -121,8 +121,7 @@ namespace nmath {
     >
     NCPP_FORCE_INLINE F_data4_f32 NCPP_VECTOR_CALL T_data4_static_permute(
         PA_data4_f32 a,
-        PA_data4_f32 b,
-        PA_data4_f32 c
+        PA_data4_f32 b
     ) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
@@ -257,7 +256,7 @@ namespace nmath {
         mul_res = _mm_mul_ps(a.xyz_, b.xyz_);
 
         // Replacing _mm_movehdup_ps(mul_res)
-        shuf_reg = _mm_shuffle_ps(mul_res, mul_res, _MM_SHUFFLE(3, 3, 1, 1));
+        shuf_reg = _mm_permute_ps(mul_res, _MM_SHUFFLE(3, 3, 1, 1));
         sums_reg = _mm_add_ps(mul_res, shuf_reg);
 
         // Replacing _mm_movehl_ps(shuf_reg, sums_reg)

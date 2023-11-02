@@ -71,7 +71,7 @@ namespace nmath {
 		mul_res = _mm_mul_ps(mul_res, m128_f32x4_1110);
 
 		// Replacing _mm_movehdup_ps(mul_res)
-		shuf_reg = _mm_shuffle_ps(mul_res, mul_res, _MM_SHUFFLE(3, 3, 1, 1));
+		shuf_reg = _mm_permute_ps(mul_res, _MM_SHUFFLE(3, 3, 1, 1));
 		sums_reg = _mm_add_ps(mul_res, shuf_reg);
 
 		// Replacing _mm_movehl_ps(shuf_reg, sums_reg)

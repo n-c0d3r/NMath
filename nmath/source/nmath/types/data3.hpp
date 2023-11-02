@@ -432,7 +432,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzy() const {
 
 #ifdef NCPP_ENABLE_SSE
-            return _mm_shuffle_ps(xyz_, xyz_, _MM_SHUFFLE(3, 1, 2, 0));
+            return _mm_permute_ps(xyz_, _MM_SHUFFLE(3, 1, 2, 0));
 #else
             return {
                 x,
@@ -444,7 +444,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxz() const {
 
 #ifdef NCPP_ENABLE_SSE
-            return _mm_shuffle_ps(xyz_, xyz_, _MM_SHUFFLE(3, 2, 0, 1));
+            return _mm_permute_ps(xyz_, _MM_SHUFFLE(3, 2, 0, 1));
 #else
             return {
                 y,
@@ -456,7 +456,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzx() const {
 
 #ifdef NCPP_ENABLE_SSE
-            return _mm_shuffle_ps(xyz_, xyz_, _MM_SHUFFLE(3, 0, 2, 1));
+            return _mm_permute_ps(xyz_, _MM_SHUFFLE(3, 0, 2, 1));
 #else
             return {
                 y,
@@ -468,7 +468,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxy() const {
 
 #ifdef NCPP_ENABLE_SSE
-            return _mm_shuffle_ps(xyz_, xyz_, _MM_SHUFFLE(3, 1, 0, 2));
+            return _mm_permute_ps(xyz_, _MM_SHUFFLE(3, 1, 0, 2));
 #else
             return {
                 z,
@@ -480,7 +480,7 @@ namespace nmath {
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyx() const {
 
 #ifdef NCPP_ENABLE_SSE
-            return _mm_shuffle_ps(xyz_, xyz_, _MM_SHUFFLE(3, 0, 1, 2));
+            return _mm_permute_ps(xyz_, _MM_SHUFFLE(3, 0, 1, 2));
 #else
             return {
                 z,
