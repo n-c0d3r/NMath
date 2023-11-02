@@ -62,10 +62,12 @@ namespace nmath {
 
 
 
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
+    struct F_data3_default_flag {};
+
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data3_default_flag>
     struct TF_data3;
 
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data3_default_flag>
     using TPA_data3 = typename TF_data3<F_entry__, F_flag__>::F_passed_argument;
 
     NCPP_RTTI_CREATE_FLAG(F_data3_f32_flag);
@@ -173,7 +175,8 @@ namespace nmath {
         using F_passed_argument = const F_this&;
 #endif
         
-        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data3_f32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3, nmath::F_data3_f32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3, F_flag__);
         
         
         
@@ -286,7 +289,7 @@ namespace nmath {
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(o.xyz_)
 #else
@@ -529,7 +532,8 @@ namespace nmath {
         using F_passed_argument = const F_this&;
 #endif
         
-        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data3_i32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3, nmath::F_data3_i32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3, F_flag__);
 
 
 
@@ -642,7 +646,7 @@ namespace nmath {
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyz_(o.xyz_)
 #else
@@ -885,7 +889,8 @@ namespace nmath {
         using F_passed_argument = const F_this&;
 #endif
         
-        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data3_u32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3, nmath::F_data3_u32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3, F_flag__);
         
         
         
@@ -998,7 +1003,7 @@ namespace nmath {
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE NCPP_VECTOR_CALL TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyz_(o.xyz_)
 #else

@@ -59,10 +59,12 @@ namespace nmath {
 
 
 
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
+    struct F_data2_default_flag {};
+
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data2_default_flag>
     struct TF_data2;
 
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = void>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data2_default_flag>
     using TPA_data2 = typename TF_data2<F_entry__, F_flag__>::F_passed_argument;
 
     NCPP_RTTI_CREATE_FLAG(F_data2_f32_flag);
@@ -123,7 +125,8 @@ namespace nmath {
 
         using F_passed_argument = const F_this&;
         
-        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data2_f32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, nmath::F_data2_f32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, F_flag__);
         
         
 
@@ -292,7 +295,8 @@ namespace nmath {
 
         using F_passed_argument = const F_this&;
         
-        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data2_i32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, nmath::F_data2_i32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, F_flag__);
         
         
         
@@ -461,7 +465,8 @@ namespace nmath {
 
         using F_passed_argument = const F_this&;
         
-        NCPP_RTTI_IMPLEMENT_FLAG(F_this, nmath::F_data2_u32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, nmath::F_data2_u32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, F_flag__);
         
         
         
