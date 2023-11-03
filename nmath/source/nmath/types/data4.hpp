@@ -130,7 +130,7 @@ namespace nmath {
 
 #ifdef NCPP_ENABLE_SSE2
 #define NMATH_DATA4_SIMD_M128I() \
-    __m128 xyzw_;
+    __m128i xyzw_;
 #define NMATH_DATA4_SIMD_CONSTRUCTOR_M128I()\
     NCPP_FORCE_INLINE TF_data4(__m128i xyzw) : \
         xyzw_(xyzw)\

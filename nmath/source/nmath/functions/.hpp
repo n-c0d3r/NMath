@@ -49,12 +49,13 @@ namespace nmath { }
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
+#include <nmath/functions/data_functions.hpp>
 #include <nmath/functions/dot.hpp>
 #include <nmath/functions/cross.hpp>
 #include <nmath/functions/length.hpp>
 #include <nmath/functions/transpose.hpp>
 #include <nmath/functions/conjugate.hpp>
 #include <nmath/functions/rotation.hpp>
-#include <nmath/functions/data_functions.hpp>
+#include <nmath/functions/normalize.hpp>
 
 #pragma endregion

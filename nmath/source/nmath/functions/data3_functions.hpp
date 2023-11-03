@@ -78,6 +78,9 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     F_data3_f32 NCPP_VECTOR_CALL data3_minus(PA_data3_f32 a) noexcept;
 
+    F_data3_f32 NCPP_VECTOR_CALL data3_multiply(PA_data3_f32 a, f32 b) noexcept;
+    F_data3_f32 NCPP_VECTOR_CALL data3_divide(PA_data3_f32 a, f32 b) noexcept;
+
     F_data3_f32 NCPP_VECTOR_CALL data3_add(PA_data3_f32 a, PA_data3_f32 b) noexcept;
     F_data3_f32 NCPP_VECTOR_CALL data3_subtract(PA_data3_f32 a, PA_data3_f32 b) noexcept;
 
@@ -179,6 +182,37 @@ namespace nmath {
             -a.x,
             -a.y,
             -a.z
+
+        };
+#endif
+    }
+
+    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply(PA_data3_f32 a, f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_mul_ps(a.xyz_, _mm_set1_ps(b));
+#else
+        return {
+
+            a.x * b,
+            a.y * b,
+            a.z * b
+
+        };
+#endif
+    }
+    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_divide(PA_data3_f32 a, f32 b) noexcept
+    {
+
+#ifdef NCPP_ENABLE_SSE
+        return _mm_div_ps(a.xyz_, _mm_set1_ps(b));
+#else
+        return {
+
+            a.x / b,
+            a.y / b,
+            a.z / b
 
         };
 #endif

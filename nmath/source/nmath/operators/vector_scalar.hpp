@@ -61,31 +61,25 @@ namespace nmath {
     
     NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_vector2_f32 a, float b) noexcept
     {
-        return {
-
-            a.x * b,
-            a.y * b
-
-        };
+        
+        return vector_forward(
+            data2_multiply(data_forward(a), b)
+        );
     }
     NCPP_FORCE_INLINE F_vector2_f32 multiply(float b, PA_vector2_f32 a) noexcept
     {
-        return {
 
-            a.x * b,
-            a.y * b
-
-        };
+        return vector_forward(
+            data2_multiply(data_forward(a), b)
+        );
     }
 
     NCPP_FORCE_INLINE F_vector2_f32 divide(PA_vector2_f32 a, float b) noexcept
     {
-        return {
 
-            a.x / b,
-            a.y / b
-
-        };
+        return vector_forward(
+            data2_divide(data_forward(a), b)
+        );
     }
 
 }
@@ -121,54 +115,24 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector3_f32 a, float b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        __m128 bbbb = _mm_set1_ps(b);
-        
-        return _mm_mul_ps(a.xyz_, bbbb);
-#else
-        return {
-
-            a.x * b,
-            a.y * b,
-            a.z * b
-
-        };
-#endif
+        return vector_forward(
+            data3_multiply(data_forward(a), b)
+        );
     }
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector3_f32 a) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        __m128 bbbb = _mm_set1_ps(b);
-
-        return _mm_mul_ps(a.xyz_, bbbb);
-#else
-        return {
-
-            a.x * b,
-            a.y * b,
-            a.z * b
-
-        };
-#endif
+        return vector_forward(
+            data3_multiply(data_forward(a), b)
+        );
     }
 
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(nmath::F_vector3_f32 a, float b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        __m128 bbbb = _mm_set1_ps(b);
-
-        return _mm_div_ps(a.xyz_, bbbb);
-#else
-        return {
-
-            a.x / b,
-            a.y / b,
-            a.z / b
-
-        };
-#endif
+        return vector_forward(
+            data3_divide(data_forward(a), b)
+        );
     }
 
 }
@@ -204,57 +168,24 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector4_f32 a, float b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        __m128 bbbb = _mm_set1_ps(b);
-
-        return _mm_mul_ps(a.xyzw_, bbbb);
-#else
-        return {
-
-            a.x * b,
-            a.y * b,
-            a.z * b,
-            a.w * b
-
-        };
-#endif
+        return vector_forward(
+            data4_multiply(data_forward(a), b)
+        );
     }
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector4_f32 a) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        __m128 bbbb = _mm_set1_ps(b);
-
-        return _mm_mul_ps(a.xyzw_, bbbb);
-#else
-        return {
-
-            a.x * b,
-            a.y * b,
-            a.z * b,
-            a.w * b
-
-        };
-#endif
+        return vector_forward(
+            data4_multiply(data_forward(a), b)
+        );
     }
 
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(nmath::F_vector4_f32 a, float b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        __m128 bbbb = _mm_set1_ps(b);
-
-        return _mm_div_ps(a.xyzw_, bbbb);
-#else
-        return {
-
-            a.x / b,
-            a.y / b,
-            a.z / b,
-            a.w / b
-
-        };
-#endif
+        return vector_forward(
+            data4_divide(data_forward(a), b)
+        );
     }
 
 }

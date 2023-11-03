@@ -75,6 +75,9 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     F_data2_f32 data2_minus(PA_data2_f32 a) noexcept;
 
+    F_data2_f32 data2_multiply(PA_data2_f32 a, f32 b) noexcept;
+    F_data2_f32 data2_divide(PA_data2_f32 a, f32 b) noexcept;
+
     F_data2_f32 data2_add(PA_data2_f32 a, PA_data2_f32 b) noexcept;
     F_data2_f32 data2_subtract(PA_data2_f32 a, PA_data2_f32 b) noexcept;
 
@@ -170,6 +173,27 @@ namespace nmath {
 
             -a.x,
             -a.y
+
+        };
+    }
+
+    NCPP_FORCE_INLINE F_data2_f32 data2_multiply(PA_data2_f32 a, f32 b) noexcept
+    {
+
+        return {
+
+            a.x * b,
+            a.y * b
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data2_f32 data2_divide(PA_data2_f32 a, f32 b) noexcept
+    {
+
+        return {
+
+            a.x / b,
+            a.y / b
 
         };
     }
