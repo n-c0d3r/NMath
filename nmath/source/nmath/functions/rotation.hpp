@@ -67,7 +67,7 @@ namespace nmath {
         Q0 = data4_multiply(Q0, R0);
         F_data4_f32 Q = data4_multiply_add(Q1, R1, Q0);
 
-        return Q;
+        return quaternion_forward(Q);
 #else
         const float halfpitch = roll_pitch_yaw.x * 0.5f;
         float cp = cosf(halfpitch);

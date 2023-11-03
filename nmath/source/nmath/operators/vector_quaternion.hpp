@@ -66,24 +66,28 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(PA_vector3_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-        return data4_complex_multiply(
+        return vector_forward(
             data4_complex_multiply(
-                data_forward(conjugate(b)),
-                data_forward(F_vector4_f32(a))
-            ),
-            data_forward(b)
-        ).xyz();
+                data4_complex_multiply(
+                    data_forward(conjugate(b)),
+                    data_forward(F_vector4_f32(a))
+                ),
+                data_forward(b)
+            ).xyz()
+        );
     }
 
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(PA_vector4_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-        return data4_complex_multiply(
+        return vector_forward(
             data4_complex_multiply(
-                data_forward(conjugate(b)),
-                data_forward(a)
-            ),
-            data_forward(b)
+                data4_complex_multiply(
+                    data_forward(conjugate(b)),
+                    data_forward(a)
+                ),
+                data_forward(b)
+            )
         );
     }
     

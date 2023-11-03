@@ -63,23 +63,31 @@ namespace nmath {
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL minus(PA_quaternion_f32 a) noexcept
     {
 
-        return data4_minus(data_forward(a));
+        return quaternion_forward(
+            data4_minus(data_forward(a))
+        );
     }
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL add(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-        return data4_add(data_forward(a), data_forward(b));
+        return quaternion_forward(
+            data4_add(data_forward(a), data_forward(b))
+        );
     }
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL subtract(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-        return data4_subtract(data_forward(a), data_forward(b));
+        return quaternion_forward(
+            data4_subtract(data_forward(a), data_forward(b))
+        );
     }
 
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
     
-        return data4_complex_multiply(data_forward(a), data_forward(b));
+        return quaternion_forward(
+            data4_complex_multiply(data_forward(a), data_forward(b))
+        );
     }
 
 }

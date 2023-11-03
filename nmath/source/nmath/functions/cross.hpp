@@ -53,15 +53,21 @@ namespace nmath {
 	}
 	NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
-		return data3_cross(data_forward(a), data_forward(b));
+		return vector_forward(
+			data3_cross(data_forward(a), data_forward(b))
+		);
 	}
 	NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL cross(PA_vector4_f32 a, PA_vector4_f32 b, PA_vector4_f32 c) noexcept {
 
-		return data4_cross(data_forward(a), data_forward(b), data_forward(c));
+		return vector_forward(
+			data4_cross(data_forward(a), data_forward(b), data_forward(c))
+		);
 	}
 	NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL cross(PA_quaternion_f32 a, PA_quaternion_f32 b, PA_quaternion_f32 c) noexcept {
 
-		return data4_cross(data_forward(a), data_forward(b), data_forward(c));
+		return quaternion_forward(
+			data4_cross(data_forward(a), data_forward(b), data_forward(c))
+		);
 	}
 
 }
