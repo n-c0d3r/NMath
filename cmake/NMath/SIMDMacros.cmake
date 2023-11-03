@@ -30,6 +30,7 @@ using F_simd_f32x4 = __m128;
     #define NMATH_ENABLE_SIMD_F32X4
     #endif
 #endif
+
 #ifdef NCPP_ENABLE_SSE2
 using F_simd_i32x4 = __m128i;
     #ifndef NMATH_ENABLE_SIMD_I32X4
@@ -43,6 +44,13 @@ file(APPEND "${SIMD_MACROS_FILE_PATH}" "
 using F_simd_f32x8 = __m256;
     #ifndef NMATH_ENABLE_SIMD_F32X8
     #define NMATH_ENABLE_SIMD_F32X8
+    #endif
+#endif
+
+#ifdef NCPP_ENABLE_AVX2
+using F_simd_i32x8 = __m256i;
+    #ifndef NMATH_ENABLE_SIMD_I32X8
+    #define NMATH_ENABLE_SIMD_I32X8
     #endif
 #endif
 ")
@@ -320,6 +328,80 @@ function(NMath_DeclareSIMDConstants_f32x8)
 
 endfunction()
 
+function(NMath_DeclareSIMDConstants_i32x8)
+    cmake_parse_arguments(
+        PARGS
+        ""
+        "PREFIX;"
+        ""
+        ${ARGN}
+    )
+
+    if(NOT PARGS_PREFIX)
+        message(FATAL "prefix must not be empty")
+    endif()
+
+    NMath_Permutations_8(permutations)
+
+    file(APPEND "${SIMD_MACROS_FILE_PATH}" "
+    #ifdef NMATH_ENABLE_SIMD_I32X8
+    ")
+
+    # Utility functions
+    file(APPEND "${SIMD_MACROS_FILE_PATH}" "
+        NCPP_FORCE_INLINE F_simd_i32x8 make_simd_i32x8(i32 x, i32 y, i32 z, i32 w, i32 x2, i32 y2, i32 z2, i32 w2, i32 none = 0) noexcept {
+
+        #ifdef NCPP_ENABLE_AVX2
+            return _mm256_set_epi32(w2,z2,y2,x2, w,z,y,x);
+        #endif
+        }
+    ")
+
+    # For constant defining
+    file(APPEND "${SIMD_MACROS_FILE_PATH}" "#define NMATH_DEFINE_SIMD_I32X8_CONSTANTS() \\")
+    foreach(permutation IN LISTS permutations)
+        set(range_one_value ${permutation})
+        string(REPLACE "1" "NMATH_I32_ONE," range_one_value ${range_one_value})
+        string(REPLACE "0" "NMATH_I32_ZERO," range_one_value ${range_one_value})
+        file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_i32x8 ${PARGS_PREFIX}${permutation} = make_simd_i32x8(${range_one_value}0);\\")
+        
+        if(NOT ${permutation} STREQUAL 00000000)  
+            set(range_negative_one_value ${permutation})
+            string(REPLACE "1" "NMATH_I32_ONE_NEGATIVE," range_negative_one_value ${range_one_value})
+            string(REPLACE "0" "NMATH_I32_ZERO," range_negative_one_value ${range_one_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_i32x8 ${PARGS_PREFIX}${permutation}_negative = make_simd_i32x8(${range_negative_one_value}0);\\")
+            
+            string(REPLACE "1" "F" range_full_permutation ${permutation})
+            set(range_full_value ${permutation})
+            string(REPLACE "1" "NMATH_I32_FULL," range_full_value ${range_full_value})
+            string(REPLACE "0" "NMATH_I32_ZERO," range_full_value ${range_full_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_i32x8 ${PARGS_PREFIX}${range_full_permutation} = make_simd_i32x8(${range_full_value}0);\\")
+        endif()
+    endforeach()
+
+    file(APPEND "${SIMD_MACROS_FILE_PATH}" "\n")
+    file(APPEND "${SIMD_MACROS_FILE_PATH}" "\n")
+
+    # For declaration
+    foreach(permutation IN LISTS permutations)
+        file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_i32x8 ${PARGS_PREFIX}${permutation};\n")
+
+        if(NOT ${permutation} STREQUAL 00000000)   
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_i32x8 ${PARGS_PREFIX}${permutation}_negative;\n")
+
+            string(REPLACE "1" "F" range_full_permutation ${permutation})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_i32x8 ${PARGS_PREFIX}${range_full_permutation};\n")            
+        endif()
+    endforeach()
+
+    file(APPEND "${SIMD_MACROS_FILE_PATH}" "
+    #else
+    #define NMATH_DEFINE_SIMD_I32X8_CONSTANTS()
+    #endif
+    ")
+
+endfunction()
+
 
 
 #####################################################################################
@@ -334,6 +416,9 @@ NMath_DeclareSIMDConstants_i32x4(
 
 NMath_DeclareSIMDConstants_f32x8(
     PREFIX simd_f32x8_
+)
+NMath_DeclareSIMDConstants_i32x8(
+    PREFIX simd_i32x8_
 )
 
 
