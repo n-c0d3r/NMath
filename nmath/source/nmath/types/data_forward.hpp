@@ -53,6 +53,11 @@ namespace nmath {
     NCPP_FORCE_INLINE ::nmath::PA_data2_f32 data_forward(NMATH_DATA2_F32_PA(ClassName) o) noexcept { \
         \
         return (::nmath::PA_data2_f32)o; \
+    }\
+    template<typename F_custom_target__>\
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA2_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<F_custom_target__>)o; \
     }
 
 
@@ -65,12 +70,22 @@ namespace nmath {
     NCPP_FORCE_INLINE ::nmath::PA_data3_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
         \
         return o.data3(); \
+    }\
+    template<typename F_custom_target__>\
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
+        \
+        return o.data3(); \
     }
 #else
 #define NMATH_DEFINE_DATA3_F32_FORWARD(ClassName) \
     NCPP_FORCE_INLINE ::nmath::PA_data3_f32 data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
         \
         return (::nmath::PA_data3_f32)o; \
+    }\
+    template<typename F_custom_target__>\
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<F_custom_target__>)o; \
     }
 #endif
 
@@ -84,12 +99,22 @@ namespace nmath {
     NCPP_FORCE_INLINE ::nmath::PA_data4_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
         \
         return o.data4(); \
+    }\
+    template<typename F_custom_target__>\
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
+        \
+        return o.data4(); \
     }
 #else
 #define NMATH_DEFINE_DATA4_F32_FORWARD(ClassName) \
     NCPP_FORCE_INLINE ::nmath::PA_data4_f32 data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
         \
         return (::nmath::PA_data4_f32)o; \
+    }\
+    template<typename F_custom_target__>\
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<F_custom_target__>)o; \
     }
 #endif
 
