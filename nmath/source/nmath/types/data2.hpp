@@ -258,6 +258,14 @@ namespace nmath {
                 y
             };
         }
+        template<typename F_another_data2__>
+        NCPP_FORCE_INLINE TPA_data_cast<F_another_data2__> T_data2() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this xy() const {
 
             return {
@@ -439,6 +447,14 @@ namespace nmath {
                 y
             };
         }
+        template<typename F_another_data2__>
+        NCPP_FORCE_INLINE TPA_data_cast<F_another_data2__> T_data2() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this xy() const {
 
             return {
@@ -614,6 +630,14 @@ namespace nmath {
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
         NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+
+            return {
+                x,
+                y
+            };
+        }
+        template<typename F_another_data2__>
+        NCPP_FORCE_INLINE TPA_data_cast<F_another_data2__> T_data2() const {
 
             return {
                 x,

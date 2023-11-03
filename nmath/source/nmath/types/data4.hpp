@@ -844,7 +844,8 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
+        template<typename F_another_data4__>
+        NCPP_FORCE_INLINE TPA_data_cast<F_another_data4__> T_data4() const {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -857,7 +858,20 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
+        NCPP_FORCE_INLINE F_this xyzw() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return xyzw_;
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xywz() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
@@ -870,7 +884,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzyw() const {
+        NCPP_FORCE_INLINE F_this xzyw() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
@@ -883,7 +897,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzwy() const {
+        NCPP_FORCE_INLINE F_this xzwy() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
@@ -896,7 +910,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwyz() const {
+        NCPP_FORCE_INLINE F_this xwyz() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
@@ -909,7 +923,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwzy() const {
+        NCPP_FORCE_INLINE F_this xwzy() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
@@ -923,7 +937,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxzw() const {
+        NCPP_FORCE_INLINE F_this yxzw() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
@@ -936,7 +950,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxwz() const {
+        NCPP_FORCE_INLINE F_this yxwz() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
@@ -949,7 +963,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzxw() const {
+        NCPP_FORCE_INLINE F_this yzxw() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
@@ -962,7 +976,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzwx() const {
+        NCPP_FORCE_INLINE F_this yzwx() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
@@ -975,7 +989,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywxz() const {
+        NCPP_FORCE_INLINE F_this ywxz() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
@@ -988,7 +1002,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywzx() const {
+        NCPP_FORCE_INLINE F_this ywzx() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
@@ -1002,7 +1016,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxyw() const {
+        NCPP_FORCE_INLINE F_this zxyw() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
@@ -1015,7 +1029,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxwy() const {
+        NCPP_FORCE_INLINE F_this zxwy() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
@@ -1028,7 +1042,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyxw() const {
+        NCPP_FORCE_INLINE F_this zyxw() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
@@ -1041,7 +1055,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zywx() const {
+        NCPP_FORCE_INLINE F_this zywx() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
@@ -1054,7 +1068,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwxy() const {
+        NCPP_FORCE_INLINE F_this zwxy() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
@@ -1067,7 +1081,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwyx() const {
+        NCPP_FORCE_INLINE F_this zwyx() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
@@ -1081,7 +1095,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxyz() const {
+        NCPP_FORCE_INLINE F_this wxyz() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
@@ -1094,7 +1108,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxzy() const {
+        NCPP_FORCE_INLINE F_this wxzy() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
@@ -1107,7 +1121,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyxz() const {
+        NCPP_FORCE_INLINE F_this wyxz() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
@@ -1120,7 +1134,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyzx() const {
+        NCPP_FORCE_INLINE F_this wyzx() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
@@ -1133,7 +1147,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzxy() const {
+        NCPP_FORCE_INLINE F_this wzxy() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
@@ -1146,7 +1160,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzyx() const {
+        NCPP_FORCE_INLINE F_this wzyx() const {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 1, 2, 3));
@@ -1867,7 +1881,8 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
+        template<typename F_another_data4__>
+        NCPP_FORCE_INLINE TPA_data_cast<F_another_data4__> T_data4() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyzw_;
@@ -1880,7 +1895,20 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
+        NCPP_FORCE_INLINE F_this xyzw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyzw_;
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xywz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
@@ -1893,7 +1921,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzyw() const {
+        NCPP_FORCE_INLINE F_this xzyw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
@@ -1906,7 +1934,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzwy() const {
+        NCPP_FORCE_INLINE F_this xzwy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
@@ -1919,7 +1947,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwyz() const {
+        NCPP_FORCE_INLINE F_this xwyz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
@@ -1932,7 +1960,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwzy() const {
+        NCPP_FORCE_INLINE F_this xwzy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
@@ -1946,7 +1974,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxzw() const {
+        NCPP_FORCE_INLINE F_this yxzw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
@@ -1959,7 +1987,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxwz() const {
+        NCPP_FORCE_INLINE F_this yxwz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
@@ -1972,7 +2000,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzxw() const {
+        NCPP_FORCE_INLINE F_this yzxw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
@@ -1985,7 +2013,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzwx() const {
+        NCPP_FORCE_INLINE F_this yzwx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
@@ -1998,7 +2026,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywxz() const {
+        NCPP_FORCE_INLINE F_this ywxz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
@@ -2011,7 +2039,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywzx() const {
+        NCPP_FORCE_INLINE F_this ywzx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
@@ -2025,7 +2053,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxyw() const {
+        NCPP_FORCE_INLINE F_this zxyw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
@@ -2038,7 +2066,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxwy() const {
+        NCPP_FORCE_INLINE F_this zxwy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
@@ -2051,7 +2079,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyxw() const {
+        NCPP_FORCE_INLINE F_this zyxw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
@@ -2064,7 +2092,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zywx() const {
+        NCPP_FORCE_INLINE F_this zywx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
@@ -2077,7 +2105,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwxy() const {
+        NCPP_FORCE_INLINE F_this zwxy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
@@ -2090,7 +2118,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwyx() const {
+        NCPP_FORCE_INLINE F_this zwyx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
@@ -2104,7 +2132,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxyz() const {
+        NCPP_FORCE_INLINE F_this wxyz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
@@ -2117,7 +2145,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxzy() const {
+        NCPP_FORCE_INLINE F_this wxzy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
@@ -2130,7 +2158,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyxz() const {
+        NCPP_FORCE_INLINE F_this wyxz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
@@ -2143,7 +2171,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyzx() const {
+        NCPP_FORCE_INLINE F_this wyzx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
@@ -2156,7 +2184,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzxy() const {
+        NCPP_FORCE_INLINE F_this wzxy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
@@ -2169,7 +2197,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzyx() const {
+        NCPP_FORCE_INLINE F_this wzyx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 1, 2, 3));
@@ -2890,7 +2918,8 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyzw() const {
+        template<typename F_another_data4__>
+        NCPP_FORCE_INLINE TPA_data_cast<F_another_data4__> T_data4() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyzw_;
@@ -2903,7 +2932,20 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xywz() const {
+        NCPP_FORCE_INLINE F_this xyzw() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyzw_;
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xywz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
@@ -2916,7 +2958,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzyw() const {
+        NCPP_FORCE_INLINE F_this xzyw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
@@ -2929,7 +2971,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xzwy() const {
+        NCPP_FORCE_INLINE F_this xzwy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
@@ -2942,7 +2984,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwyz() const {
+        NCPP_FORCE_INLINE F_this xwyz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
@@ -2955,7 +2997,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xwzy() const {
+        NCPP_FORCE_INLINE F_this xwzy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
@@ -2969,7 +3011,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxzw() const {
+        NCPP_FORCE_INLINE F_this yxzw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
@@ -2982,7 +3024,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yxwz() const {
+        NCPP_FORCE_INLINE F_this yxwz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
@@ -2995,7 +3037,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzxw() const {
+        NCPP_FORCE_INLINE F_this yzxw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
@@ -3008,7 +3050,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL yzwx() const {
+        NCPP_FORCE_INLINE F_this yzwx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
@@ -3021,7 +3063,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywxz() const {
+        NCPP_FORCE_INLINE F_this ywxz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
@@ -3034,7 +3076,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL ywzx() const {
+        NCPP_FORCE_INLINE F_this ywzx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
@@ -3048,7 +3090,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxyw() const {
+        NCPP_FORCE_INLINE F_this zxyw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
@@ -3061,7 +3103,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zxwy() const {
+        NCPP_FORCE_INLINE F_this zxwy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
@@ -3074,7 +3116,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zyxw() const {
+        NCPP_FORCE_INLINE F_this zyxw() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
@@ -3087,7 +3129,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zywx() const {
+        NCPP_FORCE_INLINE F_this zywx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
@@ -3100,7 +3142,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwxy() const {
+        NCPP_FORCE_INLINE F_this zwxy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
@@ -3113,7 +3155,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL zwyx() const {
+        NCPP_FORCE_INLINE F_this zwyx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
@@ -3127,7 +3169,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxyz() const {
+        NCPP_FORCE_INLINE F_this wxyz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
@@ -3140,7 +3182,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wxzy() const {
+        NCPP_FORCE_INLINE F_this wxzy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
@@ -3153,7 +3195,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyxz() const {
+        NCPP_FORCE_INLINE F_this wyxz() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
@@ -3166,7 +3208,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wyzx() const {
+        NCPP_FORCE_INLINE F_this wyzx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
@@ -3179,7 +3221,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzxy() const {
+        NCPP_FORCE_INLINE F_this wzxy() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
@@ -3192,7 +3234,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL wzyx() const {
+        NCPP_FORCE_INLINE F_this wzyx() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return _mm_shuffle_epi32(xyzw_, _MM_SHUFFLE(0, 1, 2, 3));
