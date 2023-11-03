@@ -346,7 +346,7 @@ namespace nmath {
 
             return *this;
         }
-        NCPP_FORCE_INLINE const F_entry& operator [] (i32 index) const noexcept
+        NCPP_FORCE_INLINE const F_entry operator [] (i32 index) const noexcept
         {
 
             return m[index];
@@ -738,7 +738,7 @@ namespace nmath {
 
             return *this;
         }
-        NCPP_FORCE_INLINE const F_entry& operator [] (i32 index) const noexcept
+        NCPP_FORCE_INLINE const F_entry operator [] (i32 index) const noexcept
         {
 
             return m[index];
@@ -1130,7 +1130,7 @@ namespace nmath {
 
             return *this;
         }
-        NCPP_FORCE_INLINE const F_entry& operator [] (i32 index) const noexcept
+        NCPP_FORCE_INLINE const F_entry operator [] (i32 index) const noexcept
         {
 
             return m[index];
