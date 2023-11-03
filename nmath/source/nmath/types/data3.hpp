@@ -437,7 +437,7 @@ namespace nmath {
 #endif
         }
         template<typename F_another_data3__>
-        NCPP_FORCE_INLINE TPA_data_cast<F_another_data3__> T_data3() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data3__> T_data3() const {
 
 #ifdef NCPP_ENABLE_SSE
             return xyz_;
@@ -824,7 +824,7 @@ namespace nmath {
 #endif
         }
         template<typename F_another_data3__>
-        NCPP_FORCE_INLINE TPA_data_cast<F_another_data3__> T_data3() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data3__> T_data3() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyz_;
@@ -1211,7 +1211,7 @@ namespace nmath {
 #endif
         }
         template<typename F_another_data3__>
-        NCPP_FORCE_INLINE TPA_data_cast<F_another_data3__> T_data3() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data3__> T_data3() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyz_;

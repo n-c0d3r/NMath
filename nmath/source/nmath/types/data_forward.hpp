@@ -74,7 +74,7 @@ namespace nmath {
     template<typename F_custom_target__>\
     NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
         \
-        return o.data3(); \
+        return o.T_data3<F_custom_target__>(); \
     }
 #else
 #define NMATH_DEFINE_DATA3_F32_FORWARD(ClassName) \
@@ -103,7 +103,7 @@ namespace nmath {
     template<typename F_custom_target__>\
     NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
         \
-        return o.data4(); \
+        return o.T_data4<F_custom_target__>(); \
     }
 #else
 #define NMATH_DEFINE_DATA4_F32_FORWARD(ClassName) \
