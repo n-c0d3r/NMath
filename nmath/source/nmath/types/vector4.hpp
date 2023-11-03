@@ -96,5 +96,6 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
 
     NMATH_DEFINE_DATA4_F32_FORWARD(F_vector4_f32);
+    NMATH_DEFINE_DATA4_F32_REVERSE_FORWARD(vector_forward, F_vector4_f32);
 
 }

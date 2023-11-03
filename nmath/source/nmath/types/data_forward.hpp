@@ -53,11 +53,12 @@ namespace nmath {
     NCPP_FORCE_INLINE ::nmath::PA_data2_f32 data_forward(NMATH_DATA2_F32_PA(ClassName) o) noexcept { \
         \
         return (::nmath::PA_data2_f32)o; \
-    }\
-    template<typename F_custom_target__>\
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA2_F32_PA(ClassName) o) noexcept { \
+    }
+
+#define NMATH_DEFINE_DATA2_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data2_f32 o) noexcept { \
         \
-        return (::nmath::TPA_data_cast<F_custom_target__>)o; \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
     }
 
 
@@ -70,22 +71,26 @@ namespace nmath {
     NCPP_FORCE_INLINE ::nmath::PA_data3_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
         \
         return o.data3(); \
-    }\
-    template<typename F_custom_target__>\
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
-        \
-        return o.T_data3<F_custom_target__>(); \
     }
 #else
 #define NMATH_DEFINE_DATA3_F32_FORWARD(ClassName) \
     NCPP_FORCE_INLINE ::nmath::PA_data3_f32 data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
         \
         return (::nmath::PA_data3_f32)o; \
-    }\
-    template<typename F_custom_target__>\
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
+    }
+#endif
+
+#ifdef NCPP_ENABLE_SSE
+#define NMATH_DEFINE_DATA3_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data3_f32 o) noexcept { \
         \
-        return (::nmath::TPA_data_cast<F_custom_target__>)o; \
+        return o.T_data3<::nmath::TPA_data_cast<ClassName>>(); \
+    }
+#else
+#define NMATH_DEFINE_DATA3_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data3_f32 o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
     }
 #endif
 
@@ -99,22 +104,26 @@ namespace nmath {
     NCPP_FORCE_INLINE ::nmath::PA_data4_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
         \
         return o.data4(); \
-    }\
-    template<typename F_custom_target__>\
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
-        \
-        return o.T_data4<F_custom_target__>(); \
     }
 #else
 #define NMATH_DEFINE_DATA4_F32_FORWARD(ClassName) \
     NCPP_FORCE_INLINE ::nmath::PA_data4_f32 data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
         \
         return (::nmath::PA_data4_f32)o; \
-    }\
-    template<typename F_custom_target__>\
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<F_custom_target__> T_data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
+    }
+#endif
+
+#ifdef NCPP_ENABLE_SSE
+#define NMATH_DEFINE_DATA4_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data4_f32 o) noexcept { \
         \
-        return (::nmath::TPA_data_cast<F_custom_target__>)o; \
+        return o.T_data4<::nmath::TPA_data_cast<ClassName>>(); \
+    }
+#else
+#define NMATH_DEFINE_DATA4_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data4_f32 o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
     }
 #endif
 

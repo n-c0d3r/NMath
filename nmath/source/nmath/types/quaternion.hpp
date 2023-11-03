@@ -88,5 +88,6 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
 
     NMATH_DEFINE_DATA4_F32_FORWARD(F_quaternion_f32);
+    NMATH_DEFINE_DATA4_F32_REVERSE_FORWARD(quaternion_forward, F_quaternion_f32);
 
 }
