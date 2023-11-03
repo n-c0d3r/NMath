@@ -38,7 +38,6 @@
 #include <nmath/functions/data4_functions.hpp>
 #include <nmath/functions/conjugate.hpp>
 #include <nmath/operators/helper.hpp>
-#include <nmath/simd_helper.hpp>
 
 #pragma endregion
 

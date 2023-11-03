@@ -334,10 +334,10 @@ namespace nmath {
             static NCPP_FORCE_INLINE F_simd_f32x4 NCPP_VECTOR_CALL permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept
             {
                 static const F_simd_f32x4 selectMask = make_simd_f32x4(
-                    which_x ? 0xFFFFFFFF : 0,
-                    which_y ? 0xFFFFFFFF : 0,
-                    which_z ? 0xFFFFFFFF : 0,
-                    which_w ? 0xFFFFFFFF : 0
+                    which_x ? NMATH_F32_FULL : 0.0f,
+                    which_y ? NMATH_F32_FULL : 0.0f,
+                    which_z ? NMATH_F32_FULL : 0.0f,
+                    which_w ? NMATH_F32_FULL : 0.0f
                 );
 
                 F_simd_f32x4 shuffled1 = _mm_permute_ps(v1, shuffle);

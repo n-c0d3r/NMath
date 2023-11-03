@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/utilities/basic_arithmetic.hpp
+/** @file nmath/types/matrix_flag.hpp
 *
-*   Implement basic arithmetic.
+*   Implement matrix flag.
 */
 
 
@@ -29,33 +29,18 @@
 
 #include <nmath/prerequisites.hpp>
 
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+#include <nmath/types/vector_flag.hpp>
+
 #pragma endregion
 
 
 
 namespace nmath {
 
-	NMATH_USING_NLIB_NAMESPACES();
-
-
-
-	inline f32 round_to_nearest(f32 x) noexcept {
-
-        float i = floorf(x);
-        x -= i;
-        if (x < 0.5f)
-            return i;
-        if (x > 0.5f)
-            return i + 1.f;
-
-        float int_part;
-        (void)modff(i / 2.f, &int_part);
-        if ((2.f * int_part) == i)
-        {
-            return i;
-        }
-
-        return i + 1.f;
-	}
+    using F_matrix_flag = F_vector_flag;
 
 }

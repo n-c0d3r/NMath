@@ -3,6 +3,7 @@
 #   Includes
 #####################################################################################
 include(NCPP/ConfigureCompiler)
+include(NMath/SIMDMacros)
 
 
 

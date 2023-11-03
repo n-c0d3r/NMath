@@ -36,7 +36,6 @@
 #include <nmath/types/vector.hpp>
 #include <nmath/types/quaternion.hpp>
 #include <nmath/functions/data_functions.hpp>
-#include <nmath/simd_helper.hpp>
 
 #pragma endregion
 

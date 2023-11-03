@@ -118,7 +118,9 @@ namespace nmath {
         //  Typedefs
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = f32;
+
         using F_flag = F_flag__;
+
         using F_this = TF_data2<F_entry, F_flag__>;
 
         static constexpr u32 entry_count_s = 2;
@@ -278,7 +280,9 @@ namespace nmath {
         //  Typedefs
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = i32;
+
         using F_flag = F_flag__;
+
         using F_this = TF_data2<F_entry, F_flag__>;
 
         static constexpr u32 entry_count_s = 2;
@@ -438,7 +442,9 @@ namespace nmath {
         //  Typedefs
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = u32;
+
         using F_flag = F_flag__;
+
         using F_this = TF_data2<F_entry, F_flag__>;
 
         static constexpr u32 entry_count_s = 2;

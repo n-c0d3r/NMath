@@ -34,7 +34,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/simd_helper.hpp>
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data_helper.hpp>
 #include <nmath/types/data_forward.hpp>
@@ -161,7 +160,9 @@ namespace nmath {
         //  Typedefs
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = f32;
+
         using F_flag = F_flag__;
+
         using F_this = TF_data3<F_entry, F_flag__>;
 
         using F_data2 = TF_data2<F_entry, F_flag__>;
@@ -509,7 +510,9 @@ namespace nmath {
         //  Typedefs
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = i32;
+
         using F_flag = F_flag__;
+
         using F_this = TF_data3<F_entry, F_flag__>;
 
         using F_data2 = TF_data2<F_entry, F_flag__>;
@@ -857,7 +860,9 @@ namespace nmath {
         //  Typedefs
         ////////////////////////////////////////////////////////////////////////////////////
         using F_entry = u32;
+
         using F_flag = F_flag__;
+
         using F_this = TF_data3<F_entry, F_flag__>;
 
         using F_data2 = TF_data2<F_entry, F_flag__>;
