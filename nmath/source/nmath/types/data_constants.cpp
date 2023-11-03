@@ -9,26 +9,26 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data2
     ////////////////////////////////////////////////////////////////////////////////////
-    const F_data2_f32 reciprocal_two_pi_x2 = F_data2_f32(1.0f / 2pi, 1.0f / 2pi);
-    const F_data2_f32 two_pi_x2 = F_data2_f32(2pi, 2pi);
+    const F_data2_f32 reciprocal_two_pi_x2 = F_data2_f32(1.0f / 2_pi, 1.0f / 2_pi);
+    const F_data2_f32 two_pi_x2 = F_data2_f32(2_pi, 2_pi);
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data3
     ////////////////////////////////////////////////////////////////////////////////////
-    const F_data3_f32 reciprocal_two_pi_x3 = F_data3_f32(1.0f / 2pi, 1.0f / 2pi, 1.0f / 2pi);
-    const F_data3_f32 two_pi_x3 = F_data3_f32(2pi, 2pi, 2pi);
+    const F_data3_f32 reciprocal_two_pi_x3 = F_data3_f32(1.0f / 2_pi, 1.0f / 2_pi, 1.0f / 2_pi);
+    const F_data3_f32 two_pi_x3 = F_data3_f32(2_pi, 2_pi, 2_pi);
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data4
     ////////////////////////////////////////////////////////////////////////////////////
-    const F_data4_f32 reciprocal_two_pi_x4 = F_data4_f32(1.0f / 2pi, 1.0f / 2pi, 1.0f / 2pi, 1.0f / 2pi);
-    const F_data4_f32 two_pi_x4 = F_data4_f32(2pi, 2pi, 2pi, 2pi);
-    const F_data4_f32 pi_x4 = F_data4_f32(1pi, 1pi, 1pi, 1pi);
-    const F_data4_f32 half_pi_x4 = F_data4_f32(0.5pi, 0.5pi, 0.5pi, 0.5pi);
+    const F_data4_f32 reciprocal_two_pi_x4 = F_data4_f32(1.0f / 2_pi, 1.0f / 2_pi, 1.0f / 2_pi, 1.0f / 2_pi);
+    const F_data4_f32 two_pi_x4 = F_data4_f32(2_pi, 2_pi, 2_pi, 2_pi);
+    const F_data4_f32 pi_x4 = F_data4_f32(1_pi, 1_pi, 1_pi, 1_pi);
+    const F_data4_f32 half_pi_x4 = F_data4_f32(0.5_pi, 0.5_pi, 0.5_pi, 0.5_pi);
     const F_data4_f32 negative_zero_x4 = F_data4_f32(
         reinterpret_cast_u32_to_f32(0x80000000),
         reinterpret_cast_u32_to_f32(0x80000000),
