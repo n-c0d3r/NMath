@@ -165,6 +165,8 @@ function(NMath_DeclareSIMDConstants_f32x4)
     endforeach()
 
     file(APPEND "${SIMD_MACROS_FILE_PATH}" "
+    #else
+    #define NMATH_DEFINE_SIMD_F32X4_CONSTANTS()
     #endif
     ")
 
@@ -237,6 +239,8 @@ function(NMath_DeclareSIMDConstants_i32x4)
     endforeach()
 
     file(APPEND "${SIMD_MACROS_FILE_PATH}" "
+    #else
+    #define NMATH_DEFINE_SIMD_I32X4_CONSTANTS()
     #endif
     ")
 
@@ -309,6 +313,8 @@ function(NMath_DeclareSIMDConstants_f32x8)
     endforeach()
 
     file(APPEND "${SIMD_MACROS_FILE_PATH}" "
+    #else
+    #define NMATH_DEFINE_SIMD_F32X8_CONSTANTS()
     #endif
     ")
 

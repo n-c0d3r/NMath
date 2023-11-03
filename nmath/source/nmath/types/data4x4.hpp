@@ -272,12 +272,75 @@ namespace nmath {
 
             return m[index];
         }
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
+        {
+
+#ifdef NCPP_ENABLE_AVX
+            __m256 xy_compare8 = _mm256_cmp_ps(a.xy_, b.xy_, _CMP_EQ_OQ);
+            int xy_mask = _mm256_movemask_ps(xy_compare8);
+
+            __m256 zw_compare8 = _mm256_cmp_ps(a.zw_, b.zw_, _CMP_EQ_OQ);
+            int zw_mask = _mm256_movemask_ps(zw_compare8);
+
+            return (xy_mask == 0b11111111) && (zw_mask == 0b11111111);
+#else
+            return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);
+#endif
+        }
+        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator != (F_passed_argument a, F_passed_argument b) noexcept
+        {
+
+#ifdef NCPP_ENABLE_AVX
+            __m256 xy_compare8 = _mm256_cmp_ps(a.xy_, b.xy_, _CMP_EQ_OQ);
+            int xy_mask = _mm256_movemask_ps(xy_compare8);
+
+            __m256 zw_compare8 = _mm256_cmp_ps(a.zw_, b.zw_, _CMP_EQ_OQ);
+            int zw_mask = _mm256_movemask_ps(zw_compare8);
+
+            return (xy_mask != 0b11111111) || (zw_mask != 0b11111111);
+#else
+            return (a.x != b.x) || (a.y != b.y) || (a.z != b.z) || (a.w != b.w);
+#endif
+        }
 
 
 
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE TF_data4x4<F_entry> NCPP_VECTOR_CALL data4x4() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                xy_,
+                zw_
+            };
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
+        template<typename F_another_data4x4__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data4x4__> T_data4x4() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                xy_,
+                zw_
+            };
+#else
+            return {
+                x,
+                y,
+                z,
+                w
+            };
+#endif
+        }
                 
     };
 
