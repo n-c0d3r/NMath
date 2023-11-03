@@ -50,14 +50,14 @@ namespace nmath {
 
 
 
-#ifdef NCPP_ENABLE_SIMD
-#define NMATH_DATA2_PA(T) const T&
-#define NMATH_DATA3_PA(T) const T
-#define NMATH_DATA4_PA(T) const T
+#define NMATH_DATA2_F32_PA(T) const T&
+
+#ifdef NCPP_ENABLE_SSE
+#define NMATH_DATA3_F32_PA(T) const T
+#define NMATH_DATA4_F32_PA(T) const T
 #else
-#define NMATH_DATA2_PA(T) const T&
-#define NMATH_DATA3_PA(T) const T&
-#define NMATH_DATA4_PA(T) const T&
+#define NMATH_DATA3_F32_PA(T) const T&
+#define NMATH_DATA4_F32_PA(T) const T&
 #endif
 
 

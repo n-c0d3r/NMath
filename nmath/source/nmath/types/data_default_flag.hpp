@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/dot.hpp
+/** @file nmath/types/data_default_flag.hpp
 *
-*   Implement dot.
+*   Implement data default flag.
 */
 
 
@@ -29,38 +29,12 @@
 
 #include <nmath/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nmath/types/vector.hpp>
-#include <nmath/types/quaternion.hpp>
-#include <nmath/functions/data_functions.hpp>
-
 #pragma endregion
 
 
 
 namespace nmath {
 
-	////////////////////////////////////////////////////////////////////////////////////
-	//  f32
-	////////////////////////////////////////////////////////////////////////////////////
-	NCPP_FORCE_INLINE f32 dot(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
-
-		return data2_dot(data_forward(a), data_forward(b));
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
-
-		return data3_dot(data_forward(a), data_forward(b));
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
-
-		return data4_dot(data_forward(a), data_forward(b));
-	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept {
-
-		return data4_dot(data_forward(a), data_forward(b));
-	}
+    struct F_data_default_flag {};
 
 }

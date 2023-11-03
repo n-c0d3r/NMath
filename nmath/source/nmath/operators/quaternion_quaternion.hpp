@@ -63,56 +63,23 @@ namespace nmath {
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL minus(PA_quaternion_f32 a) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_mul_ps(a.xyzw_, simd_f32x4_1111_negative);
-#else
-        return {
-
-            -a.x,
-            -a.y,
-            -a.z,
-            -a.w
-
-        };
-#endif
+        return data4_minus(data_forward(a));
     }
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL add(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_add_ps(a.xyzw_, b.xyzw_);
-#else
-        return {
-
-            a.x + b.x,
-            a.y + b.y,
-            a.z + b.z,
-            a.w + b.w
-
-        };
-#endif
+        return data4_add(data_forward(a), data_forward(b));
     }
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL subtract(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-#ifdef NCPP_ENABLE_SSE
-        return _mm_sub_ps(a.xyzw_, b.xyzw_);
-#else
-        return {
-
-            a.x - b.x,
-            a.y - b.y,
-            a.z - b.z,
-            a.w - b.w
-
-        };
-#endif
+        return data4_subtract(data_forward(a), data_forward(b));
     }
 
     NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
     
-        return data4_complex_multiply(a, b);
+        return data4_complex_multiply(data_forward(a), data_forward(b));
     }
 
 }

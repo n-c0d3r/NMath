@@ -34,6 +34,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data_helper.hpp>
+#include <nmath/types/data_default_flag.hpp>
 
 #pragma endregion
 
@@ -59,12 +60,10 @@ namespace nmath {
 
 
 
-    struct F_data2_default_flag {};
-
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data2_default_flag>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data_default_flag>
     struct TF_data2;
 
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data2_default_flag>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data_default_flag>
     using TPA_data2 = typename TF_data2<F_entry__, F_flag__>::F_passed_argument;
 
     NCPP_RTTI_CREATE_FLAG(F_data2_f32_flag);
@@ -186,11 +185,13 @@ namespace nmath {
         template<
             typename F_another_data2__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data2__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_f32_flag),
+                !std::is_same_v<F_another_data2__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_f32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data2(NMATH_DATA2_PA(F_another_data2__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data2(NMATH_DATA2_F32_PA(F_another_data2__) o) noexcept :
             x(o.x),
             y(o.y)
         {
@@ -215,11 +216,13 @@ namespace nmath {
         template<
             typename F_another_data2__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data2__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_f32_flag),
+                !std::is_same_v<F_another_data2__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_f32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data2& operator = (NMATH_DATA2_PA(F_another_data2__) o) noexcept
+        NCPP_FORCE_INLINE TF_data2& operator = (NMATH_DATA2_F32_PA(F_another_data2__) o) noexcept
         {
             
             x = o.x;
@@ -248,6 +251,13 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this xy() const {
 
             return {
@@ -356,11 +366,13 @@ namespace nmath {
         template<
             typename F_another_data2__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data2__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_i32_flag),
+                !std::is_same_v<F_another_data2__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_i32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data2(NMATH_DATA2_PA(F_another_data2__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data2(NMATH_DATA2_F32_PA(F_another_data2__) o) noexcept :
             x(o.x),
             y(o.y)
         {
@@ -385,11 +397,13 @@ namespace nmath {
         template<
             typename F_another_data2__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data2__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_i32_flag),
+                !std::is_same_v<F_another_data2__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_i32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data2& operator = (NMATH_DATA2_PA(F_another_data2__) o) noexcept
+        NCPP_FORCE_INLINE TF_data2& operator = (NMATH_DATA2_F32_PA(F_another_data2__) o) noexcept
         {
             
             x = o.x;
@@ -418,6 +432,13 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this xy() const {
 
             return {
@@ -526,11 +547,13 @@ namespace nmath {
         template<
             typename F_another_data2__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data2__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_u32_flag),
+                !std::is_same_v<F_another_data2__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_u32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data2(NMATH_DATA2_PA(F_another_data2__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data2(NMATH_DATA2_F32_PA(F_another_data2__) o) noexcept :
             x(o.x),
             y(o.y)
         {
@@ -555,11 +578,13 @@ namespace nmath {
         template<
             typename F_another_data2__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data2__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_u32_flag),
+                !std::is_same_v<F_another_data2__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data2_u32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data2__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data2& operator = (NMATH_DATA2_PA(F_another_data2__) o) noexcept
+        NCPP_FORCE_INLINE TF_data2& operator = (NMATH_DATA2_F32_PA(F_another_data2__) o) noexcept
         {
             
             x = o.x;
@@ -588,6 +613,13 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
+        NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+
+            return {
+                x,
+                y
+            };
+        }
         NCPP_FORCE_INLINE F_this xy() const {
 
             return {

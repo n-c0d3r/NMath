@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/cross.hpp
+/** @file nmath/types/data_forward.hpp
 *
-*   Implement cross.
+*   Implement data data_forward.
 */
 
 
@@ -33,35 +33,64 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/vector.hpp>
-#include <nmath/types/quaternion.hpp>
-#include <nmath/functions/data_functions.hpp>
-#include <nmath/simd_helper.hpp>
+#include <nmath/types/data_helper.hpp>
+#include <nmath/operators/literal.hpp>
 
 #pragma endregion
 
 
 
-namespace nmath {	
-	
-	////////////////////////////////////////////////////////////////////////////////////
-	//  f32
-	////////////////////////////////////////////////////////////////////////////////////
-	NCPP_FORCE_INLINE float cross(PA_vector2_f32 a, PA_vector2_f32 b) noexcept {
+namespace nmath {
 
-		return data2_cross(data_forward(a), data_forward(b));
-	}
-	NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
+    NMATH_USING_NLIB_NAMESPACES();
 
-		return data3_cross(data_forward(a), data_forward(b));
-	}
-	NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL cross(PA_vector4_f32 a, PA_vector4_f32 b, PA_vector4_f32 c) noexcept {
 
-		return data4_cross(data_forward(a), data_forward(b), data_forward(c));
-	}
-	NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL cross(PA_quaternion_f32 a, PA_quaternion_f32 b, PA_quaternion_f32 c) noexcept {
 
-		return data4_cross(data_forward(a), data_forward(b), data_forward(c));
-	}
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data2
+    ////////////////////////////////////////////////////////////////////////////////////
+#define NMATH_DEFINE_DATA2_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data2_f32 data_forward(NMATH_DATA2_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data2_f32)o; \
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data3
+    ////////////////////////////////////////////////////////////////////////////////////
+#ifdef NCPP_ENABLE_SSE
+#define NMATH_DEFINE_DATA3_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data3_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
+        \
+        return o.data3(); \
+    }
+#else
+#define NMATH_DEFINE_DATA3_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data3_f32 data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data3_f32)o; \
+    }
+#endif
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data4
+    ////////////////////////////////////////////////////////////////////////////////////
+#ifdef NCPP_ENABLE_SSE
+#define NMATH_DEFINE_DATA4_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data4_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
+        \
+        return o.data4(); \
+    }
+#else
+#define NMATH_DEFINE_DATA4_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data4_f32 data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data4_f32)o; \
+    }
+#endif
 
 }

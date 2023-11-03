@@ -68,10 +68,10 @@ namespace nmath {
 
         return data4_complex_multiply(
             data4_complex_multiply(
-                conjugate(b),
-                F_vector4_f32(a)
+                data_forward(conjugate(b)),
+                data_forward(F_vector4_f32(a))
             ),
-            b
+            data_forward(b)
         ).xyz();
     }
 
@@ -80,10 +80,10 @@ namespace nmath {
 
         return data4_complex_multiply(
             data4_complex_multiply(
-                conjugate(b),
-                a
+                data_forward(conjugate(b)),
+                data_forward(a)
             ),
-            b
+            data_forward(b)
         );
     }
     

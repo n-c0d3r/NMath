@@ -37,6 +37,7 @@
 #include <nmath/simd_helper.hpp>
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data_helper.hpp>
+#include <nmath/types/data_default_flag.hpp>
 
 #pragma endregion
 
@@ -62,12 +63,10 @@ namespace nmath {
 
 
 
-    struct F_data3_default_flag {};
-
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data3_default_flag>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data_default_flag>
     struct TF_data3;
 
-    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data3_default_flag>
+    template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE, typename F_flag__ = F_data_default_flag>
     using TPA_data3 = typename TF_data3<F_entry__, F_flag__>::F_passed_argument;
 
     NCPP_RTTI_CREATE_FLAG(F_data3_f32_flag);
@@ -285,11 +284,13 @@ namespace nmath {
         template<
             typename F_another_data3__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_f32_flag),
+                !std::is_same_v<F_another_data3__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_f32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_F32_PA(F_another_data3__) o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(o.xyz_)
 #else
@@ -326,11 +327,13 @@ namespace nmath {
         template<
             typename F_another_data3__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_f32_flag),
+                !std::is_same_v<F_another_data3__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_f32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_PA(F_another_data3__) o) noexcept
+        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_F32_PA(F_another_data3__) o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE
@@ -419,6 +422,19 @@ namespace nmath {
                 z,
                 y
             };
+        }
+
+        NCPP_FORCE_INLINE TF_data3<F_entry> NCPP_VECTOR_CALL data3() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return xyz_;
+#else
+            return {
+                x,
+                y,
+                z
+            };
+#endif
         }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyz() const {
 
@@ -642,11 +658,13 @@ namespace nmath {
         template<
             typename F_another_data3__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_i32_flag),
+                !std::is_same_v<F_another_data3__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_i32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_F32_PA(F_another_data3__) o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyz_(o.xyz_)
 #else
@@ -683,11 +701,13 @@ namespace nmath {
         template<
             typename F_another_data3__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_i32_flag),
+                !std::is_same_v<F_another_data3__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_i32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_PA(F_another_data3__) o) noexcept
+        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_F32_PA(F_another_data3__) o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -776,6 +796,19 @@ namespace nmath {
                 z,
                 y
             };
+        }
+
+        NCPP_FORCE_INLINE TF_data3<F_entry> NCPP_VECTOR_CALL data3() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyz_;
+#else
+            return {
+                x,
+                y,
+                z
+            };
+#endif
         }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyz() const {
 
@@ -999,11 +1032,13 @@ namespace nmath {
         template<
             typename F_another_data3__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_u32_flag),
+                !std::is_same_v<F_another_data3__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_u32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_PA(F_another_data3__) o) noexcept :
+        NCPP_FORCE_INLINE TF_data3(NMATH_DATA3_F32_PA(F_another_data3__) o) noexcept :
 #ifdef NCPP_ENABLE_SSE2
             xyz_(o.xyz_)
 #else
@@ -1040,11 +1075,13 @@ namespace nmath {
         template<
             typename F_another_data3__,
             std::enable_if_t<
-                !std::is_same_v<F_another_data3__, F_this> && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_u32_flag),
+                !std::is_same_v<F_another_data3__, F_this> 
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data3_u32_flag)
+                && NCPP_RTTI_IS_HAS_FLAG(F_another_data3__, F_data_default_flag),
                 i32
             > = 0
         >
-        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_PA(F_another_data3__) o) noexcept
+        NCPP_FORCE_INLINE TF_data3& NCPP_VECTOR_CALL operator = (NMATH_DATA3_F32_PA(F_another_data3__) o) noexcept
         {
 
 #ifdef NCPP_ENABLE_SSE2
@@ -1133,6 +1170,19 @@ namespace nmath {
                 z,
                 y
             };
+        }
+
+        NCPP_FORCE_INLINE TF_data3<F_entry> NCPP_VECTOR_CALL data3() const {
+
+#ifdef NCPP_ENABLE_SSE2
+            return xyz_;
+#else
+            return {
+                x,
+                y,
+                z
+            };
+#endif
         }
         NCPP_FORCE_INLINE F_this NCPP_VECTOR_CALL xyz() const {
 
