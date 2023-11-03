@@ -127,4 +127,38 @@ namespace nmath {
     }
 #endif
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data2x4
+    ////////////////////////////////////////////////////////////////////////////////////
+#define NMATH_DEFINE_DATA2X4_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data2x4_f32 data_forward(NMATH_DATA2X4_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data2x4_f32)o; \
+    }
+
+#define NMATH_DEFINE_DATA2X4_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data2x4_f32 o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data4x4
+    ////////////////////////////////////////////////////////////////////////////////////
+#define NMATH_DEFINE_DATA4X4_F32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data4x4_f32 data_forward(NMATH_DATA4X4_F32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data4x4_f32)o; \
+    }
+
+#define NMATH_DEFINE_DATA4X4_F32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data4x4_f32 o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
+    }
+
 }

@@ -113,19 +113,19 @@ namespace nmath {
 
 
 #ifdef NCPP_ENABLE_AVX
-#define NMATH_DATA4X4_SIMD_M256() \
+#define NMATH_DATA4X4_SIMD_M256X2() \
     struct {\
         __m256 xy_;\
         __m256 zw_;\
     };
-#define NMATH_DATA4X4_SIMD_CONSTRUCTOR_M256() \
+#define NMATH_DATA4X4_SIMD_CONSTRUCTOR_M256X2() \
     NCPP_FORCE_INLINE TF_data4x4(__m256 xy, __m256 zw) : \
         xy_(xy),\
         zw_(zw)\
     {}
 #else
-#define NMATH_DATA4X4_SIMD_M256() ;
-#define NMATH_DATA4X4_SIMD_CONSTRUCTOR_M256() ;
+#define NMATH_DATA4X4_SIMD_M256X2() ;
+#define NMATH_DATA4X4_SIMD_CONSTRUCTOR_M256X2() ;
 #endif
 
 
@@ -159,7 +159,7 @@ namespace nmath {
 
         using F_this = TF_data4x4<F_entry, F_flag__>;
 
-        static constexpr u32 entry_count_s = 16;
+        static constexpr u32 entry_count_s = 64;
         static constexpr u32 pack_count_s = 4;
 
         using F_passed_argument = const F_this&;
@@ -185,7 +185,7 @@ namespace nmath {
 
             F_pack m[4];
             
-            NMATH_DATA4X4_SIMD_M256();
+            NMATH_DATA4X4_SIMD_M256X2();
             
         };
         
@@ -240,7 +240,7 @@ namespace nmath {
             
         }
 
-        NMATH_DATA4X4_SIMD_CONSTRUCTOR_M256();
+        NMATH_DATA4X4_SIMD_CONSTRUCTOR_M256X2();
         
         
         
@@ -291,13 +291,13 @@ namespace nmath {
         {
 
 #ifdef NCPP_ENABLE_AVX
-            __m256 xy_compare8 = _mm256_cmp_ps(a.xy_, b.xy_, _CMP_EQ_OQ);
+            __m256 xy_compare8 = _mm256_cmp_ps(a.xy_, b.xy_, _CMP_NEQ_OQ);
             int xy_mask = _mm256_movemask_ps(xy_compare8);
 
-            __m256 zw_compare8 = _mm256_cmp_ps(a.zw_, b.zw_, _CMP_EQ_OQ);
+            __m256 zw_compare8 = _mm256_cmp_ps(a.zw_, b.zw_, _CMP_NEQ_OQ);
             int zw_mask = _mm256_movemask_ps(zw_compare8);
 
-            return (xy_mask != 0b11111111) || (zw_mask != 0b11111111);
+            return (xy_mask == 0b11111111) || (zw_mask == 0b11111111);
 #else
             return (a.x != b.x) || (a.y != b.y) || (a.z != b.z) || (a.w != b.w);
 #endif

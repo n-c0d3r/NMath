@@ -66,6 +66,8 @@ namespace nmath {
 #define NMATH_DATA4_F32_PA(T) const T&
 #endif
 
+#define NMATH_DATA2X4_F32_PA(T) const T&
+
 #define NMATH_DATA4X4_F32_PA(T) const T&
 
 }
