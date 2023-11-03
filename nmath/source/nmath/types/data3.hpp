@@ -37,6 +37,7 @@
 #include <nmath/simd_helper.hpp>
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data_helper.hpp>
+#include <nmath/types/data_forward.hpp>
 #include <nmath/types/data_default_flag.hpp>
 
 #pragma endregion
@@ -1332,5 +1333,11 @@ namespace nmath {
     using PA_data3_f32 = TPA_data3<f32>;
     using PA_data3_i32 = TPA_data3<i32>;
     using PA_data3_u32 = TPA_data3<u32>;
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    NMATH_DEFINE_DATA3_F32_FORWARD(F_data3_f32);
 
 }

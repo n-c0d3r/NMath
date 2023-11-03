@@ -39,6 +39,7 @@
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data3.hpp>
 #include <nmath/types/data_helper.hpp>
+#include <nmath/types/data_forward.hpp>
 #include <nmath/types/data_default_flag.hpp>
 
 #pragma endregion
@@ -3284,5 +3285,11 @@ namespace nmath {
     using PA_data4_f32 = TPA_data4<f32>;
     using PA_data4_i32 = TPA_data4<i32>;
     using PA_data4_u32 = TPA_data4<u32>;
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    NMATH_DEFINE_DATA4_F32_FORWARD(F_data4_f32);
 
 }
