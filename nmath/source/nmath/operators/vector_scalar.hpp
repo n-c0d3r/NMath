@@ -62,14 +62,14 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_vector2_f32 a, float b) noexcept
     {
         
-        return vector_forward(
+        return vecma_forward(
             data2_multiply(data_forward(a), b)
         );
     }
     NCPP_FORCE_INLINE F_vector2_f32 multiply(float b, PA_vector2_f32 a) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data2_multiply(data_forward(a), b)
         );
     }
@@ -77,7 +77,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector2_f32 divide(PA_vector2_f32 a, float b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data2_divide(data_forward(a), b)
         );
     }
@@ -115,14 +115,14 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector3_f32 a, float b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_multiply(data_forward(a), b)
         );
     }
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector3_f32 a) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_multiply(data_forward(a), b)
         );
     }
@@ -130,7 +130,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(nmath::F_vector3_f32 a, float b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_divide(data_forward(a), b)
         );
     }
@@ -168,14 +168,14 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector4_f32 a, float b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_multiply(data_forward(a), b)
         );
     }
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector4_f32 a) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_multiply(data_forward(a), b)
         );
     }
@@ -183,7 +183,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(nmath::F_vector4_f32 a, float b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_divide(data_forward(a), b)
         );
     }

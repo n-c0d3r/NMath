@@ -65,7 +65,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(PA_vector3_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_complex_multiply(
                 data4_complex_multiply(
                     data_forward(conjugate(b)),
@@ -79,7 +79,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(PA_vector4_f32 a, PA_quaternion_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_complex_multiply(
                 data4_complex_multiply(
                     data_forward(conjugate(b)),

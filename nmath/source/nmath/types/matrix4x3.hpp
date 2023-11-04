@@ -96,6 +96,6 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
 
     NMATH_DEFINE_DATA4X3_F32_FORWARD(F_matrix4x3_f32);
-    NMATH_DEFINE_DATA4X3_F32_REVERSE_FORWARD(matrix_forward, F_matrix4x3_f32);
+    NMATH_DEFINE_DATA4X3_F32_REVERSE_FORWARD(vecma_forward, F_matrix4x3_f32);
 
 }

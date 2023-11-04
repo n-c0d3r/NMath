@@ -63,32 +63,32 @@ namespace nmath {
     
     NCPP_FORCE_INLINE F_vector2_f32 minus(PA_vector2_f32 a) noexcept
     {
-        return vector_forward(
+        return vecma_forward(
             data2_minus(data_forward(a))
         );
     }
     NCPP_FORCE_INLINE F_vector2_f32 add(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return vector_forward(
+        return vecma_forward(
             data2_add(data_forward(a), data_forward(b))
         );
     }
     NCPP_FORCE_INLINE F_vector2_f32 subtract(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return vector_forward(
+        return vecma_forward(
             data2_subtract(data_forward(a), data_forward(b))
         );
     }
 
     NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return vector_forward(
+        return vecma_forward(
             data2_multiply(data_forward(a), data_forward(b))
         );
     }
     NCPP_FORCE_INLINE F_vector2_f32 divide(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return vector_forward(
+        return vecma_forward(
             data2_divide(data_forward(a), data_forward(b))
         );
     }
@@ -120,21 +120,21 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL minus(PA_vector3_f32 a) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_minus(data_forward(a))
         );
     }
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL add(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_add(data_forward(a), data_forward(b))
         );
     }
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL subtract(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_subtract(data_forward(a), data_forward(b))
         );
     }
@@ -142,14 +142,14 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_multiply(data_forward(a), data_forward(b))
         );
     }
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data3_divide(data_forward(a), data_forward(b))
         );
     }
@@ -181,21 +181,21 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL minus(PA_vector4_f32 a) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_minus(data_forward(a))
         );
     }
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL add(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_add(data_forward(a), data_forward(b))
         );
     }
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL subtract(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_subtract(data_forward(a), data_forward(b))
         );
     }
@@ -203,14 +203,14 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_multiply(data_forward(a), data_forward(b))
         );
     }
     NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
     {
 
-        return vector_forward(
+        return vecma_forward(
             data4_divide(data_forward(a), data_forward(b))
         );
     }

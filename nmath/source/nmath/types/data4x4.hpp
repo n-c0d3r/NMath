@@ -246,7 +246,7 @@ namespace nmath {
             
             
         }
-        NCPP_FORCE_INLINE TF_data4x4(F_pack a, F_pack b, F_pack c, F_pack d) noexcept :
+        NCPP_FORCE_INLINE TF_data4x4(PA_pack a, PA_pack b, PA_pack c, PA_pack d) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyzw_, a.xyzw_)),
             cd_(_mm256_set_m128(d.xyzw_, c.xyzw_))
@@ -261,7 +261,7 @@ namespace nmath {
             
             
         }
-        NCPP_FORCE_INLINE TF_data4x4(F_pack a, F_pack b, PA_data2x4 cd) noexcept :
+        NCPP_FORCE_INLINE TF_data4x4(PA_pack a, PA_pack b, PA_data2x4 cd) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyzw_, a.xyzw_)),
             cd_(cd.ab_)
@@ -276,7 +276,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data4x4(F_pack a, PA_data2x4 bc, F_pack d) noexcept :
+        NCPP_FORCE_INLINE TF_data4x4(PA_pack a, PA_data2x4 bc, PA_pack d) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(bc.a.xyzw_, a.xyzw_)),
             cd_(_mm256_set_m128(d.xyzw_, bc.b.xyzw_))
@@ -291,7 +291,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data4x4(PA_data2x4 ab, F_pack c, F_pack d) noexcept :
+        NCPP_FORCE_INLINE TF_data4x4(PA_data2x4 ab, PA_pack c, PA_pack d) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(ab.ab_),
             cd_(_mm256_set_m128(d.xyzw_, c.xyzw_))
@@ -321,7 +321,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data4x4(PA_data3x4 abc, F_pack d) noexcept :
+        NCPP_FORCE_INLINE TF_data4x4(PA_data3x4 abc, PA_pack d) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(abc.ab_),
             cd_(_mm256_set_m128(d.xyzw_, abc.c_.xyzw_))
@@ -336,7 +336,7 @@ namespace nmath {
             
 
         }
-        NCPP_FORCE_INLINE TF_data4x4(F_pack a, PA_data3x4 bcd) noexcept :
+        NCPP_FORCE_INLINE TF_data4x4(PA_pack a, PA_data3x4 bcd) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(bcd.a.xyzw_, a.xyzw_)),
             cd_(_mm256_set_m128(bcd.c.xyzw_, bcd.b.xyzw_))
@@ -1320,7 +1320,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data4x4<F_entry> NCPP_VECTOR_CALL data4x4() const {
+        NCPP_FORCE_INLINE TF_data4x4<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -1329,15 +1329,15 @@ namespace nmath {
             };
 #else
             return {
-                a,
-                b,
-                c,
-                d
+                a.data(),
+                b.data(),
+                c.data(),
+                d.data()
             };
 #endif
         }
-        template<typename F_another_data4x4__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data4x4__> T_data4x4() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -1346,10 +1346,10 @@ namespace nmath {
             };
 #else
             return {
-                a,
-                b,
-                c,
-                d
+                a.T_data<TF_pack_cast<F_another_data__>>(),
+                b.T_data<TF_pack_cast<F_another_data__>>(),
+                c.T_data<TF_pack_cast<F_another_data__>>(),
+                d.T_data<TF_pack_cast<F_another_data__>>()
             };
 #endif
         }

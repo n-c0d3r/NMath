@@ -187,12 +187,12 @@ namespace nmath {
                 F_entry ax;
                 F_entry ay;
                 F_entry az;
-                F_entry aw;
+                F_entry aw_;
 
                 F_entry bx;
                 F_entry by;
                 F_entry bz;
-                F_entry bw;
+                F_entry bw_;
 
             };
 
@@ -219,7 +219,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data2x3(F_pack a, F_pack b) noexcept :
+        NCPP_FORCE_INLINE TF_data2x3(PA_pack a, PA_pack b) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyz_, a.xyz_))
 #else
@@ -303,26 +303,26 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2x3<F_entry> NCPP_VECTOR_CALL data2x3() const {
+        NCPP_FORCE_INLINE TF_data2x3<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return ab_;
 #else
             return {
-                a,
-                b
+                a.data(),
+                b.data()
             };
 #endif
         }
-        template<typename F_another_data2x3__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data2x3__> T_data2x3() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return ab_;
 #else
             return {
-                a,
-                b
+                a.T_data<TF_pack_cast<F_another_data__>>(),
+                b.T_data<TF_pack_cast<F_another_data__>>()
             };
 #endif
         }

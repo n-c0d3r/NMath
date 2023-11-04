@@ -225,15 +225,15 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+        NCPP_FORCE_INLINE TF_data2<F_entry> data() const {
 
             return {
                 x,
                 y
             };
         }
-        template<typename F_another_data2__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data2__> T_data2() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
             return {
                 x,
@@ -387,15 +387,15 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+        NCPP_FORCE_INLINE TF_data2<F_entry> data() const {
 
             return {
                 x,
                 y
             };
         }
-        template<typename F_another_data2__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data2__> T_data2() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
             return {
                 x,
@@ -549,15 +549,15 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2<F_entry> data2() const {
+        NCPP_FORCE_INLINE TF_data2<F_entry> data() const {
 
             return {
                 x,
                 y
             };
         }
-        template<typename F_another_data2__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data2__> T_data2() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
             return {
                 x,

@@ -35,7 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/data4.hpp>
+#include <nmath/types/data3.hpp>
 #include <nmath/types/data2x3.hpp>
 #include <nmath/types/data_helper.hpp>
 #include <nmath/types/data_forward.hpp>
@@ -196,17 +196,17 @@ namespace nmath {
                 F_entry ax;
                 F_entry ay;
                 F_entry az;
-                F_entry aw;
+                F_entry aw_;
 
                 F_entry bx;
                 F_entry by;
                 F_entry bz;
-                F_entry bw;
+                F_entry bw_;
 
                 F_entry cx;
                 F_entry cy;
                 F_entry cz;
-                F_entry cw;
+                F_entry cw_;
 
             };
 
@@ -235,7 +235,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(F_pack a, F_pack b, F_pack c, F_pack d) noexcept :
+        NCPP_FORCE_INLINE TF_data3x3(PA_pack a, PA_pack b, PA_pack c) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyz_, a.xyz_)),
             c_(_mm256_set_m128(simd_f32x4_0000, c.xyz_))
@@ -249,7 +249,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(PA_data2x3 ab, F_pack c) noexcept :
+        NCPP_FORCE_INLINE TF_data3x3(PA_data2x3 ab, PA_pack c) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(ab.ab_),
             c_(_mm256_set_m128(simd_f32x4_0000, c.xyz_))
@@ -263,7 +263,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(F_pack a, PA_data2x3 bc) noexcept :
+        NCPP_FORCE_INLINE TF_data3x3(PA_pack a, PA_data2x3 bc) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(a.xyz_, bc.a.xyz_)),
             c_(_mm256_set_m128(simd_f32x4_0000, bc.b.xyz_))
@@ -426,7 +426,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data3x3<F_entry> NCPP_VECTOR_CALL data3x3() const {
+        NCPP_FORCE_INLINE TF_data3x3<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -435,14 +435,14 @@ namespace nmath {
             };
 #else
             return {
-                a,
-                b,
-                c
+                a.data(),
+                b.data(),
+                c.data()
             };
 #endif
         }
-        template<typename F_another_data3x3__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data3x3__> T_data3x3() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -451,9 +451,9 @@ namespace nmath {
             };
 #else
             return {
-                a,
-                b,
-                c
+                a.T_data<TF_pack_cast<F_another_data__>>(),
+                b.T_data<TF_pack_cast<F_another_data__>>(),
+                c.T_data<TF_pack_cast<F_another_data__>>()
             };
 #endif
         }

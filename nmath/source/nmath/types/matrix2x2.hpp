@@ -2,9 +2,9 @@
 
 #pragma once
 
-/** @file nmath/types/matrix2x4.hpp
+/** @file nmath/types/matrix2x2.hpp
 *
-*   Implement matrix2x4.
+*   Implement matrix2x2.
 */
 
 
@@ -35,7 +35,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/data2x4.hpp>
+#include <nmath/types/data2x2.hpp>
 #include <nmath/types/data_forward.hpp>
 #include <nmath/types/matrix_flag.hpp>
 
@@ -64,38 +64,38 @@ namespace nmath {
 
 
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
-    using TF_matrix2x4 = TF_data2x4<F_entry__, F_matrix_flag>;
+    using TF_matrix2x2 = TF_data2x2<F_entry__, F_matrix_flag>;
 
     template<typename F_entry__ = NMATH_DEFAULT_FP_TYPE>
-    using TPA_matrix2x4 = TPA_data2x4<F_entry__, F_matrix_flag>;
+    using TPA_matrix2x2 = TPA_data2x2<F_entry__, F_matrix_flag>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
 
-    using F_matrix2x4 = TF_matrix2x4<>;
-    using PA_matrix2x4 = TPA_matrix2x4<>;
-    // using F_matrix2x4_i = TF_matrix2x4<NMATH_DEFAULT_INT_TYPE>;
-    // using PA_matrix2x4_i = TPA_matrix2x4<NMATH_DEFAULT_INT_TYPE>;
-    // using F_matrix2x4_u = TF_matrix2x4<NMATH_DEFAULT_UINT_TYPE>;
-    // using PA_matrix2x4_u = TPA_matrix2x4<NMATH_DEFAULT_UINT_TYPE>;
+    using F_matrix2x2 = TF_matrix2x2<>;
+    using PA_matrix2x2 = TPA_matrix2x2<>;
+    // using F_matrix2x2_i = TF_matrix2x2<NMATH_DEFAULT_INT_TYPE>;
+    // using PA_matrix2x2_i = TPA_matrix2x2<NMATH_DEFAULT_INT_TYPE>;
+    // using F_matrix2x2_u = TF_matrix2x2<NMATH_DEFAULT_UINT_TYPE>;
+    // using PA_matrix2x2_u = TPA_matrix2x2<NMATH_DEFAULT_UINT_TYPE>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
 
-    using F_matrix2x4_f32 = TF_matrix2x4<f32>;
-    using PA_matrix2x4_f32 = TPA_matrix2x4<f32>;
-    // using F_matrix2x4_i32 = TF_matrix2x4<i32>;
-    // using PA_matrix2x4_i32 = TPA_matrix2x4<i32>;
-    // using F_matrix2x4_u32 = TF_matrix2x4<u32>;
-    // using PA_matrix2x4_u32 = TPA_matrix2x4<u32>;
+    using F_matrix2x2_f32 = TF_matrix2x2<f32>;
+    using PA_matrix2x2_f32 = TPA_matrix2x2<f32>;
+    // using F_matrix2x2_i32 = TF_matrix2x2<i32>;
+    // using PA_matrix2x2_i32 = TPA_matrix2x2<i32>;
+    // using F_matrix2x2_u32 = TF_matrix2x2<u32>;
+    // using PA_matrix2x2_u32 = TPA_matrix2x2<u32>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
 
-    NMATH_DEFINE_DATA2X4_F32_FORWARD(F_matrix2x4_f32);
-    NMATH_DEFINE_DATA2X4_F32_REVERSE_FORWARD(vecma_forward, F_matrix2x4_f32);
+    NMATH_DEFINE_DATA2X2_F32_FORWARD(F_matrix2x2_f32);
+    NMATH_DEFINE_DATA2X2_F32_REVERSE_FORWARD(vecma_forward, F_matrix2x2_f32);
 
 }

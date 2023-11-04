@@ -235,7 +235,7 @@ namespace nmath {
             
             
         }
-        NCPP_FORCE_INLINE TF_data3x4(F_pack a, F_pack b, F_pack c, F_pack d) noexcept :
+        NCPP_FORCE_INLINE TF_data3x4(PA_pack a, PA_pack b, PA_pack c) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyzw_, a.xyzw_)),
             c_(_mm256_set_m128(simd_f32x4_0000, c.xyzw_))
@@ -249,7 +249,7 @@ namespace nmath {
             
             
         }
-        NCPP_FORCE_INLINE TF_data3x4(PA_data2x4 ab, F_pack c) noexcept :
+        NCPP_FORCE_INLINE TF_data3x4(PA_data2x4 ab, PA_pack c) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(ab.ab_),
             c_(_mm256_set_m128(simd_f32x4_0000, c.xyzw_))
@@ -263,7 +263,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x4(F_pack a, PA_data2x4 bc) noexcept :
+        NCPP_FORCE_INLINE TF_data3x4(PA_pack a, PA_data2x4 bc) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(a.xyzw_, bc.a.xyzw_)),
             c_(_mm256_set_m128(simd_f32x4_0000, bc.b.xyzw_))
@@ -426,7 +426,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data3x4<F_entry> NCPP_VECTOR_CALL data3x4() const {
+        NCPP_FORCE_INLINE TF_data3x4<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -435,14 +435,14 @@ namespace nmath {
             };
 #else
             return {
-                a,
-                b,
-                c
+                a.data(),
+                b.data(),
+                c.data()
             };
 #endif
         }
-        template<typename F_another_data3x4__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data3x4__> T_data3x4() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -451,9 +451,9 @@ namespace nmath {
             };
 #else
             return {
-                a,
-                b,
-                c
+                a.T_data<TF_pack_cast<F_another_data__>>(),
+                b.T_data<TF_pack_cast<F_another_data__>>(),
+                c.T_data<TF_pack_cast<F_another_data__>>()
             };
 #endif
         }

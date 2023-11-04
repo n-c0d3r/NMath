@@ -68,9 +68,11 @@ namespace nmath {
 
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
+#define NMATH_DATA2X2_F32_PA(T) const T
 #define NMATH_DATA2X3_F32_PA(T) const T
 #define NMATH_DATA2X4_F32_PA(T) const T
 #else
+#define NMATH_DATA2X2_F32_PA(T) const T&
 #define NMATH_DATA2X3_F32_PA(T) const T&
 #define NMATH_DATA2X4_F32_PA(T) const T&
 #endif
@@ -84,6 +86,12 @@ namespace nmath {
 #define NMATH_DATA3X4_F32_PA(T) const T&
 #endif
 
+#ifdef NCPP_ENABLE_AVX
+#define NMATH_DATA3X2_F32_PA(T) const T
+#else
+#define NMATH_DATA3X2_F32_PA(T) const T&
+#endif
+
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DATA4X3_F32_PA(T) const T
@@ -91,6 +99,12 @@ namespace nmath {
 #else
 #define NMATH_DATA4X3_F32_PA(T) const T&
 #define NMATH_DATA4X4_F32_PA(T) const T&
+#endif
+
+#ifdef NCPP_ENABLE_AVX
+#define NMATH_DATA4X2_F32_PA(T) const T
+#else
+#define NMATH_DATA4X2_F32_PA(T) const T&
 #endif
 
 }

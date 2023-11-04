@@ -792,7 +792,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data4<F_entry> NCPP_VECTOR_CALL data4() const {
+        NCPP_FORCE_INLINE TF_data4<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -805,8 +805,8 @@ namespace nmath {
             };
 #endif
         }
-        template<typename F_another_data4__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data4__> T_data4() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -1790,7 +1790,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data4<F_entry> NCPP_VECTOR_CALL data4() const {
+        NCPP_FORCE_INLINE TF_data4<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyzw_;
@@ -1803,8 +1803,8 @@ namespace nmath {
             };
 #endif
         }
-        template<typename F_another_data4__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data4__> T_data4() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyzw_;
@@ -2788,7 +2788,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data4<F_entry> NCPP_VECTOR_CALL data4() const {
+        NCPP_FORCE_INLINE TF_data4<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyzw_;
@@ -2801,8 +2801,8 @@ namespace nmath {
             };
 #endif
         }
-        template<typename F_another_data4__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data4__> T_data4() const {
+        template<typename F_another_data__>
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
 
 #ifdef NCPP_ENABLE_SSE2
             return xyzw_;

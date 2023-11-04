@@ -52,13 +52,13 @@ namespace nmath {
 	}
 	NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
-		return vector_forward(
+		return vecma_forward(
 			data3_cross(data_forward(a), data_forward(b))
 		);
 	}
 	NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL cross(PA_vector4_f32 a, PA_vector4_f32 b, PA_vector4_f32 c) noexcept {
 
-		return vector_forward(
+		return vecma_forward(
 			data4_cross(data_forward(a), data_forward(b), data_forward(c))
 		);
 	}
