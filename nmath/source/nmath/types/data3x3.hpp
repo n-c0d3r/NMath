@@ -249,7 +249,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(PA_data2x3 ab, F_entry c) noexcept :
+        NCPP_FORCE_INLINE TF_data3x3(PA_data2x3 ab, F_pack c) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(ab.ab_),
             c_(_mm256_set_m128(simd_f32x4_0000, c.xyz_))
@@ -263,7 +263,7 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(F_entry a, PA_data2x3 bc) noexcept :
+        NCPP_FORCE_INLINE TF_data3x3(F_pack a, PA_data2x3 bc) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(a.xyz_, bc.a.xyz_)),
             c_(_mm256_set_m128(simd_f32x4_0000, bc.b.xyz_))
