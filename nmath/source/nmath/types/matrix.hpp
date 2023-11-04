@@ -35,8 +35,11 @@
 
 #include <nmath/types/matrix_flag.hpp>
 
+#include <nmath/types/matrix2x3.hpp>
 #include <nmath/types/matrix2x4.hpp>
+#include <nmath/types/matrix3x3.hpp>
 #include <nmath/types/matrix3x4.hpp>
+#include <nmath/types/matrix4x3.hpp>
 #include <nmath/types/matrix4x4.hpp>
 
 #pragma endregion

@@ -328,13 +328,13 @@ namespace nmath {
         {
 
 #ifdef NCPP_ENABLE_AVX
-            __m256 ab_compare8 = _mm256_cmp_ps(a.ab_, b.ab_, _CMP_NEQ_OQ);
+            __m256 ab_compare8 = _mm256_cmp_ps(a.ab_, b.ab_, _CMP_EQ_OQ);
             int ab_mask = _mm256_movemask_ps(ab_compare8);
 
-            __m256 cd_compare8 = _mm256_cmp_ps(a.cd_, b.cd_, _CMP_NEQ_OQ);
+            __m256 cd_compare8 = _mm256_cmp_ps(a.cd_, b.cd_, _CMP_EQ_OQ);
             int cd_mask = _mm256_movemask_ps(cd_compare8);
 
-            return ((ab_mask & cd_mask) == 0b11111111);
+            return ((ab_mask & cd_mask) != 0b11111111);
 #else
             return (a.a != b.a) || (a.b != b.b) || (a.c != b.c) || (a.d != b.d);
 #endif
