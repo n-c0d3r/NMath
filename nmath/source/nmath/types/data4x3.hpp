@@ -248,8 +248,8 @@ namespace nmath {
         }
         NCPP_FORCE_INLINE TF_data4x3(F_pack a, F_pack b, F_pack c, F_pack d) noexcept :
 #ifdef NCPP_ENABLE_AVX
-            ab_(_mm256_set_m128(b.xyzw_, a.xyzw_)),
-            cd_(_mm256_set_m128(d.xyzw_, c.xyzw_))
+            ab_(_mm256_set_m128(b.xyz_, a.xyz_)),
+            cd_(_mm256_set_m128(d.xyz_, c.xyz_))
 #else
             a(a),
             b(b),
@@ -259,6 +259,96 @@ namespace nmath {
         {
 
 
+
+        }
+        NCPP_FORCE_INLINE TF_data4x3(F_pack a, F_pack b, PA_data2x3 cd) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(_mm256_set_m128(b.xyz_, a.xyz_)),
+            cd_(cd.ab_)
+#else
+            a(a),
+            b(b),
+            c(cd.a),
+            d(cd.b)
+#endif
+        {
+
+
+
+        }
+        NCPP_FORCE_INLINE TF_data4x3(F_pack a, PA_data2x3 bc, F_pack d) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(_mm256_set_m128(bc.a.xyz_, a.xyz_)),
+            cd_(_mm256_set_m128(d.xyz_, bc.b.xyz_))
+#else
+            a(a),
+            b(bc.a),
+            c(bc.b),
+            d(d)
+#endif
+        {
+
+
+
+        }
+        NCPP_FORCE_INLINE TF_data4x3(PA_data2x3 ab, F_pack c, F_pack d) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(ab.ab_),
+            cd_(_mm256_set_m128(d.xyz_, c.xyz_))
+#else
+            a(ab.a),
+            b(ab.b),
+            c(c),
+            d(d)
+#endif
+        {
+
+
+
+        }
+        NCPP_FORCE_INLINE TF_data4x3(PA_data2x3 ab, PA_data2x3 cd) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(ab.ab_),
+            cd_(cd.ab_)
+#else
+            a(ab.a),
+            b(ab.b),
+            c(cd.a),
+            d(cd.b)
+#endif
+        {
+
+
+
+        }
+        NCPP_FORCE_INLINE TF_data4x3(PA_data3x3 abc, F_pack d) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(abc.ab_),
+            cd_(_mm256_set_m128(d.xyz_, abc.c_.xyz_))
+#else
+            a(abc.a),
+            b(abc.b),
+            c(abc.c),
+            d(d)
+#endif
+        {
+
+            
+
+        }
+        NCPP_FORCE_INLINE TF_data4x3(F_pack a, PA_data3x3 bcd) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(_mm256_set_m128(bcd.a.xyz_, a.xyz_)),
+            cd_(_mm256_set_m128(bcd.c.xyz_, bcd.b.xyz_))
+#else
+            a(a),
+            b(bcd.a),
+            c(bcd.b),
+            d(bcd.c)
+#endif
+        {
+
+            
 
         }
         NCPP_FORCE_INLINE TF_data4x3(const TF_data4x3& o) noexcept :
