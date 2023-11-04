@@ -10,18 +10,20 @@ int main() {
 	F_matrix2x4 a2x4 = F_matrix2x4{
 
 		F_vector4{ 1.0f, 2.0f, 3.0f, 4.0f },
-		F_vector4{ 1.0f, 2.0f, 3.0f, 4.0f }
+		F_vector4{ 2.0f, 3.0f, 4.0f, 5.0f }
 
 	};
     
 	F_matrix4x4 a4x4 = F_matrix4x4{
 
 		F_vector4{ 1.0f, 2.0f, 3.0f, 4.0f },
-		F_vector4{ 1.0f, 2.0f, 3.0f, 4.0f },
-		F_vector4{ 1.0f, 2.0f, 3.0f, 4.0f },
-		F_vector4{ 1.0f, 2.0f, 3.0f, 4.0f }
+		F_vector4{ 2.0f, 3.0f, 4.0f, 5.0f },
+		F_vector4{ 3.0f, 4.0f, 5.0f, 6.0f },
+		F_vector4{ 4.0f, 5.0f, 6.0f, 7.0f }
 	
 	};
+
+	F_matrix4x4 a4x4_dbac = a4x4.dbac();
     
 	ncpp::pause_console();
 

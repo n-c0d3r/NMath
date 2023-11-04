@@ -43,6 +43,7 @@
 #include <nmath/types/data4.hpp>
 
 #include <nmath/types/data2x4.hpp>
+#include <nmath/types/data3x4.hpp>
 #include <nmath/types/data4x4.hpp>
 
 #pragma endregion

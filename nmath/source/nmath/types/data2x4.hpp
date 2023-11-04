@@ -114,10 +114,10 @@ namespace nmath {
 
 #ifdef NCPP_ENABLE_AVX
 #define NMATH_DATA2X4_SIMD_M256() \
-    __m256 xy_;
+    __m256 ab_;
 #define NMATH_DATA2X4_SIMD_CONSTRUCTOR_M256() \
-    NCPP_FORCE_INLINE TF_data2x4(__m256 xy) : \
-        xy_(xy)\
+    NCPP_FORCE_INLINE TF_data2x4(__m256 ab) : \
+        ab_(ab)\
     {}
 #else
 #define NMATH_DATA2X4_SIMD_M256() ;
@@ -141,7 +141,7 @@ namespace nmath {
 
 
     template<typename F_flag__>
-    struct NCPP_ALIGN(64) TF_data2x4<f32, F_flag__> {
+    struct NCPP_ALIGN(32) TF_data2x4<f32, F_flag__> {
         
         ////////////////////////////////////////////////////////////////////////////////////
         //  Typedefs
@@ -155,10 +155,15 @@ namespace nmath {
 
         using F_this = TF_data2x4<F_entry, F_flag__>;
 
-        static constexpr u32 entry_count_s = 32;
+        static constexpr u32 entry_count_s = 8;
         static constexpr u32 pack_count_s = 2;
 
+        // at least the lowest SIMD level is enabled, use pass-by-value
+#if defined(NCPP_ENABLE_SSE)
+        using F_passed_argument = const F_this;
+#else
         using F_passed_argument = const F_this&;
+#endif
         
         NCPP_RTTI_IMPLEMENT_FLAG(TF_data2x4, nmath::F_data2x4_f32_flag);
         NCPP_RTTI_IMPLEMENT_FLAG(TF_data2x4, F_flag__);
@@ -172,9 +177,23 @@ namespace nmath {
             
             struct {
                 
-                F_pack x;
-                F_pack y;
+                F_pack a;
+                F_pack b;
                 
+            };
+
+            struct {
+
+                F_entry ax;
+                F_entry ay;
+                F_entry az;
+                F_entry aw;
+
+                F_entry bx;
+                F_entry by;
+                F_entry bz;
+                F_entry bw;
+
             };
 
             F_pack m[2];
@@ -190,22 +209,22 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         NCPP_FORCE_INLINE TF_data2x4() noexcept :
 #ifdef NCPP_ENABLE_AVX
-            xy_(simd_f32x8_00000000)
+            ab_(simd_f32x8_00000000)
 #else
-            x(),
-            y()
+            a(),
+            b()
 #endif
         {
             
             
             
         }
-        NCPP_FORCE_INLINE TF_data2x4(F_pack x, F_pack y) noexcept :
+        NCPP_FORCE_INLINE TF_data2x4(F_pack a, F_pack b) noexcept :
 #ifdef NCPP_ENABLE_AVX
-            xy_(_mm256_set_m128(y.xyzw_, x.xyzw_))
+            ab_(_mm256_set_m128(b.xyzw_, a.xyzw_))
 #else
-            x(x),
-            y(y)
+            a(a),
+            b(b)
 #endif
         {
             
@@ -214,10 +233,10 @@ namespace nmath {
         }
         NCPP_FORCE_INLINE TF_data2x4(const TF_data2x4& o) noexcept :
 #ifdef NCPP_ENABLE_AVX
-            xy_(o.xy_)
+            ab_(o.ab_)
 #else
-            x(o.x),
-            y(o.y)
+            a(o.a),
+            b(o.b)
 #endif
         {
             
@@ -236,10 +255,10 @@ namespace nmath {
         {
 
 #ifdef NCPP_ENABLE_AVX
-            xy_ = o.xy_;
+            ab_ = o.ab_;
 #else
-            x = o.x;
-            y = o.y;
+            a = o.a;
+            b = o.b;
 #endif
 
             return *this;
@@ -258,24 +277,24 @@ namespace nmath {
         {
 
 #ifdef NCPP_ENABLE_AVX
-            __m256 xy_compare8 = _mm256_cmp_ps(a.xy_, b.xy_, _CMP_EQ_OQ);
-            int xy_mask = _mm256_movemask_ps(xy_compare8);
+            __m256 ab_compare8 = _mm256_cmp_ps(a.ab_, b.ab_, _CMP_EQ_OQ);
+            int ab_mask = _mm256_movemask_ps(ab_compare8);
 
-            return (xy_mask == 0b11111111);
+            return (ab_mask == 0b11111111);
 #else
-            return (a.x == b.x) && (a.y == b.y);
+            return (a.a == b.a) && (a.b == b.b);
 #endif
         }
         friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_AVX
-            __m256 xy_compare8 = _mm256_cmp_ps(a.xy_, b.xy_, _CMP_NEQ_OQ);
-            int xy_mask = _mm256_movemask_ps(xy_compare8);
+            __m256 ab_compare8 = _mm256_cmp_ps(a.ab_, b.ab_, _CMP_NEQ_OQ);
+            int ab_mask = _mm256_movemask_ps(ab_compare8);
 
-            return (xy_mask == 0b11111111);
+            return (ab_mask == 0b11111111);
 #else
-            return (a.x != b.x) || (a.y != b.y);
+            return (a.a != b.a) || (a.b != b.b);
 #endif
         }
 
@@ -287,11 +306,11 @@ namespace nmath {
         NCPP_FORCE_INLINE TF_data2x4<F_entry> NCPP_VECTOR_CALL data2x4() const {
 
 #ifdef NCPP_ENABLE_AVX
-            return xy_;
+            return ab_;
 #else
             return {
-                x,
-                y
+                a,
+                b
             };
 #endif
         }
@@ -299,11 +318,33 @@ namespace nmath {
         NCPP_FORCE_INLINE TF_data_cast<F_another_data2x4__> T_data2x4() const {
 
 #ifdef NCPP_ENABLE_AVX
-            return xy_;
+            return ab_;
 #else
             return {
-                x,
-                y
+                a,
+                b
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this ab() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return ab_;
+#else
+            return {
+                a,
+                b
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this ba() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return _mm256_permute2f128_ps(ab_, ab_, 1);
+#else
+            return {
+                b,
+                a
             };
 #endif
         }
