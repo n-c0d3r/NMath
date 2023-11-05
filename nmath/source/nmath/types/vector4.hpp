@@ -75,10 +75,10 @@ namespace nmath {
 
     using F_vector4 = TF_vector4<>;
     using PA_vector4 = TPA_vector4<>;
-    using F_vector4_i = TF_vector4<NMATH_DEFAULT_INT_TYPE>;
-    using PA_vector4_i = TPA_vector4<NMATH_DEFAULT_INT_TYPE>;
-    using F_vector4_u = TF_vector4<NMATH_DEFAULT_UINT_TYPE>;
-    using PA_vector4_u = TPA_vector4<NMATH_DEFAULT_UINT_TYPE>;
+    // using F_vector4_i = TF_vector4<NMATH_DEFAULT_INT_TYPE>;
+    // using PA_vector4_i = TPA_vector4<NMATH_DEFAULT_INT_TYPE>;
+    // using F_vector4_u = TF_vector4<NMATH_DEFAULT_UINT_TYPE>;
+    // using PA_vector4_u = TPA_vector4<NMATH_DEFAULT_UINT_TYPE>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
@@ -86,10 +86,10 @@ namespace nmath {
 
     using F_vector4_f32 = TF_vector4<f32>;
     using PA_vector4_f32 = TPA_vector4<f32>;
-    using F_vector4_i32 = TF_vector4<i32>;
-    using PA_vector4_i32 = TPA_vector4<i32>;
-    using F_vector4_u32 = TF_vector4<u32>;
-    using PA_vector4_u32 = TPA_vector4<u32>;
+    // using F_vector4_i32 = TF_vector4<i32>;
+    // using PA_vector4_i32 = TPA_vector4<i32>;
+    // using F_vector4_u32 = TF_vector4<u32>;
+    // using PA_vector4_u32 = TPA_vector4<u32>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////

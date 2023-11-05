@@ -73,10 +73,10 @@ namespace nmath {
 
     using F_vector2 = TF_vector2<>;
     using PA_vector2 = TPA_vector2<>;
-    using F_vector2_i = TF_vector2<NMATH_DEFAULT_INT_TYPE>;
-    using PA_vector2_i = TPA_vector2<NMATH_DEFAULT_INT_TYPE>;
-    using F_vector2_u = TF_vector2<NMATH_DEFAULT_UINT_TYPE>;
-    using PA_vector2_u = TPA_vector2<NMATH_DEFAULT_UINT_TYPE>;
+    // using F_vector2_i = TF_vector2<NMATH_DEFAULT_INT_TYPE>;
+    // using PA_vector2_i = TPA_vector2<NMATH_DEFAULT_INT_TYPE>;
+    // using F_vector2_u = TF_vector2<NMATH_DEFAULT_UINT_TYPE>;
+    // using PA_vector2_u = TPA_vector2<NMATH_DEFAULT_UINT_TYPE>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
@@ -84,10 +84,10 @@ namespace nmath {
 
     using F_vector2_f32 = TF_vector2<f32>;
     using PA_vector2_f32 = TPA_vector2<f32>;
-    using F_vector2_i32 = TF_vector2<i32>;
-    using PA_vector2_i32 = TPA_vector2<i32>;
-    using F_vector2_u32 = TF_vector2<u32>;
-    using PA_vector2_u32 = TPA_vector2<u32>;
+    // using F_vector2_i32 = TF_vector2<i32>;
+    // using PA_vector2_i32 = TPA_vector2<i32>;
+    // using F_vector2_u32 = TF_vector2<u32>;
+    // using PA_vector2_u32 = TPA_vector2<u32>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////

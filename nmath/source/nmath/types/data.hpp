@@ -37,6 +37,7 @@
 #include <nmath/types/data_constants.hpp>
 #include <nmath/types/data_forward.hpp>
 #include <nmath/types/data_default_flag.hpp>
+#include <nmath/types/combine.hpp>
 
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data3.hpp>
