@@ -232,7 +232,7 @@ namespace nmath {
                 _mm256_blend_ps(abcxyz.ab_, simd_f32x8_00000000, 0b10001000)
             ),
             cd_(
-                _mm256_blend_ps(abcxyz.cd_, simd_f32x8_00000000, 0b10001000)
+                _mm256_blend_ps(abcxyz.cd_, simd_f32x8_00000000, 0b11111000)
             )
 #else
             a(abcxyz.a),
