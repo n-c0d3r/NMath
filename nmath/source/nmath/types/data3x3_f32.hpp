@@ -122,8 +122,8 @@ namespace nmath {
         using F_pack = TF_data3<F_entry, F_flag__>;
         using PA_pack = TPA_data3<F_entry, F_flag__>;
 
-        using F_data2x3 = TF_data2x3<F_entry, F_flag__>;
-        using PA_data2x3 = TPA_data2x3<F_entry, F_flag__>;
+        using F_data2x2 = TF_data2x2<F_entry, F_flag__>;
+        using PA_data2x2 = TPA_data2x2<F_entry, F_flag__>;
 
         using F_flag = F_flag__;
 
@@ -215,34 +215,6 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(PA_data2x3 ab, PA_pack c) noexcept :
-#ifdef NCPP_ENABLE_AVX
-            ab_(ab.ab_),
-            c_(_mm256_set_m128(simd_f32x4_0000, c.xyz_))
-#else
-            a(ab.a),
-            b(ab.b),
-            c(c)
-#endif
-        {
-
-
-
-        }
-        NCPP_FORCE_INLINE TF_data3x3(PA_pack a, PA_data2x3 bc) noexcept :
-#ifdef NCPP_ENABLE_AVX
-            ab_(_mm256_set_m128(a.xyz_, bc.a.xyz_)),
-            c_(_mm256_set_m128(simd_f32x4_0000, bc.b.xyz_))
-#else
-            a(ab.a),
-            b(ab.b),
-            c(c)
-#endif
-        {
-
-
-
-        }
         NCPP_FORCE_INLINE TF_data3x3(const TF_data3x3& o) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(o.ab_),
@@ -325,73 +297,6 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE F_data2x3 ab() const {
-
-#ifdef NCPP_ENABLE_AVX
-            return ab_;
-#else
-            return {
-                a,
-                b
-            };
-#endif
-        }
-        NCPP_FORCE_INLINE F_data2x3 ba() const {
-
-#ifdef NCPP_ENABLE_AVX
-            return _mm256_permute2f128_ps(ab_, ab_, 0x1);
-#else
-            return {
-                b,
-                a
-            };
-#endif
-        }
-        NCPP_FORCE_INLINE F_data2x3 ac() const {
-
-#ifdef NCPP_ENABLE_AVX
-            return _mm256_permute2f128_ps(ab_, c_, 0x20);
-#else
-            return {
-                a,
-                c
-            };
-#endif
-        }
-        NCPP_FORCE_INLINE F_data2x3 ca() const {
-
-#ifdef NCPP_ENABLE_AVX
-            return _mm256_permute2f128_ps(ab_, c_, 0x02);
-#else
-            return {
-                a,
-                c
-            };
-#endif
-        }
-        NCPP_FORCE_INLINE F_data2x3 bc() const {
-
-#ifdef NCPP_ENABLE_AVX
-            return _mm256_permute2f128_ps(ab_, c_, 0x21);
-#else
-            return {
-                a,
-                c
-            };
-#endif
-        }
-        NCPP_FORCE_INLINE F_data2x3 cb() const {
-
-#ifdef NCPP_ENABLE_AVX
-            return _mm256_permute2f128_ps(ab_, c_, 0x21);
-#else
-            return {
-                a,
-                c
-            };
-#endif
-        }
-
         NCPP_FORCE_INLINE TF_data3x3<F_entry> data() const {
 
 #ifdef NCPP_ENABLE_AVX
@@ -423,6 +328,7 @@ namespace nmath {
             };
 #endif
         }
+        
         NCPP_FORCE_INLINE F_this abc() const {
 
 #ifdef NCPP_ENABLE_AVX

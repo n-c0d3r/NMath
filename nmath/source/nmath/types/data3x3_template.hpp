@@ -36,7 +36,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nmath/types/data3.hpp>
-#include <nmath/types/data2x3.hpp>
+#include <nmath/types/data2x2.hpp>
 #include <nmath/types/data_helper.hpp>
 #include <nmath/types/data_forward.hpp>
 #include <nmath/types/data_default_flag.hpp>
