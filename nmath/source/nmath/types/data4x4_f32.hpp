@@ -226,6 +226,25 @@ namespace nmath {
             
             
         }
+        NCPP_FORCE_INLINE TF_data4x4(PA_data3x3 abcxyz) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(
+                _mm256_blend_ps(abcxyz.ab_, simd_f32x8_00000000, 0b10001000)
+            ),
+            cd_(
+                _mm256_blend_ps(abcxyz.cd_, simd_f32x8_00000000, 0b10001000)
+            )
+#else
+            a(abcxyz.a),
+            b(abcxyz.b),
+            c(abcxyz.c),
+            d()
+#endif
+        {
+
+
+
+        }
         NCPP_FORCE_INLINE TF_data4x4(const TF_data4x4& o) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(o.ab_),
@@ -340,6 +359,33 @@ namespace nmath {
                 b.T_data<TF_pack_cast<F_another_data__>>(),
                 c.T_data<TF_pack_cast<F_another_data__>>(),
                 d.T_data<TF_pack_cast<F_another_data__>>()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_data2x2 tl2x2() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return _mm256_extractf128_ps(_mm256_shuffle_ps(ab_, cd_, _MM_SHUFFLE(1, 0, 1, 0)), 0x00);
+#else
+            return {
+                a.xy(),
+                b.xy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_data3x3 tl3x3() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                ab_,
+                cd_
+            };
+#else
+            return {
+                a.data(),
+                b.data(),
+                c.data(),
+                d.data()
             };
 #endif
         }
@@ -712,6 +758,378 @@ namespace nmath {
                 c,
                 b,
                 a
+            };
+#endif
+        }
+        
+        NCPP_FORCE_INLINE F_this xyzw() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                ab_,
+                _mm256_permute2f128_ps(cd_, cd_, 0x01)
+            };
+#else
+            return {
+                a,
+                b,
+                d,
+                c
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xzyw() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 1, 2, 0)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(3, 1, 2, 0))
+            };
+#else
+            return {
+                a.xzyw(),
+                c.xzyw(),
+                b.xzyw(),
+                d.xzyw()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xzwy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(1, 3, 2, 0)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(1, 3, 2, 0))
+            };
+#else
+            return {
+                a.xzwy(),
+                c.xzwy(),
+                b.xzwy(),
+                d.xzwy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xwyz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(2, 1, 3, 0)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(2, 1, 3, 0))
+            };
+#else
+            return {
+                a.xwyz(),
+                c.xwyz(),
+                b.xwyz(),
+                d.xwyz()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xwzy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(1, 2, 3, 0)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(1, 2, 3, 0))
+            };
+#else
+            return {
+                a.xwzy(),
+                c.xwzy(),
+                b.xwzy(),
+                d.xwzy()
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this yxzw() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 2, 0, 1)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(3, 2, 0, 1))
+            };
+#else
+            return {
+                a.yxzw(),
+                c.yxzw(),
+                b.yxzw(),
+                d.yxzw()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this yxwz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(2, 3, 0, 1)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(2, 3, 0, 1))
+            };
+#else
+            return {
+                a.yxwz(),
+                c.yxwz(),
+                b.yxwz(),
+                d.yxwz()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this yzxw() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 0, 2, 1)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(3, 0, 2, 1))
+            };
+#else
+            return {
+                a.yzxw(),
+                c.yzxw(),
+                b.yzxw(),
+                d.yzxw()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this yzwx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(0, 3, 2, 1)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(0, 3, 2, 1))
+            };
+#else
+            return {
+                a.yzwx(),
+                c.yzwx(),
+                b.yzwx(),
+                d.yzwx()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this ywxz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(2, 0, 3, 1)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(2, 0, 3, 1))
+            };
+#else
+            return {
+                a.ywxz(),
+                c.ywxz(),
+                b.ywxz(),
+                d.ywxz()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this ywzx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(0, 2, 3, 1)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(0, 2, 3, 1))
+            };
+#else
+            return {
+                a.ywzx(),
+                c.ywzx(),
+                b.ywzx(),
+                d.ywzx()
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this zxyw() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 1, 0, 2)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(3, 1, 0, 2))
+            };
+#else
+            return {
+                a.zxyw(),
+                c.zxyw(),
+                b.zxyw(),
+                d.zxyw()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zxwy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(1, 3, 0, 2)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(1, 3, 0, 2))
+            };
+#else
+            return {
+                a.zxwy(),
+                c.zxwy(),
+                b.zxwy(),
+                d.zxwy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zyxw() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 0, 1, 2)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(3, 0, 1, 2))
+            };
+#else
+            return {
+                a.zyxw(),
+                c.zyxw(),
+                b.zyxw(),
+                d.zyxw()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zywx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(0, 3, 1, 2)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(0, 3, 1, 2))
+            };
+#else
+            return {
+                a.zywx(),
+                c.zywx(),
+                b.zywx(),
+                d.zywx()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zwxy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(1, 0, 3, 2)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(1, 0, 3, 2))
+            };
+#else
+            return {
+                a.zwxy(),
+                c.zwxy(),
+                b.zwxy(),
+                d.zwxy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zwyx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(0, 1, 3, 2)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(0, 1, 3, 2))
+            };
+#else
+            return {
+                a.zwyx(),
+                c.zwyx(),
+                b.zwyx(),
+                d.zwyx()
+            };
+#endif
+        }
+
+        NCPP_FORCE_INLINE F_this wxyz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(2, 1, 0, 3)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(2, 1, 0, 3))
+            };
+#else
+            return {
+                a.wxyz(),
+                c.wxyz(),
+                b.wxyz(),
+                d.wxyz()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this wxzy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(1, 2, 0, 3)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(1, 2, 0, 3))
+            };
+#else
+            return {
+                a.wxzy(),
+                c.wxzy(),
+                b.wxzy(),
+                d.wxzy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this wyxz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(2, 0, 1, 3)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(2, 0, 1, 3))
+            };
+#else
+            return {
+                a.wyxz(),
+                c.wyxz(),
+                b.wyxz(),
+                d.wyxz()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this wyzx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(0, 2, 1, 3)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(0, 2, 1, 3))
+            };
+#else
+            return {
+                a.wyzx(),
+                c.wyzx(),
+                b.wyzx(),
+                d.wyzx()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this wzxy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(1, 0, 2, 3)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(1, 0, 2, 3))
+            };
+#else
+            return {
+                a.wzxy(),
+                c.wzxy(),
+                b.wzxy(),
+                d.wzxy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this wzyx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(0, 1, 2, 3)),
+                _mm256_permute_ps(cd_, _MM_SHUFFLE(0, 1, 2, 3))
+            };
+#else
+            return {
+                a.wzyx(),
+                c.wzyx(),
+                b.wzyx(),
+                d.wzyx()
             };
 #endif
         }

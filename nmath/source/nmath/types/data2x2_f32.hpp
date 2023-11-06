@@ -311,6 +311,28 @@ namespace nmath {
             };
 #endif
         }
+        NCPP_FORCE_INLINE F_this xy() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return ab_;
+#else
+            return {
+                a,
+                b
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this yx() const {
+
+#ifdef NCPP_ENABLE_SSE
+            return _mm_permute_ps(ab_, _MM_SHUFFLE(2, 3, 0, 1));
+#else
+            return {
+                a.yx(),
+                b.yx()
+            };
+#endif
+        }
                 
     };
 

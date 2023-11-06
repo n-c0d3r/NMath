@@ -215,6 +215,25 @@ namespace nmath {
 
 
         }
+        NCPP_FORCE_INLINE TF_data3x3(PA_data2x2 abxy) noexcept :
+#ifdef NCPP_ENABLE_AVX
+            ab_(
+                _mm256_set_m128(
+                    abxy.ab_,
+                    _mm_permute_ps(abxy.ab_, _MM_SHUFFLE(1, 0, 3, 2))
+                )
+            ),
+            c_(simd_f32x8_00000000)
+#else
+            a(abxy.a),
+            b(abxy.b),
+            c()
+#endif
+        {
+
+
+
+        }
         NCPP_FORCE_INLINE TF_data3x3(const TF_data3x3& o) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(o.ab_),
@@ -328,6 +347,17 @@ namespace nmath {
             };
 #endif
         }
+        NCPP_FORCE_INLINE F_data2x2 tl2x2() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return _mm256_extractf128_ps(_mm256_shuffle_ps(ab_, c_, _MM_SHUFFLE(1, 0, 1, 0)), 0x00);
+#else
+            return {
+                a.xy(),
+                b.xy()
+            };
+#endif
+        }
         
         NCPP_FORCE_INLINE F_this abc() const {
 
@@ -416,6 +446,97 @@ namespace nmath {
                 c,
                 b,
                 a
+            };
+#endif
+        }
+        
+        NCPP_FORCE_INLINE F_this xyz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                ab_,
+                c_
+            };
+#else
+            return {
+                a,
+                b,
+                c
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this xzy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 1, 2, 0)),
+                _mm256_permute_ps(c_, _MM_SHUFFLE(3, 1, 2, 0))
+            };
+#else
+            return {
+                a.xzy(),
+                b.xzy(),
+                c.xzy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this yxz() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 2, 0, 1)),
+                _mm256_permute_ps(c_, _MM_SHUFFLE(3, 2, 0, 1))
+            };
+#else
+            return {
+                a.yxz(),
+                b.yxz(),
+                c.yxz()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this yzx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 0, 2, 1)),
+                _mm256_permute_ps(c_, _MM_SHUFFLE(3, 0, 2, 1))
+            };
+#else
+            return {
+                a.yzx(),
+                b.yzx(),
+                c.yzx()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zxy() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 1, 0, 2)),
+                _mm256_permute_ps(c_, _MM_SHUFFLE(3, 1, 0, 2))
+            };
+#else
+            return {
+                a.zxy(),
+                b.zxy(),
+                c.zxy()
+            };
+#endif
+        }
+        NCPP_FORCE_INLINE F_this zyx() const {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                _mm256_permute_ps(ab_, _MM_SHUFFLE(3, 0, 1, 2)),
+                _mm256_permute_ps(c_, _MM_SHUFFLE(3, 0, 1, 2))
+            };
+#else
+            return {
+                a.zyx(),
+                b.zyx(),
+                c.zyx()
             };
 #endif
         }

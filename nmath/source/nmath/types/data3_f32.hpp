@@ -90,18 +90,6 @@ namespace nmath {
 #define NMATH_DATA3_SIMD_CONSTRUCTOR_M128() ;
 #endif
 
-#ifdef NCPP_ENABLE_SSE2
-#define NMATH_DATA3_SIMD_M128I() \
-    __m128i xyz_;
-#define NMATH_DATA3_SIMD_CONSTRUCTOR_M128I()\
-    NCPP_FORCE_INLINE TF_data3(__m128i xyz) : \
-        xyz_(xyz)\
-    {}
-#else
-#define NMATH_DATA3_SIMD_M128I() ;
-#define NMATH_DATA3_SIMD_CONSTRUCTOR_M128I() ;
-#endif
-
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
