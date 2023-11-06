@@ -367,84 +367,84 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE F_data2 xy() const {
+        NCPP_FORCE_INLINE F_data2 xy() const noexcept {
 
             return {
                 x,
                 y
             };
         }
-        NCPP_FORCE_INLINE F_data2 xz() const {
+        NCPP_FORCE_INLINE F_data2 xz() const noexcept {
 
             return {
                 x,
                 z
             };
         }
-        NCPP_FORCE_INLINE F_data2 xw() const {
+        NCPP_FORCE_INLINE F_data2 xw() const noexcept {
 
             return {
                 x,
                 w
             };
         }
-        NCPP_FORCE_INLINE F_data2 yx() const {
+        NCPP_FORCE_INLINE F_data2 yx() const noexcept {
 
             return {
                 y,
                 x
             };
         }
-        NCPP_FORCE_INLINE F_data2 yz() const {
+        NCPP_FORCE_INLINE F_data2 yz() const noexcept {
 
             return {
                 y,
                 z
             };
         }
-        NCPP_FORCE_INLINE F_data2 yw() const {
+        NCPP_FORCE_INLINE F_data2 yw() const noexcept {
 
             return {
                 y,
                 w
             };
         }
-        NCPP_FORCE_INLINE F_data2 zx() const {
+        NCPP_FORCE_INLINE F_data2 zx() const noexcept {
 
             return {
                 z,
                 x
             };
         }
-        NCPP_FORCE_INLINE F_data2 zy() const {
+        NCPP_FORCE_INLINE F_data2 zy() const noexcept {
 
             return {
                 z,
                 y
             };
         }
-        NCPP_FORCE_INLINE F_data2 zw() const {
+        NCPP_FORCE_INLINE F_data2 zw() const noexcept {
 
             return {
                 z,
                 w
             };
         }
-        NCPP_FORCE_INLINE F_data2 wx() const {
+        NCPP_FORCE_INLINE F_data2 wx() const noexcept {
 
             return {
                 w,
                 x
             };
         }
-        NCPP_FORCE_INLINE F_data2 wy() const {
+        NCPP_FORCE_INLINE F_data2 wy() const noexcept {
 
             return {
                 w,
                 y
             };
         }
-        NCPP_FORCE_INLINE F_data2 wz() const {
+        NCPP_FORCE_INLINE F_data2 wz() const noexcept {
 
             return {
                 w,
@@ -452,7 +452,7 @@ namespace nmath {
             };
         }
 
-        NCPP_FORCE_INLINE F_data3 xyz() const {
+        NCPP_FORCE_INLINE F_data3 xyz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -464,7 +464,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 xyw() const {
+        NCPP_FORCE_INLINE F_data3 xyw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 3, 1, 0));
@@ -476,7 +476,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 xzy() const {
+        NCPP_FORCE_INLINE F_data3 xzy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
@@ -488,7 +488,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 xzw() const {
+        NCPP_FORCE_INLINE F_data3 xzw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 3, 2, 0));
@@ -500,7 +500,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 xwy() const {
+        NCPP_FORCE_INLINE F_data3 xwy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 3, 0));
@@ -512,7 +512,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 xwz() const {
+        NCPP_FORCE_INLINE F_data3 xwz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 3, 0));
@@ -525,7 +525,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_data3 yxz() const {
+        NCPP_FORCE_INLINE F_data3 yxz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
@@ -537,7 +537,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 yxw() const {
+        NCPP_FORCE_INLINE F_data3 yxw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 3, 0, 1));
@@ -549,7 +549,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 yzx() const {
+        NCPP_FORCE_INLINE F_data3 yzx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
@@ -561,7 +561,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 yzw() const {
+        NCPP_FORCE_INLINE F_data3 yzw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 3, 2, 1));
@@ -573,7 +573,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 ywx() const {
+        NCPP_FORCE_INLINE F_data3 ywx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 3, 1));
@@ -585,7 +585,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 ywz() const {
+        NCPP_FORCE_INLINE F_data3 ywz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 3, 1));
@@ -598,7 +598,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_data3 zxy() const {
+        NCPP_FORCE_INLINE F_data3 zxy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
@@ -610,7 +610,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 zxw() const {
+        NCPP_FORCE_INLINE F_data3 zxw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 3, 0, 2));
@@ -622,7 +622,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 zyx() const {
+        NCPP_FORCE_INLINE F_data3 zyx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
@@ -634,7 +634,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 zyw() const {
+        NCPP_FORCE_INLINE F_data3 zyw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 3, 1, 2));
@@ -646,7 +646,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 zwx() const {
+        NCPP_FORCE_INLINE F_data3 zwx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 3, 2));
@@ -658,7 +658,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 zwy() const {
+        NCPP_FORCE_INLINE F_data3 zwy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 3, 2));
@@ -671,7 +671,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_data3 wxy() const {
+        NCPP_FORCE_INLINE F_data3 wxy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 0, 3));
@@ -683,7 +683,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 wxz() const {
+        NCPP_FORCE_INLINE F_data3 wxz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 0, 3));
@@ -695,7 +695,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 wyx() const {
+        NCPP_FORCE_INLINE F_data3 wyx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 1, 3));
@@ -707,7 +707,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 wyz() const {
+        NCPP_FORCE_INLINE F_data3 wyz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 1, 3));
@@ -719,7 +719,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 wzx() const {
+        NCPP_FORCE_INLINE F_data3 wzx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 2, 3));
@@ -731,7 +731,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data3 wzy() const {
+        NCPP_FORCE_INLINE F_data3 wzy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 2, 3));
@@ -744,7 +744,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE TF_data4<F_entry> data() const {
+        NCPP_FORCE_INLINE TF_data4<F_entry> data() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -758,7 +758,7 @@ namespace nmath {
 #endif
         }
         template<typename F_another_data__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -771,7 +771,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xyzw() const {
+        NCPP_FORCE_INLINE F_this xyzw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return xyzw_;
@@ -784,7 +784,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xywz() const {
+        NCPP_FORCE_INLINE F_this xywz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 3, 1, 0));
@@ -797,7 +797,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xzyw() const {
+        NCPP_FORCE_INLINE F_this xzyw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 2, 0));
@@ -810,7 +810,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xzwy() const {
+        NCPP_FORCE_INLINE F_this xzwy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 3, 2, 0));
@@ -823,7 +823,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xwyz() const {
+        NCPP_FORCE_INLINE F_this xwyz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 1, 3, 0));
@@ -836,7 +836,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xwzy() const {
+        NCPP_FORCE_INLINE F_this xwzy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 2, 3, 0));
@@ -850,7 +850,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this yxzw() const {
+        NCPP_FORCE_INLINE F_this yxzw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 2, 0, 1));
@@ -863,7 +863,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this yxwz() const {
+        NCPP_FORCE_INLINE F_this yxwz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 3, 0, 1));
@@ -876,7 +876,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this yzxw() const {
+        NCPP_FORCE_INLINE F_this yzxw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 2, 1));
@@ -889,7 +889,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this yzwx() const {
+        NCPP_FORCE_INLINE F_this yzwx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 3, 2, 1));
@@ -902,7 +902,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this ywxz() const {
+        NCPP_FORCE_INLINE F_this ywxz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 0, 3, 1));
@@ -915,7 +915,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this ywzx() const {
+        NCPP_FORCE_INLINE F_this ywzx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 2, 3, 1));
@@ -929,7 +929,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this zxyw() const {
+        NCPP_FORCE_INLINE F_this zxyw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 1, 0, 2));
@@ -942,7 +942,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zxwy() const {
+        NCPP_FORCE_INLINE F_this zxwy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 3, 0, 2));
@@ -955,7 +955,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zyxw() const {
+        NCPP_FORCE_INLINE F_this zyxw() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(3, 0, 1, 2));
@@ -968,7 +968,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zywx() const {
+        NCPP_FORCE_INLINE F_this zywx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 3, 1, 2));
@@ -981,7 +981,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zwxy() const {
+        NCPP_FORCE_INLINE F_this zwxy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 0, 3, 2));
@@ -994,7 +994,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zwyx() const {
+        NCPP_FORCE_INLINE F_this zwyx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 1, 3, 2));
@@ -1008,7 +1008,7 @@ namespace nmath {
 #endif
         }
 
-        NCPP_FORCE_INLINE F_this wxyz() const {
+        NCPP_FORCE_INLINE F_this wxyz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 1, 0, 3));
@@ -1021,7 +1021,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this wxzy() const {
+        NCPP_FORCE_INLINE F_this wxzy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 2, 0, 3));
@@ -1034,7 +1034,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this wyxz() const {
+        NCPP_FORCE_INLINE F_this wyxz() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(2, 0, 1, 3));
@@ -1047,7 +1047,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this wyzx() const {
+        NCPP_FORCE_INLINE F_this wyzx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 2, 1, 3));
@@ -1060,7 +1060,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this wzxy() const {
+        NCPP_FORCE_INLINE F_this wzxy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(1, 0, 2, 3));
@@ -1073,7 +1073,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this wzyx() const {
+        NCPP_FORCE_INLINE F_this wzyx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(xyzw_, _MM_SHUFFLE(0, 1, 2, 3));

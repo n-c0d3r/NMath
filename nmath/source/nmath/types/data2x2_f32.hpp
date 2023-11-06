@@ -266,7 +266,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2x2<F_entry> data() const {
+        NCPP_FORCE_INLINE TF_data2x2<F_entry> data() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return ab_;
@@ -278,7 +278,7 @@ namespace nmath {
 #endif
         }
         template<typename F_another_data__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return ab_;
@@ -289,7 +289,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this ab() const {
+        NCPP_FORCE_INLINE F_this ab() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return ab_;
@@ -300,7 +300,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this ba() const {
+        NCPP_FORCE_INLINE F_this ba() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(ab_, _MM_SHUFFLE(1, 0, 3, 2));
@@ -311,7 +311,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xy() const {
+        NCPP_FORCE_INLINE F_this xy() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return ab_;
@@ -322,7 +322,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this yx() const {
+        NCPP_FORCE_INLINE F_this yx() const noexcept {
 
 #ifdef NCPP_ENABLE_SSE
             return _mm_permute_ps(ab_, _MM_SHUFFLE(2, 3, 0, 1));

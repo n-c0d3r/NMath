@@ -316,7 +316,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data3x3<F_entry> data() const {
+        NCPP_FORCE_INLINE TF_data3x3<F_entry> data() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -332,7 +332,7 @@ namespace nmath {
 #endif
         }
         template<typename F_another_data__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -347,10 +347,13 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_data2x2 tl2x2() const {
+        NCPP_FORCE_INLINE F_data2x2 tl2x2() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
-            return _mm256_extractf128_ps(_mm256_shuffle_ps(ab_, c_, _MM_SHUFFLE(1, 0, 1, 0)), 0x00);
+            __m128 a_128 = _mm256_extractf128_ps(ab_, 0x00);
+            __m128 b_128 = _mm256_extractf128_ps(ab_, 0x01);
+            
+            return _mm_shuffle_ps(a_128, b_128, _MM_SHUFFLE(1, 0, 1, 0));
 #else
             return {
                 a.xy(),
@@ -359,7 +362,7 @@ namespace nmath {
 #endif
         }
         
-        NCPP_FORCE_INLINE F_this abc() const {
+        NCPP_FORCE_INLINE F_this abc() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -374,7 +377,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this acb() const {
+        NCPP_FORCE_INLINE F_this acb() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -389,7 +392,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this bac() const {
+        NCPP_FORCE_INLINE F_this bac() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -404,7 +407,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this bca() const {
+        NCPP_FORCE_INLINE F_this bca() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -419,7 +422,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this cab() const {
+        NCPP_FORCE_INLINE F_this cab() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -434,7 +437,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this cba() const {
+        NCPP_FORCE_INLINE F_this cba() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -450,7 +453,7 @@ namespace nmath {
 #endif
         }
         
-        NCPP_FORCE_INLINE F_this xyz() const {
+        NCPP_FORCE_INLINE F_this xyz() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -465,7 +468,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this xzy() const {
+        NCPP_FORCE_INLINE F_this xzy() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -480,7 +483,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this yxz() const {
+        NCPP_FORCE_INLINE F_this yxz() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -495,7 +498,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this yzx() const {
+        NCPP_FORCE_INLINE F_this yzx() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -510,7 +513,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zxy() const {
+        NCPP_FORCE_INLINE F_this zxy() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {
@@ -525,7 +528,7 @@ namespace nmath {
             };
 #endif
         }
-        NCPP_FORCE_INLINE F_this zyx() const {
+        NCPP_FORCE_INLINE F_this zyx() const noexcept {
 
 #ifdef NCPP_ENABLE_AVX
             return {

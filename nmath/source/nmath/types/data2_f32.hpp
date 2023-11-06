@@ -191,7 +191,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Functions
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2<F_entry> data() const {
+        NCPP_FORCE_INLINE TF_data2<F_entry> data() const noexcept {
 
             return {
                 x,
@@ -199,21 +199,21 @@ namespace nmath {
             };
         }
         template<typename F_another_data__>
-        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const {
+        NCPP_FORCE_INLINE TF_data_cast<F_another_data__> T_data() const noexcept {
 
             return {
                 x,
                 y
             };
         }
-        NCPP_FORCE_INLINE F_this xy() const {
+        NCPP_FORCE_INLINE F_this xy() const noexcept {
 
             return {
                 x,
                 y
             };
         }
-        NCPP_FORCE_INLINE F_this yx() const {
+        NCPP_FORCE_INLINE F_this yx() const noexcept {
 
             return {
                 y,
