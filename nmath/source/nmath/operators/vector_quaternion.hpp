@@ -62,6 +62,20 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
+    NCPP_FORCE_INLINE F_vector2_f32 NCPP_VECTOR_CALL multiply(PA_vector2_f32 a, PA_quaternion_f32 b) noexcept
+    {
+
+        return vecma_forward(
+            data4_complex_multiply(
+                data4_complex_multiply(
+                    data_forward(conjugate(b)),
+                    data_forward(F_vector4_f32(a, 0.0f, 0.0f))
+                ),
+                data_forward(b)
+            ).xy()
+        );
+    }
+
     NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(PA_vector3_f32 a, PA_quaternion_f32 b) noexcept
     {
 
@@ -91,6 +105,9 @@ namespace nmath {
     }
     
 }
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector2_f32, nmath::PA_quaternion_f32, nmath::F_vector2_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_f32, nmath::PA_quaternion_f32);
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector3_f32, nmath::PA_quaternion_f32, nmath::F_vector3_f32);
 NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector3_f32, nmath::PA_quaternion_f32);
