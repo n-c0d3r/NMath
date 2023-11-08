@@ -51,10 +51,15 @@ namespace nmath { }
 
 #include <nmath/operators/literal.hpp>
 #include <nmath/operators/helper.hpp>
+
 #include <nmath/operators/vector_vector.hpp>
 #include <nmath/operators/vector_scalar.hpp>
+#include <nmath/operators/vector_quaternion.hpp>
+
 #include <nmath/operators/quaternion_quaternion.hpp>
 #include <nmath/operators/quaternion_scalar.hpp>
-#include <nmath/operators/vector_quaternion.hpp>
+
+#include <nmath/operators/matrix_matrix.hpp>
+#include <nmath/operators/matrix_scalar.hpp>
 
 #pragma endregion

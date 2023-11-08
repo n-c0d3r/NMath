@@ -26,6 +26,9 @@ int main() {
     F_matrix4x4 a4x4_dbac = a4x4.dbac();
 	F_matrix2x2 a2x2_dbxy = a4x4.dbac().tl2x2();
     
+    F_matrix4x4 b4x4 = a4x4 + a4x4_dbac;
+    b4x4 *= -1.0f;
+    
 	ncpp::pause_console();
 
 	return 0;
