@@ -52,7 +52,7 @@ namespace nmath {
         F_data4_f32 HalfAngles = data4_multiply(data_forward(F_vector4_f32(roll_pitch_yaw)), one_half);
 
         F_data4_f32 SinAngles, CosAngles;
-        data4_sin_cos_angles(HalfAngles, SinAngles, CosAngles);
+        data4_sin_cos(HalfAngles, SinAngles, CosAngles);
 
         F_data4_f32 P0 = T_data4_static_permute<D4_SELECT_X0, D4_SELECT_X1, D4_SELECT_X1, D4_SELECT_X1>(SinAngles, CosAngles);
         F_data4_f32 Y0 = T_data4_static_permute<D4_SELECT_Y1, D4_SELECT_Y0, D4_SELECT_Y1, D4_SELECT_Y1>(SinAngles, CosAngles);

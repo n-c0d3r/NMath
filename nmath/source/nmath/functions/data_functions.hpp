@@ -37,4 +37,8 @@
 #include <nmath/functions/data3_functions.hpp>
 #include <nmath/functions/data4_functions.hpp>
 
+#include <nmath/functions/data2x2_functions.hpp>
+#include <nmath/functions/data3x3_functions.hpp>
+#include <nmath/functions/data4x4_functions.hpp>
+
 #pragma endregion

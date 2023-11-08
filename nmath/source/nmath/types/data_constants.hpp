@@ -36,6 +36,11 @@
 #include <nmath/types/data2.hpp>
 #include <nmath/types/data3.hpp>
 #include <nmath/types/data4.hpp>
+
+#include <nmath/types/data2x2.hpp>
+#include <nmath/types/data3x3.hpp>
+#include <nmath/types/data4x4.hpp>
+
 #include <nmath/operators/literal.hpp>
 
 #pragma endregion
@@ -78,6 +83,39 @@ namespace nmath {
     extern const F_data4_f32 sin_coefficient_s0_x4;
     extern const F_data4_f32 cos_coefficient_s1_x4;
     extern const F_data4_f32 cos_coefficient_s0_x4;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data2x2
+    ////////////////////////////////////////////////////////////////////////////////////
+    extern const F_data2x2_f32 reciprocal_two_pi_2x2;
+    extern const F_data2x2_f32 two_pi_2x2;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data3x3
+    ////////////////////////////////////////////////////////////////////////////////////
+    extern const F_data3x3_f32 reciprocal_two_pi_3x3;
+    extern const F_data3x3_f32 two_pi_3x3;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data4x4
+    ////////////////////////////////////////////////////////////////////////////////////
+    extern const F_data4x4_f32 reciprocal_two_pi_4x4;
+    extern const F_data4x4_f32 two_pi_4x4;
+    extern const F_data4x4_f32 pi_4x4;
+    extern const F_data4x4_f32 half_pi_4x4;
+    extern const F_data4x4_f32 negative_zero_4x4;
+    extern const F_data4x4_f32 abs_mask_4x4;
+    extern const F_data4x4_f32 no_fraction_4x4;
+    extern const F_data4x4_f32 sin_coefficient_s1_4x4;
+    extern const F_data4x4_f32 sin_coefficient_s0_4x4;
+    extern const F_data4x4_f32 cos_coefficient_s1_4x4;
+    extern const F_data4x4_f32 cos_coefficient_s0_4x4;
 
 
 

@@ -145,11 +145,11 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     F_data2_f32 data2_mod_angles(PA_data2_f32 a) noexcept;
 
-    F_data2_f32 data2_sin_angles(PA_data2_f32 a) noexcept;
+    F_data2_f32 data2_sin(PA_data2_f32 a) noexcept;
 
-    F_data2_f32 data2_cos_angles(PA_data2_f32 a) noexcept;
+    F_data2_f32 data2_cos(PA_data2_f32 a) noexcept;
 
-    void data2_sin_cos_angles(PA_data2_f32 a, F_data2_f32& out_sin, F_data2_f32& out_cos) noexcept;
+    void data2_sin_cos(PA_data2_f32 a, F_data2_f32& out_sin, F_data2_f32& out_cos) noexcept;
 
 }
 
@@ -387,7 +387,7 @@ namespace nmath {
         return Result;
     }
 
-    NCPP_FORCE_INLINE F_data2_f32 data2_sin_angles(PA_data2_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data2_f32 data2_sin(PA_data2_f32 a) noexcept {
 
         return {
         
@@ -397,7 +397,7 @@ namespace nmath {
         };
     }
 
-    NCPP_FORCE_INLINE F_data2_f32 data2_cos_angles(PA_data2_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data2_f32 data2_cos(PA_data2_f32 a) noexcept {
 
         return {
 
@@ -407,10 +407,10 @@ namespace nmath {
         };
     }
 
-    NCPP_FORCE_INLINE void data2_sin_cos_angles(PA_data2_f32 a, F_data2_f32& out_sin, F_data2_f32& out_cos) noexcept {
+    NCPP_FORCE_INLINE void data2_sin_cos(PA_data2_f32 a, F_data2_f32& out_sin, F_data2_f32& out_cos) noexcept {
 
-        out_sin = data2_sin_angles(a);
-        out_cos = data2_cos_angles(a);
+        out_sin = data2_sin(a);
+        out_cos = data2_cos(a);
     }
 
 }

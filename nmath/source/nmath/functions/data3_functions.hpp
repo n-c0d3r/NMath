@@ -149,11 +149,11 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     F_data3_f32 NCPP_VECTOR_CALL data3_mod_angles(PA_data3_f32 a) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_sin_angles(PA_data3_f32 a) noexcept;
+    F_data3_f32 NCPP_VECTOR_CALL data3_sin(PA_data3_f32 a) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_cos_angles(PA_data3_f32 a) noexcept;
+    F_data3_f32 NCPP_VECTOR_CALL data3_cos(PA_data3_f32 a) noexcept;
 
-    void NCPP_VECTOR_CALL data3_sin_cos_angles(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept;
+    void NCPP_VECTOR_CALL data3_sin_cos(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept;
 
 }
 
@@ -598,7 +598,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_sin_angles(PA_data3_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_sin(PA_data3_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         // Force the value within the bounds of pi
@@ -644,7 +644,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_cos_angles(PA_data3_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_cos(PA_data3_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         // Map V to x in [-pi,pi].
@@ -693,7 +693,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE void NCPP_VECTOR_CALL data3_sin_cos_angles(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept {
+    NCPP_FORCE_INLINE void NCPP_VECTOR_CALL data3_sin_cos(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept {
 
 #ifdef NCPP_ENABLE_SSE    // Force the value within the bounds of pi
         F_data3_f32 x = data3_mod_angles(a.xyz_);
@@ -749,8 +749,8 @@ namespace nmath {
         Result = _mm_mul_ps(Result, sign.xyz_);
         out_cos = Result;
 #else
-        out_sin = data3_sin_angles(a);
-        out_cos = data3_cos_angles(a);
+        out_sin = data3_sin(a);
+        out_cos = data3_cos(a);
 #endif
     }
 

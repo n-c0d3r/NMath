@@ -49,6 +49,108 @@ namespace nmath {
 
 
 
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data2x2
+    ////////////////////////////////////////////////////////////////////////////////////
+    const F_data2x2_f32 reciprocal_two_pi_2x2 = F_data2x2_f32(
+        reciprocal_two_pi_x2,
+        reciprocal_two_pi_x2
+    );
+    const F_data2x2_f32 two_pi_2x2 = F_data2x2_f32(
+        two_pi_x2,
+        two_pi_x2
+    );
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data3x3
+    ////////////////////////////////////////////////////////////////////////////////////
+    const F_data3x3_f32 reciprocal_two_pi_3x3 = F_data3x3_f32(
+        reciprocal_two_pi_x3,
+        reciprocal_two_pi_x3,
+        reciprocal_two_pi_x3
+    );
+    const F_data3x3_f32 two_pi_3x3 = F_data3x3_f32(
+        two_pi_x3,
+        two_pi_x3,
+        two_pi_x3
+    );
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Data4x4
+    ////////////////////////////////////////////////////////////////////////////////////
+    const F_data4x4_f32 reciprocal_two_pi_4x4 = F_data4x4_f32(
+        reciprocal_two_pi_x4,
+        reciprocal_two_pi_x4,
+        reciprocal_two_pi_x4,
+        reciprocal_two_pi_x4
+    );
+    const F_data4x4_f32 two_pi_4x4 = F_data4x4_f32(
+        two_pi_x4,
+        two_pi_x4,
+        two_pi_x4,
+        two_pi_x4
+    );
+    const F_data4x4_f32 pi_4x4 = F_data4x4_f32(
+        pi_x4,
+        pi_x4,
+        pi_x4,
+        pi_x4
+    );
+    const F_data4x4_f32 half_pi_4x4 = F_data4x4_f32(
+        half_pi_x4,
+        half_pi_x4,
+        half_pi_x4,
+        half_pi_x4
+    );
+    const F_data4x4_f32 negative_zero_4x4 = F_data4x4_f32(
+        negative_zero_x4,
+        negative_zero_x4,
+        negative_zero_x4,
+        negative_zero_x4
+    );
+    const F_data4x4_f32 abs_mask_4x4 = F_data4x4_f32(
+        abs_mask_x4,
+        abs_mask_x4,
+        abs_mask_x4,
+        abs_mask_x4
+    );
+    const F_data4x4_f32 no_fraction_4x4 = F_data4x4_f32(
+        no_fraction_x4,
+        no_fraction_x4,
+        no_fraction_x4,
+        no_fraction_x4
+    );
+    const F_data4x4_f32 sin_coefficient_s1_4x4 = F_data4x4_f32(
+        sin_coefficient_s1_x4,
+        sin_coefficient_s1_x4,
+        sin_coefficient_s1_x4,
+        sin_coefficient_s1_x4
+    );
+    const F_data4x4_f32 sin_coefficient_s0_4x4 = F_data4x4_f32(
+        sin_coefficient_s0_x4,
+        sin_coefficient_s0_x4,
+        sin_coefficient_s0_x4,
+        sin_coefficient_s0_x4
+    );
+    const F_data4x4_f32 cos_coefficient_s1_4x4 = F_data4x4_f32(
+        cos_coefficient_s1_x4,
+        cos_coefficient_s1_x4,
+        cos_coefficient_s1_x4,
+        cos_coefficient_s1_x4
+    );
+    const F_data4x4_f32 cos_coefficient_s0_4x4 = F_data4x4_f32(
+        cos_coefficient_s0_x4,
+        cos_coefficient_s0_x4,
+        cos_coefficient_s0_x4,
+        cos_coefficient_s0_x4
+    );
+
+
+
     const F_data4_f32 data4_f32_0000 = F_data4_f32(0.0f, 0.0f, 0.0f, 0.0f);
 
     const F_data4_f32 data4_f32_FFFF = F_data4_f32(reinterpret_cast_u32_to_f32(NCPP_U32_MAX), reinterpret_cast_u32_to_f32(NCPP_U32_MAX), reinterpret_cast_u32_to_f32(NCPP_U32_MAX), reinterpret_cast_u32_to_f32(NCPP_U32_MAX));

@@ -341,9 +341,9 @@ namespace nmath {
             };
 #else
             return {
-                a.T_data<TF_pack_cast<F_another_data__>>(),
-                b.T_data<TF_pack_cast<F_another_data__>>(),
-                c.T_data<TF_pack_cast<F_another_data__>>()
+                a.template T_data<TF_pack_cast<F_another_data__>>(),
+                b.template T_data<TF_pack_cast<F_another_data__>>(),
+                c.template T_data<TF_pack_cast<F_another_data__>>()
             };
 #endif
         }
