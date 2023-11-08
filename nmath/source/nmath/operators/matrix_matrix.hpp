@@ -98,21 +98,21 @@ NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NCPP_VECTOR_CALL minus(PA_matrix3x3_f32 a) noexcept
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV minus(PA_matrix3x3_f32 a) noexcept
     {
 
         return vecma_forward(
             data3x3_minus(data_forward(a))
         );
     }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NCPP_VECTOR_CALL add(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV add(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
     {
 
         return vecma_forward(
             data3x3_add(data_forward(a), data_forward(b))
         );
     }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NCPP_VECTOR_CALL subtract(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV subtract(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
     {
 
         return vecma_forward(
@@ -138,21 +138,21 @@ NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NCPP_VECTOR_CALL minus(PA_matrix4x4_f32 a) noexcept
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV minus(PA_matrix4x4_f32 a) noexcept
     {
 
         return vecma_forward(
             data4x4_minus(data_forward(a))
         );
     }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NCPP_VECTOR_CALL add(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV add(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
     {
 
         return vecma_forward(
             data4x4_add(data_forward(a), data_forward(b))
         );
     }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NCPP_VECTOR_CALL subtract(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV subtract(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
     {
 
         return vecma_forward(

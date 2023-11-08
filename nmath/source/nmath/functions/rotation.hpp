@@ -43,7 +43,7 @@
 
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL quaternion_rotation_roll_pitch_yaw(F_vector3_f32 roll_pitch_yaw) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV quaternion_rotation_roll_pitch_yaw(F_vector3_f32 roll_pitch_yaw) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         static const F_data4_f32 sign = F_data4_f32{ 1.0f, -1.0f, -1.0f, 1.0f };

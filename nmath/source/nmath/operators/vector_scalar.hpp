@@ -112,14 +112,14 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_f32, float);
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector3_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV multiply(nmath::F_vector3_f32 a, float b) noexcept
     {
 
         return vecma_forward(
             data3_multiply(data_forward(a), b)
         );
     }
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector3_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV multiply(float b, nmath::F_vector3_f32 a) noexcept
     {
 
         return vecma_forward(
@@ -127,7 +127,7 @@ namespace nmath {
         );
     }
 
-    NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL divide(nmath::F_vector3_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV divide(nmath::F_vector3_f32 a, float b) noexcept
     {
 
         return vecma_forward(
@@ -165,14 +165,14 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_f32, float);
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(nmath::F_vector4_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV multiply(nmath::F_vector4_f32 a, float b) noexcept
     {
 
         return vecma_forward(
             data4_multiply(data_forward(a), b)
         );
     }
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_vector4_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV multiply(float b, nmath::F_vector4_f32 a) noexcept
     {
 
         return vecma_forward(
@@ -180,7 +180,7 @@ namespace nmath {
         );
     }
 
-    NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL divide(nmath::F_vector4_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV divide(nmath::F_vector4_f32 a, float b) noexcept
     {
 
         return vecma_forward(

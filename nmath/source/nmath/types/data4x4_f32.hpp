@@ -268,7 +268,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Operators
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data4x4& NCPP_VECTOR_CALL operator = (F_passed_argument o) noexcept
+        NCPP_FORCE_INLINE TF_data4x4& NMATH_CALL_CNV operator = (F_passed_argument o) noexcept
         {
 
 #ifdef NCPP_ENABLE_AVX
@@ -293,7 +293,7 @@ namespace nmath {
 
             return m[index];
         }
-        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator == (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NMATH_CALL_CNV operator == (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_AVX
@@ -308,7 +308,7 @@ namespace nmath {
             return (a.a == b.a) && (a.b == b.b) && (a.c == b.c) && (a.d == b.d);
 #endif
         }
-        friend NCPP_FORCE_INLINE ncpp::b8 NCPP_VECTOR_CALL operator != (F_passed_argument a, F_passed_argument b) noexcept
+        friend NCPP_FORCE_INLINE ncpp::b8 NMATH_CALL_CNV operator != (F_passed_argument a, F_passed_argument b) noexcept
         {
 
 #ifdef NCPP_ENABLE_AVX

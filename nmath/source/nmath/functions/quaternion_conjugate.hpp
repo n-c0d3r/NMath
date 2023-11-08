@@ -44,7 +44,7 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	//  f32
 	////////////////////////////////////////////////////////////////////////////////////
-	NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL conjugate(PA_quaternion_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV conjugate(PA_quaternion_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
 		static const F_simd_f32x4 factor = make_simd_f32x4(-1.0f, -1.0f, -1.0f, 1.0f);

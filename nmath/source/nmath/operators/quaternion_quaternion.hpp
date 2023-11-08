@@ -60,21 +60,21 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL minus(PA_quaternion_f32 a) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV minus(PA_quaternion_f32 a) noexcept
     {
 
         return quaternion_forward(
             data4_minus(data_forward(a))
         );
     }
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL add(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV add(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
         return quaternion_forward(
             data4_add(data_forward(a), data_forward(b))
         );
     }
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL subtract(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV subtract(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
         return quaternion_forward(
@@ -82,7 +82,7 @@ namespace nmath {
         );
     }
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV multiply(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
     
         return quaternion_forward(

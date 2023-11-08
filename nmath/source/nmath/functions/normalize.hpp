@@ -53,15 +53,15 @@ namespace nmath {
 
 		return a / length(a);
 	}
-	NCPP_FORCE_INLINE F_vector3_f32 NCPP_VECTOR_CALL normalize(PA_vector3_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV normalize(PA_vector3_f32 a) noexcept {
 
 		return a / length(a);
 	}
-	NCPP_FORCE_INLINE F_vector4_f32 NCPP_VECTOR_CALL normalize(PA_vector4_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV normalize(PA_vector4_f32 a) noexcept {
 
 		return a / length(a);
 	}
-	NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL normalize(PA_quaternion_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV normalize(PA_quaternion_f32 a) noexcept {
 
 		return a / length(a);
 	}

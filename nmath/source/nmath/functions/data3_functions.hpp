@@ -76,18 +76,18 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Basic arithmetic functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data3_f32 NCPP_VECTOR_CALL data3_minus(PA_data3_f32 a) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_minus(PA_data3_f32 a) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_multiply(PA_data3_f32 a, f32 b) noexcept;
-    F_data3_f32 NCPP_VECTOR_CALL data3_divide(PA_data3_f32 a, f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_multiply(PA_data3_f32 a, f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_divide(PA_data3_f32 a, f32 b) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_add(PA_data3_f32 a, PA_data3_f32 b) noexcept;
-    F_data3_f32 NCPP_VECTOR_CALL data3_subtract(PA_data3_f32 a, PA_data3_f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_add(PA_data3_f32 a, PA_data3_f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_subtract(PA_data3_f32 a, PA_data3_f32 b) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_multiply(PA_data3_f32 a, PA_data3_f32 b) noexcept;
-    F_data3_f32 NCPP_VECTOR_CALL data3_divide(PA_data3_f32 a, PA_data3_f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_multiply(PA_data3_f32 a, PA_data3_f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_divide(PA_data3_f32 a, PA_data3_f32 b) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_round(PA_data3_f32 a) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_round(PA_data3_f32 a) noexcept;
 
 
 
@@ -99,7 +99,7 @@ namespace nmath {
         u32 y_selector__,
         u32 z_selector__
     >
-    F_data3_f32 NCPP_VECTOR_CALL T_data3_static_permute(
+    F_data3_f32 NMATH_CALL_CNV T_data3_static_permute(
         PA_data3_f32 a,
         PA_data3_f32 b
     ) noexcept;
@@ -109,25 +109,25 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  FMA functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data3_f32 NCPP_VECTOR_CALL data3_multiply_add(
+    F_data3_f32 NMATH_CALL_CNV data3_multiply_add(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
     ) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_multiply_addsub(
+    F_data3_f32 NMATH_CALL_CNV data3_multiply_addsub(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
     ) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_multiply_sub(
+    F_data3_f32 NMATH_CALL_CNV data3_multiply_sub(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
     ) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_multiply_subadd(
+    F_data3_f32 NMATH_CALL_CNV data3_multiply_subadd(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -138,22 +138,22 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Dot, cross product, length, etc.
     ////////////////////////////////////////////////////////////////////////////////////
-    f32 NCPP_VECTOR_CALL data3_dot(PA_data3_f32 a, PA_data3_f32 b) noexcept;
+    f32 NMATH_CALL_CNV data3_dot(PA_data3_f32 a, PA_data3_f32 b) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_cross(PA_data3_f32 a, PA_data3_f32 b) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_cross(PA_data3_f32 a, PA_data3_f32 b) noexcept;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Trigonometry functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data3_f32 NCPP_VECTOR_CALL data3_mod_angles(PA_data3_f32 a) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_mod_angles(PA_data3_f32 a) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_sin(PA_data3_f32 a) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_sin(PA_data3_f32 a) noexcept;
 
-    F_data3_f32 NCPP_VECTOR_CALL data3_cos(PA_data3_f32 a) noexcept;
+    F_data3_f32 NMATH_CALL_CNV data3_cos(PA_data3_f32 a) noexcept;
 
-    void NCPP_VECTOR_CALL data3_sin_cos(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept;
+    void NMATH_CALL_CNV data3_sin_cos(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept;
 
 }
 
@@ -171,7 +171,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Basic arithmetic functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_minus(PA_data3_f32 a) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_minus(PA_data3_f32 a) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -187,7 +187,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply(PA_data3_f32 a, f32 b) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_multiply(PA_data3_f32 a, f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -202,7 +202,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_divide(PA_data3_f32 a, f32 b) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_divide(PA_data3_f32 a, f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -217,7 +217,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_add(PA_data3_f32 a, PA_data3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_add(PA_data3_f32 a, PA_data3_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -232,7 +232,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_subtract(PA_data3_f32 a, PA_data3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_subtract(PA_data3_f32 a, PA_data3_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -248,7 +248,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply(PA_data3_f32 a, PA_data3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_multiply(PA_data3_f32 a, PA_data3_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -263,7 +263,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_divide(PA_data3_f32 a, PA_data3_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_divide(PA_data3_f32 a, PA_data3_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -278,7 +278,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_round(PA_data3_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_round(PA_data3_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE4
         return _mm_round_ps(a.xyz_, _MM_FROUND_TO_NEAREST_INT | _MM_FROUND_NO_EXC);
@@ -312,7 +312,7 @@ namespace nmath {
 
         template<uint32_t shuffle, bool which_x, bool which_y, bool which_z> struct T_data3_simd_static_permute_helper
         {
-            static NCPP_FORCE_INLINE F_simd_f32x4 NCPP_VECTOR_CALL permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept
+            static NCPP_FORCE_INLINE F_simd_f32x4 NMATH_CALL_CNV permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept
             {
                 static const F_simd_f32x4 selectMask = make_simd_f32x4(
                     which_x ? NMATH_F32_FULL : 0.0f,
@@ -334,25 +334,25 @@ namespace nmath {
         // Fast path for permutes that only read from the first vector.
         template<uint32_t shuffle> struct T_data3_simd_static_permute_helper<shuffle, false, false, false>
         {
-            static NCPP_FORCE_INLINE F_simd_f32x4 NCPP_VECTOR_CALL permute(F_simd_f32x4 v1, F_simd_f32x4) noexcept { return _mm_permute_ps(v1, shuffle); }
+            static NCPP_FORCE_INLINE F_simd_f32x4 NMATH_CALL_CNV permute(F_simd_f32x4 v1, F_simd_f32x4) noexcept { return _mm_permute_ps(v1, shuffle); }
         };
 
         // Fast path for permutes that only read from the second vector.
         template<uint32_t shuffle> struct T_data3_simd_static_permute_helper<shuffle, true, true, true>
         {
-            static NCPP_FORCE_INLINE F_simd_f32x4 NCPP_VECTOR_CALL permute(F_simd_f32x4, F_simd_f32x4 v2) noexcept { return _mm_permute_ps(v2, shuffle); }
+            static NCPP_FORCE_INLINE F_simd_f32x4 NMATH_CALL_CNV permute(F_simd_f32x4, F_simd_f32x4 v2) noexcept { return _mm_permute_ps(v2, shuffle); }
         };
 
         // Fast path for permutes that read XY from the first vector, Z from the second.
         template<uint32_t shuffle> struct T_data3_simd_static_permute_helper<shuffle, false, false, true>
         {
-            static NCPP_FORCE_INLINE F_simd_f32x4 NCPP_VECTOR_CALL permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept { return _mm_shuffle_ps(v1, v2, shuffle); }
+            static NCPP_FORCE_INLINE F_simd_f32x4 NMATH_CALL_CNV permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept { return _mm_shuffle_ps(v1, v2, shuffle); }
         };
 
         // Fast path for permutes that read XY from the second vector, Z from the first.
         template<uint32_t shuffle> struct T_data3_simd_static_permute_helper<shuffle, true, true, false>
         {
-            static NCPP_FORCE_INLINE F_simd_f32x4 NCPP_VECTOR_CALL permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept { return _mm_shuffle_ps(v2, v1, shuffle); }
+            static NCPP_FORCE_INLINE F_simd_f32x4 NMATH_CALL_CNV permute(F_simd_f32x4 v1, F_simd_f32x4 v2) noexcept { return _mm_shuffle_ps(v2, v1, shuffle); }
         };
         
     }
@@ -363,7 +363,7 @@ namespace nmath {
         u32 y_selector__,
         u32 z_selector__
     >
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL T_data3_static_permute(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV T_data3_static_permute(
         PA_data3_f32 a,
         PA_data3_f32 b
     ) noexcept {
@@ -393,7 +393,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  FMA functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply_add(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_multiply_add(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -412,7 +412,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply_addsub(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_multiply_addsub(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -431,7 +431,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply_sub(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_multiply_sub(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -450,7 +450,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_multiply_subadd(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_multiply_subadd(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -469,7 +469,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_negative_multiply_add(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_negative_multiply_add(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -488,7 +488,7 @@ namespace nmath {
 #endif
 
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_negative_multiply_sub(
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_negative_multiply_sub(
         PA_data3_f32 a,
         PA_data3_f32 b,
         PA_data3_f32 c
@@ -513,7 +513,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Dot, cross product, length, etc.
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL data3_dot(PA_data3_f32 a, PA_data3_f32 b) noexcept {
+    NCPP_FORCE_INLINE f32 NMATH_CALL_CNV data3_dot(PA_data3_f32 a, PA_data3_f32 b) noexcept {
 
 #ifdef NCPP_ENABLE_SSE4
         return _mm_cvtss_f32(_mm_dp_ps(a.xyz_, b.xyz_, 0x71));
@@ -546,7 +546,7 @@ namespace nmath {
         return a.x * a.x + a.y * a.y + a.z * a.z;
 #endif
     }
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_cross(PA_data3_f32 a, PA_data3_f32 b) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_cross(PA_data3_f32 a, PA_data3_f32 b) noexcept {
 
 #ifdef NCPP_ENABLE_FMA3
         // y1,z1,x1,w1
@@ -579,7 +579,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Trigonometry functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_mod_angles(PA_data3_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_mod_angles(PA_data3_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         F_data3_f32 vResult = _mm_mul_ps(a.xyz_, reciprocal_two_pi_x3.xyz_);
@@ -598,7 +598,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_sin(PA_data3_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_sin(PA_data3_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         // Force the value within the bounds of pi
@@ -644,7 +644,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data3_f32 NCPP_VECTOR_CALL data3_cos(PA_data3_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data3_f32 NMATH_CALL_CNV data3_cos(PA_data3_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         // Map V to x in [-pi,pi].
@@ -693,7 +693,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE void NCPP_VECTOR_CALL data3_sin_cos(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept {
+    NCPP_FORCE_INLINE void NMATH_CALL_CNV data3_sin_cos(PA_data3_f32 a, F_data3_f32& out_sin, F_data3_f32& out_cos) noexcept {
 
 #ifdef NCPP_ENABLE_SSE    // Force the value within the bounds of pi
         F_data3_f32 x = data3_mod_angles(a.xyz_);

@@ -50,15 +50,15 @@ namespace nmath {
 
 		return data2_dot(data_forward(a), data_forward(b));
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV dot(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
 		return data3_dot(data_forward(a), data_forward(b));
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV dot(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
 
 		return data4_dot(data_forward(a), data_forward(b));
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL dot(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV dot(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept {
 
 		return data4_dot(data_forward(a), data_forward(b));
 	}

@@ -56,43 +56,43 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Basic arithmetic functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_minus(PA_data4x4_f32 a) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_minus(PA_data4x4_f32 a) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply(PA_data4x4_f32 a, f32 b) noexcept;
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_divide(PA_data4x4_f32 a, f32 b) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply(PA_data4x4_f32 a, f32 b) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_divide(PA_data4x4_f32 a, f32 b) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_add(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_subtract(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_add(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_subtract(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_divide(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_divide(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_round(PA_data4x4_f32 a) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_round(PA_data4x4_f32 a) noexcept;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  FMA functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_add(
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_add(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
     ) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_addsub(
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_addsub(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
    ) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_sub(
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_sub(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
     ) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_subadd(
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_subadd(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -103,13 +103,13 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Trigonometry functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_mod_angles(PA_data4x4_f32 a) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_mod_angles(PA_data4x4_f32 a) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_sin(PA_data4x4_f32 a) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_sin(PA_data4x4_f32 a) noexcept;
 
-    F_data4x4_f32 NCPP_VECTOR_CALL data4x4_cos(PA_data4x4_f32 a) noexcept;
+    F_data4x4_f32 NMATH_CALL_CNV data4x4_cos(PA_data4x4_f32 a) noexcept;
 
-    void NCPP_VECTOR_CALL data4x4_sin_cos(PA_data4x4_f32 a, F_data4x4_f32& out_sin, F_data4x4_f32& out_cos) noexcept;
+    void NMATH_CALL_CNV data4x4_sin_cos(PA_data4x4_f32 a, F_data4x4_f32& out_sin, F_data4x4_f32& out_cos) noexcept;
 
 }
 
@@ -127,7 +127,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Basic arithmetic functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_minus(PA_data4x4_f32 a) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_minus(PA_data4x4_f32 a) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -149,7 +149,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply(PA_data4x4_f32 a, f32 b) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply(PA_data4x4_f32 a, f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -172,7 +172,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_divide(PA_data4x4_f32 a, f32 b) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_divide(PA_data4x4_f32 a, f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -195,7 +195,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_add(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_add(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -216,7 +216,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_subtract(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_subtract(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -238,7 +238,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -259,7 +259,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_divide(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_divide(PA_data4x4_f32 a, PA_data4x4_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_AVX
@@ -280,7 +280,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_round(PA_data4x4_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_round(PA_data4x4_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_AVX
         return {
@@ -306,7 +306,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  FMA functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_add(
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_add(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -331,7 +331,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_addsub(
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_addsub(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -356,7 +356,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_sub(
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_sub(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -381,7 +381,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_multiply_subadd(
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_multiply_subadd(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -406,7 +406,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_negative_multiply_add(
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_negative_multiply_add(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -431,7 +431,7 @@ namespace nmath {
 #endif
 
     }
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_negative_multiply_sub(
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_negative_multiply_sub(
         PA_data4x4_f32 a,
         PA_data4x4_f32 b,
         PA_data4x4_f32 c
@@ -462,7 +462,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Trigonometry functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_mod_angles(PA_data4x4_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_mod_angles(PA_data4x4_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_AVX
         F_data4x4_f32 vResult = {
@@ -494,7 +494,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_sin(PA_data4x4_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_sin(PA_data4x4_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_AVX
         // Assuming 'a' is your input of type F_data4x4_f32
@@ -562,7 +562,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data4x4_f32 NCPP_VECTOR_CALL data4x4_cos(PA_data4x4_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data4x4_f32 NMATH_CALL_CNV data4x4_cos(PA_data4x4_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_AVX
         // Assuming 'a' is your input of type F_data4x4_f32
@@ -635,7 +635,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE void NCPP_VECTOR_CALL data4x4_sin_cos(PA_data4x4_f32 a, F_data4x4_f32& out_sin, F_data4x4_f32& out_cos) noexcept {
+    NCPP_FORCE_INLINE void NMATH_CALL_CNV data4x4_sin_cos(PA_data4x4_f32 a, F_data4x4_f32& out_sin, F_data4x4_f32& out_cos) noexcept {
 
 #ifdef NCPP_ENABLE_AVX    // Force the value within the bounds of pi
         // Assuming 'a' is your input of type F_data4x4_f32

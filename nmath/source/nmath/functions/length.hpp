@@ -54,27 +54,27 @@ namespace nmath {
 
 		return std::sqrtf(length_sq(a));
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_vector3_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV length_sq(PA_vector3_f32 a) noexcept {
 
 		return dot(a, a);
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_vector3_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV length(PA_vector3_f32 a) noexcept {
 
 		return std::sqrtf(length_sq(a));
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_vector4_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV length_sq(PA_vector4_f32 a) noexcept {
 
 		return dot(a, a);
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_vector4_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV length(PA_vector4_f32 a) noexcept {
 
 		return std::sqrtf(length_sq(a));
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length_sq(PA_quaternion_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV length_sq(PA_quaternion_f32 a) noexcept {
 
 		return dot(a, a);
 	}
-	NCPP_FORCE_INLINE f32 NCPP_VECTOR_CALL length(PA_quaternion_f32 a) noexcept {
+	NCPP_FORCE_INLINE f32 NMATH_CALL_CNV length(PA_quaternion_f32 a) noexcept {
 
 		return std::sqrtf(length_sq(a));
 	}

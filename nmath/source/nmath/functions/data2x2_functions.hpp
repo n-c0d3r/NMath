@@ -56,43 +56,43 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Basic arithmetic functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_minus(PA_data2x2_f32 a) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_minus(PA_data2x2_f32 a) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply(PA_data2x2_f32 a, f32 b) noexcept;
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_divide(PA_data2x2_f32 a, f32 b) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply(PA_data2x2_f32 a, f32 b) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_divide(PA_data2x2_f32 a, f32 b) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_add(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_subtract(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_add(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_subtract(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_divide(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_divide(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_round(PA_data2x2_f32 a) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_round(PA_data2x2_f32 a) noexcept;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  FMA functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_add(
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_add(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
     ) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_addsub(
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_addsub(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
    ) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_sub(
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_sub(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
     ) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_subadd(
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_subadd(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -103,13 +103,13 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Trigonometry functions
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_mod_angles(PA_data2x2_f32 a) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_mod_angles(PA_data2x2_f32 a) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_sin(PA_data2x2_f32 a) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_sin(PA_data2x2_f32 a) noexcept;
 
-    F_data2x2_f32 NCPP_VECTOR_CALL data2x2_cos(PA_data2x2_f32 a) noexcept;
+    F_data2x2_f32 NMATH_CALL_CNV data2x2_cos(PA_data2x2_f32 a) noexcept;
 
-    void NCPP_VECTOR_CALL data2x2_sin_cos(PA_data2x2_f32 a, F_data2x2_f32& out_sin, F_data2x2_f32& out_cos) noexcept;
+    void NMATH_CALL_CNV data2x2_sin_cos(PA_data2x2_f32 a, F_data2x2_f32& out_sin, F_data2x2_f32& out_cos) noexcept;
 
 }
 
@@ -127,7 +127,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Basic arithmetic functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_minus(PA_data2x2_f32 a) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_minus(PA_data2x2_f32 a) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -142,7 +142,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply(PA_data2x2_f32 a, f32 b) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply(PA_data2x2_f32 a, f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -156,7 +156,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_divide(PA_data2x2_f32 a, f32 b) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_divide(PA_data2x2_f32 a, f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -170,7 +170,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_add(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_add(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -184,7 +184,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_subtract(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_subtract(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -199,7 +199,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -213,7 +213,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_divide(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_divide(PA_data2x2_f32 a, PA_data2x2_f32 b) noexcept
     {
 
 #ifdef NCPP_ENABLE_SSE
@@ -227,7 +227,7 @@ namespace nmath {
         };
 #endif
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_round(PA_data2x2_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_round(PA_data2x2_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE4
         return _mm_round_ps(a.ab_, _MM_FROUND_TO_NEAREST_INT | _MM_FROUND_NO_EXC);
@@ -257,7 +257,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  FMA functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_add(
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_add(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -275,7 +275,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_addsub(
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_addsub(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -293,7 +293,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_sub(
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_sub(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -311,7 +311,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_multiply_subadd(
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_multiply_subadd(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -329,7 +329,7 @@ namespace nmath {
 #endif
         
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_negative_multiply_add(
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_negative_multiply_add(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -347,7 +347,7 @@ namespace nmath {
 #endif
 
     }
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_negative_multiply_sub(
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_negative_multiply_sub(
         PA_data2x2_f32 a,
         PA_data2x2_f32 b,
         PA_data2x2_f32 c
@@ -371,7 +371,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Trigonometry functions
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_mod_angles(PA_data2x2_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_mod_angles(PA_data2x2_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         F_data2x2_f32 vResult = _mm_mul_ps(a.ab_, reciprocal_two_pi_x4.xyzw_);
@@ -391,7 +391,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_sin(PA_data2x2_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_sin(PA_data2x2_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         // Force the value within the bounds of pi
@@ -436,7 +436,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE F_data2x2_f32 NCPP_VECTOR_CALL data2x2_cos(PA_data2x2_f32 a) noexcept {
+    NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_cos(PA_data2x2_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         // Map V to x in [-pi,pi].
@@ -484,7 +484,7 @@ namespace nmath {
 #endif
     }
 
-    NCPP_FORCE_INLINE void NCPP_VECTOR_CALL data2x2_sin_cos(PA_data2x2_f32 a, F_data2x2_f32& out_sin, F_data2x2_f32& out_cos) noexcept {
+    NCPP_FORCE_INLINE void NMATH_CALL_CNV data2x2_sin_cos(PA_data2x2_f32 a, F_data2x2_f32& out_sin, F_data2x2_f32& out_cos) noexcept {
 
 #ifdef NCPP_ENABLE_SSE    // Force the value within the bounds of pi
         F_data2x2_f32 x = data2x2_mod_angles(a.ab_);

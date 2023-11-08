@@ -75,7 +75,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA3_F32_FORWARD(ClassName) \
-    NCPP_FORCE_INLINE ::nmath::PA_data3_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::PA_data3_f32 NMATH_CALL_CNV data_forward(NMATH_DATA3_F32_PA(ClassName) o) noexcept { \
         \
         return o.data(); \
     }
@@ -89,7 +89,7 @@ namespace nmath {
 
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA3_F32_REVERSE_FORWARD(ForwardName, ClassName) \
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data3_f32 o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NMATH_CALL_CNV ForwardName(::nmath::PA_data3_f32 o) noexcept { \
         \
         return o.T_data<::nmath::TPA_data_cast<ClassName>>(); \
     }
@@ -108,7 +108,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA4_F32_FORWARD(ClassName) \
-    NCPP_FORCE_INLINE ::nmath::PA_data4_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::PA_data4_f32 NMATH_CALL_CNV data_forward(NMATH_DATA4_F32_PA(ClassName) o) noexcept { \
         \
         return o.data(); \
     }
@@ -122,7 +122,7 @@ namespace nmath {
 
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA4_F32_REVERSE_FORWARD(ForwardName, ClassName) \
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data4_f32 o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NMATH_CALL_CNV ForwardName(::nmath::PA_data4_f32 o) noexcept { \
         \
         return o.T_data<::nmath::TPA_data_cast<ClassName>>(); \
     }
@@ -142,7 +142,7 @@ namespace nmath {
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA2X2_F32_FORWARD(ClassName) \
-    NCPP_FORCE_INLINE ::nmath::PA_data2x2_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA2X2_F32_PA(ClassName) o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::PA_data2x2_f32 NMATH_CALL_CNV data_forward(NMATH_DATA2X2_F32_PA(ClassName) o) noexcept { \
         \
         return o.data(); \
     }
@@ -157,7 +157,7 @@ namespace nmath {
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA2X2_F32_REVERSE_FORWARD(ForwardName, ClassName) \
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data2x2_f32 o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NMATH_CALL_CNV ForwardName(::nmath::PA_data2x2_f32 o) noexcept { \
         \
         return o.T_data<::nmath::TPA_data_cast<ClassName>>(); \
     }
@@ -177,7 +177,7 @@ namespace nmath {
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA3X3_F32_FORWARD(ClassName) \
-    NCPP_FORCE_INLINE ::nmath::PA_data3x3_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA3X3_F32_PA(ClassName) o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::PA_data3x3_f32 NMATH_CALL_CNV data_forward(NMATH_DATA3X3_F32_PA(ClassName) o) noexcept { \
         \
         return o.data(); \
     }
@@ -192,7 +192,7 @@ namespace nmath {
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA3X3_F32_REVERSE_FORWARD(ForwardName, ClassName) \
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data3x3_f32 o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NMATH_CALL_CNV ForwardName(::nmath::PA_data3x3_f32 o) noexcept { \
         \
         return o.T_data<::nmath::TPA_data_cast<ClassName>>(); \
     }
@@ -212,7 +212,7 @@ namespace nmath {
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA4X4_F32_FORWARD(ClassName) \
-    NCPP_FORCE_INLINE ::nmath::PA_data4x4_f32 NCPP_VECTOR_CALL data_forward(NMATH_DATA4X4_F32_PA(ClassName) o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::PA_data4x4_f32 NMATH_CALL_CNV data_forward(NMATH_DATA4X4_F32_PA(ClassName) o) noexcept { \
         \
         return o.data(); \
     }
@@ -227,7 +227,7 @@ namespace nmath {
     // at least the lowest SIMD level is enabled, use pass-by-value
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DEFINE_DATA4X4_F32_REVERSE_FORWARD(ForwardName, ClassName) \
-    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NCPP_VECTOR_CALL ForwardName(::nmath::PA_data4x4_f32 o) noexcept { \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> NMATH_CALL_CNV ForwardName(::nmath::PA_data4x4_f32 o) noexcept { \
         \
         return o.T_data<::nmath::TPA_data_cast<ClassName>>(); \
     }

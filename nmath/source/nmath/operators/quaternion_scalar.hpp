@@ -59,14 +59,14 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(nmath::F_quaternion_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV multiply(nmath::F_quaternion_f32 a, float b) noexcept
     {
 
         return quaternion_forward(
             data4_multiply(data_forward(a), b)
         );
     }
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL multiply(float b, nmath::F_quaternion_f32 a) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV multiply(float b, nmath::F_quaternion_f32 a) noexcept
     {
 
         return quaternion_forward(
@@ -74,7 +74,7 @@ namespace nmath {
         );
     }
 
-    NCPP_FORCE_INLINE F_quaternion_f32 NCPP_VECTOR_CALL divide(nmath::F_quaternion_f32 a, float b) noexcept
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV divide(nmath::F_quaternion_f32 a, float b) noexcept
     {
 
         return quaternion_forward(

@@ -1,6 +1,6 @@
 #pragma once
 
-/** @file nmath/NCPP_VECTOR_CALL operators/helper.hpp
+/** @file nmath/operators/helper.hpp
 *
 *   Implement helper.
 */
@@ -48,13 +48,13 @@
 
     
 #define NMATH_DEFINE_ADD_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator + (Type1 a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator + (Type1 a, Type2 b) noexcept \
     {\
         \
         return nmath::add(a, b);\
     }
 #define NMATH_DEFINE_SELF_ADD_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator += (Type1& a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE Type1& NMATH_CALL_CNV operator += (Type1& a, Type2 b) noexcept \
     {\
         \
         a = nmath::add(a, b);\
@@ -63,13 +63,13 @@
     }   
 
 #define NMATH_DEFINE_SUBTRACT_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator - (Type1 a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator - (Type1 a, Type2 b) noexcept \
     {\
         \
         return nmath::subtract(a, b);\
     }
 #define NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator -= (Type1& a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE Type1& NMATH_CALL_CNV operator -= (Type1& a, Type2 b) noexcept \
     {\
         \
         a = nmath::subtract(a, b);\
@@ -78,13 +78,13 @@
     }
 
 #define NMATH_DEFINE_MULTIPLY_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator * (Type1 a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator * (Type1 a, Type2 b) noexcept \
     {\
         \
         return nmath::multiply(a, b);\
     }
 #define NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator *= (Type1& a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE Type1& NMATH_CALL_CNV operator *= (Type1& a, Type2 b) noexcept \
     {\
         \
         a = nmath::multiply(a, b);\
@@ -93,13 +93,13 @@
     }   
 
 #define NMATH_DEFINE_DIVIDE_OPERATOR(Type1, Type2, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator / (Type1 a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator / (Type1 a, Type2 b) noexcept \
     {\
         \
         return nmath::divide(a, b);\
     }
 #define NMATH_DEFINE_SELF_DIVIDE_OPERATOR(Type1, Type2) \
-    NCPP_FORCE_INLINE Type1& NCPP_VECTOR_CALL operator /= (Type1& a, Type2 b) noexcept \
+    NCPP_FORCE_INLINE Type1& NMATH_CALL_CNV operator /= (Type1& a, Type2 b) noexcept \
     {\
         \
         a = nmath::divide(a, b);\
@@ -108,13 +108,13 @@
     }
 
 #define NMATH_DEFINE_PLUS_OPERATOR(Type1, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator + (Type1 a) noexcept \
+    NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator + (Type1 a) noexcept \
     {\
         \
         return a;\
     }
 #define NMATH_DEFINE_MINUS_OPERATOR(Type1, ReturnType) \
-    NCPP_FORCE_INLINE ReturnType NCPP_VECTOR_CALL operator - (Type1 a) noexcept \
+    NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator - (Type1 a) noexcept \
     {\
         \
         return nmath::minus(a);\
