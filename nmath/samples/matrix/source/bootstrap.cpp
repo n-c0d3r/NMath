@@ -29,6 +29,8 @@ int main() {
     F_matrix4x4 b4x4 = a4x4 + a4x4_dbac;
     b4x4 *= -1.0f;
     
+    F_matrix4x4 c4x4 = b4x4 * a4x4;
+    
 	ncpp::pause_console();
 
 	return 0;
