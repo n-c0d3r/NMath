@@ -71,14 +71,14 @@ namespace nmath {
     {
 
         return quaternion_forward(
-            data4_add(data_forward(a), data_forward(b))
+            data4_add(data_forward(b), data_forward(a))
         );
     }
     NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV subtract(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
     {
 
         return quaternion_forward(
-            data4_subtract(data_forward(a), data_forward(b))
+            data4_subtract(data_forward(b), data_forward(a))
         );
     }
 
@@ -86,7 +86,7 @@ namespace nmath {
     {
     
         return quaternion_forward(
-            data4_complex_multiply(data_forward(a), data_forward(b))
+            data4_complex_multiply(data_forward(b), data_forward(a))
         );
     }
 

@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/operators/vector_quaternion.hpp
+/** @file nmath/operators/quaternion_vector.hpp
 *
-*   Implement operators between vector and quaternion.
+*   Implement operators between quaternion and vector.
 */
 
 
@@ -62,7 +62,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_vector2_f32 NMATH_CALL_CNV multiply(PA_vector2_f32 a, PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 NMATH_CALL_CNV multiply(PA_quaternion_f32 b, PA_vector2_f32 a) noexcept
     {
 
         return vecma_forward(
@@ -76,7 +76,7 @@ namespace nmath {
         );
     }
 
-    NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV multiply(PA_vector3_f32 a, PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV multiply(PA_quaternion_f32 b, PA_vector3_f32 a) noexcept
     {
 
         return vecma_forward(
@@ -90,7 +90,7 @@ namespace nmath {
         );
     }
 
-    NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV multiply(PA_vector4_f32 a, PA_quaternion_f32 b) noexcept
+    NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV multiply(PA_quaternion_f32 b, PA_vector4_f32 a) noexcept
     {
 
         return vecma_forward(
@@ -106,11 +106,8 @@ namespace nmath {
     
 }
 
-NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector2_f32, nmath::PA_quaternion_f32, nmath::F_vector2_f32);
-NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_f32, nmath::PA_quaternion_f32);
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
 
-NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector3_f32, nmath::PA_quaternion_f32, nmath::F_vector3_f32);
-NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector3_f32, nmath::PA_quaternion_f32);
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
 
-NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector4_f32, nmath::PA_quaternion_f32, nmath::F_vector4_f32);
-NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector4_f32, nmath::PA_quaternion_f32);
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);

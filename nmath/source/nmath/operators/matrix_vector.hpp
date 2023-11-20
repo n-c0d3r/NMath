@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/operators/matrix_matrix.hpp
+/** @file nmath/operators/matrix_vector.hpp
 *
-*   Implement operators between matrix and matrix.
+*   Implement operators between matrix and vector.
 */
 
 
@@ -35,9 +35,9 @@
 
 #include <nmath/types/data_forward.hpp>
 #include <nmath/types/matrix.hpp>
+#include <nmath/types/vector.hpp>
 #include <nmath/functions/data_functions.hpp>
 #include <nmath/operators/helper.hpp>
-#include <nmath/operators/matrix_vector.hpp>
 
 #pragma endregion
 
@@ -62,47 +62,15 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
     
-    NCPP_FORCE_INLINE F_matrix2x2_f32 minus(PA_matrix2x2_f32 a) noexcept
+    NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_matrix2x2_f32 a, PA_vector2_f32 b) noexcept
     {
-        return vecma_forward(
-            data2x2_minus(data_forward(a))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix2x2_f32 add(PA_matrix2x2_f32 a, PA_matrix2x2_f32 b) noexcept
-    {
-        return vecma_forward(
-            data2x2_add(data_forward(a), data_forward(b))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix2x2_f32 subtract(PA_matrix2x2_f32 a, PA_matrix2x2_f32 b) noexcept
-    {
-        return vecma_forward(
-            data2x2_subtract(data_forward(a), data_forward(b))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix2x2_f32 multiply(PA_matrix2x2_f32 a, PA_matrix2x2_f32 b) noexcept
-    {
-        return {
-            
-            a * b.a,
-            a * b.b
-            
-        };
+        
+        return b.x * a.a + b.y * a.b;
     }
 
 }
 
-NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
-NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
-
-NMATH_DEFINE_ADD_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
-NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_f32);
-
-NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
-NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_f32);
-
-NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
-NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_f32);
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
 
 
 
@@ -110,52 +78,16 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_
 //  nmath::F_matrix3x3_f32
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
-
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV minus(PA_matrix3x3_f32 a) noexcept
+    
+    NCPP_FORCE_INLINE F_vector3_f32 multiply(PA_matrix3x3_f32 a, PA_vector3_f32 b) noexcept
     {
-
-        return vecma_forward(
-            data3x3_minus(data_forward(a))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV add(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
-    {
-
-        return vecma_forward(
-            data3x3_add(data_forward(a), data_forward(b))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV subtract(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
-    {
-
-        return vecma_forward(
-            data3x3_subtract(data_forward(a), data_forward(b))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV multiply(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
-    {
-        return {
-            
-            a * b.a,
-            a * b.b,
-            a * b.c
-            
-        };
+        
+        return b.x * a.a + b.y * a.b + b.z * a.c;
     }
 
 }
 
-NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
-NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
-
-NMATH_DEFINE_ADD_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
-NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_f32);
-
-NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
-NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_f32);
-
-NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
-NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_f32);
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
 
 
 
@@ -163,50 +95,13 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_
 //  nmath::F_matrix4x4_f32
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
-
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV minus(PA_matrix4x4_f32 a) noexcept
+    
+    NCPP_FORCE_INLINE F_vector4_f32 multiply(PA_matrix4x4_f32 a, PA_vector4_f32 b) noexcept
     {
-
-        return vecma_forward(
-            data4x4_minus(data_forward(a))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV add(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
-    {
-
-        return vecma_forward(
-            data4x4_add(data_forward(a), data_forward(b))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV subtract(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
-    {
-
-        return vecma_forward(
-            data4x4_subtract(data_forward(a), data_forward(b))
-        );
-    }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV multiply(PA_matrix4x4_f32 a, PA_matrix4x4_f32 b) noexcept
-    {
-        return {
-            
-            a * b.a,
-            a * b.b,
-            a * b.c,
-            a * b.d
-            
-        };
+        
+        return b.x * a.a + b.y * a.b + b.z * a.c + b.w * a.d;
     }
 
 }
 
-NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
-NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
-
-NMATH_DEFINE_ADD_OPERATOR(nmath::PA_matrix4x4_f32, nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
-NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_matrix4x4_f32, nmath::PA_matrix4x4_f32);
-
-NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_matrix4x4_f32, nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
-NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix4x4_f32, nmath::PA_matrix4x4_f32);
-
-NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix4x4_f32, nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
-NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix4x4_f32, nmath::PA_matrix4x4_f32);
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix4x4_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);
