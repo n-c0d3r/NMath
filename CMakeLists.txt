@@ -54,7 +54,7 @@ NCPP_VersionUtils_CreateVersionMacros(
     PROJECT_NAME NMATH
     OUTPUT_FILE "${NMATH_GENERATED_FILES_DIR}/version.hpp"
     MAJOR 0
-    MINOR 0
+    MINOR 1
     PATCH 0
 )
 
