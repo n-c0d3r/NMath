@@ -74,15 +74,15 @@ set_target_properties(nmath
         FOLDER "nmath"
 )
 
+target_precompile_headers(nmath
+    PRIVATE
+        source/nmath/prerequisites.hpp
+)
+
 target_include_directories(nmath
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/source
         ${CMAKE_CURRENT_BINARY_DIR}/generated_files
-)
-
-target_precompile_headers(nmath
-    PRIVATE
-        source/nmath/prerequisites.hpp
 )
 
 target_link_libraries(nmath
