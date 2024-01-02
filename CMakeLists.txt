@@ -49,13 +49,13 @@ include(NMath/ConfigureDependencies)
 #####################################################################################
 #   Version
 #####################################################################################
-include(NCPP/VersionUtils)
-NCPP_VersionUtils_CreateVersionMacros(
+include(NCPP/Utilities/VersionHelper)
+NCPP_VersionHelper_CreateVersionMacros(
     PROJECT_NAME NMATH
     OUTPUT_FILE "${NMATH_GENERATED_FILES_DIR}/version.hpp"
     MAJOR 0
     MINOR 1
-    PATCH 0
+    PATCH 2
 )
 
 
@@ -63,7 +63,7 @@ NCPP_VersionUtils_CreateVersionMacros(
 #####################################################################################
 #   Global variables
 #####################################################################################
-include(NCPP/ApplyGlobal)
+include(NCPP/Utilities/ApplyGlobal)
 NCPP_ApplyGlobal(
     NMATH_ROOT_DIR
     NMATH_BINARY_DIR
@@ -83,9 +83,9 @@ option(NMATH_ENABLE_DOCUMENTATIONS "If enabled, creating a target being capable 
 if(NMATH_ENABLE_DOCUMENTATIONS)
     option(NMATH_INTERNAL_DOCS "Generate docs for anything" OFF)
 
-    include(NCPP/DocsUtils)
+    include(NCPP/Utilities/DocsHelper)
 
-    NCPP_DocsUtils_CreateTarget(
+    NCPP_DocsHelper_CreateTarget(
         NAME NMATH
         BRIEF "Ncoder's Learning Aimed C++ Surface Library."
 

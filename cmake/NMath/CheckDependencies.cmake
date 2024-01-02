@@ -6,7 +6,7 @@ message(STATUS "<NMath::CheckDependencies> Start checking dependencies")
 #####################################################################################
 #   Includes
 #####################################################################################
-include(NCPP/GitUtils)
+include(NCPP/Utilities/GitHelper)
 
 
 
