@@ -139,8 +139,8 @@ namespace nmath {
         using F_passed_argument = const F_this&;
 #endif
 
-        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3x3, nmath::F_data3x3_f32_flag);
-        NCPP_RTTI_IMPLEMENT_FLAG(TF_data3x3, F_flag__);
+        NCPP_RTTI_IMPLEMENT_FLAG(nmath::F_data3x3_f32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(F_flag__);
 
 
 

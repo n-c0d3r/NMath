@@ -93,8 +93,8 @@ namespace nmath {
 
         using F_passed_argument = const F_this&;
         
-        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, nmath::F_data2_f32_flag);
-        NCPP_RTTI_IMPLEMENT_FLAG(TF_data2, F_flag__);
+        NCPP_RTTI_IMPLEMENT_FLAG(nmath::F_data2_f32_flag);
+        NCPP_RTTI_IMPLEMENT_FLAG(F_flag__);
         
         
 
