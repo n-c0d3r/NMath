@@ -7,7 +7,13 @@ using namespace nmath;
 
 int main() {
 
-    std::cout << eastl::string("Hello NMath ") + NMATH_VERSION_STR << std::endl;
+    NCPP_INFO()
+        << "Hello "
+        << E_log_color::V_FOREGROUND_BRIGHT_GREEN
+        << "NMath "
+        << E_log_color::V_FOREGROUND_BRIGHT_YELLOW
+        << NMATH_VERSION_STR
+        << E_log_color::RESET;
 
 	ncpp::pause_console();
 
