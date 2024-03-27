@@ -120,8 +120,8 @@ namespace nmath {
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
         NCPP_FORCE_INLINE TF_data2() noexcept :
-            x(0.0f),
-            y(0.0f)
+            x(0),
+            y(0)
         {
 
 
@@ -137,7 +137,7 @@ namespace nmath {
         }
         NCPP_FORCE_INLINE TF_data2(F_entry x) noexcept :
             x(x),
-            y(0.0f)
+            y(0)
         {
 
 
