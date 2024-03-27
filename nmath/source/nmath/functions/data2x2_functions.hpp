@@ -232,12 +232,12 @@ namespace nmath {
 #ifdef NCPP_ENABLE_SSE4
         return _mm_round_ps(a.ab_, _MM_FROUND_TO_NEAREST_INT | _MM_FROUND_NO_EXC);
 #elif defined(NCPP_ENABLE_SSE)
-        __m128 sign = _mm_and_ps(a.ab_, negative_zero_x4.xyzw_);
-        __m128 sMagic = _mm_or_ps(no_fraction_x4.ab_, sign);
+        __m128 sign = _mm_and_ps(a.ab_, negative_zero_f32x4.xyzw_);
+        __m128 sMagic = _mm_or_ps(no_fraction_f32x4.ab_, sign);
         __m128 R1 = _mm_add_ps(a.ab_, sMagic);
         R1 = _mm_sub_ps(R1, sMagic);
-        __m128 R2 = _mm_and_ps(a.ab_, abs_mask_x4.ab_);
-        __m128 mask = _mm_cmple_ps(R2, no_fraction_x4.ab_);
+        __m128 R2 = _mm_and_ps(a.ab_, abs_mask_f32x4.ab_);
+        __m128 mask = _mm_cmple_ps(R2, no_fraction_f32x4.ab_);
         R2 = _mm_andnot_ps(mask, a.ab_);
         R1 = _mm_and_ps(R1, mask);
         F_data2x2_f32 vResult = _mm_xor_ps(R1, R2);
@@ -374,19 +374,19 @@ namespace nmath {
     NCPP_FORCE_INLINE F_data2x2_f32 NMATH_CALL_CNV data2x2_mod_angles(PA_data2x2_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
-        F_data2x2_f32 vResult = _mm_mul_ps(a.ab_, reciprocal_two_pi_x4.xyzw_);
+        F_data2x2_f32 vResult = _mm_mul_ps(a.ab_, reciprocal_two_pi_f32x4.xyzw_);
         // Use the inline function due to complexity for rounding
         vResult = data2x2_round(vResult);
-        return _mm_fnmadd_ps(vResult.ab_, two_pi_x4.xyzw_, a.ab_);
+        return _mm_fnmadd_ps(vResult.ab_, two_pi_f32x4.xyzw_, a.ab_);
 #else
         F_data2x2_f32 V;
         F_data2x2_f32 Result;
 
         // Modulo the range of the given angles such that -XM_PI <= Angles < XM_PI
-        V.a = data2_multiply(a.a, reciprocal_two_pi_x2);
-        V.b = data2_multiply(a.b, reciprocal_two_pi_x2);
+        V.a = data2_multiply(a.a, reciprocal_two_pi_f32x2);
+        V.b = data2_multiply(a.b, reciprocal_two_pi_f32x2);
         V = data2x2_round(V);
-        Result = data2x2_negative_multiply_sub( two_pi_2x2, V, a);
+        Result = data2x2_negative_multiply_sub( two_pi_f32x2x2, V, a);
         return Result;
 #endif
     }
@@ -398,11 +398,11 @@ namespace nmath {
         F_data2x2_f32 x = data2x2_mod_angles(a);
 
         // Map in [-pi/2,pi/2] with sin(y) = sin(x).
-        __m128 sign = _mm_and_ps(x.ab_, negative_zero_x4.xyzw_);
-        __m128 c = _mm_or_ps(two_pi_x4.xyzw_, sign);  // pi when x >= 0, -pi when x < 0
+        __m128 sign = _mm_and_ps(x.ab_, negative_zero_f32x4.xyzw_);
+        __m128 c = _mm_or_ps(two_pi_f32x4.xyzw_, sign);  // pi when x >= 0, -pi when x < 0
         __m128 absx = _mm_andnot_ps(sign, x.ab_);  // |x|
         __m128 rflx = _mm_sub_ps(c, x.ab_);
-        __m128 comp = _mm_cmple_ps(absx, half_pi_x4.xyzw_);
+        __m128 comp = _mm_cmple_ps(absx, half_pi_f32x4.xyzw_);
         __m128 select0 = _mm_and_ps(comp, x.ab_);
         __m128 select1 = _mm_andnot_ps(comp, rflx);
         x = _mm_or_ps(select0, select1);
@@ -410,17 +410,17 @@ namespace nmath {
         __m128 x2 = _mm_mul_ps(x.ab_, x.ab_);
 
         // Compute polynomial approximation
-        __m128 vConstantsB = _mm_permute_ps(sin_coefficient_s1_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m128 vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m128 vConstantsB = _mm_permute_ps(sin_coefficient_s1_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m128 vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
         __m128 Result = _mm_fmadd_ps(vConstantsB, x2, vConstants);
 
-        vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
         Result = _mm_fmadd_ps(Result, x2, simd_f32x4_1111);
@@ -443,11 +443,11 @@ namespace nmath {
         F_data2x2_f32 x = data2x2_mod_angles(a);
 
         // Map in [-pi/2,pi/2] with cos(y) = sign*cos(x).
-        F_data2x2_f32 sign = _mm_and_ps(x.ab_, negative_zero_x4.xyzw_);
-        __m128 c = _mm_or_ps(pi_x4.xyzw_, sign.ab_);  // pi when x >= 0, -pi when x < 0
+        F_data2x2_f32 sign = _mm_and_ps(x.ab_, negative_zero_f32x4.xyzw_);
+        __m128 c = _mm_or_ps(pi_f32x4.xyzw_, sign.ab_);  // pi when x >= 0, -pi when x < 0
         __m128 absx = _mm_andnot_ps(sign.ab_, x.ab_);  // |x|
         __m128 rflx = _mm_sub_ps(c, x.ab_);
-        __m128 comp = _mm_cmple_ps(absx, half_pi_x4.xyzw_);
+        __m128 comp = _mm_cmple_ps(absx, half_pi_f32x4.xyzw_);
         __m128 select0 = _mm_and_ps(comp, x.ab_);
         __m128 select1 = _mm_andnot_ps(comp, rflx);
         x = _mm_or_ps(select0, select1);
@@ -458,17 +458,17 @@ namespace nmath {
         __m128 x2 = _mm_mul_ps(x.ab_, x.ab_);
 
         // Compute polynomial approximation
-        __m128 vConstantsB = _mm_permute_ps(cos_coefficient_s1_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m128 vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m128 vConstantsB = _mm_permute_ps(cos_coefficient_s1_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m128 vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
         __m128 Result = _mm_fmadd_ps(vConstantsB, x2, vConstants);
 
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
         Result = _mm_fmadd_ps(Result, x2, simd_f32x4_1111);
@@ -490,11 +490,11 @@ namespace nmath {
         F_data2x2_f32 x = data2x2_mod_angles(a.ab_);
 
         // Map in [-pi/2,pi/2] with sin(y) = sin(x), cos(y) = sign*cos(x).
-        F_data2x2_f32 sign = _mm_and_ps(x.ab_, negative_zero_x4.xyzw_);
-        __m128 c = _mm_or_ps(pi_x4.xyzw_, sign.ab_);  // pi when x >= 0, -pi when x < 0
+        F_data2x2_f32 sign = _mm_and_ps(x.ab_, negative_zero_f32x4.xyzw_);
+        __m128 c = _mm_or_ps(pi_f32x4.xyzw_, sign.ab_);  // pi when x >= 0, -pi when x < 0
         __m128 absx = _mm_andnot_ps(sign.ab_, x.ab_);  // |x|
         __m128 rflx = _mm_sub_ps(c, x.ab_);
-        __m128 comp = _mm_cmple_ps(absx, half_pi_x4.xyzw_);
+        __m128 comp = _mm_cmple_ps(absx, half_pi_f32x4.xyzw_);
         __m128 select0 = _mm_and_ps(comp, x.ab_);
         __m128 select1 = _mm_andnot_ps(comp, rflx);
         x = _mm_or_ps(select0, select1);
@@ -505,17 +505,17 @@ namespace nmath {
         __m128 x2 = _mm_mul_ps(x.ab_, x.ab_);
 
         // Compute polynomial approximation of sine
-        __m128 vConstantsB = _mm_permute_ps(sin_coefficient_s1_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m128 vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m128 vConstantsB = _mm_permute_ps(sin_coefficient_s1_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m128 vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
         __m128 Result = _mm_fmadd_ps(vConstantsB, x2, vConstants);
 
-        vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(sin_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants = _mm_permute_ps(sin_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
         Result = _mm_fmadd_ps(Result, x2, simd_f32x4_1111);
@@ -523,17 +523,17 @@ namespace nmath {
         out_sin = Result;
 
         // Compute polynomial approximation of cosine
-        vConstantsB = _mm_permute_ps(cos_coefficient_s1_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
+        vConstantsB = _mm_permute_ps(cos_coefficient_s1_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(3, 3, 3, 3));
         Result = _mm_fmadd_ps(vConstantsB, x2, vConstants);
 
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(2, 2, 2, 2));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(1, 1, 1, 1));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
-        vConstants = _mm_permute_ps(cos_coefficient_s0_x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants = _mm_permute_ps(cos_coefficient_s0_f32x4.xyzw_, _MM_SHUFFLE(0, 0, 0, 0));
         Result = _mm_fmadd_ps(Result, x2, vConstants);
 
         Result = _mm_fmadd_ps(Result, x2, simd_f32x4_1111);

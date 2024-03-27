@@ -467,16 +467,16 @@ namespace nmath {
 #ifdef NCPP_ENABLE_AVX
         F_data4x4_f32 vResult = {
             
-            _mm256_mul_ps(a.ab_, reciprocal_two_pi_4x4.ab_),
-            _mm256_mul_ps(a.cd_, reciprocal_two_pi_4x4.ab_)
+            _mm256_mul_ps(a.ab_, reciprocal_two_pi_f32x4x4.ab_),
+            _mm256_mul_ps(a.cd_, reciprocal_two_pi_f32x4x4.ab_)
             
         };
         // Use the inline function due to complexity for rounding
         vResult = data4x4_round(vResult);
         return {
             
-            _mm256_fnmadd_ps(vResult.ab_, two_pi_4x4.ab_, a.ab_),
-            _mm256_fnmadd_ps(vResult.cd_, two_pi_4x4.cd_, a.cd_)
+            _mm256_fnmadd_ps(vResult.ab_, two_pi_f32x4x4.ab_, a.ab_),
+            _mm256_fnmadd_ps(vResult.cd_, two_pi_f32x4x4.cd_, a.cd_)
             
         };
 #else
@@ -484,12 +484,12 @@ namespace nmath {
         F_data4x4_f32 Result;
 
         // Modulo the range of the given angles such that -XM_PI <= Angles < XM_PI
-        V.a = data4_multiply(a.a, reciprocal_two_pi_x4);
-        V.b = data4_multiply(a.b, reciprocal_two_pi_x4);
-        V.c = data4_multiply(a.c, reciprocal_two_pi_x4);
-        V.d = data4_multiply(a.d, reciprocal_two_pi_x4);
+        V.a = data4_multiply(a.a, reciprocal_two_pi_f32x4);
+        V.b = data4_multiply(a.b, reciprocal_two_pi_f32x4);
+        V.c = data4_multiply(a.c, reciprocal_two_pi_f32x4);
+        V.d = data4_multiply(a.d, reciprocal_two_pi_f32x4);
         V = data4x4_round(V);
-        Result = data4x4_negative_multiply_sub(two_pi_4x4, V, a);
+        Result = data4x4_negative_multiply_sub(two_pi_f32x4x4, V, a);
         return Result;
 #endif
     }
@@ -501,16 +501,16 @@ namespace nmath {
         F_data4x4_f32 x = data4x4_mod_angles(a);
 
         // Map in [-pi/2,pi/2] with sin(y) = sin(x).
-        __m256 sign_ab = _mm256_and_ps(x.ab_, negative_zero_4x4.ab_);
-        __m256 sign_c = _mm256_and_ps(x.cd_, negative_zero_4x4.cd_);
-        __m256 c_ab = _mm256_or_ps(two_pi_4x4.ab_, sign_ab);  // pi when x >= 0, -pi when x < 0
-        __m256 c_c = _mm256_or_ps(two_pi_4x4.cd_, sign_c);  // pi when x >= 0, -pi when x < 0
+        __m256 sign_ab = _mm256_and_ps(x.ab_, negative_zero_f32x4x4.ab_);
+        __m256 sign_c = _mm256_and_ps(x.cd_, negative_zero_f32x4x4.cd_);
+        __m256 c_ab = _mm256_or_ps(two_pi_f32x4x4.ab_, sign_ab);  // pi when x >= 0, -pi when x < 0
+        __m256 c_c = _mm256_or_ps(two_pi_f32x4x4.cd_, sign_c);  // pi when x >= 0, -pi when x < 0
         __m256 absx_ab = _mm256_andnot_ps(sign_ab, x.ab_);  // |x|
         __m256 absx_c = _mm256_andnot_ps(sign_c, x.cd_);  // |x|
         __m256 rflx_ab = _mm256_sub_ps(c_ab, x.ab_);
         __m256 rflx_c = _mm256_sub_ps(c_c, x.cd_);
-        __m256 comp_ab = _mm256_cmp_ps(absx_ab, half_pi_4x4.ab_, _CMP_LE_OS);
-        __m256 comp_c = _mm256_cmp_ps(absx_c, half_pi_4x4.cd_, _CMP_LE_OS);
+        __m256 comp_ab = _mm256_cmp_ps(absx_ab, half_pi_f32x4x4.ab_, _CMP_LE_OS);
+        __m256 comp_c = _mm256_cmp_ps(absx_c, half_pi_f32x4x4.cd_, _CMP_LE_OS);
         __m256 select0_ab = _mm256_and_ps(comp_ab, x.ab_);
         __m256 select0_c = _mm256_and_ps(comp_c, x.cd_);
         __m256 select1_ab = _mm256_andnot_ps(comp_ab, rflx_ab);
@@ -522,25 +522,25 @@ namespace nmath {
         __m256 x2_c = _mm256_mul_ps(x.cd_, x.cd_);
 
         // Compute polynomial approximation
-        __m256 vConstantsB_ab = _mm256_permute_ps(sin_coefficient_s1_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m256 vConstantsB_c = _mm256_permute_ps(sin_coefficient_s1_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m256 vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
-        __m256 vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m256 vConstantsB_ab = _mm256_permute_ps(sin_coefficient_s1_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m256 vConstantsB_c = _mm256_permute_ps(sin_coefficient_s1_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m256 vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m256 vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
         __m256 Result_ab = _mm256_fmadd_ps(vConstantsB_ab, x2_ab, vConstants_ab);
         __m256 Result_c = _mm256_fmadd_ps(vConstantsB_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
-        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
-        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
@@ -569,15 +569,15 @@ namespace nmath {
         F_data4x4_f32 x = data4x4_mod_angles(a);
 
         // Map in [-pi/2,pi/2] with cos(y) = sign*cos(x).
-        F_data4x4_f32 sign = {_mm256_and_ps(x.ab_, negative_zero_4x4.ab_), _mm256_and_ps(x.cd_, negative_zero_4x4.cd_)};
-        __m256 c_ab = _mm256_or_ps(pi_4x4.ab_, sign.ab_);  // pi when x >= 0, -pi when x < 0
-        __m256 c_c = _mm256_or_ps(pi_4x4.cd_, sign.cd_);  // pi when x >= 0, -pi when x < 0
+        F_data4x4_f32 sign = {_mm256_and_ps(x.ab_, negative_zero_f32x4x4.ab_), _mm256_and_ps(x.cd_, negative_zero_f32x4x4.cd_)};
+        __m256 c_ab = _mm256_or_ps(pi_f32x4x4.ab_, sign.ab_);  // pi when x >= 0, -pi when x < 0
+        __m256 c_c = _mm256_or_ps(pi_f32x4x4.cd_, sign.cd_);  // pi when x >= 0, -pi when x < 0
         __m256 absx_ab = _mm256_andnot_ps(sign.ab_, x.ab_);  // |x|
         __m256 absx_c = _mm256_andnot_ps(sign.cd_, x.cd_);  // |x|
         __m256 rflx_ab = _mm256_sub_ps(c_ab, x.ab_);
         __m256 rflx_c = _mm256_sub_ps(c_c, x.cd_);
-        __m256 comp_ab = _mm256_cmp_ps(absx_ab, half_pi_4x4.ab_, _CMP_LE_OS);
-        __m256 comp_c = _mm256_cmp_ps(absx_c, half_pi_4x4.cd_, _CMP_LE_OS);
+        __m256 comp_ab = _mm256_cmp_ps(absx_ab, half_pi_f32x4x4.ab_, _CMP_LE_OS);
+        __m256 comp_c = _mm256_cmp_ps(absx_c, half_pi_f32x4x4.cd_, _CMP_LE_OS);
         __m256 select0_ab = _mm256_and_ps(comp_ab, x.ab_);
         __m256 select0_c = _mm256_and_ps(comp_c, x.cd_);
         __m256 select1_ab = _mm256_andnot_ps(comp_ab, rflx_ab);
@@ -595,25 +595,25 @@ namespace nmath {
         __m256 x2_c = _mm256_mul_ps(x.cd_, x.cd_);
 
         // Compute polynomial approximation
-        __m256 vConstantsB_ab = _mm256_permute_ps(cos_coefficient_s1_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m256 vConstantsB_c = _mm256_permute_ps(cos_coefficient_s1_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m256 vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
-        __m256 vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m256 vConstantsB_ab = _mm256_permute_ps(cos_coefficient_s1_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m256 vConstantsB_c = _mm256_permute_ps(cos_coefficient_s1_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m256 vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m256 vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
         __m256 Result_ab = _mm256_fmadd_ps(vConstantsB_ab, x2_ab, vConstants_ab);
         __m256 Result_c = _mm256_fmadd_ps(vConstantsB_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
@@ -642,15 +642,15 @@ namespace nmath {
         F_data4x4_f32 x = data4x4_mod_angles(a);
 
         // Map in [-pi/2,pi/2] with sin(y) = sin(x), cos(y) = sign*cos(x).
-        F_data4x4_f32 sign = {_mm256_and_ps(x.ab_, negative_zero_4x4.ab_), _mm256_and_ps(x.cd_, negative_zero_4x4.cd_)};
-        __m256 c_ab = _mm256_or_ps(pi_4x4.ab_, sign.ab_);  // pi when x >= 0, -pi when x < 0
-        __m256 c_c = _mm256_or_ps(pi_4x4.cd_, sign.cd_);  // pi when x >= 0, -pi when x < 0
+        F_data4x4_f32 sign = {_mm256_and_ps(x.ab_, negative_zero_f32x4x4.ab_), _mm256_and_ps(x.cd_, negative_zero_f32x4x4.cd_)};
+        __m256 c_ab = _mm256_or_ps(pi_f32x4x4.ab_, sign.ab_);  // pi when x >= 0, -pi when x < 0
+        __m256 c_c = _mm256_or_ps(pi_f32x4x4.cd_, sign.cd_);  // pi when x >= 0, -pi when x < 0
         __m256 absx_ab = _mm256_andnot_ps(sign.ab_, x.ab_);  // |x|
         __m256 absx_c = _mm256_andnot_ps(sign.cd_, x.cd_);  // |x|
         __m256 rflx_ab = _mm256_sub_ps(c_ab, x.ab_);
         __m256 rflx_c = _mm256_sub_ps(c_c, x.cd_);
-        __m256 comp_ab = _mm256_cmp_ps(absx_ab, half_pi_4x4.ab_, _CMP_LE_OS);
-        __m256 comp_c = _mm256_cmp_ps(absx_c, half_pi_4x4.cd_, _CMP_LE_OS);
+        __m256 comp_ab = _mm256_cmp_ps(absx_ab, half_pi_f32x4x4.ab_, _CMP_LE_OS);
+        __m256 comp_c = _mm256_cmp_ps(absx_c, half_pi_f32x4x4.cd_, _CMP_LE_OS);
         __m256 select0_ab = _mm256_and_ps(comp_ab, x.ab_);
         __m256 select0_c = _mm256_and_ps(comp_c, x.cd_);
         __m256 select1_ab = _mm256_andnot_ps(comp_ab, rflx_ab);
@@ -668,25 +668,25 @@ namespace nmath {
         __m256 x2_c = _mm256_mul_ps(x.cd_, x.cd_);
 
         // Compute polynomial approximation of sine
-        __m256 vConstantsB_ab = _mm256_permute_ps(sin_coefficient_s1_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m256 vConstantsB_c = _mm256_permute_ps(sin_coefficient_s1_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
-        __m256 vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
-        __m256 vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m256 vConstantsB_ab = _mm256_permute_ps(sin_coefficient_s1_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m256 vConstantsB_c = _mm256_permute_ps(sin_coefficient_s1_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        __m256 vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
+        __m256 vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
         __m256 Result_ab = _mm256_fmadd_ps(vConstantsB_ab, x2_ab, vConstants_ab);
         __m256 Result_c = _mm256_fmadd_ps(vConstantsB_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
-        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
-        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_ab = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_c = _mm256_permute_ps(sin_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
@@ -698,25 +698,25 @@ namespace nmath {
         out_sin = {Result_ab, Result_c};
 
         // Compute polynomial approximation of cosine
-        vConstantsB_ab = _mm256_permute_ps(cos_coefficient_s1_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstantsB_c = _mm256_permute_ps(cos_coefficient_s1_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
+        vConstantsB_ab = _mm256_permute_ps(cos_coefficient_s1_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstantsB_c = _mm256_permute_ps(cos_coefficient_s1_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(3, 3, 3, 3));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(3, 3, 3, 3));
         Result_ab = _mm256_fmadd_ps(vConstantsB_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(vConstantsB_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(2, 2, 2, 2));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(2, 2, 2, 2));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(1, 1, 1, 1));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(1, 1, 1, 1));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 
-        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
-        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_ab = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.ab_, _MM_SHUFFLE(0, 0, 0, 0));
+        vConstants_c = _mm256_permute_ps(cos_coefficient_s0_f32x4x4.cd_, _MM_SHUFFLE(0, 0, 0, 0));
         Result_ab = _mm256_fmadd_ps(Result_ab, x2_ab, vConstants_ab);
         Result_c = _mm256_fmadd_ps(Result_c, x2_c, vConstants_c);
 

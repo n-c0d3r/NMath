@@ -57,6 +57,8 @@ namespace nmath {
 
 
 #define NMATH_DATA2_F32_PA(T) const T&
+#define NMATH_DATA2_I32_PA(T) const T&
+#define NMATH_DATA2_U32_PA(T) const T&
 
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DATA3_F32_PA(T) const T

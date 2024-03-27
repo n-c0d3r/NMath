@@ -113,6 +113,118 @@ NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
 
 
 ////////////////////////////////////////////////////////////////////////////////////
+//  nmath::F_vector2_i32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NCPP_FORCE_INLINE F_vector2_i32 minus(PA_vector2_i32 a) noexcept
+    {
+        return vecma_forward(
+            data2_minus(data_forward(a))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector2_i32 add(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return vecma_forward(
+            data2_add(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector2_i32 subtract(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return vecma_forward(
+            data2_subtract(data_forward(a), data_forward(b))
+        );
+    }
+
+    NCPP_FORCE_INLINE F_vector2_i32 multiply(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return vecma_forward(
+            data2_multiply(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector2_i32 divide(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return vecma_forward(
+            data2_divide(data_forward(a), data_forward(b))
+        );
+    }
+
+}
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector2_i32, nmath::F_vector2_i32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector2_i32, nmath::F_vector2_i32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32, nmath::F_vector2_i32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector2_i32, nmath::PA_vector2_i32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32, nmath::F_vector2_i32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector2_i32, nmath::PA_vector2_i32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32, nmath::F_vector2_i32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_i32, nmath::PA_vector2_i32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32, nmath::F_vector2_i32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_i32, nmath::PA_vector2_i32);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  nmath::F_vector2_u32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NCPP_FORCE_INLINE F_vector2_u32 minus(PA_vector2_u32 a) noexcept
+    {
+        return vecma_forward(
+            data2_minus(data_forward(a))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector2_u32 add(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return vecma_forward(
+            data2_add(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector2_u32 subtract(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return vecma_forward(
+            data2_subtract(data_forward(a), data_forward(b))
+        );
+    }
+
+    NCPP_FORCE_INLINE F_vector2_u32 multiply(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return vecma_forward(
+            data2_multiply(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector2_u32 divide(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return vecma_forward(
+            data2_divide(data_forward(a), data_forward(b))
+        );
+    }
+
+}
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector2_u32, nmath::F_vector2_u32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector2_u32, nmath::F_vector2_u32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32, nmath::F_vector2_u32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector2_u32, nmath::PA_vector2_u32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32, nmath::F_vector2_u32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector2_u32, nmath::PA_vector2_u32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32, nmath::F_vector2_u32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_u32, nmath::PA_vector2_u32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32, nmath::F_vector2_u32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_u32, nmath::PA_vector2_u32);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
 //  nmath::F_vector3_f32
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {

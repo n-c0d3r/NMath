@@ -68,6 +68,30 @@ namespace nmath {
         return (::nmath::TPA_data_cast<ClassName>)o; \
     }
 
+#define NMATH_DEFINE_DATA2_I32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data2_i32 data_forward(NMATH_DATA2_I32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data2_i32)o; \
+    }
+
+#define NMATH_DEFINE_DATA2_I32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data2_i32 o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
+    }
+
+#define NMATH_DEFINE_DATA2_U32_FORWARD(ClassName) \
+    NCPP_FORCE_INLINE ::nmath::PA_data2_u32 data_forward(NMATH_DATA2_U32_PA(ClassName) o) noexcept { \
+        \
+        return (::nmath::PA_data2_u32)o; \
+    }
+
+#define NMATH_DEFINE_DATA2_U32_REVERSE_FORWARD(ForwardName, ClassName) \
+    NCPP_FORCE_INLINE ::nmath::TPA_data_cast<ClassName> ForwardName(::nmath::PA_data2_u32 o) noexcept { \
+        \
+        return (::nmath::TPA_data_cast<ClassName>)o; \
+    }
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////

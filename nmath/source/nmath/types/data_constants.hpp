@@ -56,66 +56,66 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data2
     ////////////////////////////////////////////////////////////////////////////////////
-    extern const F_data2_f32 reciprocal_two_pi_x2;
-    extern const F_data2_f32 two_pi_x2;
+    extern const F_data2_f32 reciprocal_two_pi_f32x2;
+    extern const F_data2_f32 two_pi_f32x2;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data3
     ////////////////////////////////////////////////////////////////////////////////////
-    extern const F_data3_f32 reciprocal_two_pi_x3;
-    extern const F_data3_f32 two_pi_x3;
+    extern const F_data3_f32 reciprocal_two_pi_f32x3;
+    extern const F_data3_f32 two_pi_f32x3;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data4
     ////////////////////////////////////////////////////////////////////////////////////
-    extern const F_data4_f32 reciprocal_two_pi_x4;
-    extern const F_data4_f32 two_pi_x4;
-    extern const F_data4_f32 pi_x4;
-    extern const F_data4_f32 half_pi_x4;
-    extern const F_data4_f32 negative_zero_x4;
-    extern const F_data4_f32 abs_mask_x4;
-    extern const F_data4_f32 no_fraction_x4;
-    extern const F_data4_f32 sin_coefficient_s1_x4;
-    extern const F_data4_f32 sin_coefficient_s0_x4;
-    extern const F_data4_f32 cos_coefficient_s1_x4;
-    extern const F_data4_f32 cos_coefficient_s0_x4;
+    extern const F_data4_f32 reciprocal_two_pi_f32x4;
+    extern const F_data4_f32 two_pi_f32x4;
+    extern const F_data4_f32 pi_f32x4;
+    extern const F_data4_f32 half_pi_f32x4;
+    extern const F_data4_f32 negative_zero_f32x4;
+    extern const F_data4_f32 abs_mask_f32x4;
+    extern const F_data4_f32 no_fraction_f32x4;
+    extern const F_data4_f32 sin_coefficient_s1_f32x4;
+    extern const F_data4_f32 sin_coefficient_s0_f32x4;
+    extern const F_data4_f32 cos_coefficient_s1_f32x4;
+    extern const F_data4_f32 cos_coefficient_s0_f32x4;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data2x2
     ////////////////////////////////////////////////////////////////////////////////////
-    extern const F_data2x2_f32 reciprocal_two_pi_2x2;
-    extern const F_data2x2_f32 two_pi_2x2;
+    extern const F_data2x2_f32 reciprocal_two_pi_f32x2x2;
+    extern const F_data2x2_f32 two_pi_f32x2x2;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data3x3
     ////////////////////////////////////////////////////////////////////////////////////
-    extern const F_data3x3_f32 reciprocal_two_pi_3x3;
-    extern const F_data3x3_f32 two_pi_3x3;
+    extern const F_data3x3_f32 reciprocal_two_pi_f32x3x3;
+    extern const F_data3x3_f32 two_pi_f32x3x3;
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////
     //  Data4x4
     ////////////////////////////////////////////////////////////////////////////////////
-    extern const F_data4x4_f32 reciprocal_two_pi_4x4;
-    extern const F_data4x4_f32 two_pi_4x4;
-    extern const F_data4x4_f32 pi_4x4;
-    extern const F_data4x4_f32 half_pi_4x4;
-    extern const F_data4x4_f32 negative_zero_4x4;
-    extern const F_data4x4_f32 abs_mask_4x4;
-    extern const F_data4x4_f32 no_fraction_4x4;
-    extern const F_data4x4_f32 sin_coefficient_s1_4x4;
-    extern const F_data4x4_f32 sin_coefficient_s0_4x4;
-    extern const F_data4x4_f32 cos_coefficient_s1_4x4;
-    extern const F_data4x4_f32 cos_coefficient_s0_4x4;
+    extern const F_data4x4_f32 reciprocal_two_pi_f32x4x4;
+    extern const F_data4x4_f32 two_pi_f32x4x4;
+    extern const F_data4x4_f32 pi_f32x4x4;
+    extern const F_data4x4_f32 half_pi_f32x4x4;
+    extern const F_data4x4_f32 negative_zero_f32x4x4;
+    extern const F_data4x4_f32 abs_mask_f32x4x4;
+    extern const F_data4x4_f32 no_fraction_f32x4x4;
+    extern const F_data4x4_f32 sin_coefficient_s1_f32x4x4;
+    extern const F_data4x4_f32 sin_coefficient_s0_f32x4x4;
+    extern const F_data4x4_f32 cos_coefficient_s1_f32x4x4;
+    extern const F_data4x4_f32 cos_coefficient_s0_f32x4x4;
 
 
 
