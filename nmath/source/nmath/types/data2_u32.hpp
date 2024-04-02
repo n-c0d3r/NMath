@@ -78,7 +78,7 @@ namespace nmath {
 
 
     template<typename F_flag__>
-    struct TF_data2<u32, F_flag__> {
+    struct NCPP_ALIGN(sizeof(u32) * 2) TF_data2<u32, F_flag__> {
 
         ////////////////////////////////////////////////////////////////////////////////////
         //  Typedefs

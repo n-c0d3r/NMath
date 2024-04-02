@@ -112,7 +112,7 @@ namespace nmath {
 
 
     template<typename F_flag__>
-    struct NCPP_ALIGN(64) TF_data3x3<f32, F_flag__> {
+    struct NCPP_ALIGN(sizeof(f32) * 4 * 4) TF_data3x3<f32, F_flag__> {
 
         ////////////////////////////////////////////////////////////////////////////////////
         //  Typedefs
