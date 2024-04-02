@@ -174,6 +174,11 @@ namespace nmath {
                 F_entry cz;
                 F_entry cw_;
 
+                F_entry dx_;
+                F_entry dy_;
+                F_entry dz_;
+                F_entry dw_;
+
             };
 
             F_pack m[3];

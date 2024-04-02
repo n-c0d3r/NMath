@@ -144,6 +144,7 @@ namespace nmath {
                 F_entry x;
                 F_entry y;
                 F_entry z;
+                F_entry w_;
                 
             };
 
