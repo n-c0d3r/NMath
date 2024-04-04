@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/matrix_invert.hpp
+/** @file nmath/functions/quaternion_invert.hpp
 *
-*   Implement invert function for matrix.
+*   Implement invert function for quaternion.
 */
 
 
@@ -33,18 +33,15 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/matrix2x2.hpp>
-#include <nmath/types/matrix3x3.hpp>
-#include <nmath/types/matrix4x4.hpp>
+#include <nmath/types/quaternion.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/functions/matrix_transpose.hpp>
-#include <nmath/functions/matrix_determinant.hpp>
-#include <nmath/functions/matrix_cofactor.hpp>
-#include <nmath/operators/matrix_scalar.hpp>
+#include <nmath/functions/length.hpp>
+#include <nmath/functions/quaternion_conjugate.hpp>
+#include <nmath/operators/quaternion_scalar.hpp>
 
 #pragma endregion
 
@@ -55,36 +52,9 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV invert(PA_matrix2x2_f32 a, f32 determinant) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV invert(PA_quaternion_f32 a) noexcept {
 
-        return transpose(cofactor(a)) / determinant;
-    }
-
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV invert(PA_matrix3x3_f32 a, f32 determinant) noexcept {
-
-        return transpose(cofactor(a)) / determinant;
-    }
-
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV invert(PA_matrix4x4_f32 a, f32 determinant) noexcept {
-
-        return transpose(cofactor(a)) / determinant;
-    }
-
-
-
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV invert(PA_matrix2x2_f32 a) noexcept {
-
-        return invert(a, determinant(a));
-    }
-
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV invert(PA_matrix3x3_f32 a) noexcept {
-
-        return invert(a, determinant(a));
-    }
-
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV invert(PA_matrix4x4_f32 a) noexcept {
-
-        return invert(a, determinant(a));
+        return conjugate(a) / length(a);
     }
 
 }

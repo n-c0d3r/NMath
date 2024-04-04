@@ -38,6 +38,7 @@
 #include <nmath/functions/data4_functions.hpp>
 #include <nmath/functions/data4x4_functions.hpp>
 #include <nmath/functions/conjugate.hpp>
+#include <nmath/functions/matrix_invert.hpp>
 #include <nmath/operators/helper.hpp>
 #include <nmath/operators/quaternion_vector.hpp>
 

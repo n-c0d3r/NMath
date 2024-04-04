@@ -35,6 +35,7 @@
 
 #include <nmath/types/quaternion.hpp>
 #include <nmath/functions/data4_functions.hpp>
+#include <nmath/functions/quaternion_invert.hpp>
 #include <nmath/operators/helper.hpp>
 
 #pragma endregion
@@ -89,6 +90,16 @@ namespace nmath {
             data4_complex_multiply(data_forward(a), data_forward(b))
         );
     }
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV divide(PA_quaternion_f32 a, PA_quaternion_f32 b) noexcept
+    {
+
+        return quaternion_forward(
+            data4_complex_multiply(
+                data_forward(a),
+                data_forward(invert(b))
+            )
+        );
+    }
 
 }
 
@@ -103,3 +114,6 @@ NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_quaternion_f32, nmath::PA_quaternio
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
 NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_quaternion_f32, nmath::PA_quaternion_f32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_quaternion_f32, nmath::F_quaternion_f32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_quaternion_f32, nmath::PA_quaternion_f32);

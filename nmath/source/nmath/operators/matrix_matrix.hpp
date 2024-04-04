@@ -36,6 +36,7 @@
 #include <nmath/types/data_forward.hpp>
 #include <nmath/types/matrix.hpp>
 #include <nmath/functions/data_functions.hpp>
+#include <nmath/functions/matrix_invert.hpp>
 #include <nmath/operators/helper.hpp>
 #include <nmath/operators/matrix_vector.hpp>
 
@@ -89,6 +90,13 @@ namespace nmath {
             
         };
     }
+    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV divide(PA_matrix2x2_f32 a, PA_matrix2x2_f32 b) noexcept
+    {
+        return multiply(
+            a,
+            invert(b)
+        );
+    }
 
 }
 
@@ -103,6 +111,9 @@ NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
 NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_f32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_matrix2x2_f32, nmath::F_matrix2x2_f32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_matrix2x2_f32);
 
 
 
@@ -142,6 +153,13 @@ namespace nmath {
             
         };
     }
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV divide(PA_matrix3x3_f32 a, PA_matrix3x3_f32 b) noexcept
+    {
+        return multiply(
+            a,
+            invert(b)
+        );
+    }
 
 }
 
@@ -156,6 +174,9 @@ NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
 NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_f32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_matrix3x3_f32);
 
 
 
