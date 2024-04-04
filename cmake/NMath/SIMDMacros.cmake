@@ -145,8 +145,8 @@ function(NMath_DeclareSIMDConstants_f32x4)
         
         if(NOT ${permutation} STREQUAL 0000)  
             set(range_negative_one_value ${permutation})
-            string(REPLACE "1" "NMATH_F32_ONE_NEGATIVE," range_negative_one_value ${range_one_value})
-            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_one_value ${range_one_value})
+            string(REPLACE "1" "NMATH_F32_ONE_NEGATIVE," range_negative_one_value ${range_negative_one_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_one_value ${range_negative_one_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative = make_simd_f32x4(${range_negative_one_value}0.0f);\\")
             
             string(REPLACE "1" "F" range_full_permutation ${permutation})
@@ -219,8 +219,8 @@ function(NMath_DeclareSIMDConstants_i32x4)
         
         if(NOT ${permutation} STREQUAL 0000)
             set(range_negative_one_value ${permutation})
-            string(REPLACE "1" "NMATH_I32_ONE_NEGATIVE," range_negative_one_value ${range_one_value})
-            string(REPLACE "0" "NMATH_I32_ZERO," range_negative_one_value ${range_one_value})
+            string(REPLACE "1" "NMATH_I32_ONE_NEGATIVE," range_negative_one_value ${range_negative_one_value})
+            string(REPLACE "0" "NMATH_I32_ZERO," range_negative_one_value ${range_negative_one_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_i32x4 ${PARGS_PREFIX}${permutation}_negative = make_simd_i32x4(${range_negative_one_value}0);\\")
             
             string(REPLACE "1" "F" range_full_permutation ${permutation})
@@ -293,8 +293,8 @@ function(NMath_DeclareSIMDConstants_f32x8)
         
         if(NOT ${permutation} STREQUAL 00000000)  
             set(range_negative_one_value ${permutation})
-            string(REPLACE "1" "NMATH_F32_ONE_NEGATIVE," range_negative_one_value ${range_one_value})
-            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_one_value ${range_one_value})
+            string(REPLACE "1" "NMATH_F32_ONE_NEGATIVE," range_negative_one_value ${range_negative_one_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_one_value ${range_negative_one_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative = make_simd_f32x8(${range_negative_one_value}0.0f);\\")
             
             string(REPLACE "1" "F" range_full_permutation ${permutation})
@@ -367,8 +367,8 @@ function(NMath_DeclareSIMDConstants_i32x8)
         
         if(NOT ${permutation} STREQUAL 00000000)  
             set(range_negative_one_value ${permutation})
-            string(REPLACE "1" "NMATH_I32_ONE_NEGATIVE," range_negative_one_value ${range_one_value})
-            string(REPLACE "0" "NMATH_I32_ZERO," range_negative_one_value ${range_one_value})
+            string(REPLACE "1" "NMATH_I32_ONE_NEGATIVE," range_negative_one_value ${range_negative_one_value})
+            string(REPLACE "0" "NMATH_I32_ZERO," range_negative_one_value ${range_negative_one_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_i32x8 ${PARGS_PREFIX}${permutation}_negative = make_simd_i32x8(${range_negative_one_value}0);\\")
             
             string(REPLACE "1" "F" range_full_permutation ${permutation})
