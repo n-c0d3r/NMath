@@ -156,6 +156,13 @@ namespace nmath {
                 F_pack c;
 
             };
+            struct {
+
+                F_pack right;
+                F_pack up;
+                F_pack forward;
+
+            };
 
             struct {
 

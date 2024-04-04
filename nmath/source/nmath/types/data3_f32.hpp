@@ -144,11 +144,17 @@ namespace nmath {
                 F_entry x;
                 F_entry y;
                 F_entry z;
-                F_entry w_;
                 
             };
+            struct {
 
-            F_entry m[3];
+                F_entry width;
+                F_entry height;
+                F_entry depth;
+
+            };
+
+            F_entry m[4];
             
             NMATH_DATA3_SIMD_M128();
             

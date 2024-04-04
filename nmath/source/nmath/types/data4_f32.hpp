@@ -151,6 +151,14 @@ namespace nmath {
                 F_entry w;
                 
             };
+            struct {
+
+                F_entry width;
+                F_entry height;
+                F_entry depth;
+                F_entry distance;
+
+            };
 
             F_entry m[4];
             
