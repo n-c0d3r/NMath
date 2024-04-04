@@ -58,6 +58,7 @@ namespace nmath { }
 #include <nmath/operators/quaternion_quaternion.hpp>
 #include <nmath/operators/quaternion_scalar.hpp>
 #include <nmath/operators/quaternion_vector.hpp>
+#include <nmath/operators/quaternion_matrix.hpp>
 
 #include <nmath/operators/matrix_matrix.hpp>
 #include <nmath/operators/matrix_scalar.hpp>
