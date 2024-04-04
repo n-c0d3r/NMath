@@ -86,7 +86,7 @@ namespace nmath {
     {
     
         return quaternion_forward(
-            data4_complex_multiply(data_forward(b), data_forward(a))
+            data4_complex_multiply(data_forward(a), data_forward(b))
         );
     }
 

@@ -67,11 +67,11 @@ namespace nmath {
 
         return vecma_forward(
             data4_complex_multiply(
+                data_forward(b),
                 data4_complex_multiply(
-                    data_forward(conjugate(b)),
-                    data_forward(F_vector4_f32(a, 0.0f, 0.0f))
-                ),
-                data_forward(b)
+                    data_forward(F_vector4_f32(a, 0.0f, 0.0f)),
+                    data_forward(conjugate(b))
+                )
             ).xy()
         );
     }
@@ -81,11 +81,11 @@ namespace nmath {
 
         return vecma_forward(
             data4_complex_multiply(
+                data_forward(b),
                 data4_complex_multiply(
-                    data_forward(conjugate(b)),
-                    data_forward(F_vector4_f32(a))
-                ),
-                data_forward(b)
+                    data_forward(F_vector4_f32(a)),
+                    data_forward(conjugate(b))
+                )
             ).xyz()
         );
     }
@@ -95,11 +95,11 @@ namespace nmath {
 
         return vecma_forward(
             data4_complex_multiply(
+                data_forward(b),
                 data4_complex_multiply(
-                    data_forward(conjugate(b)),
-                    data_forward(a)
-                ),
-                data_forward(b)
+                    data_forward(a),
+                    data_forward(conjugate(b))
+                )
             )
         );
     }

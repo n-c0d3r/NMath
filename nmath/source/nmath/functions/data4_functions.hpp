@@ -162,7 +162,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Complex number
     ////////////////////////////////////////////////////////////////////////////////////
-    F_data4_f32 data4_complex_multiply(PA_data4_f32 a, PA_data4_f32 b) noexcept;
+    F_data4_f32 data4_complex_multiply(PA_data4_f32 b, PA_data4_f32 a) noexcept;
 
 }
 
@@ -811,7 +811,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Complex number
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_data4_f32 data4_complex_multiply(PA_data4_f32 a, PA_data4_f32 b) noexcept {
+    NCPP_FORCE_INLINE F_data4_f32 data4_complex_multiply(PA_data4_f32 b, PA_data4_f32 a) noexcept {
 
 #ifdef NCPP_ENABLE_FMA3
         static const F_simd_f32x4 ControlWZYX = make_simd_f32x4(1.0f, -1.0f, 1.0f, -1.0f);
