@@ -165,19 +165,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data3() noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyz_(simd_f32x4_0000)
-#else
-            x(0.0f),
-            y(0.0f),
-            z(0.0f)
-#endif
-        {
-            
-            
-            
-        }
+        NCPP_FORCE_INLINE TF_data3() noexcept = default;
         NCPP_FORCE_INLINE TF_data3(F_entry x, F_entry y, F_entry z) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(_mm_set_ps(0.0f, z, y, x))
@@ -296,6 +284,124 @@ namespace nmath {
             return ((mask & 0b0111) != 0b0111);
 #else
             return (a.x != b.x) || (a.y != b.y) || (a.z != b.z);
+#endif
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Special values
+        ////////////////////////////////////////////////////////////////////////////////////
+        static NCPP_FORCE_INLINE F_this zero() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0000
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this one() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111
+            };
+#else
+            return {
+                1.0f,
+                1.0f,
+                1.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this right() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1000
+            };
+#else
+            return {
+                1.0f,
+                0.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this up() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0100
+            };
+#else
+            return {
+                0.0f,
+                1.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this forward() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0010
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                1.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this left() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1000_negative
+            };
+#else
+            return {
+                -1.0f,
+                0.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this down() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0100_negative
+            };
+#else
+            return {
+                0.0f,
+                -1.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this backward() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0010_negative
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                -1.0f
+            };
 #endif
         }
 

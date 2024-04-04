@@ -199,20 +199,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Basic constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data3x3() noexcept :
-#ifdef NCPP_ENABLE_AVX
-            ab_(simd_f32x8_00000000),
-            c_(simd_f32x8_00000000)
-#else
-            a(),
-            b(),
-            c()
-#endif
-        {
-
-
-
-        }
+        NCPP_FORCE_INLINE TF_data3x3() noexcept = default;
         NCPP_FORCE_INLINE TF_data3x3(PA_pack a, PA_pack b, PA_pack c) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyz_, a.xyz_)),
@@ -320,6 +307,42 @@ namespace nmath {
             return (((ab_mask | 0b10001000) & (c_mask | 0b11111000)) != 0b11111111);
 #else
             return (a.a != b.a) || (a.b != b.b) || (a.c != b.c);
+#endif
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Special values
+        ////////////////////////////////////////////////////////////////////////////////////
+        static NCPP_FORCE_INLINE F_this zero() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                simd_f32x8_00000000,
+                simd_f32x8_00000000
+            };
+#else
+            return {
+                F_pack::zero(),
+                F_pack::zero(),
+                F_pack::zero()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this one() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                simd_f32x8_11111111,
+                simd_f32x8_11111111
+            };
+#else
+            return {
+                F_pack::one(),
+                F_pack::one(),
+                F_pack::one()
+            };
 #endif
         }
 

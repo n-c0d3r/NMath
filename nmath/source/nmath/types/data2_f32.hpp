@@ -125,14 +125,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2() noexcept :
-            x(0.0f),
-            y(0.0f)
-        {
-            
-            
-            
-        }
+        NCPP_FORCE_INLINE TF_data2() noexcept = default;
         NCPP_FORCE_INLINE TF_data2(F_entry x, F_entry y) noexcept :
             x(x),
             y(y)
@@ -190,6 +183,54 @@ namespace nmath {
         {
 
             return a.x != b.x || a.y != b.y;
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Special values
+        ////////////////////////////////////////////////////////////////////////////////////
+        static NCPP_FORCE_INLINE F_this zero() noexcept {
+
+            return {
+                0.0f,
+                0.0f
+            };
+        }
+        static NCPP_FORCE_INLINE F_this one() noexcept {
+
+            return {
+                1.0f,
+                1.0f
+            };
+        }
+        static NCPP_FORCE_INLINE F_this right() noexcept {
+
+            return {
+                1.0f,
+                0.0f
+            };
+        }
+        static NCPP_FORCE_INLINE F_this up() noexcept {
+
+            return {
+                0.0f,
+                1.0f
+            };
+        }
+        static NCPP_FORCE_INLINE F_this left() noexcept {
+
+            return {
+                -1.0f,
+                0.0f
+            };
+        }
+        static NCPP_FORCE_INLINE F_this down() noexcept {
+
+            return {
+                0.0f,
+                -1.0f
+            };
         }
 
 

@@ -112,12 +112,12 @@ namespace nmath {
 
 #define NMATH_F32_ONE 1.0f
 #define NMATH_F32_ONE_NEGATIVE -1.0f
-#define NMATH_F32_ZERO 1.0f
+#define NMATH_F32_ZERO 0.0f
 #define NMATH_F32_FULL ::nmath::reinterpret_cast_u32_to_f32(NCPP_U32_MAX)
 
 #define NMATH_I32_ONE 1
 #define NMATH_I32_ONE_NEGATIVE -1
-#define NMATH_I32_ZERO 1
+#define NMATH_I32_ZERO 0
 #define NMATH_I32_FULL NCPP_U32_MAX
 
 ////////////////////////////////////////////////////////////////////////////////////

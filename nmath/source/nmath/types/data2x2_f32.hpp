@@ -176,18 +176,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Basic constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data2x2() noexcept :
-#ifdef NCPP_ENABLE_SSE
-            ab_(simd_f32x4_0000)
-#else
-            a(),
-            b()
-#endif
-        {
-            
-            
-            
-        }
+        NCPP_FORCE_INLINE TF_data2x2() noexcept = default;
         NCPP_FORCE_INLINE TF_data2x2(PA_pack a, PA_pack b) noexcept :
 #ifdef NCPP_ENABLE_SSE
             ab_(_mm_set_ps(b.y, b.x, a.y, a.x))
@@ -264,6 +253,38 @@ namespace nmath {
             return (ab_mask != 0b1111);
 #else
             return (a.a != b.a) || (a.b != b.b);
+#endif
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Special values
+        ////////////////////////////////////////////////////////////////////////////////////
+        static NCPP_FORCE_INLINE F_this zero() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0000
+            };
+#else
+            return {
+                F_pack::zero(),
+                F_pack::zero()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this one() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111
+            };
+#else
+            return {
+                F_pack::one(),
+                F_pack::one()
+            };
 #endif
         }
 

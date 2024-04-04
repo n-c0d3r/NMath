@@ -171,20 +171,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Basic constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data4() noexcept :
-#ifdef NCPP_ENABLE_SSE
-            xyzw_(simd_f32x4_0000)
-#else
-            x(0.0f),
-            y(0.0f),
-            z(0.0f),
-            w(0.0f)
-#endif
-        {
-            
-            
-            
-        }
+        NCPP_FORCE_INLINE TF_data4() noexcept = default;
         NCPP_FORCE_INLINE TF_data4(F_entry x, F_entry y, F_entry z, F_entry w) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyzw_(_mm_set_ps(w, z, y, x))
@@ -367,6 +354,162 @@ namespace nmath {
             return (mask != 0b1111);
 #else
             return (a.x != b.x) || (a.y != b.y) || (a.z != b.z) || (a.w != b.w);
+#endif
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Special values
+        ////////////////////////////////////////////////////////////////////////////////////
+        static NCPP_FORCE_INLINE F_this zero() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0000
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this one() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111
+            };
+#else
+            return {
+                1.0f,
+                1.0f,
+                1.0f,
+                1.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this right() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1000
+            };
+#else
+            return {
+                1.0f,
+                0.0f,
+                0.0f,
+                0.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this up() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0100
+            };
+#else
+            return {
+                0.0f,
+                1.0f,
+                0.0f,
+                0.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this forward() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0010
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                1.0f,
+                0.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this future() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0001
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                0.0f,
+                1.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this left() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1000_negative
+            };
+#else
+            return {
+                -1.0f,
+                0.0f,
+                0.0f,
+                0.0f
+            }
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this down() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0100_negative
+            };
+#else
+            return {
+                0.0f,
+                -1.0f,
+                0.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this backward() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0010_negative
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                -1.0f,
+                0.0f
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this past() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_0001_negative
+            };
+#else
+            return {
+                0.0f,
+                0.0f,
+                0.0f,
+                -1.0f
+            };
 #endif
         }
 
