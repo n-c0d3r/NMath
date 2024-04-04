@@ -70,9 +70,9 @@ namespace nmath {
         };
 
         return (
-            determinant(aa)
-            - determinant(ab)
-            + determinant(ac)
+            a.a.x * determinant(aa)
+            - a.b.x * determinant(ab)
+            + a.c.x * determinant(ac)
         );
     }
 
@@ -100,10 +100,10 @@ namespace nmath {
         };
 
         return (
-            determinant(aa)
-            - determinant(ab)
-            + determinant(ac)
-            - determinant(ad)
+            a.a.x * determinant(aa)
+            - a.b.x * determinant(ab)
+            + a.c.x * determinant(ac)
+            - a.d.x * determinant(ad)
         );
     }
 
