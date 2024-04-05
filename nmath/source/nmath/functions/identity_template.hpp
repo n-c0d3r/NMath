@@ -35,7 +35,7 @@
 
 namespace nmath {
 
-    template<class F__>
-    F__ T_identity();
+    template<typename F__>
+    F__ T_identity() noexcept;
 
 }
