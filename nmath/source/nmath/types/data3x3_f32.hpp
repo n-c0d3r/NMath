@@ -345,21 +345,6 @@ namespace nmath {
             };
 #endif
         }
-        static NCPP_FORCE_INLINE F_this identity() noexcept {
-
-#ifdef NCPP_ENABLE_AVX
-            return {
-                simd_f32x8_10000100,
-                simd_f32x8_00100001
-            };
-#else
-            return {
-                F_pack::right(),
-                F_pack::up,
-                F_pack::forward()
-            };
-#endif
-        }
 
 
 

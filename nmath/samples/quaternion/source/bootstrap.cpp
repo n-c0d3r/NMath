@@ -18,6 +18,8 @@ int main() {
     F_vector3 v1 = q5 * q4 * F_vector3{0, 0, 1};
     F_vector3 v2 = (q5 * q4) * F_vector3{0, 0, 1};
 
+    F_quaternion q6 = T_identity<F_quaternion>();
+
 	ncpp::pause_console();
 
 	return 0;

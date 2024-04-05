@@ -57,6 +57,10 @@ namespace nmath { }
 #include <nmath/functions/matrix_invert.hpp>
 #include <nmath/functions/matrix_determinant.hpp>
 #include <nmath/functions/matrix_cofactor.hpp>
+#include <nmath/functions/matrix_identity.hpp>
+#include <nmath/functions/quaternion_invert.hpp>
+#include <nmath/functions/quaternion_conjugate.hpp>
+#include <nmath/functions/quaternion_identity.hpp>
 #include <nmath/functions/conjugate.hpp>
 #include <nmath/functions/rotation.hpp>
 #include <nmath/functions/normalize.hpp>
