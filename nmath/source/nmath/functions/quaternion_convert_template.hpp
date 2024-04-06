@@ -42,6 +42,6 @@
 namespace nmath {
 
     template<typename F__>
-    F__ T_convert(PA_quaternion_f32) noexcept;
+    F__ NMATH_CALL_CNV T_convert(PA_quaternion_f32) noexcept;
 
 }
