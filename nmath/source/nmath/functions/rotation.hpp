@@ -92,4 +92,9 @@ namespace nmath {
 #endif
     }
 
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV quaternion_from_euler_angles(F_vector3_f32 euler_angles) noexcept {
+
+        return quaternion_rotation_roll_pitch_yaw(euler_angles);
+    }
+
 }
