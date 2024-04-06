@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/quaternion_convert_template.hpp
+/** @file nmath/functions/matrix_to_quaternion.hpp
 *
-*   Implement convert template for quaternion.
+*   Implement to_quaternion function for matrices.
 */
 
 
@@ -33,13 +33,76 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/quaternion.hpp>
+#include <nmath/operators/quaternion_matrix.hpp>
+#include <nmath/functions/matrix_identity.hpp>
 #include <nmath/functions/convert_template.hpp>
 
 #pragma endregion
 
 
 
+////////////////////////////////////////////////////////////////////////////////////
+//  f32
+////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
+
+    inline F_quaternion_f32 NMATH_CALL_CNV to_quaternion_f32(PA_matrix3x3_f32 m) noexcept {
+
+        F_quaternion_f32 q;
+        float r22 = m.c.z;
+        if (r22 <= 0.f)  // x^2 + y^2 >= z^2 + w^2
+        {
+            float dif10 = m.b.y - m.a.x;
+            float omr22 = 1.f - r22;
+            if (dif10 <= 0.f)  // x^2 >= y^2
+            {
+                float fourXSqr = omr22 - dif10;
+                float inv4x = 0.5f / sqrtf(fourXSqr);
+                q.x = fourXSqr * inv4x;
+                q.y = (m.a.y + m.b.x) * inv4x;
+                q.z = (m.a.z + m.c.x) * inv4x;
+                q.w = (m.b.z - m.c.y) * inv4x;
+            }
+            else  // y^2 >= x^2
+            {
+                float fourYSqr = omr22 + dif10;
+                float inv4y = 0.5f / sqrtf(fourYSqr);
+                q.x = (m.a.y + m.b.x) * inv4y;
+                q.y = fourYSqr * inv4y;
+                q.z = (m.b.z + m.c.y) * inv4y;
+                q.w = (m.c.x - m.a.z) * inv4y;
+            }
+        }
+        else  // z^2 + w^2 >= x^2 + y^2
+        {
+            float sum10 = m.b.y + m.a.x;
+            float opr22 = 1.f + r22;
+            if (sum10 <= 0.f)  // z^2 >= w^2
+            {
+                float fourZSqr = opr22 - sum10;
+                float inv4z = 0.5f / sqrtf(fourZSqr);
+                q.x = (m.a.z + m.c.x) * inv4z;
+                q.y = (m.b.z + m.c.y) * inv4z;
+                q.z = fourZSqr * inv4z;
+                q.w = (m.a.y - m.b.x) * inv4z;
+            }
+            else  // w^2 >= z^2
+            {
+                float fourWSqr = opr22 + sum10;
+                float inv4w = 0.5f / sqrtf(fourWSqr);
+                q.x = (m.b.z - m.c.y) * inv4w;
+                q.y = (m.c.x - m.a.z) * inv4w;
+                q.z = (m.a.y - m.b.x) * inv4w;
+                q.w = fourWSqr * inv4w;
+            }
+        }
+        return q;
+    }
+
+    template<>
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_convert<F_quaternion_f32>(PA_matrix3x3_f32 m) noexcept {
+
+        return to_quaternion_f32(m);
+    }
 
 }

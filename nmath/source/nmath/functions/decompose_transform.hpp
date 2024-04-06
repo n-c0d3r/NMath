@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/quaternion_convert_template.hpp
+/** @file nmath/functions/decompose_transform.hpp
 *
-*   Implement convert template for quaternion.
+*   Implement decompose_transform.
 */
 
 
@@ -33,13 +33,62 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
+#include <nmath/types/matrix.hpp>
 #include <nmath/types/quaternion.hpp>
-#include <nmath/functions/convert_template.hpp>
 
 #pragma endregion
 
 
 
 namespace nmath {
+
+    template<u32 dimensions__ = 3, typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    struct TF_decompose_transform;
+
+    template<typename F_element__>
+    struct TF_decompose_transform<2, F_element__> {
+
+        TF_vector2<F_element__> scale;
+        TF_vector2<F_element__> translation;
+        TF_quaternion<F_element__> rotation;
+
+    };
+    template<typename F_element__>
+    struct TF_decompose_transform<3, F_element__> {
+
+        TF_vector3<F_element__> scale;
+        TF_vector3<F_element__> translation;
+        TF_quaternion<F_element__> rotation;
+
+    };
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  f32
+    ////////////////////////////////////////////////////////////////////////////////////
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    inline TF_decompose_transform<3, F_element__> NMATH_CALL_CNV decompose_transform(PA_matrix3x3 transform) noexcept {
+
+        return {};
+    }
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    inline TF_decompose_transform<3, F_element__> NMATH_CALL_CNV decompose_transform(PA_matrix4x4 transform) noexcept {
+
+        return {
+            .translation = transform.translation.xyz()
+        };
+    }
+
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    inline TF_decompose_transform<2, F_element__> NMATH_CALL_CNV decompose_transform_2D(PA_matrix2x2 transform) noexcept {
+
+        return {};
+    }
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    inline TF_decompose_transform<2, F_element__> NMATH_CALL_CNV decompose_transform_2D(PA_matrix3x3 transform) noexcept {
+
+        return {};
+    }
 
 }

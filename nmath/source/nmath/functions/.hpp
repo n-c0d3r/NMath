@@ -53,11 +53,13 @@ namespace nmath { }
 #include <nmath/functions/dot.hpp>
 #include <nmath/functions/cross.hpp>
 #include <nmath/functions/length.hpp>
+#include <nmath/functions/convert_template.hpp>
 #include <nmath/functions/matrix_transpose.hpp>
 #include <nmath/functions/matrix_invert.hpp>
 #include <nmath/functions/matrix_determinant.hpp>
 #include <nmath/functions/matrix_cofactor.hpp>
 #include <nmath/functions/matrix_identity.hpp>
+#include <nmath/functions/matrix_to_quaternion.hpp>
 #include <nmath/functions/quaternion_invert.hpp>
 #include <nmath/functions/quaternion_conjugate.hpp>
 #include <nmath/functions/quaternion_identity.hpp>
@@ -65,5 +67,6 @@ namespace nmath { }
 #include <nmath/functions/conjugate.hpp>
 #include <nmath/functions/rotation.hpp>
 #include <nmath/functions/normalize.hpp>
+#include <nmath/functions/decompose_transform.hpp>
 
 #pragma endregion

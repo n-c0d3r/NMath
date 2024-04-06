@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/quaternion_convert_template.hpp
+/** @file nmath/functions/convert_template.hpp
 *
-*   Implement convert template for quaternion.
+*   Implement convert template.
 */
 
 
@@ -29,17 +29,13 @@
 
 #include <nmath/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nmath/types/quaternion.hpp>
-#include <nmath/functions/convert_template.hpp>
-
 #pragma endregion
 
 
 
 namespace nmath {
+
+    template<typename F__>
+    F__ NMATH_CALL_CNV T_convert(auto) noexcept;
 
 }

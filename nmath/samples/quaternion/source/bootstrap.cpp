@@ -18,7 +18,10 @@ int main() {
     F_vector3 v1 = q5 * q4 * F_vector3{0, 0, 1};
     F_vector3 v2 = (q5 * q4) * F_vector3{0, 0, 1};
 
-    F_quaternion q6 = T_identity<F_quaternion>();
+    F_quaternion q6 = quaternion_rotation_roll_pitch_yaw(F_vector3{-0.2_pi, 0.5_pi, 1.0_pi});
+
+    F_matrix3x3 m4 = T_convert<F_matrix3x3>(q6);
+    F_quaternion q7 = T_convert<F_quaternion>(m4);
 
     F_matrix4x4 m1 = T_identity<F_matrix4x4>();
     m1.translation = F_vector4{1,0,0,1};

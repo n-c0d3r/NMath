@@ -29,6 +29,8 @@ int main() {
         100.0f
     );
 
+    auto dt = decompose_transform(transform);
+
 	ncpp::pause_console();
 
 	return 0;
