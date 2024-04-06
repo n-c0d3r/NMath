@@ -22,6 +22,13 @@ int main() {
     F_matrix3x3 identity_transform3x3 = T_identity<F_matrix3x3>();
     F_matrix4x4 identity_transform4x4 = T_identity<F_matrix4x4>();
 
+    auto pm = perspective_projection_matrix(
+        0.5_pi,
+        1.0f,
+        1.0f,
+        100.0f
+    );
+
 	ncpp::pause_console();
 
 	return 0;
