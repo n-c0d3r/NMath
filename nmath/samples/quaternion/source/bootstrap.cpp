@@ -20,6 +20,11 @@ int main() {
 
     F_quaternion q6 = T_identity<F_quaternion>();
 
+    F_matrix4x4 m1 = T_identity<F_matrix4x4>();
+    m1.translation = F_vector4{1,0,0,1};
+    F_matrix4x4 m2 = m1 * q4;
+    F_matrix4x4 m3 = q4 * m1;
+
 	ncpp::pause_console();
 
 	return 0;

@@ -61,6 +61,7 @@ namespace nmath { }
 #include <nmath/functions/quaternion_invert.hpp>
 #include <nmath/functions/quaternion_conjugate.hpp>
 #include <nmath/functions/quaternion_identity.hpp>
+#include <nmath/functions/quaternion_to_matrix.hpp>
 #include <nmath/functions/conjugate.hpp>
 #include <nmath/functions/rotation.hpp>
 #include <nmath/functions/normalize.hpp>

@@ -39,8 +39,10 @@
 #include <nmath/functions/data4x4_functions.hpp>
 #include <nmath/functions/conjugate.hpp>
 #include <nmath/functions/matrix_invert.hpp>
+#include <nmath/functions/matrix_identity.hpp>
 #include <nmath/operators/helper.hpp>
 #include <nmath/operators/quaternion_vector.hpp>
+#include <nmath/operators/matrix_matrix.hpp>
 
 #pragma endregion
 
@@ -94,6 +96,42 @@ namespace nmath {
             b * a.d
         );
     }
+
+    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV multiply(PA_matrix2x2_f32 a, PA_quaternion_f32 b) noexcept
+    {
+
+        return multiply(
+            a,
+            multiply(
+                b,
+                T_identity<F_matrix2x2_f32>()
+            )
+        );
+    }
+
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV multiply(PA_matrix3x3_f32 a, PA_quaternion_f32 b) noexcept
+    {
+
+        return multiply(
+            a,
+            multiply(
+                b,
+                T_identity<F_matrix3x3_f32>()
+            )
+        );
+    }
+
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV multiply(PA_matrix4x4_f32 a, PA_quaternion_f32 b) noexcept
+    {
+
+        return multiply(
+            a,
+            multiply(
+                b,
+                T_identity<F_matrix4x4_f32>()
+            )
+        );
+    }
     
 }
 
@@ -102,3 +140,9 @@ NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_matrix2x2_f32
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_matrix3x3_f32, nmath::F_matrix3x3_f32);
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_quaternion_f32, nmath::F_matrix2x2_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_quaternion_f32, nmath::F_matrix3x3_f32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix4x4_f32, nmath::PA_quaternion_f32, nmath::F_matrix4x4_f32);
