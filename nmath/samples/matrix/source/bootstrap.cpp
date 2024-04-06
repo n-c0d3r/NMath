@@ -29,7 +29,19 @@ int main() {
         100.0f
     );
 
-    auto dt = decompose_transform(transform);
+    F_matrix3x3 scale = {
+        { 1.0f, 0.0f, 0.0f },
+        { 0.0f, 2.0f, 0.0f },
+        { 0.0f, 0.0f, -3.0f }
+    };
+    F_matrix3x3 rotation_matrix = T_convert<F_matrix3x3>(
+        quaternion_from_euler_angles(
+            F_vector3 { 5_pi, 0.5_pi, -1_pi }
+        )
+    );
+    F_matrix3x3 transform2 = rotation_matrix * scale;
+
+    auto dt = T_decompose_transform(transform2);
 
 	ncpp::pause_console();
 

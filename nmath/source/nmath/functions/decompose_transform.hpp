@@ -35,6 +35,9 @@
 
 #include <nmath/types/matrix.hpp>
 #include <nmath/types/quaternion.hpp>
+#include <nmath/functions/cross.hpp>
+#include <nmath/functions/normalize.hpp>
+#include <nmath/functions/dot.hpp>
 
 #pragma endregion
 
@@ -50,7 +53,7 @@ namespace nmath {
 
         TF_vector2<F_element__> scale;
         TF_vector2<F_element__> translation;
-        TF_quaternion<F_element__> rotation;
+        TF_matrix3x3<F_element__> rotation_matrix;
 
     };
     template<typename F_element__>
@@ -58,7 +61,7 @@ namespace nmath {
 
         TF_vector3<F_element__> scale;
         TF_vector3<F_element__> translation;
-        TF_quaternion<F_element__> rotation;
+        TF_matrix3x3<F_element__> rotation_matrix;
 
     };
 
@@ -67,28 +70,66 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    inline TF_decompose_transform<3, F_element__> NMATH_CALL_CNV decompose_transform(PA_matrix3x3 transform) noexcept {
+    template<u32 dimenstions__ = 3, typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    inline TF_decompose_transform<3, F_element__> NMATH_CALL_CNV T_decompose_transform(auto) noexcept;
 
-        return {};
-    }
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    inline TF_decompose_transform<3, F_element__> NMATH_CALL_CNV decompose_transform(PA_matrix4x4 transform) noexcept {
+    template<>
+    inline TF_decompose_transform<3, f32> NMATH_CALL_CNV T_decompose_transform<3, f32>(PA_matrix3x3_f32 transform) noexcept {
+
+        F_vector3_f32 scale = {
+            length(transform.a),
+            length(transform.b),
+            length(transform.c)
+        };
+
+        F_vector3_f32 positive_z_vector = cross(transform.a, transform.b);
+
+        if(
+            dot(transform.c, positive_z_vector)
+            <= 0.0f
+        ) {
+            scale.z *= -1.0f;
+        }
 
         return {
-            .translation = transform.translation.xyz()
+            .scale = scale,
+            .translation = F_vector3_f32::zero(),
+            .rotation_matrix = F_matrix3x3_f32 {
+                (scale.x == 0.0f) ? F_vector3_f32::zero() : (transform.a / scale.x),
+                (scale.y == 0.0f) ? F_vector3_f32::zero() : (transform.b / scale.y),
+                (scale.z == 0.0f) ? F_vector3_f32::zero() : (transform.c / scale.z)
+            }
         };
     }
+    template<>
+    inline TF_decompose_transform<3, f32> NMATH_CALL_CNV T_decompose_transform<3, f32>(PA_matrix4x4_f32 transform) noexcept {
 
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    inline TF_decompose_transform<2, F_element__> NMATH_CALL_CNV decompose_transform_2D(PA_matrix2x2 transform) noexcept {
+        F_matrix3x3_f32 transform3x3 = transform.tl3x3();
 
-        return {};
-    }
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    inline TF_decompose_transform<2, F_element__> NMATH_CALL_CNV decompose_transform_2D(PA_matrix3x3 transform) noexcept {
+        F_vector3_f32 scale = {
+            length(transform3x3.a),
+            length(transform3x3.b),
+            length(transform3x3.c)
+        };
 
-        return {};
+        F_vector3_f32 positive_z_vector = cross(transform3x3.a, transform3x3.b);
+
+        if(
+            dot(transform3x3.c, positive_z_vector)
+            <= 0.0f
+        ) {
+            scale.z *= -1.0f;
+        }
+
+        return {
+            .scale = scale,
+            .translation = transform.translation.xyz(),
+            .rotation_matrix = F_matrix3x3_f32 {
+                (scale.x == 0.0f) ? F_vector3_f32::zero() : (transform3x3.a / scale.x),
+                (scale.y == 0.0f) ? F_vector3_f32::zero() : (transform3x3.b / scale.y),
+                (scale.z == 0.0f) ? F_vector3_f32::zero() : (transform3x3.c / scale.z)
+            }
+        };
     }
 
 }
