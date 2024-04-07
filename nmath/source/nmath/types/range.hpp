@@ -35,6 +35,8 @@
 
 #include <nmath/types/vector.hpp>
 #include <nmath/operators/vector_vector.hpp>
+#include <nmath/operators/vector_scalar.hpp>
+#include <nmath/functions/element_min_max.hpp>
 
 #pragma endregion
 
@@ -103,23 +105,20 @@ namespace nmath {
         F_value max_;
 
     public:
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (min_ <= max_); }
         NCPP_FORCE_INLINE F_value min() const noexcept { return min_; }
         NCPP_FORCE_INLINE F_value max() const noexcept { return max_; }
+        NCPP_FORCE_INLINE F_value center() const noexcept { return (min_ + max_) * 0.5; }
+        NCPP_FORCE_INLINE F_value half_size() const noexcept { return (max_ - min_) * 0.5; }
 
 
 
     public:
         NCPP_FORCE_INLINE TF_range() noexcept = default;
-        NCPP_FORCE_INLINE TF_range(PA_value min, PA_value max) noexcept :
+        NCPP_FORCE_INLINE NMATH_CALL_CNV TF_range(PA_value min, PA_value max) noexcept :
             min_(min),
             max_(max)
-        {
-
-            NCPP_ASSERT(
-                min <= max
-            ) << "min value is greater than max value";
-
-        }
+        {}
         NCPP_FORCE_INLINE TF_range(const TF_range& x) noexcept :
             min_(x.min_),
             max_(x.max_)
@@ -132,7 +131,27 @@ namespace nmath {
             return *this;
         }
 
+
+
+    public:
+        NCPP_FORCE_INLINE b8 is_contains(PA_value v) const noexcept {
+
+            return (
+                (v >= min_)
+                && (v <= max_)
+            );
+        }
+        NCPP_FORCE_INLINE TF_range expand(PA_value v) noexcept {
+
+            return {
+                element_min(v, min_),
+                element_max(v, max_)
+            };
+        }
+
     };
+
+
 
     using F_range = TF_range<>;
 
@@ -143,5 +162,22 @@ namespace nmath {
     using F_vector2_range_f32 = TF_range<F_vector2_f32>;
     using F_vector3_range_f32 = TF_range<F_vector3_f32>;
     using F_vector4_range_f32 = TF_range<F_vector4_f32>;
+
+
+
+    using F_box2 = F_vector2_range;
+    using F_box3 = F_vector3_range;
+    using F_box4 = F_vector4_range;
+
+    using F_box2_f32 = F_vector2_range_f32;
+    using F_box3_f32 = F_vector3_range_f32;
+    using F_box4_f32 = F_vector4_range_f32;
+
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    using TF_box2 = TF_range<TF_vector2<F_element__>>;
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    using TF_box3 = TF_range<TF_vector3<F_element__>>;
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    using TF_box4 = TF_range<TF_vector4<F_element__>>;
 
 }

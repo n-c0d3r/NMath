@@ -73,5 +73,6 @@ namespace nmath { }
 #include <nmath/functions/normalize.hpp>
 #include <nmath/functions/decompose_transform.hpp>
 #include <nmath/functions/lerp.hpp>
+#include <nmath/functions/element_min_max.hpp>
 
 #pragma endregion
