@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/quaternion_to_matrix.hpp
+/** @file nmath/functions/translation.hpp
 *
-*   Implement to_matrix function for quaternions.
+*   Implement T_make_translation.
 */
 
 
@@ -33,46 +33,26 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/operators/quaternion_matrix.hpp>
-#include <nmath/functions/matrix_identity.hpp>
-#include <nmath/functions/quaternion_convert_template.hpp>
+#include <nmath/types/data_helper.hpp>
+#include <nmath/types/matrix.hpp>
 
 #pragma endregion
 
 
 
-////////////////////////////////////////////////////////////////////////////////////
-//  f32
-////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV to_matrix2x2_f32(PA_quaternion_f32 q) noexcept {
-
-        return q * T_identity<F_matrix2x2_f32>();
-    }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV to_matrix3x3_f32(PA_quaternion_f32 q) noexcept {
-
-        return q * T_identity<F_matrix3x3_f32>();
-    }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV to_matrix4x4_f32(PA_quaternion_f32 q) noexcept {
-
-        return q * T_identity<F_matrix4x4_f32>();
-    }
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    TF_matrix4x4<F_element__> NMATH_CALL_CNV T_make_translation(auto) noexcept;
 
     template<>
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV T_convert<F_matrix2x2_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+    F_matrix4x4_f32 NMATH_CALL_CNV T_make_translation<f32>(PA_vector3_f32 translation_vector) noexcept {
 
-        return to_matrix2x2_f32(q);
-    }
-    template<>
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_matrix3x3_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+        F_matrix4x4_f32 result = T_identity<F_matrix4x4_f32>();
 
-        return to_matrix3x3_f32(q);
-    }
-    template<>
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_matrix4x4_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+        result.translation = { translation_vector, 1.0f };
 
-        return to_matrix4x4_f32(q);
+        return result;
     }
 
 }

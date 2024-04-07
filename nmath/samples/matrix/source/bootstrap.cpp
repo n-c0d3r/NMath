@@ -34,14 +34,47 @@ int main() {
         { 0.0f, 2.0f, 0.0f },
         { 0.0f, 0.0f, -3.0f }
     };
-    F_matrix3x3 rotation_matrix = T_convert<F_matrix3x3>(
-        quaternion_from_euler_angles(
+    F_matrix3x3 rotation_matrix = T_convert<F_matrix3x3, F_quaternion>(
+        T_make_rotation(
             F_vector3 { 5_pi, 0.5_pi, -1_pi }
         )
     );
     F_matrix3x3 transform2 = rotation_matrix * scale;
 
     auto dt = T_decompose_transform(transform2);
+
+    F_matrix4x4 transform3 = T_make_transform(
+        F_vector3 { 1.0f, 2.0f, 3.0f },
+        F_vector3 { 0.0f, 0.5_pi, 0.0f },
+        F_vector3 { 5.0f, 2.0f, -1.0f }
+    );
+
+    F_matrix4x4 transform4 = T_make_transform<E_rotation_axis::X>(
+        F_vector3 { 1.0f, 2.0f, 3.0f },
+        0.5_pi,
+        F_vector3 { 5.0f, 2.0f, -1.0f }
+    );
+
+    F_matrix4x4 transform5 = T_make_transform<E_rotation_axis::Y>(
+        F_vector3 { 1.0f, 2.0f, 3.0f },
+        0.5_pi,
+        F_vector3 { 5.0f, 2.0f, -1.0f }
+    );
+
+    F_matrix4x4 transform6 = T_make_transform<E_rotation_axis::Z>(
+        F_vector3 { 1.0f, 2.0f, 3.0f },
+        0.5_pi,
+        F_vector3 { 5.0f, 2.0f, -1.0f }
+    );
+
+    F_matrix4x4 transform7 = T_make_transform<E_rotation_axis::CUSTOM>(
+        F_vector3 { 1.0f, 2.0f, 3.0f },
+        F_vector4 {
+            F_vector3::up(),
+            0.5_pi
+        },
+        F_vector3 { 5.0f, 2.0f, -1.0f }
+    );
 
 	ncpp::pause_console();
 

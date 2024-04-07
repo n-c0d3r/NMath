@@ -100,7 +100,7 @@ namespace nmath {
     }
 
     template<>
-    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_convert<F_quaternion_f32>(PA_matrix3x3_f32 m) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_convert<F_quaternion_f32, F_matrix3x3_f32>(PA_matrix3x3_f32 m) noexcept {
 
         return to_quaternion_f32(m);
     }

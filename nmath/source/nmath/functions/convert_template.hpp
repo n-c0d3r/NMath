@@ -35,7 +35,7 @@
 
 namespace nmath {
 
-    template<typename F__>
-    F__ NMATH_CALL_CNV T_convert(auto) noexcept;
+    template<typename F_to__, typename F_from__>
+    F_to__ NMATH_CALL_CNV T_convert(auto) noexcept;
 
 }

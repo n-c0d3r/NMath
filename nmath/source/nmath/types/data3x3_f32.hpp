@@ -214,25 +214,6 @@ namespace nmath {
 
 
         }
-        NCPP_FORCE_INLINE TF_data3x3(PA_data2x2 abxy) noexcept :
-#ifdef NCPP_ENABLE_AVX
-            ab_(
-                _mm256_set_m128(
-                    abxy.ab_,
-                    _mm_permute_ps(abxy.ab_, _MM_SHUFFLE(1, 0, 3, 2))
-                )
-            ),
-            c_(simd_f32x8_00000000)
-#else
-            a(abxy.a),
-            b(abxy.b),
-            c()
-#endif
-        {
-
-
-
-        }
         NCPP_FORCE_INLINE TF_data3x3(const TF_data3x3& o) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(o.ab_),

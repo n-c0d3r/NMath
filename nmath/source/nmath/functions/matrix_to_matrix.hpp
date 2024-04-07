@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nmath/functions/quaternion_to_matrix.hpp
+/** @file nmath/functions/matrix_to_matrix.hpp
 *
-*   Implement to_matrix function for quaternions.
+*   Implement matrix-to-matrix convert functions.
 */
 
 
@@ -33,9 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/operators/quaternion_matrix.hpp>
-#include <nmath/functions/matrix_identity.hpp>
-#include <nmath/functions/quaternion_convert_template.hpp>
+#include <nmath/types/matrix.hpp>
 
 #pragma endregion
 
@@ -46,33 +44,36 @@
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
 
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV to_matrix2x2_f32(PA_quaternion_f32 q) noexcept {
+    template<>
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_matrix3x3_f32, F_matrix2x2_f32>(PA_matrix2x2_f32 m) noexcept {
 
-        return q * T_identity<F_matrix2x2_f32>();
-    }
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV to_matrix3x3_f32(PA_quaternion_f32 q) noexcept {
-
-        return q * T_identity<F_matrix3x3_f32>();
-    }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV to_matrix4x4_f32(PA_quaternion_f32 q) noexcept {
-
-        return q * T_identity<F_matrix4x4_f32>();
+        return {
+            m.a,
+            m.b,
+            F_vector3_f32::forward()
+        };
     }
 
     template<>
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV T_convert<F_matrix2x2_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(PA_matrix3x3_f32 m) noexcept {
 
-        return to_matrix2x2_f32(q);
-    }
-    template<>
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_matrix3x3_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
-
-        return to_matrix3x3_f32(q);
-    }
-    template<>
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_matrix4x4_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
-
-        return to_matrix4x4_f32(q);
+#ifdef NCPP_ENABLE_AVX
+        return {
+            (
+                _mm256_blend_ps(m.ab_, simd_f32x8_00000000, 0b10001000)
+            ),
+            (
+                _mm256_blend_ps(m.c_, simd_f32x8_00000001, 0b11111000)
+            )
+        };
+#else
+        return {
+            m.a,
+            m.b,
+            m.c,
+            F_vector4_f32::future()
+        };
+#endif
     }
 
 }

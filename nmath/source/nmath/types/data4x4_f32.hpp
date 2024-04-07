@@ -220,25 +220,6 @@ namespace nmath {
             
             
         }
-        NCPP_FORCE_INLINE TF_data4x4(PA_data3x3 abcxyz) noexcept :
-#ifdef NCPP_ENABLE_AVX
-            ab_(
-                _mm256_blend_ps(abcxyz.ab_, simd_f32x8_00000000, 0b10001000)
-            ),
-            cd_(
-                _mm256_blend_ps(abcxyz.cd_, simd_f32x8_00000000, 0b11111000)
-            )
-#else
-            a(abcxyz.a),
-            b(abcxyz.b),
-            c(abcxyz.c),
-            d()
-#endif
-        {
-
-
-
-        }
         NCPP_FORCE_INLINE TF_data4x4(const TF_data4x4& o) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(o.ab_),
