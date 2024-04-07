@@ -168,6 +168,13 @@ namespace nmath {
                 F_pack translation;
 
             };
+            struct {
+
+                F_pack bitangent;
+                F_pack normal;
+                F_pack tangent;
+
+            };
 
             struct {
 
@@ -204,7 +211,7 @@ namespace nmath {
         ////////////////////////////////////////////////////////////////////////////////////
         //  Basic constructors
         ////////////////////////////////////////////////////////////////////////////////////
-        NCPP_FORCE_INLINE TF_data4x4() = default;
+        NCPP_FORCE_INLINE TF_data4x4() noexcept = default;
         NCPP_FORCE_INLINE TF_data4x4(PA_pack a, PA_pack b, PA_pack c, PA_pack d) noexcept :
 #ifdef NCPP_ENABLE_AVX
             ab_(_mm256_set_m128(b.xyzw_, a.xyzw_)),

@@ -112,6 +112,22 @@ namespace nmath {
 
 
     public:
+        inline f32 NMATH_CALL_CNV distance_sq(PA_position v) const noexcept {
+
+            f32 radius_sq = radius();
+            radius_sq *= radius_sq;
+
+            return (
+                length_sq(v - center())
+                - radius_sq
+            );
+        }
+        inline f32 NMATH_CALL_CNV distance(PA_position v) const noexcept {
+
+            return sqrt(
+                distance_sq(v)
+            );
+        }
         inline b8 NMATH_CALL_CNV is_contains(PA_position v) const noexcept {
 
             f32 radius_sq = radius();

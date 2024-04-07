@@ -163,6 +163,13 @@ namespace nmath {
                 F_pack forward;
 
             };
+            struct {
+
+                F_pack bitangent;
+                F_pack normal;
+                F_pack tangent;
+
+            };
 
             struct {
 
