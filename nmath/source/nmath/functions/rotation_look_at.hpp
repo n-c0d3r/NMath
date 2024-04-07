@@ -56,11 +56,11 @@ namespace nmath {
 
         NCPP_WARNING(
             abs(1.0f - length(from_direction))
-            <= 0.01f
+            <= 0.001f
         ) << "invalid from_direction, it have to be normalized";
         NCPP_WARNING(
             abs(1.0f - length(to_direction))
-            <= 0.01f
+            <= 0.001f
         ) << "invalid to_direction, it have to be normalized";
 
         F_vector3_f32 axis = (
