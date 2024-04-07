@@ -41,31 +41,53 @@
 
 namespace nmath {
 
+    enum class E_projection_type {
+
+        PERSPECTIVE,
+        ORTHOGRAPHIC
+
+    };
+
+    template<E_projection_type projection_type__ = E_projection_type::PERSPECTIVE, typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    TF_matrix4x4<F_element__> T_projection_matrix(auto, auto, auto) noexcept;
+
+
+
     ////////////////////////////////////////////////////////////////////////////////////
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
-    NCPP_FORCE_INLINE F_matrix4x4_f32 perspective_projection_matrix(f32 verticle_fov, f32 aspect_ratio, f32 near_plane, f32 far_plane) noexcept {
+    template<>
+    inline F_matrix4x4_f32 T_projection_matrix<E_projection_type::PERSPECTIVE, f32>(
+        F_vector2_f32 vertical_fov_and_aspect_ratio,
+        f32 near_plane,
+        f32 far_plane
+    ) noexcept {
 
-        float ys = 2.0f * near_plane / tanf(verticle_fov * 0.5);
-        float xs = ys / aspect_ratio;
+        float ys = 2.0f * near_plane / tanf(vertical_fov_and_aspect_ratio.x * 0.5);
+        float xs = ys / vertical_fov_and_aspect_ratio.y;
         float zs = far_plane / (far_plane - near_plane);
 
         return {
-            F_vector4_f32 {xs, 0, 0, 0},
-            F_vector4_f32 {0, ys, 0, 0},
-            F_vector4_f32 {0, 0, zs, 1},
-            F_vector4_f32 {0, 0, -zs * near_plane, 0}
+            F_vector4_f32{xs, 0, 0, 0},
+            F_vector4_f32{0, ys, 0, 0},
+            F_vector4_f32{0, 0, zs, 1},
+            F_vector4_f32{0, 0, -zs * near_plane, 0}
         };
     }
-    NCPP_FORCE_INLINE F_matrix4x4_f32 orthographic_projection_matrix(PA_vector2_f32 view_size, f32 near_plane, f32 far_plane) noexcept {
+    template<>
+    inline F_matrix4x4_f32 T_projection_matrix<E_projection_type::ORTHOGRAPHIC, f32>(
+        F_vector2_f32 view_size,
+        f32 near_plane,
+        f32 far_plane
+    ) noexcept {
 
         float range = 1.0f / (far_plane - near_plane);
 
         return {
-            F_vector4_f32 {2.0f / view_size.width, 0, 0, 0},
-            F_vector4_f32 {0, 2.0f / view_size.height, 0, 0},
-            F_vector4_f32 {0, 0, range, 1.0f},
-            F_vector4_f32 {0, 0, -range * near_plane, 1.0f}
+            F_vector4_f32{2.0f / view_size.width, 0, 0, 0},
+            F_vector4_f32{0, 2.0f / view_size.height, 0, 0},
+            F_vector4_f32{0, 0, range, 1.0f},
+            F_vector4_f32{0, 0, -range * near_plane, 1.0f}
         };
     }
 
