@@ -93,6 +93,35 @@ namespace nmath {
         );
     }
 
+    NCPP_FORCE_INLINE b8 is_greater(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_greater_equal(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_less(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_less_equal(PA_vector2_f32 a, PA_vector2_f32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+        );
+    }
+
 }
 
 NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector2_f32, nmath::F_vector2_f32);
@@ -109,6 +138,11 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32)
 
 NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32, nmath::F_vector2_f32);
 NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_f32, nmath::PA_vector2_f32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector2_f32, nmath::PA_vector2_f32);
 
 
 
@@ -149,6 +183,35 @@ namespace nmath {
         );
     }
 
+    NCPP_FORCE_INLINE b8 is_greater(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_greater_equal(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_less(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_less_equal(PA_vector2_i32 a, PA_vector2_i32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+        );
+    }
+
 }
 
 NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector2_i32, nmath::F_vector2_i32);
@@ -165,6 +228,11 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_i32, nmath::PA_vector2_i32)
 
 NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32, nmath::F_vector2_i32);
 NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_i32, nmath::PA_vector2_i32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector2_i32, nmath::PA_vector2_i32);
 
 
 
@@ -205,6 +273,35 @@ namespace nmath {
         );
     }
 
+    NCPP_FORCE_INLINE b8 is_greater(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_greater_equal(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_less(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+        );
+    }
+    NCPP_FORCE_INLINE b8 is_less_equal(PA_vector2_u32 a, PA_vector2_u32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+        );
+    }
+
 }
 
 NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector2_u32, nmath::F_vector2_u32);
@@ -221,6 +318,11 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector2_u32, nmath::PA_vector2_u32)
 
 NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32, nmath::F_vector2_u32);
 NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector2_u32, nmath::PA_vector2_u32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector2_u32, nmath::PA_vector2_u32);
 
 
 
@@ -266,6 +368,39 @@ namespace nmath {
         );
     }
 
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+            && (a.z > b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater_equal(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+            && (a.z >= b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+            && (a.z < b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less_equal(PA_vector3_f32 a, PA_vector3_f32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+            && (a.z <= b.z)
+        );
+    }
+
 }
 
 NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector3_f32, nmath::F_vector3_f32);
@@ -282,6 +417,11 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32)
 
 NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32, nmath::F_vector3_f32);
 NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_f32, nmath::PA_vector3_f32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32);
 
 
 
@@ -327,6 +467,43 @@ namespace nmath {
         );
     }
 
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+            && (a.z > b.z)
+            && (a.w > b.w)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater_equal(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+            && (a.z >= b.z)
+            && (a.w >= b.w)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+            && (a.z < b.z)
+            && (a.w < b.w)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less_equal(PA_vector4_f32 a, PA_vector4_f32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+            && (a.z <= b.z)
+            && (a.w <= b.w)
+        );
+    }
+
 }
 
 NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector4_f32, nmath::F_vector4_f32);
@@ -343,3 +520,8 @@ NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector4_f32, nmath::PA_vector4_f32)
 
 NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector4_f32, nmath::PA_vector4_f32, nmath::F_vector4_f32);
 NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector4_f32, nmath::PA_vector4_f32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::F_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::F_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::F_vector4_f32, nmath::F_vector4_f32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::F_vector4_f32, nmath::F_vector4_f32);

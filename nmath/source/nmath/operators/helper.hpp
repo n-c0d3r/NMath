@@ -46,6 +46,31 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+#define NMATH_DEFINE_IS_GREATER_OPERATOR(Type1, Type2) \
+    NCPP_FORCE_INLINE bool NMATH_CALL_CNV operator > (Type1 a, Type2 b) noexcept \
+    {\
+        \
+        return nmath::is_greater(a, b);\
+    }
+#define NMATH_DEFINE_IS_LESS_OPERATOR(Type1, Type2) \
+    NCPP_FORCE_INLINE bool NMATH_CALL_CNV operator < (Type1 a, Type2 b) noexcept \
+    {\
+        \
+        return nmath::is_less(a, b);\
+    }
+#define NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(Type1, Type2) \
+    NCPP_FORCE_INLINE bool NMATH_CALL_CNV operator >= (Type1 a, Type2 b) noexcept \
+    {\
+        \
+        return nmath::is_greater_equal(a, b);\
+    }
+#define NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(Type1, Type2) \
+    NCPP_FORCE_INLINE bool NMATH_CALL_CNV operator <= (Type1 a, Type2 b) noexcept \
+    {\
+        \
+        return nmath::is_less_equal(a, b);\
+    }
     
 #define NMATH_DEFINE_ADD_OPERATOR(Type1, Type2, ReturnType) \
     NCPP_FORCE_INLINE ReturnType NMATH_CALL_CNV operator + (Type1 a, Type2 b) noexcept \
