@@ -72,5 +72,6 @@ namespace nmath { }
 #include <nmath/functions/transform.hpp>
 #include <nmath/functions/normalize.hpp>
 #include <nmath/functions/decompose_transform.hpp>
+#include <nmath/functions/lerp.hpp>
 
 #pragma endregion
