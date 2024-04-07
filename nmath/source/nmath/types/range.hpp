@@ -115,7 +115,7 @@ namespace nmath {
 
     public:
         NCPP_FORCE_INLINE TF_range() noexcept = default;
-        NCPP_FORCE_INLINE NMATH_CALL_CNV TF_range(PA_value min, PA_value max) noexcept :
+        NCPP_FORCE_INLINE TF_range(PA_value min, PA_value max) noexcept :
             min_(min),
             max_(max)
         {}
@@ -134,14 +134,14 @@ namespace nmath {
 
 
     public:
-        NCPP_FORCE_INLINE b8 is_contains(PA_value v) const noexcept {
+        NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_contains(PA_value v) const noexcept {
 
             return (
                 (v >= min_)
                 && (v <= max_)
             );
         }
-        NCPP_FORCE_INLINE TF_range expand(PA_value v) noexcept {
+        NCPP_FORCE_INLINE TF_range NMATH_CALL_CNV expand(PA_value v) noexcept {
 
             return {
                 element_min(v, min_),
