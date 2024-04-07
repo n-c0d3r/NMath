@@ -63,7 +63,7 @@ namespace nmath {
         f32 far_plane
     ) noexcept {
 
-        float ys = 2.0f * near_plane / tanf(vertical_fov_and_aspect_ratio.x * 0.5);
+        float ys = 2.0f * near_plane / tanf(vertical_fov_and_aspect_ratio.x * 0.5f);
         float xs = ys / vertical_fov_and_aspect_ratio.y;
         float zs = far_plane / (far_plane - near_plane);
 

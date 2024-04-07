@@ -2,7 +2,7 @@
 
 /** @file nmath/functions/scale.hpp
 *
-*   Implement T_make_scale.
+*   Implement make_scale.
 */
 
 
@@ -42,11 +42,7 @@
 
 namespace nmath {
 
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    inline TF_matrix3x3<F_element__> NMATH_CALL_CNV T_make_scale(auto) noexcept;
-
-    template<>
-    inline TF_matrix3x3<f32> NMATH_CALL_CNV T_make_scale<f32>(PA_vector3_f32 scale_vector) noexcept {
+    inline TF_matrix3x3<f32> NMATH_CALL_CNV make_scale(PA_vector3_f32 scale_vector) noexcept {
 
         return {
             { scale_vector.x, 0.0f, 0.0f },
