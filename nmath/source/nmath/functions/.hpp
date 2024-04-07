@@ -76,5 +76,6 @@ namespace nmath { }
 #include <nmath/functions/lerp.hpp>
 #include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/normal_tangent_bitangent.hpp>
+#include <nmath/functions/euler_angles.hpp>
 
 #pragma endregion
