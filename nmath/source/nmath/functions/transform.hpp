@@ -58,10 +58,10 @@ namespace nmath {
         PA_vector3_f32 translation_vector
     ) noexcept {
 
-        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             make_scale(scale_vector)
         );
-        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             T_make_rotation<
                 E_rotation_axis::ALL,
                 F_matrix3x3_f32
@@ -88,10 +88,10 @@ namespace nmath {
         PA_vector3_f32 translation_vector
     ) noexcept {
 
-        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             make_scale(scale_vector)
         );
-        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             T_make_rotation<
                 E_rotation_axis::X,
                 F_matrix3x3_f32
@@ -118,10 +118,10 @@ namespace nmath {
         PA_vector3_f32 translation_vector
     ) noexcept {
 
-        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             make_scale(scale_vector)
         );
-        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             T_make_rotation<
                 E_rotation_axis::Y,
                 F_matrix3x3_f32
@@ -148,10 +148,10 @@ namespace nmath {
         PA_vector3_f32 translation_vector
     ) noexcept {
 
-        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             make_scale(scale_vector)
         );
-        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             T_make_rotation<
                 E_rotation_axis::Z,
                 F_matrix3x3_f32
@@ -178,7 +178,7 @@ namespace nmath {
         PA_vector3_f32 translation_vector
     ) noexcept {
 
-        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
+        F_matrix4x4_f32 scale_matrix = T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(
             make_scale(scale_vector)
         );
         F_quaternion_f32 rotation_quaternion = T_make_rotation<

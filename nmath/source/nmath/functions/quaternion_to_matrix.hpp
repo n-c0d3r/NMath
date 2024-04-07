@@ -60,17 +60,17 @@ namespace nmath {
     }
 
     template<>
-    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV T_convert<F_matrix2x2_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+    NCPP_FORCE_INLINE F_matrix2x2_f32 NMATH_CALL_CNV T_convert<F_quaternion_f32, F_matrix2x2_f32>(PA_quaternion_f32 q) noexcept {
 
         return to_matrix2x2_f32(q);
     }
     template<>
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_matrix3x3_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_quaternion_f32, F_matrix3x3_f32>(PA_quaternion_f32 q) noexcept {
 
         return to_matrix3x3_f32(q);
     }
     template<>
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_matrix4x4_f32, F_quaternion_f32>(PA_quaternion_f32 q) noexcept {
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_quaternion_f32, F_matrix4x4_f32>(PA_quaternion_f32 q) noexcept {
 
         return to_matrix4x4_f32(q);
     }

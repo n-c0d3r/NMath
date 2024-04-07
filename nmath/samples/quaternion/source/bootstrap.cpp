@@ -20,8 +20,8 @@ int main() {
 
     F_quaternion q6 = T_make_rotation(F_vector3{-0.2_pi, 0.5_pi, 1.0_pi});
 
-    F_matrix3x3 m4 = T_convert<F_matrix3x3, F_quaternion>(q6);
-    F_quaternion q7 = T_convert<F_quaternion, F_matrix3x3>(m4);
+    F_matrix3x3 m4 = T_convert<F_quaternion, F_matrix3x3>(q6);
+    F_quaternion q7 = T_convert<F_matrix3x3, F_quaternion>(m4);
 
     F_matrix4x4 m1 = T_identity<F_matrix4x4>();
     m1.translation = F_vector4{1,0,0,1};

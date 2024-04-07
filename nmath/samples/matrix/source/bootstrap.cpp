@@ -36,7 +36,7 @@ int main() {
         { 0.0f, 2.0f, 0.0f },
         { 0.0f, 0.0f, -3.0f }
     };
-    F_matrix3x3 rotation_matrix = T_convert<F_matrix3x3, F_quaternion>(
+    F_matrix3x3 rotation_matrix = T_convert<F_quaternion, F_matrix3x3>(
         T_make_rotation(
             F_vector3 { 5_pi, 0.5_pi, -1_pi }
         )

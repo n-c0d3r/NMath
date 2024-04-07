@@ -45,7 +45,7 @@
 namespace nmath {
 
     template<>
-    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_matrix3x3_f32, F_matrix2x2_f32>(PA_matrix2x2_f32 m) noexcept {
+    NCPP_FORCE_INLINE F_matrix3x3_f32 NMATH_CALL_CNV T_convert<F_matrix2x2_f32, F_matrix3x3_f32>(PA_matrix2x2_f32 m) noexcept {
 
         return {
             m.a,
@@ -55,7 +55,7 @@ namespace nmath {
     }
 
     template<>
-    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(PA_matrix3x3_f32 m) noexcept {
+    NCPP_FORCE_INLINE F_matrix4x4_f32 NMATH_CALL_CNV T_convert<F_matrix3x3_f32, F_matrix4x4_f32>(PA_matrix3x3_f32 m) noexcept {
 
 #ifdef NCPP_ENABLE_AVX
         return {

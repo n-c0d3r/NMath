@@ -85,7 +85,7 @@ namespace nmath {
     template<>
     NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_normal_to_rotation<F_quaternion_f32>(PA_vector3_f32 normal) noexcept {
 
-        return T_convert<F_quaternion_f32, F_matrix3x3_f32>(
+        return T_convert<F_matrix3x3_f32, F_quaternion_f32>(
             T_normal_to_rotation<F_matrix3x3_f32>(normal)
         );
     }
