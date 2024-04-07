@@ -50,7 +50,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
-    template<typename F_rotation__ = F_matrix3x3_f32>
+    template<typename F_rotation__ = F_quaternion_f32>
     F_rotation__ NMATH_CALL_CNV T_normal_to_rotation(PA_vector3_f32 normal) noexcept;
 
     template<>
