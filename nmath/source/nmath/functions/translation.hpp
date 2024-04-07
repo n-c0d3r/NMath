@@ -46,7 +46,7 @@ namespace nmath {
     TF_matrix4x4<F_element__> NMATH_CALL_CNV T_make_translation(auto) noexcept;
 
     template<>
-    F_matrix4x4_f32 NMATH_CALL_CNV T_make_translation<f32>(PA_vector3_f32 translation_vector) noexcept {
+    inline F_matrix4x4_f32 NMATH_CALL_CNV T_make_translation<f32>(PA_vector3_f32 translation_vector) noexcept {
 
         F_matrix4x4_f32 result = T_identity<F_matrix4x4_f32>();
 

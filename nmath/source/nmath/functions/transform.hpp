@@ -49,7 +49,7 @@ namespace nmath {
     TF_matrix4x4<F_element__> NMATH_CALL_CNV T_make_transform(auto, auto, auto) noexcept;
 
     template<>
-    F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
+    inline F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
         E_rotation_axis::ALL,
         f32
     >(
@@ -80,7 +80,7 @@ namespace nmath {
     }
 
     template<>
-    F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
+    inline F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
         E_rotation_axis::X,
         f32
     >(
@@ -111,7 +111,7 @@ namespace nmath {
     }
 
     template<>
-    F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
+    inline F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
         E_rotation_axis::Y,
         f32
     >(
@@ -142,7 +142,7 @@ namespace nmath {
     }
 
     template<>
-    F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
+    inline F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
         E_rotation_axis::Z,
         f32
     >(
@@ -173,7 +173,7 @@ namespace nmath {
     }
 
     template<>
-    F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
+    inline F_matrix4x4_f32 NMATH_CALL_CNV T_make_transform<
         E_rotation_axis::CUSTOM,
         f32
     >(
