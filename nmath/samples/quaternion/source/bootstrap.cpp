@@ -28,6 +28,12 @@ int main() {
     F_matrix4x4 m2 = m1 * q4;
     F_matrix4x4 m3 = q4 * m1;
 
+    F_quaternion q8 = T_rotation_look_at(
+        F_vector3::up(),
+        F_vector3::right()
+    );
+    F_vector3 q8_test = q8 * F_vector3::up();
+
 	ncpp::pause_console();
 
 	return 0;

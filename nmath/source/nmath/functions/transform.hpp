@@ -64,8 +64,7 @@ namespace nmath {
         F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
             T_make_rotation<
                 E_rotation_axis::ALL,
-                F_matrix3x3_f32,
-                f32
+                F_matrix3x3_f32
             >(euler_angles)
         );
         F_matrix4x4_f32 translation_matrix = make_translation(
@@ -95,8 +94,7 @@ namespace nmath {
         F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
             T_make_rotation<
                 E_rotation_axis::X,
-                F_matrix3x3_f32,
-                f32
+                F_matrix3x3_f32
             >(single_euler_angle)
         );
         F_matrix4x4_f32 translation_matrix = make_translation(
@@ -126,8 +124,7 @@ namespace nmath {
         F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
             T_make_rotation<
                 E_rotation_axis::Y,
-                F_matrix3x3_f32,
-                f32
+                F_matrix3x3_f32
             >(single_euler_angle)
         );
         F_matrix4x4_f32 translation_matrix = make_translation(
@@ -157,8 +154,7 @@ namespace nmath {
         F_matrix4x4_f32 rotation_matrix = T_convert<F_matrix4x4_f32, F_matrix3x3_f32>(
             T_make_rotation<
                 E_rotation_axis::Z,
-                F_matrix3x3_f32,
-                f32
+                F_matrix3x3_f32
             >(single_euler_angle)
         );
         F_matrix4x4_f32 translation_matrix = make_translation(
@@ -187,8 +183,7 @@ namespace nmath {
         );
         F_quaternion_f32 rotation_quaternion = T_make_rotation<
             E_rotation_axis::CUSTOM,
-            F_quaternion_f32,
-            f32
+            F_quaternion_f32
         >(axis_and_angle);
         F_matrix4x4_f32 translation_matrix = make_translation(
             translation_vector

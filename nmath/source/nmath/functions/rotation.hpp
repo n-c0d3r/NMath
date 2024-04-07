@@ -57,11 +57,11 @@ namespace nmath {
 
 
 
-    template<E_rotation_axis rotate_axis__ = E_rotation_axis::ALL, typename F__ = F_quaternion_f32, typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    template<E_rotation_axis rotate_axis__ = E_rotation_axis::ALL, typename F__ = F_quaternion_f32>
     F__ NMATH_CALL_CNV T_make_rotation(auto) noexcept;
 
     template<>
-    inline F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32, f32>(PA_vector3_f32 euler_angles) noexcept {
+    inline F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32>(PA_vector3_f32 euler_angles) noexcept {
 
 #ifdef NCPP_ENABLE_SSE
         static const F_data4_f32 sign = F_data4_f32{ 1.0f, -1.0f, -1.0f, 1.0f };
@@ -110,9 +110,9 @@ namespace nmath {
 #endif
     }
     template<>
-    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::X, F_quaternion_f32, f32>(f32 single_euler_angle) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::X, F_quaternion_f32>(f32 single_euler_angle) noexcept {
 
-        return T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32, f32>(
+        return T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32>(
             F_vector3_f32 {
                 single_euler_angle,
                 0.0f,
@@ -121,9 +121,9 @@ namespace nmath {
         );
     }
     template<>
-    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Y, F_quaternion_f32, f32>(f32 single_euler_angle) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Y, F_quaternion_f32>(f32 single_euler_angle) noexcept {
 
-        return T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32, f32>(
+        return T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32>(
             F_vector3_f32 {
                 0.0f,
                 single_euler_angle,
@@ -132,9 +132,9 @@ namespace nmath {
         );
     }
     template<>
-    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Z, F_quaternion_f32, f32>(f32 single_euler_angle) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Z, F_quaternion_f32>(f32 single_euler_angle) noexcept {
 
-        return T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32, f32>(
+        return T_make_rotation<E_rotation_axis::ALL, F_quaternion_f32>(
             F_vector3_f32 {
                 0.0f,
                 0.0f,
@@ -143,7 +143,7 @@ namespace nmath {
         );
     }
     template<>
-    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::CUSTOM, F_quaternion_f32, f32>(PA_vector4_f32 axis_and_angle) noexcept {
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::CUSTOM, F_quaternion_f32>(PA_vector4_f32 axis_and_angle) noexcept {
 
         return quaternion_forward(
             F_data4_f32 {
@@ -157,7 +157,7 @@ namespace nmath {
     }
 
     template<>
-    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::ALL, F_matrix3x3_f32, f32>(PA_vector3_f32 euler_angles) noexcept {
+    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::ALL, F_matrix3x3_f32>(PA_vector3_f32 euler_angles) noexcept {
 
         f32 sx = sinf(euler_angles.x);
         f32 cx = cosf(euler_angles.x);
@@ -185,7 +185,7 @@ namespace nmath {
         };
     }
     template<>
-    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::X, F_matrix3x3_f32, f32>(f32 single_euler_angle) noexcept {
+    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::X, F_matrix3x3_f32>(f32 single_euler_angle) noexcept {
 
         f32 s = sinf(single_euler_angle);
         f32 c = cosf(single_euler_angle);
@@ -197,7 +197,7 @@ namespace nmath {
         };
     }
     template<>
-    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Y, F_matrix3x3_f32, f32>(f32 single_euler_angle) noexcept {
+    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Y, F_matrix3x3_f32>(f32 single_euler_angle) noexcept {
 
         f32 s = sinf(single_euler_angle);
         f32 c = cosf(single_euler_angle);
@@ -209,7 +209,7 @@ namespace nmath {
         };
     }
     template<>
-    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Z, F_matrix3x3_f32, f32>(f32 single_euler_angle) noexcept {
+    inline F_matrix3x3_f32 NMATH_CALL_CNV T_make_rotation<E_rotation_axis::Z, F_matrix3x3_f32>(f32 single_euler_angle) noexcept {
 
         f32 s = sinf(single_euler_angle);
         f32 c = cosf(single_euler_angle);
