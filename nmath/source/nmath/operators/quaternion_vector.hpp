@@ -37,6 +37,7 @@
 #include <nmath/types/vector.hpp>
 #include <nmath/functions/data4_functions.hpp>
 #include <nmath/functions/conjugate.hpp>
+#include <nmath/functions/vector_to_vector.hpp>
 #include <nmath/operators/helper.hpp>
 
 #pragma endregion
@@ -83,7 +84,7 @@ namespace nmath {
             data4_complex_multiply(
                 data_forward(b),
                 data4_complex_multiply(
-                    data_forward(F_vector4_f32(a)),
+                    data_forward(T_convert<F_vector3_f32, F_vector4_f32>(a)),
                     data_forward(conjugate(b))
                 )
             ).xyz()

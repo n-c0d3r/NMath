@@ -67,7 +67,12 @@ namespace nmath {
         static const F_data4_f32 sign = F_data4_f32{ 1.0f, -1.0f, -1.0f, 1.0f };
         static const F_data4_f32 one_half = F_data4_f32{ 0.5f, 0.5f, 0.5f, 0.5f };
 
-        F_data4_f32 HalfAngles = data4_multiply(data_forward(F_vector4_f32(euler_angles)), one_half);
+        F_data4_f32 HalfAngles = data4_multiply(
+            data_forward(
+                T_convert<F_vector3_f32, F_vector4_f32>(euler_angles)
+            ),
+            one_half
+        );
 
         F_data4_f32 SinAngles, CosAngles;
         data4_sin_cos(HalfAngles, SinAngles, CosAngles);

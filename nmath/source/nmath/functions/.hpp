@@ -77,5 +77,7 @@ namespace nmath { }
 #include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/normal_tangent_bitangent.hpp>
 #include <nmath/functions/euler_angles.hpp>
+#include <nmath/functions/axis_and_angle.hpp>
+#include <nmath/functions/vector_to_vector.hpp>
 
 #pragma endregion
