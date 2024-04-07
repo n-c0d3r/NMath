@@ -74,5 +74,6 @@ namespace nmath { }
 #include <nmath/functions/decompose_transform.hpp>
 #include <nmath/functions/lerp.hpp>
 #include <nmath/functions/element_min_max.hpp>
+#include <nmath/functions/normal_tangent_bitangent.hpp>
 
 #pragma endregion

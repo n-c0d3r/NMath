@@ -39,6 +39,7 @@
 #include <nmath/functions/normalize.hpp>
 #include <nmath/functions/cross.hpp>
 #include <nmath/functions/matrix_identity.hpp>
+#include <nmath/functions/matrix_to_quaternion.hpp>
 
 #pragma endregion
 
@@ -49,9 +50,13 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_matrix3x3_f32 NMATH_CALL_CNV normal_to_direction_matrix(PA_vector3_f32 normal) noexcept {
+    template<typename F_rotation__ = F_matrix3x3_f32>
+    F_rotation__ NMATH_CALL_CNV T_normal_to_rotation(PA_vector3_f32 normal) noexcept;
 
-        if (normal.z <= 0.999f) {
+    template<>
+    inline F_matrix3x3_f32 NMATH_CALL_CNV T_normal_to_rotation<F_matrix3x3_f32>(PA_vector3_f32 normal) noexcept {
+
+        if (abs(normal.z) <= 0.999f) {
 
             F_vector3_f32 bitangent = normalize(
                 cross(normal, F_vector3_f32::forward())
@@ -67,10 +72,17 @@ namespace nmath {
             return T_identity<F_matrix3x3_f32>();
 
     }
+    template<>
+    NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV T_normal_to_rotation<F_quaternion_f32>(PA_vector3_f32 normal) noexcept {
+
+        return T_convert<F_quaternion_f32, F_matrix3x3_f32>(
+            T_normal_to_rotation<F_matrix3x3_f32>(normal)
+        );
+    }
     inline F_vector3_f32 NMATH_CALL_CNV normal_to_tangent(PA_vector3_f32 normal) noexcept {
 
         return (
-            (normal.x <= 0.999f)
+            (abs(normal.x) <= 0.999f)
             ? normalize(
                 cross(F_vector3_f32::right(), normal)
             )
@@ -80,7 +92,7 @@ namespace nmath {
     inline F_vector3_f32 NMATH_CALL_CNV normal_to_bitangent(PA_vector3_f32 normal) noexcept {
 
         return (
-            (normal.z <= 0.999f)
+            (abs(normal.z) <= 0.999f)
             ? normalize(
                 cross(normal, F_vector3_f32::forward())
             )
