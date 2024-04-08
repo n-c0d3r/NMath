@@ -218,6 +218,90 @@ namespace nmath {
                 NMATH_F32_NEGATIVE_INFINITY
             };
         }
+        static NCPP_FORCE_INLINE F_this pi() noexcept {
+
+            return {
+                NMATH_F32_PI,
+                NMATH_F32_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this negative_pi() noexcept {
+
+            return {
+                NMATH_F32_NEGATIVE_PI,
+                NMATH_F32_NEGATIVE_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this half_pi() noexcept {
+
+            return {
+                NMATH_F32_PI,
+                NMATH_F32_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this negative_half_pi() noexcept {
+
+            return {
+                NMATH_F32_NEGATIVE_HALF_PI,
+                NMATH_F32_NEGATIVE_HALF_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this two_pi() noexcept {
+
+            return {
+                NMATH_F32_TWO_PI,
+                NMATH_F32_TWO_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this negative_two_pi() noexcept {
+
+            return {
+                NMATH_F32_NEGATIVE_TWO_PI,
+                NMATH_F32_NEGATIVE_TWO_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this inv_pi() noexcept {
+
+            return {
+                NMATH_F32_INV_PI,
+                NMATH_F32_INV_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this inv_negative_pi() noexcept {
+
+            return {
+                NMATH_F32_INV_NEGATIVE_PI,
+                NMATH_F32_INV_NEGATIVE_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this inv_half_pi() noexcept {
+
+            return {
+                NMATH_F32_INV_PI,
+                NMATH_F32_INV_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this inv_negative_half_pi() noexcept {
+
+            return {
+                NMATH_F32_INV_NEGATIVE_HALF_PI,
+                NMATH_F32_INV_NEGATIVE_HALF_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this inv_two_pi() noexcept {
+
+            return {
+                NMATH_F32_TWO_PI,
+                NMATH_F32_TWO_PI
+            };
+        }
+        static NCPP_FORCE_INLINE F_this inv_negative_two_pi() noexcept {
+
+            return {
+                NMATH_F32_INV_NEGATIVE_TWO_PI,
+                NMATH_F32_INV_NEGATIVE_TWO_PI
+            };
+        }
         static NCPP_FORCE_INLINE F_this right() noexcept {
 
             return {

@@ -153,7 +153,67 @@ function(NMath_DeclareSIMDConstants_f32x4)
             string(REPLACE "1" "-NMATH_F32_INFINITY," range_negative_infinity_value ${range_negative_infinity_value})
             string(REPLACE "0" "NMATH_F32_ZERO," range_negative_infinity_value ${range_negative_infinity_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_infinity = make_simd_f32x4(${range_negative_infinity_value}0.0f);\\")
+
+            set(range_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_PI," range_pi_value ${range_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_pi_value ${range_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_pi = make_simd_f32x4(${range_pi_value}0.0f);\\")
+
+            set(range_negative_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_PI," range_negative_pi_value ${range_negative_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_pi_value ${range_negative_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_pi = make_simd_f32x4(${range_negative_pi_value}0.0f);\\")
+
+            set(range_half_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_HALF_PI," range_half_pi_value ${range_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_half_pi_value ${range_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_half_pi = make_simd_f32x4(${range_half_pi_value}0.0f);\\")
+
+            set(range_negative_half_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_HALF_PI," range_negative_half_pi_value ${range_negative_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_half_pi_value ${range_negative_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_half_pi = make_simd_f32x4(${range_negative_half_pi_value}0.0f);\\")
             
+            set(range_two_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_TWO_PI," range_two_pi_value ${range_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_two_pi_value ${range_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_two_pi = make_simd_f32x4(${range_two_pi_value}0.0f);\\")
+
+            set(range_negative_two_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_TWO_PI," range_negative_two_pi_value ${range_negative_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_two_pi_value ${range_negative_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_two_pi = make_simd_f32x4(${range_negative_two_pi_value}0.0f);\\")
+
+            set(range_inv_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_PI," range_inv_pi_value ${range_inv_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_pi_value ${range_inv_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_pi = make_simd_f32x4(${range_inv_pi_value}0.0f);\\")
+
+            set(range_inv_negative_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_PI," range_inv_negative_pi_value ${range_inv_negative_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_pi_value ${range_inv_negative_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_pi = make_simd_f32x4(${range_inv_negative_pi_value}0.0f);\\")
+
+            set(range_inv_half_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_HALF_PI," range_inv_half_pi_value ${range_inv_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_half_pi_value ${range_inv_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_half_pi = make_simd_f32x4(${range_inv_half_pi_value}0.0f);\\")
+
+            set(range_inv_negative_half_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_HALF_PI," range_inv_negative_half_pi_value ${range_inv_negative_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_half_pi_value ${range_inv_negative_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_half_pi = make_simd_f32x4(${range_inv_negative_half_pi_value}0.0f);\\")
+            
+            set(range_inv_two_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_TWO_PI," range_inv_two_pi_value ${range_inv_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_two_pi_value ${range_inv_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_two_pi = make_simd_f32x4(${range_inv_two_pi_value}0.0f);\\")
+
+            set(range_inv_negative_two_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_TWO_PI," range_inv_negative_two_pi_value ${range_inv_negative_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_two_pi_value ${range_inv_negative_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_two_pi = make_simd_f32x4(${range_inv_negative_two_pi_value}0.0f);\\")
+
             set(range_negative_one_value ${permutation})
             string(REPLACE "1" "NMATH_F32_ONE_NEGATIVE," range_negative_one_value ${range_negative_one_value})
             string(REPLACE "0" "NMATH_F32_ZERO," range_negative_one_value ${range_negative_one_value})
@@ -177,6 +237,24 @@ function(NMath_DeclareSIMDConstants_f32x4)
         if(NOT ${permutation} STREQUAL 0000)   
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_infinity;\n")
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_infinity;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_pi;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_half_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_half_pi;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_two_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_two_pi;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_pi;\n")
+            
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_half_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_half_pi;\n")
+            
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_two_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_two_pi;\n")
 
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative;\n")
 
@@ -314,6 +392,66 @@ function(NMath_DeclareSIMDConstants_f32x8)
             string(REPLACE "1" "-NMATH_F32_INFINITY," range_negative_infinity_value ${range_negative_infinity_value})
             string(REPLACE "0" "NMATH_F32_ZERO," range_negative_infinity_value ${range_negative_infinity_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_infinity = make_simd_f32x8(${range_negative_infinity_value}0.0f);\\")
+
+            set(range_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_PI," range_pi_value ${range_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_pi_value ${range_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_pi = make_simd_f32x8(${range_pi_value}0.0f);\\")
+            
+            set(range_negative_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_PI," range_negative_pi_value ${range_negative_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_pi_value ${range_negative_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_pi = make_simd_f32x8(${range_negative_pi_value}0.0f);\\")
+            
+            set(range_half_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_HALF_PI," range_half_pi_value ${range_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_half_pi_value ${range_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_half_pi = make_simd_f32x8(${range_half_pi_value}0.0f);\\")
+            
+            set(range_negative_half_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_HALF_PI," range_negative_half_pi_value ${range_negative_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_half_pi_value ${range_negative_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_half_pi = make_simd_f32x8(${range_negative_half_pi_value}0.0f);\\")
+            
+            set(range_two_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_TWO_PI," range_two_pi_value ${range_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_two_pi_value ${range_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_two_pi = make_simd_f32x8(${range_two_pi_value}0.0f);\\")
+            
+            set(range_negative_two_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_TWO_PI," range_negative_two_pi_value ${range_negative_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_two_pi_value ${range_negative_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_two_pi = make_simd_f32x8(${range_negative_two_pi_value}0.0f);\\")
+
+            set(range_inv_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_PI," range_inv_pi_value ${range_inv_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_pi_value ${range_inv_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_pi = make_simd_f32x8(${range_inv_pi_value}0.0f);\\")
+
+            set(range_inv_negative_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_PI," range_inv_negative_pi_value ${range_inv_negative_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_pi_value ${range_inv_negative_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_pi = make_simd_f32x8(${range_inv_negative_pi_value}0.0f);\\")
+
+            set(range_inv_half_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_HALF_PI," range_inv_half_pi_value ${range_inv_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_half_pi_value ${range_inv_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_half_pi = make_simd_f32x8(${range_inv_half_pi_value}0.0f);\\")
+
+            set(range_inv_negative_half_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_HALF_PI," range_inv_negative_half_pi_value ${range_inv_negative_half_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_half_pi_value ${range_inv_negative_half_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_half_pi = make_simd_f32x8(${range_inv_negative_half_pi_value}0.0f);\\")
+            
+            set(range_inv_two_pi_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_TWO_PI," range_inv_two_pi_value ${range_inv_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_two_pi_value ${range_inv_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_two_pi = make_simd_f32x8(${range_inv_two_pi_value}0.0f);\\")
+
+            set(range_inv_negative_two_pi_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_TWO_PI," range_inv_negative_two_pi_value ${range_inv_negative_two_pi_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_two_pi_value ${range_inv_negative_two_pi_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_two_pi = make_simd_f32x8(${range_inv_negative_two_pi_value}0.0f);\\")
             
             set(range_negative_one_value ${permutation})
             string(REPLACE "1" "NMATH_F32_ONE_NEGATIVE," range_negative_one_value ${range_negative_one_value})
@@ -338,6 +476,24 @@ function(NMath_DeclareSIMDConstants_f32x8)
         if(NOT ${permutation} STREQUAL 00000000)   
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_infinity;\n")
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_infinity;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_pi;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_half_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_half_pi;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_two_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_two_pi;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_pi;\n")
+            
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_half_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_half_pi;\n")
+            
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_two_pi;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_two_pi;\n")
             
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative;\n")
 

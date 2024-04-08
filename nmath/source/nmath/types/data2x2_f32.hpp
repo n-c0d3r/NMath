@@ -313,6 +313,162 @@ namespace nmath {
             };
 #endif
         }
+        static NCPP_FORCE_INLINE F_this pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_pi
+            };
+#else
+            return {
+                F_pack::pi(),
+                F_pack::pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this negative_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_negative_pi
+            };
+#else
+            return {
+                F_pack::negative_pi(),
+                F_pack::negative_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this half_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_half_pi
+            };
+#else
+            return {
+                F_pack::half_pi(),
+                F_pack::half_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this negative_half_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_negative_half_pi
+            };
+#else
+            return {
+                F_pack::negative_half_pi(),
+                F_pack::negative_half_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this two_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_two_pi
+            };
+#else
+            return {
+                F_pack::two_pi(),
+                F_pack::two_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this negative_two_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_negative_two_pi
+            };
+#else
+            return {
+                F_pack::negative_two_pi(),
+                F_pack::negative_two_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this inv_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_inv_pi
+            };
+#else
+            return {
+                F_pack::inv_pi(),
+                F_pack::inv_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this inv_negative_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_inv_negative_pi
+            };
+#else
+            return {
+                F_pack::inv_negative_pi(),
+                F_pack::inv_negative_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this inv_half_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_inv_half_pi
+            };
+#else
+            return {
+                F_pack::inv_half_pi(),
+                F_pack::inv_half_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this inv_negative_half_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_inv_negative_half_pi
+            };
+#else
+            return {
+                F_pack::inv_negative_half_pi(),
+                F_pack::inv_negative_half_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this inv_two_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_inv_two_pi
+            };
+#else
+            return {
+                F_pack::inv_two_pi(),
+                F_pack::inv_two_pi()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this inv_negative_two_pi() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_inv_negative_two_pi
+            };
+#else
+            return {
+                F_pack::inv_negative_two_pi(),
+                F_pack::inv_negative_two_pi()
+            };
+#endif
+        }
 
 
 
