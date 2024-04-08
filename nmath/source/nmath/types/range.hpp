@@ -163,21 +163,4 @@ namespace nmath {
     using F_vector3_range_f32 = TF_range<F_vector3_f32>;
     using F_vector4_range_f32 = TF_range<F_vector4_f32>;
 
-
-
-    using F_box2 = F_vector2_range;
-    using F_box3 = F_vector3_range;
-    using F_box4 = F_vector4_range;
-
-    using F_box2_f32 = F_vector2_range_f32;
-    using F_box3_f32 = F_vector3_range_f32;
-    using F_box4_f32 = F_vector4_range_f32;
-
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    using TF_box2 = TF_range<TF_vector2<F_element__>>;
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    using TF_box3 = TF_range<TF_vector3<F_element__>>;
-    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    using TF_box4 = TF_range<TF_vector4<F_element__>>;
-
 }

@@ -35,10 +35,14 @@
 
 #include <nmath/types/vector.hpp>
 #include <nmath/types/matrix.hpp>
+#include <nmath/operators/matrix_vector.hpp>
+#include <nmath/operators/quaternion_vector.hpp>
 #include <nmath/operators/vector_vector.hpp>
 #include <nmath/operators/vector_scalar.hpp>
 #include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/length.hpp>
+#include <nmath/functions/vector_to_vector.hpp>
+#include <nmath/functions/direction_position.hpp>
 
 #pragma endregion
 

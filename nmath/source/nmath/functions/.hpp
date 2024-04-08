@@ -80,5 +80,6 @@ namespace nmath { }
 #include <nmath/functions/euler_angles.hpp>
 #include <nmath/functions/axis_and_angle.hpp>
 #include <nmath/functions/vector_to_vector.hpp>
+#include <nmath/functions/direction_position.hpp>
 
 #pragma endregion
