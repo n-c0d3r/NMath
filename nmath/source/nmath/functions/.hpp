@@ -85,5 +85,14 @@ namespace nmath { }
 #include <nmath/functions/element_sign.hpp>
 #include <nmath/functions/element_if_equal.hpp>
 #include <nmath/functions/element_if_not_equal.hpp>
+#include <nmath/functions/element_sin.hpp>
+#include <nmath/functions/element_cos.hpp>
+#include <nmath/functions/element_tan.hpp>
+#include <nmath/functions/element_cot.hpp>
+#include <nmath/functions/element_asin.hpp>
+#include <nmath/functions/element_acos.hpp>
+#include <nmath/functions/element_atan.hpp>
+#include <nmath/functions/element_acot.hpp>
+#include <nmath/functions/element_atan2.hpp>
 
 #pragma endregion
