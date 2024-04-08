@@ -74,6 +74,7 @@ namespace nmath { }
 #include <nmath/functions/normalize.hpp>
 #include <nmath/functions/decompose_transform.hpp>
 #include <nmath/functions/lerp.hpp>
+#include <nmath/functions/slerp.hpp>
 #include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/normal_tangent_bitangent.hpp>
 #include <nmath/functions/euler_angles.hpp>

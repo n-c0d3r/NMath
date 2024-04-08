@@ -37,6 +37,9 @@ int main() {
     F_vector3 q8_euler_angles = euler_angles(q8);
     F_vector4 q8_axis_and_angle = axis_and_angle(q8);
 
+    F_quaternion q9 = slerp(q8, T_identity<F_quaternion>(), 0.5f);
+    F_vector4 q9_axis_and_angle = axis_and_angle(q9);
+
 	ncpp::pause_console();
 
 	return 0;
