@@ -41,6 +41,7 @@
 #include <nmath/functions/normalize.hpp>
 #include <nmath/functions/quaternion_identity.hpp>
 #include <nmath/operators/vector_scalar.hpp>
+#include <nmath/operators/quaternion_scalar.hpp>
 
 #pragma endregion
 
@@ -48,11 +49,11 @@
 
 namespace nmath {
 
-    template<typename F__ = F_quaternion_f32>
-    F__ NMATH_CALL_CNV T_rotation_look_at(auto from_direction, auto to_direction) noexcept;
+    template<typename F__ = F_quaternion_f32, b8 with_qlength = false>
+    F__ NMATH_CALL_CNV T_rotation_look_at(auto from, auto to) noexcept;
 
     template<>
-    inline F_quaternion_f32 NMATH_CALL_CNV T_rotation_look_at<F_quaternion_f32>(PA_vector3_f32 from_direction, PA_vector3_f32 to_direction) noexcept {
+    inline F_quaternion_f32 NMATH_CALL_CNV T_rotation_look_at<F_quaternion_f32, false>(PA_vector3_f32 from_direction, PA_vector3_f32 to_direction) noexcept {
 
         NCPP_ASSERT(is_normalized(from_direction)) << "invalid from_direction, it have to be normalized";
         NCPP_ASSERT(is_normalized(to_direction)) << "invalid to_direction, it have to be normalized";
@@ -74,6 +75,34 @@ namespace nmath {
                 cos_half_angle
             }
         );
+    }
+
+    template<>
+    inline F_quaternion_f32 NMATH_CALL_CNV T_rotation_look_at<F_quaternion_f32, true>(PA_vector3_f32 from, PA_vector3_f32 to) noexcept {
+
+        f32 from_length = length(from);
+        f32 to_length = length(to);
+
+        F_vector3_f32 from_direction = from / from_length;
+        F_vector3_f32 to_direction = to / to_length;
+
+        F_vector3_f32 axis = (
+            cross(from_direction, to_direction)
+        );
+
+        if(length_sq(axis) <= 0.00001f)
+        return T_identity<F_quaternion_f32>();
+
+        f32 dot_half = dot(from_direction, to_direction);
+        f32 sin_half_angle = sqrt(0.5f - dot_half);
+        f32 cos_half_angle = sqrt(0.5f + dot_half);
+
+        return quaternion_forward(
+            F_data4_f32 {
+                data_forward(axis * sin_half_angle),
+                cos_half_angle
+            }
+        ) / sqrt(to_length / from_length);
     }
 
 }
