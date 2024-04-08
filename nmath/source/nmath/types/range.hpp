@@ -37,6 +37,9 @@
 #include <nmath/operators/vector_vector.hpp>
 #include <nmath/operators/vector_scalar.hpp>
 #include <nmath/functions/element_min_max.hpp>
+#include <nmath/functions/element_abs.hpp>
+#include <nmath/functions/element_if_equal.hpp>
+#include <nmath/functions/element_if_not_equal.hpp>
 
 #pragma endregion
 
@@ -134,6 +137,20 @@ namespace nmath {
 
 
     public:
+        NCPP_FORCE_INLINE f32 NMATH_CALL_CNV distance(PA_value v) const noexcept {
+
+            F_value min_delta = min_ - v;
+            F_value max_delta = v - max_;
+
+            F_value min_delta_abs = element_abs(min_delta);
+            F_value max_delta_abs = element_abs(max_delta);
+
+            F_value choosed_delta_abs = element_min(min_delta_abs, max_delta_abs);
+
+            F_value result = element_if_equal(choosed_delta_abs, min_delta_abs, min_delta);
+
+            return element_if_equal(result, max_delta_abs, max_delta);
+        }
         NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_contains(PA_value v) const noexcept {
 
             return (

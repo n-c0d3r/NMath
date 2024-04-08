@@ -75,11 +75,15 @@ namespace nmath { }
 #include <nmath/functions/decompose_transform.hpp>
 #include <nmath/functions/lerp.hpp>
 #include <nmath/functions/slerp.hpp>
-#include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/normal_tangent_bitangent.hpp>
 #include <nmath/functions/euler_angles.hpp>
 #include <nmath/functions/axis_and_angle.hpp>
 #include <nmath/functions/vector_to_vector.hpp>
 #include <nmath/functions/direction_position.hpp>
+#include <nmath/functions/element_min_max.hpp>
+#include <nmath/functions/element_abs.hpp>
+#include <nmath/functions/element_sign.hpp>
+#include <nmath/functions/element_if_equal.hpp>
+#include <nmath/functions/element_if_not_equal.hpp>
 
 #pragma endregion
