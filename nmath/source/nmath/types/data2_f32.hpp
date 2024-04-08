@@ -204,6 +204,20 @@ namespace nmath {
                 1.0f
             };
         }
+        static NCPP_FORCE_INLINE F_this infinity() noexcept {
+
+            return {
+                NMATH_F32_INFINITY,
+                NMATH_F32_INFINITY
+            };
+        }
+        static NCPP_FORCE_INLINE F_this negative_infinity() noexcept {
+
+            return {
+                NMATH_F32_NEGATIVE_INFINITY,
+                NMATH_F32_NEGATIVE_INFINITY
+            };
+        }
         static NCPP_FORCE_INLINE F_this right() noexcept {
 
             return {

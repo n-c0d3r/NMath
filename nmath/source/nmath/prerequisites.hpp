@@ -122,8 +122,11 @@ namespace nmath {
 
 #define NMATH_DEFAULT_TOLERANCE_F32 (0.00001f)
 
-#define NMATH_INFINITY_F32 (std::numeric_limits<ncpp::f32>::infinity())
-#define NMATH_INFINITY_F64 (std::numeric_limits<ncpp::f64>::infinity())
+#define NMATH_F32_INFINITY (std::numeric_limits<ncpp::f32>::infinity())
+#define NMATH_F64_INFINITY (std::numeric_limits<ncpp::f64>::infinity())
+
+#define NMATH_F32_NEGATIVE_INFINITY (-std::numeric_limits<ncpp::f32>::infinity())
+#define NMATH_F64_NEGATIVE_INFINITY (-std::numeric_limits<ncpp::f64>::infinity())
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////

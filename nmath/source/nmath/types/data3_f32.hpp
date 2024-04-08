@@ -320,6 +320,34 @@ namespace nmath {
             };
 #endif
         }
+        static NCPP_FORCE_INLINE F_this infinity() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_infinity
+            };
+#else
+            return {
+                NMATH_F32_INFINITY,
+                NMATH_F32_INFINITY,
+                NMATH_F32_INFINITY
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this negative_infinity() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+            return {
+                simd_f32x4_1111_negative_infinity
+            };
+#else
+            return {
+                NMATH_F32_NEGATIVE_INFINITY,
+                NMATH_F32_NEGATIVE_INFINITY,
+                NMATH_F32_NEGATIVE_INFINITY
+            };
+#endif
+        }
         static NCPP_FORCE_INLINE F_this right() noexcept {
 
 #ifdef NCPP_ENABLE_SSE

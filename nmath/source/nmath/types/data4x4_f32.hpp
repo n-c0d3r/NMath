@@ -342,6 +342,38 @@ namespace nmath {
                 F_pack::one()
             };
 #endif
+        }       
+        static NCPP_FORCE_INLINE F_this infinity() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                simd_f32x8_11111111_infinity,
+                simd_f32x8_11111111_infinity
+            };
+#else
+            return {
+                F_pack::infinity(),
+                F_pack::infinity(),
+                F_pack::infinity(),
+                F_pack::infinity()
+            };
+#endif
+        }
+        static NCPP_FORCE_INLINE F_this negative_infinity() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+            return {
+                simd_f32x8_11111111_negative_infinity,
+                simd_f32x8_11111111_negative_infinity
+            };
+#else
+            return {
+                F_pack::negative_infinity(),
+                F_pack::negative_infinity(),
+                F_pack::negative_infinity(),
+                F_pack::negative_infinity()
+            };
+#endif
         }
 
 
