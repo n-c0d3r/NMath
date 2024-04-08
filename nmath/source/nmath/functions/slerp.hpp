@@ -40,6 +40,7 @@
 #include <nmath/functions/rotation.hpp>
 #include <nmath/functions/lerp.hpp>
 #include <nmath/operators/quaternion_quaternion.hpp>
+#include <nmath/operators/quaternion_scalar.hpp>
 
 #pragma endregion
 
@@ -48,6 +49,9 @@
 namespace nmath {
 
     NCPP_FORCE_INLINE F_quaternion_f32 slerp(PA_quaternion_f32 a, PA_quaternion_f32 b, f32 t) noexcept {
+
+        NCPP_ASSERT(is_normalized(a)) << "invalid a quaternion, it have to be normalized";
+        NCPP_ASSERT(is_normalized(b)) << "invalid b quaternion, it have to be normalized";
 
         F_quaternion_f32 delta_q = b * invert(a);
 
@@ -60,6 +64,27 @@ namespace nmath {
         >(aaa);
 
         return add_q * a;
+    }
+
+    NCPP_FORCE_INLINE F_quaternion_f32 slerp_with_qlength(PA_quaternion_f32 a, PA_quaternion_f32 b, f32 t) noexcept {
+
+        f32 a_length = length(a);
+        f32 b_length = length(b);
+
+        F_quaternion_f32 na = a / a_length;
+        F_quaternion_f32 nb = b / b_length;
+
+        F_quaternion_f32 delta_q = nb * invert(na);
+
+        F_vector4_f32 aaa = axis_and_angle(delta_q);
+        aaa.w = lerp(0.0f, aaa.w, t);
+
+        F_quaternion_f32 add_q = T_make_rotation<
+             E_rotation_axis::CUSTOM,
+        F_quaternion_f32
+        >(aaa);
+
+        return (add_q * na) * lerp(a_length, b_length, t);
     }
 
 }

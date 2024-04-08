@@ -35,6 +35,7 @@
 
 #include <nmath/types/vector.hpp>
 #include <nmath/types/quaternion.hpp>
+#include <nmath/functions/normalize.hpp>
 
 #pragma endregion
 
@@ -45,13 +46,15 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_vector3_f32 NMATH_CALL_CNV euler_angles(PA_quaternion_f32 q) noexcept {
+    inline F_vector3_f32 NMATH_CALL_CNV euler_angles(PA_quaternion_f32 unit_q) noexcept {
+
+        NCPP_ASSERT(is_normalized(unit_q)) << "invalid quaternion, it have to be normalized";
 
         return {
 
-            atan2(2.0f * (q.w * q.x + q.y * q.z), 1.0f - 2.0f * (q.x * q.x + q.y * q.y)),
-            asin(2.0f * (q.w * q.y - q.z * q.x)),
-            atan2(2.0f * (q.w * q.z + q.x * q.y), 1.0f - 2.0f * (q.y * q.y + q.z * q.z))
+            atan2(2.0f * (unit_q.w * unit_q.x + unit_q.y * unit_q.z), 1.0f - 2.0f * (unit_q.x * unit_q.x + unit_q.y * unit_q.y)),
+            asin(2.0f * (unit_q.w * unit_q.y - unit_q.z * unit_q.x)),
+            atan2(2.0f * (unit_q.w * unit_q.z + unit_q.x * unit_q.y), 1.0f - 2.0f * (unit_q.y * unit_q.y + unit_q.z * unit_q.z))
 
         };
     }

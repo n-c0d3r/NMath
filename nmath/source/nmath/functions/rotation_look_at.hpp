@@ -54,14 +54,8 @@ namespace nmath {
     template<>
     inline F_quaternion_f32 NMATH_CALL_CNV T_rotation_look_at<F_quaternion_f32>(PA_vector3_f32 from_direction, PA_vector3_f32 to_direction) noexcept {
 
-        NCPP_ASSERT(
-            abs(1.0f - length(from_direction))
-            <= 0.001f
-        ) << "invalid from_direction, it have to be normalized";
-        NCPP_ASSERT(
-            abs(1.0f - length(to_direction))
-            <= 0.001f
-        ) << "invalid to_direction, it have to be normalized";
+        NCPP_ASSERT(is_normalized(from_direction)) << "invalid from_direction, it have to be normalized";
+        NCPP_ASSERT(is_normalized(to_direction)) << "invalid to_direction, it have to be normalized";
 
         F_vector3_f32 axis = (
             cross(from_direction, to_direction)

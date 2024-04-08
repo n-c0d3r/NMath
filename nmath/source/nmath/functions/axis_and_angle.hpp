@@ -46,17 +46,19 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
-    inline F_vector4_f32 NMATH_CALL_CNV axis_and_angle(PA_quaternion_f32 q) noexcept {
+    inline F_vector4_f32 NMATH_CALL_CNV axis_and_angle(PA_quaternion_f32 unit_q) noexcept {
+
+        NCPP_ASSERT(is_normalized(unit_q)) << "invalid quaternion, it have to be normalized";
 
         return {
 
             normalize(
                 vecma_forward(
-                    data_forward(q).xyz()
+                    data_forward(unit_q).xyz()
                 )
             ),
 
-            acos(q.w) * 2.0f
+            acos(unit_q.w) * 2.0f
 
         };
     }

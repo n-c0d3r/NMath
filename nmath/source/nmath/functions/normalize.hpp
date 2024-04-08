@@ -65,5 +65,33 @@ namespace nmath {
 
 		return a / length(a);
 	}
+    NCPP_FORCE_INLINE b8 is_normalized(PA_vector2_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
+
+        return (
+            abs(1.0f - length_sq(a))
+            <= tolerance
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_normalized(PA_vector3_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
+
+        return (
+            abs(1.0f - length_sq(a))
+            <= tolerance
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_normalized(PA_vector4_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
+
+        return (
+            abs(1.0f - length_sq(a))
+            <= tolerance
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_normalized(PA_quaternion_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
+
+        return (
+            abs(1.0f - length_sq(a))
+            <= tolerance
+        );
+    }
 
 }
