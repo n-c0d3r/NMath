@@ -89,4 +89,7 @@ namespace nmath {
         data_internal::T_is_has_passed_arg_type<F_value__>
     >;
 
+    template<typename F_value__>
+    using TPA = TF_passed_argument<F_value_>;
+
 }
