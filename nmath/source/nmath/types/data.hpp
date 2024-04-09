@@ -90,6 +90,6 @@ namespace nmath {
     >;
 
     template<typename F_value__>
-    using TPA = TF_passed_argument<F_value_>;
+    using TPA = TF_passed_argument<F_value__>;
 
 }
