@@ -30,7 +30,7 @@ int main() {
 
     F_quaternion q8 = T_rotation_look_at(
         F_vector3::up(),
-        F_vector3::right()
+        normalize(F_vector3::up() + F_vector3::right())
     );
     F_vector3 q8_test = q8 * F_vector3::up();
 

@@ -58,20 +58,18 @@ namespace nmath {
         NCPP_ASSERT(is_normalized(from_direction)) << "invalid from_direction, it have to be normalized";
         NCPP_ASSERT(is_normalized(to_direction)) << "invalid to_direction, it have to be normalized";
 
-        F_vector3_f32 axis = (
-            cross(from_direction, to_direction)
-        );
+        F_vector3_f32 axis_sin_angle = cross(from_direction, to_direction);
 
-        if(length_sq(axis) <= 0.00001f)
+        if(length_sq(axis_sin_angle) <= NMATH_DEFAULT_TOLERANCE_F32)
             return T_identity<F_quaternion_f32>();
 
-        f32 dot_half = dot(from_direction, to_direction);
-        f32 sin_half_angle = sqrt(0.5f - dot_half);
+        f32 dot_half = dot(from_direction, to_direction) * 0.5f;
         f32 cos_half_angle = sqrt(0.5f + dot_half);
+        f32 axis_sin_angle_multiplier = 0.5f / cos_half_angle;
 
         return quaternion_forward(
             F_data4_f32 {
-                data_forward(axis * sin_half_angle),
+                data_forward(axis_sin_angle * axis_sin_angle_multiplier),
                 cos_half_angle
             }
         );
@@ -86,23 +84,21 @@ namespace nmath {
         F_vector3_f32 from_direction = from / from_length;
         F_vector3_f32 to_direction = to / to_length;
 
-        F_vector3_f32 axis = (
-            cross(from_direction, to_direction)
-        );
+        F_vector3_f32 axis_sin_angle = cross(from_direction, to_direction);
 
-        if(length_sq(axis) <= 0.00001f)
+        if(length_sq(axis_sin_angle) <= NMATH_DEFAULT_TOLERANCE_F32)
         return T_identity<F_quaternion_f32>();
 
-        f32 dot_half = dot(from_direction, to_direction);
-        f32 sin_half_angle = sqrt(0.5f - dot_half);
+        f32 dot_half = dot(from_direction, to_direction) * 0.5f;
         f32 cos_half_angle = sqrt(0.5f + dot_half);
+        f32 axis_sin_angle_multiplier = 0.5f / cos_half_angle;
 
         return quaternion_forward(
             F_data4_f32 {
-                data_forward(axis * sin_half_angle),
+                data_forward(axis_sin_angle * axis_sin_angle_multiplier),
                 cos_half_angle
             }
-        ) / sqrt(to_length / from_length);
+        );
     }
 
 }
