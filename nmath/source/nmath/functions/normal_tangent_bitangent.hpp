@@ -220,7 +220,7 @@ namespace nmath {
     //  f32
     ////////////////////////////////////////////////////////////////////////////////////
     template<typename F_rotation__ = F_quaternion_f32>
-    F_rotation__ NMATH_CALL_CNV T_bitangent_to_rotation(auto normal) noexcept;
+    F_rotation__ NMATH_CALL_CNV T_bitangent_to_rotation(auto bitangent) noexcept;
 
     template<>
     inline F_matrix3x3_f32 NMATH_CALL_CNV T_bitangent_to_rotation<F_matrix3x3_f32>(PA_vector3_f32 bitangent) noexcept {
