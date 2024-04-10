@@ -137,7 +137,7 @@ namespace nmath {
 
 
     public:
-        NCPP_FORCE_INLINE f32 NMATH_CALL_CNV distance(PA_value v) const noexcept {
+        NCPP_FORCE_INLINE f32 NMATH_CALL_CNV signed_distance(PA_value v) const noexcept {
 
             F_value min_delta = min_ - v;
             F_value max_delta = v - max_;

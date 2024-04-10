@@ -114,7 +114,7 @@ namespace nmath {
 
 
     public:
-        inline f32 NMATH_CALL_CNV distance(PA_position v) const noexcept {
+        inline f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
 
             return (
                 dot(direction_, v)
