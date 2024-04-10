@@ -34,7 +34,7 @@ int main() {
     F_matrix3x3 scale = {
         { 1.0f, 0.0f, 0.0f },
         { 0.0f, 2.0f, 0.0f },
-        { 0.0f, 0.0f, -3.0f }
+        { 0.0f, 0.0f, 0.0f }
     };
     F_matrix3x3 rotation_matrix = T_convert<F_quaternion, F_matrix3x3>(
         T_make_rotation(
@@ -43,7 +43,7 @@ int main() {
     );
     F_matrix3x3 transform2 = rotation_matrix * scale;
 
-    auto dt = T_decompose_transform(transform2);
+    auto dt = decompose_transform(transform2);
 
     F_matrix4x4 transform3 = T_make_transform(
         F_vector3 { 1.0f, 2.0f, 3.0f },
