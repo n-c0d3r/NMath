@@ -120,6 +120,10 @@ namespace nmath {
 #define NMATH_I32_ZERO 0
 #define NMATH_I32_FULL NCPP_U32_MAX
 
+#define NMATH_U32_ONE 1
+#define NMATH_U32_ZERO 0
+#define NMATH_U32_FULL NCPP_U32_MAX
+
 #define NMATH_DEFAULT_TOLERANCE_F32 (0.00001f)
 
 #define NMATH_F32_INFINITY (std::numeric_limits<ncpp::f32>::infinity())

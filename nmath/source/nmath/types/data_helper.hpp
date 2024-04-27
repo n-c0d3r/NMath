@@ -68,6 +68,18 @@ namespace nmath {
 #define NMATH_DATA4_F32_PA(T) const T&
 #endif
 
+#ifdef NCPP_ENABLE_SSE2
+#define NMATH_DATA3_U32_PA(T) const T
+#else
+#define NMATH_DATA3_U32_PA(T) const T&
+#endif
+
+#ifdef NCPP_ENABLE_SSE4
+#define NMATH_DATA3_I32_PA(T) const T
+#else
+#define NMATH_DATA3_I32_PA(T) const T&
+#endif
+
 #ifdef NCPP_ENABLE_SSE
 #define NMATH_DATA2X2_F32_PA(T) const T
 #else

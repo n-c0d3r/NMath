@@ -35,5 +35,7 @@
 
 #include <nmath/types/data3_template.hpp>
 #include <nmath/types/data3_f32.hpp>
+#include <nmath/types/data3_u32.hpp>
+#include <nmath/types/data3_i32.hpp>
 
 #pragma endregion
