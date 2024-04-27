@@ -74,10 +74,10 @@ namespace nmath {
 
     using F_vector3 = TF_vector3<>;
     using PA_vector3 = TPA_vector3<>;
-    // using F_vector3_i = TF_vector3<NMATH_DEFAULT_INT_TYPE>;
-    // using PA_vector3_i = TPA_vector3<NMATH_DEFAULT_INT_TYPE>;
-    // using F_vector3_u = TF_vector3<NMATH_DEFAULT_UINT_TYPE>;
-    // using PA_vector3_u = TPA_vector3<NMATH_DEFAULT_UINT_TYPE>;
+     using F_vector3_i = TF_vector3<NMATH_DEFAULT_INT_TYPE>;
+     using PA_vector3_i = TPA_vector3<NMATH_DEFAULT_INT_TYPE>;
+     using F_vector3_u = TF_vector3<NMATH_DEFAULT_UINT_TYPE>;
+     using PA_vector3_u = TPA_vector3<NMATH_DEFAULT_UINT_TYPE>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
@@ -85,10 +85,10 @@ namespace nmath {
 
     using F_vector3_f32 = TF_vector3<f32>;
     using PA_vector3_f32 = TPA_vector3<f32>;
-    // using F_vector3_i32 = TF_vector3<i32>;
-    // using PA_vector3_i32 = TPA_vector3<i32>;
-    // using F_vector3_u32 = TF_vector3<u32>;
-    // using PA_vector3_u32 = TPA_vector3<u32>;
+     using F_vector3_i32 = TF_vector3<i32>;
+     using PA_vector3_i32 = TPA_vector3<i32>;
+     using F_vector3_u32 = TF_vector3<u32>;
+     using PA_vector3_u32 = TPA_vector3<u32>;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
@@ -96,5 +96,9 @@ namespace nmath {
 
     NMATH_DEFINE_DATA3_F32_FORWARD(F_vector3_f32);
     NMATH_DEFINE_DATA3_F32_REVERSE_FORWARD(vecma_forward, F_vector3_f32);
+    NMATH_DEFINE_DATA3_F32_FORWARD(F_vector3_i32);
+    NMATH_DEFINE_DATA3_F32_REVERSE_FORWARD(vecma_forward, F_vector3_i32);
+	NMATH_DEFINE_DATA3_F32_FORWARD(F_vector3_u32);
+	NMATH_DEFINE_DATA3_F32_REVERSE_FORWARD(vecma_forward, F_vector3_u32);
 
 }
