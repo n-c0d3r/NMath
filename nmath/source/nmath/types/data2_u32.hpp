@@ -93,8 +93,11 @@ namespace nmath {
 
         using F_passed_argument = const F_this&;
 
-    NCPP_RTTI_IMPLEMENT_FLAG(nmath::F_data2_u32_flag);
-    NCPP_RTTI_IMPLEMENT_FLAG(F_flag__);
+		template<typename F_entry__>
+		using TF_bind_entry = TF_data2<F_entry__, F_flag__>;
+
+		NCPP_RTTI_IMPLEMENT_FLAG(nmath::F_data2_u32_flag);
+		NCPP_RTTI_IMPLEMENT_FLAG(F_flag__);
 
 
 
@@ -129,27 +132,17 @@ namespace nmath {
         NCPP_FORCE_INLINE TF_data2(F_entry x, F_entry y) noexcept :
             x(x),
             y(y)
-        {
-
-
-
-        }
+        {}
         NCPP_FORCE_INLINE TF_data2(F_entry x) noexcept :
             x(x),
             y(0)
-        {
-
-
-
-        }
+        {}
         NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
-        {
-
-
-
-        }
+        {}
+		TF_data2(const TF_data2<i32, F_flag>& o) noexcept;
+		TF_data2(const TF_data2<f32, F_flag>& o) noexcept;
 
 
 
@@ -164,6 +157,8 @@ namespace nmath {
 
             return *this;
         }
+		TF_data2& operator = (const TF_data2<i32, F_flag>& o) noexcept;
+		TF_data2& operator = (const TF_data2<f32, F_flag>& o) noexcept;
         NCPP_FORCE_INLINE const F_entry operator [] (u32 index) const noexcept
         {
 

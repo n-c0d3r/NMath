@@ -128,6 +128,9 @@ namespace nmath {
 #else
         using F_passed_argument = const F_this&;
 #endif
+
+		template<typename F_entry__>
+		using TF_bind_entry = TF_data3<F_entry__, F_flag__>;
         
         NCPP_RTTI_IMPLEMENT_FLAG(nmath::F_data3_f32_flag);
         NCPP_RTTI_IMPLEMENT_FLAG(F_flag__);
@@ -174,11 +177,7 @@ namespace nmath {
             y(y),
             z(z)
 #endif
-        {
-            
-            
-            
-        }
+        {}
         NCPP_FORCE_INLINE TF_data3(PA_data2 xy, F_entry z) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(_mm_set_ps(0.0f, z, xy.y, xy.x))
@@ -187,11 +186,7 @@ namespace nmath {
             y(xy.y),
             z(z)
 #endif
-        {
-
-
-
-        }
+        {}
         NCPP_FORCE_INLINE TF_data3(F_entry x, PA_data2 yz) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(_mm_set_ps(0.0f, yz.y, yz.x, x))
@@ -200,11 +195,7 @@ namespace nmath {
             y(yz.x),
             z(yz.y)
 #endif
-        {
-
-
-
-        }
+        {}
         NCPP_FORCE_INLINE TF_data3(PA_data2 xy) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(_mm_set_ps(0.0f, 0.0f, xy.y, xy.x))
@@ -213,11 +204,7 @@ namespace nmath {
             y(xy.y),
             z(0.0f)
 #endif
-        {
-
-
-
-        }
+        {}
         NCPP_FORCE_INLINE TF_data3(const TF_data3& o) noexcept :
 #ifdef NCPP_ENABLE_SSE
             xyz_(o.xyz_)
@@ -226,11 +213,17 @@ namespace nmath {
             y(o.y),
             z(o.z)
 #endif
-        {
-
-
-
-        }
+        {}
+#ifdef NCPP_ENABLE_SSE4
+		TF_data3(TF_data3<i32, F_flag> o) noexcept;
+#else
+		TF_data3(const TF_data3<i32, F_flag>& o) noexcept;
+#endif
+#ifdef NCPP_ENABLE_SSE2
+		TF_data3(TF_data3<u32, F_flag> o) noexcept;
+#else
+		TF_data3(const TF_data3<u32, F_flag>& o) noexcept;
+#endif
 
         NMATH_DATA3_SIMD_CONSTRUCTOR_M128();
         
@@ -252,6 +245,16 @@ namespace nmath {
 
             return *this;
         }
+#ifdef NCPP_ENABLE_SSE4
+		TF_data3& NMATH_CALL_CNV operator = (TF_data3<i32, F_flag> o) noexcept;
+#else
+		TF_data3& NMATH_CALL_CNV operator = (const TF_data3<i32, F_flag>& o) noexcept;
+#endif
+#ifdef NCPP_ENABLE_SSE2
+		TF_data3& NMATH_CALL_CNV operator = (TF_data3<u32, F_flag> o) noexcept;
+#else
+		TF_data3& NMATH_CALL_CNV operator = (const TF_data3<u32, F_flag>& o) noexcept;
+#endif
         NCPP_FORCE_INLINE const F_entry operator [] (i32 index) const noexcept
         {
 
