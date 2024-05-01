@@ -224,6 +224,26 @@ function(NMath_DeclareSIMDConstants_f32x4)
             string(REPLACE "1" "NMATH_F32_FULL," range_full_value ${range_full_value})
             string(REPLACE "0" "NMATH_F32_ZERO," range_full_value ${range_full_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${range_full_permutation} = make_simd_f32x4(${range_full_value}0.0f);\\")
+
+            set(range_half_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_HALF," range_half_value ${range_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_half_value ${range_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_half = make_simd_f32x4(${range_half_value}0.0f);\\")
+
+            set(range_negative_half_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_HALF," range_negative_half_value ${range_negative_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_half_value ${range_negative_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_half = make_simd_f32x4(${range_negative_half_value}0.0f);\\")
+
+            set(range_inv_half_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_HALF," range_inv_half_value ${range_inv_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_half_value ${range_inv_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_half = make_simd_f32x4(${range_inv_half_value}0.0f);\\")
+
+            set(range_inv_negative_half_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_HALF," range_inv_negative_half_value ${range_inv_negative_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_half_value ${range_inv_negative_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_half = make_simd_f32x4(${range_inv_negative_half_value}0.0f);\\")
         endif()
     endforeach()
 
@@ -259,7 +279,13 @@ function(NMath_DeclareSIMDConstants_f32x4)
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative;\n")
 
             string(REPLACE "1" "F" range_full_permutation ${permutation})
-            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${range_full_permutation};\n")            
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${range_full_permutation};\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_half;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_negative_half;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_half;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x4 ${PARGS_PREFIX}${permutation}_inv_negative_half;\n")
         endif()
     endforeach()
 
@@ -463,6 +489,26 @@ function(NMath_DeclareSIMDConstants_f32x8)
             string(REPLACE "1" "NMATH_F32_FULL," range_full_value ${range_full_value})
             string(REPLACE "0" "NMATH_F32_ZERO," range_full_value ${range_full_value})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${range_full_permutation} = make_simd_f32x8(${range_full_value}0.0f);\\")
+
+            set(range_half_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_HALF," range_half_value ${range_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_half_value ${range_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_half = make_simd_f32x8(${range_half_value}0.0f);\\")
+
+            set(range_negative_half_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_HALF," range_negative_half_value ${range_negative_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_negative_half_value ${range_negative_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_half = make_simd_f32x8(${range_negative_half_value}0.0f);\\")
+
+            set(range_inv_half_value ${permutation})
+            string(REPLACE "1" "NMATH_F32_INV_HALF," range_inv_half_value ${range_inv_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_half_value ${range_inv_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_half = make_simd_f32x8(${range_inv_half_value}0.0f);\\")
+
+            set(range_inv_negative_half_value ${permutation})
+            string(REPLACE "1" "-NMATH_F32_INV_HALF," range_inv_negative_half_value ${range_inv_negative_half_value})
+            string(REPLACE "0" "NMATH_F32_ZERO," range_inv_negative_half_value ${range_inv_negative_half_value})
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "\nconst F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_half = make_simd_f32x8(${range_inv_negative_half_value}0.0f);\\")
         endif()
     endforeach()
 
@@ -496,6 +542,12 @@ function(NMath_DeclareSIMDConstants_f32x8)
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_two_pi;\n")
             
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_half;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_negative_half;\n")
+
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_half;\n")
+            file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${permutation}_inv_negative_half;\n")
 
             string(REPLACE "1" "F" range_full_permutation ${permutation})
             file(APPEND "${SIMD_MACROS_FILE_PATH}" "extern const F_simd_f32x8 ${PARGS_PREFIX}${range_full_permutation};\n")            

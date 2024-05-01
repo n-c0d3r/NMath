@@ -141,6 +141,9 @@ namespace nmath {
 #define NMATH_F32_TWO_PI (NMATH_F32_PI * 2.0f)
 #define NMATH_F64_TWO_PI (NMATH_F64_PI * 2.0)
 
+#define NMATH_F32_HALF (0.5f)
+#define NMATH_F64_HALF (0.5)
+
 #define NMATH_F32_INV_PI (1.0f / 3.14159265358979323846f)
 #define NMATH_F64_INV_PI (1.0 / 3.141592653589793238462643383279502884)
 
@@ -149,6 +152,9 @@ namespace nmath {
 
 #define NMATH_F32_INV_TWO_PI (NMATH_F32_INV_PI / 2.0f)
 #define NMATH_F64_INV_TWO_PI (NMATH_F64_INV_PI / 2.0)
+
+#define NMATH_F32_INV_HALF (1.0f / 0.5f)
+#define NMATH_F64_INV_HALF (1.0 / 0.5)
 
 #define NMATH_F32_NEGATIVE_PI (-3.14159265358979323846f)
 #define NMATH_F64_NEGATIVE_PI (-3.141592653589793238462643383279502884)
@@ -159,6 +165,9 @@ namespace nmath {
 #define NMATH_F32_NEGATIVE_TWO_PI (-NMATH_F32_PI * 2.0f)
 #define NMATH_F64_NEGATIVE_TWO_PI (-NMATH_F64_PI * 2.0)
 
+#define NMATH_F32_NEGATIVE_HALF (-0.5f)
+#define NMATH_F64_NEGATIVE_HALF (-0.5)
+
 #define NMATH_F32_INV_NEGATIVE_PI (-1.0f / 3.14159265358979323846f)
 #define NMATH_F64_INV_NEGATIVE_PI (-1.0 / 3.141592653589793238462643383279502884)
 
@@ -167,6 +176,9 @@ namespace nmath {
 
 #define NMATH_F32_INV_NEGATIVE_TWO_PI (-NMATH_F32_INV_PI / 2.0f)
 #define NMATH_F64_INV_NEGATIVE_TWO_PI (-NMATH_F64_INV_PI / 2.0)
+
+#define NMATH_F32_INV_NEGATIVE_HALF (-1.0f / 0.5f)
+#define NMATH_F64_INV_NEGATIVE_HALF (-1.0 / 0.5)
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////

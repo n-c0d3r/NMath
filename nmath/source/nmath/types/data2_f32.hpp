@@ -199,6 +199,34 @@ namespace nmath {
                 1.0f
             };
         }
+		static NCPP_FORCE_INLINE F_this half() noexcept {
+
+			return {
+				NMATH_F32_HALF,
+				NMATH_F32_HALF
+			};
+		}
+		static NCPP_FORCE_INLINE F_this negative_half() noexcept {
+
+			return {
+				NMATH_F32_NEGATIVE_HALF,
+				NMATH_F32_NEGATIVE_HALF
+			};
+		}
+		static NCPP_FORCE_INLINE F_this inv_half() noexcept {
+
+			return {
+				NMATH_F32_INV_HALF,
+				NMATH_F32_INV_HALF
+			};
+		}
+		static NCPP_FORCE_INLINE F_this inv_negative_half() noexcept {
+
+			return {
+				NMATH_F32_INV_NEGATIVE_HALF,
+				NMATH_F32_INV_NEGATIVE_HALF
+			};
+		}
         static NCPP_FORCE_INLINE F_this infinity() noexcept {
 
             return {

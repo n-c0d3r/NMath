@@ -380,6 +380,66 @@ namespace nmath {
             }
 #endif
         }
+		static NCPP_FORCE_INLINE F_this half() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+			return {
+				simd_f32x4_1111_half
+			};
+#else
+			return {
+                NMATH_F32_HALF,
+                NMATH_F32_HALF,
+                NMATH_F32_HALF,
+                NMATH_F32_HALF
+            };
+#endif
+		}
+		static NCPP_FORCE_INLINE F_this negative_half() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+			return {
+				simd_f32x4_1111_negative_half
+			};
+#else
+			return {
+                NMATH_F32_NEGATIVE_HALF,
+                NMATH_F32_NEGATIVE_HALF,
+                NMATH_F32_NEGATIVE_HALF,
+                NMATH_F32_NEGATIVE_HALF
+            };
+#endif
+		}
+		static NCPP_FORCE_INLINE F_this inv_half() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+			return {
+				simd_f32x4_1111_inv_half
+			};
+#else
+			return {
+                NMATH_F32_HALF,
+                NMATH_F32_HALF,
+                NMATH_F32_HALF,
+                NMATH_F32_HALF
+            };
+#endif
+		}
+		static NCPP_FORCE_INLINE F_this inv_negative_half() noexcept {
+
+#ifdef NCPP_ENABLE_SSE
+			return {
+				simd_f32x4_1111_inv_negative_half
+			};
+#else
+			return {
+                NMATH_F32_INV_NEGATIVE_HALF,
+                NMATH_F32_INV_NEGATIVE_HALF,
+                NMATH_F32_INV_NEGATIVE_HALF,
+                NMATH_F32_INV_NEGATIVE_HALF
+            };
+#endif
+		}
         static NCPP_FORCE_INLINE F_this infinity() noexcept {
 
 #ifdef NCPP_ENABLE_SSE

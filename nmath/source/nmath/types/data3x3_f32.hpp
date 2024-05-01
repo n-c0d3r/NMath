@@ -333,6 +333,66 @@ namespace nmath {
             };
 #endif
         }
+		static NCPP_FORCE_INLINE F_this half() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+			return {
+				simd_f32x8_11111111_half,
+				simd_f32x8_11111111_half
+			};
+#else
+			return {
+                F_pack::half(),
+                F_pack::half(),
+                F_pack::half()
+            };
+#endif
+		}
+		static NCPP_FORCE_INLINE F_this negative_half() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+			return {
+				simd_f32x8_11111111_negative_half,
+				simd_f32x8_11111111_negative_half
+			};
+#else
+			return {
+                F_pack::negative_half(),
+                F_pack::negative_half(),
+                F_pack::negative_half()
+            };
+#endif
+		}
+		static NCPP_FORCE_INLINE F_this inv_half() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+			return {
+				simd_f32x8_11111111_inv_half,
+				simd_f32x8_11111111_inv_half
+			};
+#else
+			return {
+                F_pack::inv_half(),
+                F_pack::inv_half(),
+                F_pack::inv_half()
+            };
+#endif
+		}
+		static NCPP_FORCE_INLINE F_this inv_negative_half() noexcept {
+
+#ifdef NCPP_ENABLE_AVX
+			return {
+				simd_f32x8_11111111_inv_negative_half,
+				simd_f32x8_11111111_inv_negative_half
+			};
+#else
+			return {
+                F_pack::inv_negative_half(),
+                F_pack::inv_negative_half(),
+                F_pack::inv_negative_half()
+            };
+#endif
+		}
         static NCPP_FORCE_INLINE F_this infinity() noexcept {
 
 #ifdef NCPP_ENABLE_AVX
