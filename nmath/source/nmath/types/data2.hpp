@@ -37,5 +37,6 @@
 #include <nmath/types/data2_f32.hpp>
 #include <nmath/types/data2_i32.hpp>
 #include <nmath/types/data2_u32.hpp>
+#include <nmath/types/data2_conversions.hpp>
 
 #pragma endregion

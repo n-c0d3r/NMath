@@ -133,10 +133,6 @@ namespace nmath {
             x(x),
             y(y)
         {}
-        NCPP_FORCE_INLINE TF_data2(F_entry x) noexcept :
-            x(x),
-            y(0)
-        {}
         NCPP_FORCE_INLINE TF_data2(const TF_data2& o) noexcept :
             x(o.x),
             y(o.y)
