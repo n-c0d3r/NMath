@@ -142,7 +142,10 @@ NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_matrix3x3_f32
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_quaternion_f32, nmath::PA_matrix4x4_f32, nmath::F_matrix4x4_f32);
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix2x2_f32, nmath::PA_quaternion_f32, nmath::F_matrix2x2_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix2x2_f32, nmath::PA_quaternion_f32);
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix3x3_f32, nmath::PA_quaternion_f32, nmath::F_matrix3x3_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix3x3_f32, nmath::PA_quaternion_f32);
 
 NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_matrix4x4_f32, nmath::PA_quaternion_f32, nmath::F_matrix4x4_f32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_matrix4x4_f32, nmath::PA_quaternion_f32);
