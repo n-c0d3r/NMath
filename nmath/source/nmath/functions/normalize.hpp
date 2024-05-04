@@ -49,49 +49,97 @@ namespace nmath {
 	////////////////////////////////////////////////////////////////////////////////////
 	//  f32
 	////////////////////////////////////////////////////////////////////////////////////
-	NCPP_FORCE_INLINE F_vector2_f32 normalize(PA_vector2_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_vector2_f32 normalize(PA_vector2_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-		return a / length(a);
+		f32 l = length(a);
+
+		if(l <= tolerance)
+			return F_vector2_f32::zero();
+
+		return a / l;
 	}
-	NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV normalize(PA_vector3_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV normalize(PA_vector3_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-		return a / length(a);
+		f32 l = length(a);
+
+		if(l <= tolerance)
+			return F_vector3_f32::zero();
+
+		return a / l;
 	}
-	NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV normalize(PA_vector4_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV normalize(PA_vector4_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-		return a / length(a);
+		f32 l = length(a);
+
+		if(l <= tolerance)
+			return F_vector4_f32::zero();
+
+		return a / l;
 	}
-	NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV normalize(PA_quaternion_f32 a) noexcept {
+	NCPP_FORCE_INLINE F_quaternion_f32 NMATH_CALL_CNV normalize(PA_quaternion_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-		return a / length(a);
+		f32 l = length(a);
+
+		if(l <= tolerance)
+			return F_quaternion_f32::zero();
+
+		return a / l;
 	}
     NCPP_FORCE_INLINE b8 is_normalized(PA_vector2_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
+		f32 lsq = length_sq(a);
+
         return (
-            abs(1.0f - length_sq(a))
-            <= tolerance
-        );
+			(
+				abs(1.0f - lsq)
+				<= tolerance
+			)
+			|| (
+				lsq <= tolerance
+			)
+		);
     }
     NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_normalized(PA_vector3_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-        return (
-            abs(1.0f - length_sq(a))
-            <= tolerance
-        );
+		f32 lsq = length_sq(a);
+
+		return (
+			(
+				abs(1.0f - lsq)
+				<= tolerance
+			)
+			|| (
+				lsq <= tolerance
+			)
+		);
     }
     NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_normalized(PA_vector4_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-        return (
-            abs(1.0f - length_sq(a))
-            <= tolerance
-        );
+		f32 lsq = length_sq(a);
+
+		return (
+			(
+				abs(1.0f - lsq)
+				<= tolerance
+			)
+			|| (
+				lsq <= tolerance
+			)
+		);
     }
     NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_normalized(PA_quaternion_f32 a, f32 tolerance = NMATH_DEFAULT_TOLERANCE_F32) noexcept {
 
-        return (
-            abs(1.0f - length_sq(a))
-            <= tolerance
-        );
+		f32 lsq = length_sq(a);
+
+		return (
+			(
+				abs(1.0f - lsq)
+				<= tolerance
+			)
+			|| (
+				lsq <= tolerance
+			)
+		);
     }
 
 }
