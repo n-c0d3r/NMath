@@ -63,16 +63,20 @@ namespace nmath {
         f32 far_plane
     ) noexcept {
 
-        float ys = 2.0f * near_plane / tanf(vertical_fov_and_aspect_ratio.x * 0.5f);
-        float xs = ys / vertical_fov_and_aspect_ratio.y;
-        float zs = far_plane / (far_plane - near_plane);
+		f32 half_vertical_fov = vertical_fov_and_aspect_ratio.x * 0.5f;
+		f32 sin_half_vertical_fov = sinf(half_vertical_fov);
+		f32 cos_half_vertical_fov = cosf(half_vertical_fov);
 
-        return {
-            F_vector4_f32{xs, 0, 0, 0},
-            F_vector4_f32{0, ys, 0, 0},
-            F_vector4_f32{0, 0, zs, 1},
-            F_vector4_f32{0, 0, -zs * near_plane, 0}
-        };
+		float ys = cos_half_vertical_fov / sin_half_vertical_fov;
+		float xs = ys / vertical_fov_and_aspect_ratio.y;
+		float zs = far_plane / (far_plane - near_plane);
+
+		return {
+			F_vector4_f32{xs, 0, 0, 0},
+			F_vector4_f32{0, ys, 0, 0},
+			F_vector4_f32{0, 0, zs, 1},
+			F_vector4_f32{0, 0, -zs * near_plane, 0}
+		};
     }
     template<>
     inline F_matrix4x4_f32 T_projection_matrix<E_projection_type::ORTHOGRAPHIC, f32>(
