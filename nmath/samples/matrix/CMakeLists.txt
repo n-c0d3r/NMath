@@ -18,7 +18,7 @@ add_executable(nmath.samples.matrix
 # nmath.samples.matrix target settings
 set_target_properties(nmath.samples.matrix
     PROPERTIES 
-        FOLDER "nmath/samples"
+        FOLDER "NCoder/nmath/samples"
         PROJECT_LABEL "matrix"
 )
 target_link_libraries(nmath.samples.matrix

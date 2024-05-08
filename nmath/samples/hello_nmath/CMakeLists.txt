@@ -18,7 +18,7 @@ add_executable(nmath.samples.hello_nmath
 # nmath.samples.hello_nmath target settings
 set_target_properties(nmath.samples.hello_nmath
     PROPERTIES 
-        FOLDER "nmath/samples"
+        FOLDER "NCoder/nmath/samples"
         PROJECT_LABEL "hello_nmath"
 )
 target_link_libraries(nmath.samples.hello_nmath

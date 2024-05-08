@@ -18,7 +18,7 @@ add_executable(nmath.samples.quaternion
 # nmath.samples.quaternion target settings
 set_target_properties(nmath.samples.quaternion
     PROPERTIES 
-        FOLDER "nmath/samples"
+        FOLDER "NCoder/nmath/samples"
         PROJECT_LABEL "quaternion"
 )
 target_link_libraries(nmath.samples.quaternion

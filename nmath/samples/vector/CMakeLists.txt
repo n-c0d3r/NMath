@@ -18,7 +18,7 @@ add_executable(nmath.samples.vector
 # nmath.samples.vector target settings
 set_target_properties(nmath.samples.vector
     PROPERTIES 
-        FOLDER "nmath/samples"
+        FOLDER "NCoder/nmath/samples"
         PROJECT_LABEL "vector"
 )
 target_link_libraries(nmath.samples.vector

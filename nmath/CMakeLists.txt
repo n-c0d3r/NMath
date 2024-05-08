@@ -71,7 +71,7 @@ add_library(nmath STATIC
 #####################################################################################
 set_target_properties(nmath
     PROPERTIES 
-        FOLDER "nmath"
+        FOLDER "NCoder/nmath"
 )
 
 target_precompile_headers(nmath
