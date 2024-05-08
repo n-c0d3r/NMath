@@ -87,7 +87,7 @@ if(NMATH_ENABLE_DOCUMENTATIONS)
 
     NCPP_DocsHelper_CreateTarget(
         NAME NMATH
-        BRIEF "Ncoder's Learning Aimed C++ Surface Library."
+        BRIEF "Ncoder's Learning Aimed C++ Math Library."
 
         TARGET_NAME nmath.documentations
         TARGET_FOLDER nmath
