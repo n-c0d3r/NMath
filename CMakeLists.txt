@@ -90,7 +90,7 @@ if(NMATH_ENABLE_DOCUMENTATIONS)
         BRIEF "Ncoder's Learning Aimed C++ Math Library."
 
         TARGET_NAME nmath.documentations
-        TARGET_FOLDER nmath
+        TARGET_FOLDER NCoder/nmath
         TARGET_LABEL documentations
 
         INPUT_DIRS 
