@@ -82,6 +82,7 @@ namespace nmath { }
 #include <nmath/functions/direction_position.hpp>
 #include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/element_clamp.hpp>
+#include <nmath/functions/element_saturate.hpp>
 #include <nmath/functions/element_abs.hpp>
 #include <nmath/functions/element_sign.hpp>
 #include <nmath/functions/element_if_equal.hpp>
