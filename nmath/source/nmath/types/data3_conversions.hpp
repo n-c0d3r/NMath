@@ -200,7 +200,7 @@ NCPP_DISABLE_ALL_WARNINGS_PUSH
 	template<typename F_flag__>
 	NCPP_FORCE_INLINE TF_data3<u32, F_flag__>::TF_data3(TF_data3<f32, F_flag__> o) noexcept :
 		xyz_(
-			_mm_cvttps_epu32(o.xyz_)
+			_mm_cvttps_epi32(o.xyz_)
 		)
 	{}
 #else
@@ -229,7 +229,7 @@ NCPP_DISABLE_ALL_WARNINGS_PUSH
 	template<typename F_flag__>
 	NCPP_FORCE_INLINE TF_data3<u32, F_flag__>& TF_data3<u32, F_flag__>::operator = (TF_data3<f32, F_flag__> o) noexcept {
 
-		xyz_ = _mm_cvttps_epu32(o.xyz_);
+		xyz_ = _mm_cvttps_epi32(o.xyz_);
 
 		return *this;
 	}
