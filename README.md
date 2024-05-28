@@ -67,7 +67,7 @@ NCoder's Learning Aimed C++ Math Library.
     + Step 1: Clone [NMath git repository](https://github.com/Abytek/NMath) from GitHub
     + Step 2: Generate Visual Studio 2022 solution by running **scripts/generate_vs2022.bat**
     + Step 3: Navigate to **build/vs2022**
-    + Step 4: Open **npp.sln**
+    + Step 4: Open **nmath.sln**
     + Step 5: Set **nmath.samples.hello_nmath** as startup project
     + Step 6: Run and enjoy!
   + **Xcode** (MacOS):
