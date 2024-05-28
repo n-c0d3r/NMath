@@ -5,7 +5,7 @@ NCoder's Learning Aimed C++ Math Library.
 
 ## Features
 + Data Types:
-  + Base packed data structure template:
+  + Base packed data structure templates:
     + **TF_data2<F_element__, F_flag__>**
     + **TF_data3<F_element__, F_flag__>**
     + **TF_data4<F_element__, F_flag__>**
