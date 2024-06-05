@@ -90,7 +90,7 @@ namespace nmath {
         return {
             F_vector4_f32{2.0f / view_size.width, 0, 0, 0},
             F_vector4_f32{0, 2.0f / view_size.height, 0, 0},
-            F_vector4_f32{0, 0, range, 1.0f},
+            F_vector4_f32{0, 0, range, 0.0f},
             F_vector4_f32{0, 0, -range * near_plane, 1.0f}
         };
     }
