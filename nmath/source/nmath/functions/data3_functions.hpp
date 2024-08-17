@@ -369,7 +369,7 @@ namespace nmath {
     ) noexcept {
         
 #ifdef NCPP_ENABLE_SSE
-        constexpr u32 shuffle = _MM_SHUFFLE(0, z_selector__ & 3, y_selector__ & 3, x_selector__ & 3);
+        constexpr u32 shuffle = _MM_SHUFFLE(0, z_selector__ % 3, y_selector__ % 3, x_selector__ % 3);
 
         constexpr bool which_x = x_selector__ > 3;
         constexpr bool which_y = y_selector__ > 3;
@@ -379,9 +379,9 @@ namespace nmath {
 #else
         return {
           
-            a[(u32)x_selector__ & 3],
-            a[(u32)y_selector__ & 3],
-            a[(u32)z_selector__ & 3]
+            (x_selector__ > 3) ? b[(u32)x_selector__ % 3] : a[(u32)x_selector__],
+            (y_selector__ > 3) ? b[(u32)y_selector__ % 3] : a[(u32)y_selector__],
+            (z_selector__ > 3) ? b[(u32)z_selector__ % 3] : a[(u32)z_selector__]
             
         };
 #endif
@@ -752,6 +752,607 @@ namespace nmath {
         out_sin = data3_sin(a);
         out_cos = data3_cos(a);
 #endif
+    }
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  I32 declares
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NMATH_USING_NLIB_NAMESPACES();
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Basic arithmetic functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    F_data3_i32 data3_minus(PA_data3_i32 a) noexcept;
+
+    F_data3_i32 data3_multiply(PA_data3_i32 a, i32 b) noexcept;
+    F_data3_i32 data3_divide(PA_data3_i32 a, i32 b) noexcept;
+
+    F_data3_i32 data3_add(PA_data3_i32 a, PA_data3_i32 b) noexcept;
+    F_data3_i32 data3_subtract(PA_data3_i32 a, PA_data3_i32 b) noexcept;
+
+    F_data3_i32 data3_multiply(PA_data3_i32 a, PA_data3_i32 b) noexcept;
+    F_data3_i32 data3_divide(PA_data3_i32 a, PA_data3_i32 b) noexcept;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Entry manipulate functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    template<
+        u32 x_selector__,
+        u32 y_selector__,
+        u32 z_selector__
+    >
+    F_data3_i32 T_data3_static_permute(
+        PA_data3_i32 a,
+        PA_data3_i32 b
+    ) noexcept;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  FMA functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    F_data3_i32 data3_multiply_add(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept;
+
+    F_data3_i32 data3_multiply_addsub(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept;
+
+    F_data3_i32 data3_multiply_sub(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept;
+
+    F_data3_i32 data3_multiply_subadd(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Dot
+    ////////////////////////////////////////////////////////////////////////////////////
+    i32 data3_dot(PA_data3_i32 a, PA_data3_i32 b) noexcept;
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  I32 defines
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NMATH_USING_NLIB_NAMESPACES();
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Basic arithmetic functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    NCPP_FORCE_INLINE F_data3_i32 data3_minus(PA_data3_i32 a) noexcept
+    {
+        return {
+
+            -a.x,
+            -a.y,
+            -a.z
+
+        };
+    }
+
+    NCPP_FORCE_INLINE F_data3_i32 data3_multiply(PA_data3_i32 a, i32 b) noexcept
+    {
+
+        return {
+
+            a.x * b,
+            a.y * b,
+            a.z * b
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_divide(PA_data3_i32 a, i32 b) noexcept
+    {
+
+        return {
+
+            a.x / b,
+            a.y / b,
+            a.z / b
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_add(PA_data3_i32 a, PA_data3_i32 b) noexcept
+    {
+        return {
+
+            a.x + b.x,
+            a.y + b.y,
+            a.z + b.y
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_subtract(PA_data3_i32 a, PA_data3_i32 b) noexcept
+    {
+        return {
+
+            a.x - b.x,
+            a.y - b.y,
+            a.z - b.z
+
+        };
+    }
+
+    NCPP_FORCE_INLINE F_data3_i32 data3_multiply(PA_data3_i32 a, PA_data3_i32 b) noexcept
+    {
+        return {
+
+            a.x * b.x,
+            a.y * b.y,
+            a.z * b.z
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_divide(PA_data3_i32 a, PA_data3_i32 b) noexcept
+    {
+        return {
+
+            a.x / b.x,
+            a.y / b.y,
+            a.z / b.z
+
+        };
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Entry manipulate functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    template<
+        u32 x_selector__,
+        u32 y_selector__,
+        u32 z_selector__
+    >
+    NCPP_FORCE_INLINE F_data3_i32 T_data3_static_permute(
+        PA_data3_i32 a,
+        PA_data3_i32 b
+    ) noexcept {
+
+        return {
+
+            (x_selector__ > 3) ? b[(u32)x_selector__ % 3] : a[(u32)x_selector__],
+            (y_selector__ > 3) ? b[(u32)y_selector__ % 3] : a[(u32)y_selector__],
+            (z_selector__ > 3) ? b[(u32)z_selector__ % 3] : a[(u32)z_selector__]
+
+        };
+
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  FMA functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    NCPP_FORCE_INLINE F_data3_i32 data3_multiply_add(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x + c.x,
+            a.y * b.y + c.y,
+            a.z * b.z + c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_multiply_addsub(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x + c.x,
+            a.y * b.y - c.y,
+            a.z * b.z - c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_multiply_sub(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x - c.x,
+            a.y * b.y - c.y,
+            a.z * b.z - c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_multiply_subadd(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x - c.x,
+            a.y * b.y + c.y,
+            a.z * b.z - c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_negative_multiply_add(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept {
+
+        return {
+
+            a.x * -b.x + c.x,
+            a.y * -b.y + c.y,
+            a.z * -b.z + c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_i32 data3_negative_multiply_sub(
+        PA_data3_i32 a,
+        PA_data3_i32 b,
+        PA_data3_i32 c
+    ) noexcept {
+
+        return {
+
+            a.x * -b.x - c.x,
+            a.y * -b.y - c.y,
+            a.z * -b.z - c.z
+
+        };
+
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Dot
+    ////////////////////////////////////////////////////////////////////////////////////
+    NCPP_FORCE_INLINE i32 data3_dot(PA_data3_i32 a, PA_data3_i32 b) noexcept {
+
+        return a.x * b.x + a.y * b.y + a.z * b.z;
+    }
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  U32 declares
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NMATH_USING_NLIB_NAMESPACES();
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Basic arithmetic functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    F_data3_u32 data3_minus(PA_data3_u32 a) noexcept;
+
+    F_data3_u32 data3_multiply(PA_data3_u32 a, u32 b) noexcept;
+    F_data3_u32 data3_divide(PA_data3_u32 a, u32 b) noexcept;
+
+    F_data3_u32 data3_add(PA_data3_u32 a, PA_data3_u32 b) noexcept;
+    F_data3_u32 data3_subtract(PA_data3_u32 a, PA_data3_u32 b) noexcept;
+
+    F_data3_u32 data3_multiply(PA_data3_u32 a, PA_data3_u32 b) noexcept;
+    F_data3_u32 data3_divide(PA_data3_u32 a, PA_data3_u32 b) noexcept;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Entry manipulate functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    template<
+        u32 x_selector__,
+        u32 y_selector__,
+        u32 z_selector__
+    >
+    F_data3_u32 T_data3_static_permute(
+        PA_data3_u32 a,
+        PA_data3_u32 b
+    ) noexcept;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  FMA functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    F_data3_u32 data3_multiply_add(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept;
+
+    F_data3_u32 data3_multiply_addsub(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept;
+
+    F_data3_u32 data3_multiply_sub(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept;
+
+    F_data3_u32 data3_multiply_subadd(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Dot
+    ////////////////////////////////////////////////////////////////////////////////////
+    u32 data3_dot(PA_data3_u32 a, PA_data3_u32 b) noexcept;
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  U32 defines
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NMATH_USING_NLIB_NAMESPACES();
+
+
+NCPP_DISABLE_ALL_WARNINGS_PUSH
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Basic arithmetic functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    NCPP_FORCE_INLINE F_data3_u32 data3_minus(PA_data3_u32 a) noexcept
+    {
+        return {
+
+            -a.x,
+            -a.y,
+            -a.z
+
+        };
+    }
+NCPP_DISABLE_ALL_WARNINGS_POP
+
+    NCPP_FORCE_INLINE F_data3_u32 data3_multiply(PA_data3_u32 a, u32 b) noexcept
+    {
+
+        return {
+
+            a.x * b,
+            a.y * b,
+            a.z * b
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_divide(PA_data3_u32 a, u32 b) noexcept
+    {
+
+        return {
+
+            a.x / b,
+            a.y / b,
+            a.z / b
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_add(PA_data3_u32 a, PA_data3_u32 b) noexcept
+    {
+        return {
+
+            a.x + b.x,
+            a.y + b.y,
+            a.z + b.z
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_subtract(PA_data3_u32 a, PA_data3_u32 b) noexcept
+    {
+        return {
+
+            a.x - b.x,
+            a.y - b.y,
+            a.z - b.z
+
+        };
+    }
+
+    NCPP_FORCE_INLINE F_data3_u32 data3_multiply(PA_data3_u32 a, PA_data3_u32 b) noexcept
+    {
+        return {
+
+            a.x * b.x,
+            a.y * b.y,
+            a.z * b.z
+
+        };
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_divide(PA_data3_u32 a, PA_data3_u32 b) noexcept
+    {
+        return {
+
+            a.x / b.x,
+            a.y / b.y,
+            a.z / b.z
+
+        };
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Entry manipulate functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    template<
+        u32 x_selector__,
+        u32 y_selector__,
+        u32 z_selector__
+    >
+    NCPP_FORCE_INLINE F_data3_u32 T_data3_static_permute(
+        PA_data3_u32 a,
+        PA_data3_u32 b
+    ) noexcept {
+
+        return {
+
+            (x_selector__ > 3) ? b[(u32)x_selector__ % 3] : a[(u32)x_selector__],
+            (y_selector__ > 3) ? b[(u32)y_selector__ % 3] : a[(u32)y_selector__],
+            (z_selector__ > 3) ? b[(u32)z_selector__ % 3] : a[(u32)z_selector__]
+
+        };
+
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  FMA functions
+    ////////////////////////////////////////////////////////////////////////////////////
+    NCPP_FORCE_INLINE F_data3_u32 data3_multiply_add(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x + c.x,
+            a.y * b.y + c.y,
+            a.z * b.z + c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_multiply_addsub(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x + c.x,
+            a.y * b.y - c.y,
+            a.z * b.z + c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_multiply_sub(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x - c.x,
+            a.y * b.y - c.y,
+            a.z * b.z - c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_multiply_subadd(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept {
+
+        return {
+
+            a.x * b.x - c.x,
+            a.y * b.y + c.y,
+            a.z * b.z - c.z
+
+        };
+
+    }
+NCPP_DISABLE_ALL_WARNINGS_PUSH
+    NCPP_FORCE_INLINE F_data3_u32 data3_negative_multiply_add(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept {
+
+        return {
+
+            a.x * -b.x + c.x,
+            a.y * -b.y + c.y,
+            a.z * -b.z + c.z
+
+        };
+
+    }
+    NCPP_FORCE_INLINE F_data3_u32 data3_negative_multiply_sub(
+        PA_data3_u32 a,
+        PA_data3_u32 b,
+        PA_data3_u32 c
+    ) noexcept {
+
+        return {
+
+            a.x * -b.x - c.x,
+            a.y * -b.y - c.y,
+            a.z * -b.z - c.z
+
+        };
+
+    }
+NCPP_DISABLE_ALL_WARNINGS_POP
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    //  Dot
+    ////////////////////////////////////////////////////////////////////////////////////
+    NCPP_FORCE_INLINE u32 data3_dot(PA_data3_u32 a, PA_data3_u32 b) noexcept {
+
+        return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
 }

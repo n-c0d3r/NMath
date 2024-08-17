@@ -113,6 +113,22 @@ namespace nmath {
             element_sign(a.z)
         };
     }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV element_sign(PA_vector3_i32 a) noexcept {
+
+        return {
+            element_sign(a.x),
+            element_sign(a.y),
+            element_sign(a.z)
+        };
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV element_sign(PA_vector3_u32 a) noexcept {
+
+        return {
+            element_sign(a.x),
+            element_sign(a.y),
+            element_sign(a.z)
+        };
+    }
 
     NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV element_sign(PA_vector4_f32 a) noexcept {
 

@@ -113,6 +113,22 @@ namespace nmath {
             element_max(a.z, b.z)
         };
     }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV element_max(PA_vector3_i32 a, PA_vector3_i32 b) noexcept {
+
+        return {
+            element_max(a.x, b.x),
+            element_max(a.y, b.y),
+            element_max(a.z, b.z)
+        };
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV element_max(PA_vector3_u32 a, PA_vector3_u32 b) noexcept {
+
+        return {
+            element_max(a.x, b.x),
+            element_max(a.y, b.y),
+            element_max(a.z, b.z)
+        };
+    }
 
     NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV element_max(PA_vector4_f32 a, PA_vector4_f32 b) noexcept {
 
@@ -190,6 +206,22 @@ namespace nmath {
     }
 
     NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV element_min(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
+
+        return {
+            element_min(a.x, b.x),
+            element_min(a.y, b.y),
+            element_min(a.z, b.z)
+        };
+    }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV element_min(PA_vector3_i32 a, PA_vector3_i32 b) noexcept {
+
+        return {
+            element_min(a.x, b.x),
+            element_min(a.y, b.y),
+            element_min(a.z, b.z)
+        };
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV element_min(PA_vector3_u32 a, PA_vector3_u32 b) noexcept {
 
         return {
             element_min(a.x, b.x),

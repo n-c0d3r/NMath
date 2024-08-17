@@ -259,8 +259,8 @@ namespace nmath {
         
         return {
           
-            a[(u32)x_selector__ & 2],
-            a[(u32)y_selector__ & 2]
+            (x_selector__ > 2) ? b[(u32)x_selector__ % 2] : a[(u32)x_selector__],
+            (y_selector__ > 2) ? b[(u32)y_selector__ % 2] : a[(u32)y_selector__]
             
         };
         
@@ -363,7 +363,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     NCPP_FORCE_INLINE f32 data2_dot(PA_data2_f32 a, PA_data2_f32 b) noexcept {
 
-        return a.x * a.x + a.y * a.y;
+        return a.x * b.x + a.y * b.y;
     }
     NCPP_FORCE_INLINE f32 data2_cross(PA_data2_f32 a, PA_data2_f32 b) noexcept {
 
@@ -439,8 +439,6 @@ namespace nmath {
 
     F_data2_i32 data2_multiply(PA_data2_i32 a, PA_data2_i32 b) noexcept;
     F_data2_i32 data2_divide(PA_data2_i32 a, PA_data2_i32 b) noexcept;
-
-    F_data2_i32 data2_round(PA_data2_i32 a) noexcept;
 
 
 
@@ -576,15 +574,6 @@ namespace nmath {
 
         };
     }
-    NCPP_FORCE_INLINE F_data2_i32 data2_round(PA_data2_i32 a) noexcept {
-
-        return {
-
-            a.x,
-            a.y
-
-        };
-    }
 
 
 
@@ -602,8 +591,8 @@ namespace nmath {
 
         return {
 
-            a[(u32)x_selector__ & 2],
-            a[(u32)y_selector__ & 2]
+            (x_selector__ > 2) ? b[(u32)x_selector__ % 2] : a[(u32)x_selector__],
+            (y_selector__ > 2) ? b[(u32)y_selector__ % 2] : a[(u32)y_selector__]
 
         };
 
@@ -706,7 +695,7 @@ namespace nmath {
     ////////////////////////////////////////////////////////////////////////////////////
     NCPP_FORCE_INLINE i32 data2_dot(PA_data2_i32 a, PA_data2_i32 b) noexcept {
 
-        return a.x * a.x + a.y * a.y;
+        return a.x * b.x + a.y * b.y;
     }
     NCPP_FORCE_INLINE i32 data2_cross(PA_data2_i32 a, PA_data2_i32 b) noexcept {
 
@@ -739,8 +728,6 @@ namespace nmath {
 
     F_data2_u32 data2_multiply(PA_data2_u32 a, PA_data2_u32 b) noexcept;
     F_data2_u32 data2_divide(PA_data2_u32 a, PA_data2_u32 b) noexcept;
-
-    F_data2_u32 data2_round(PA_data2_u32 a) noexcept;
 
 
 
@@ -877,15 +864,6 @@ NCPP_DISABLE_ALL_WARNINGS_POP
 
         };
     }
-    NCPP_FORCE_INLINE F_data2_u32 data2_round(PA_data2_u32 a) noexcept {
-
-        return {
-
-            a.x,
-            a.y
-
-        };
-    }
 
 
 
@@ -903,8 +881,8 @@ NCPP_DISABLE_ALL_WARNINGS_POP
 
         return {
 
-            a[(u32)x_selector__ & 2],
-            a[(u32)y_selector__ & 2]
+            (x_selector__ > 2) ? b[(u32)x_selector__ % 2] : a[(u32)x_selector__],
+            (y_selector__ > 2) ? b[(u32)y_selector__ % 2] : a[(u32)y_selector__]
 
         };
 
@@ -1009,7 +987,7 @@ NCPP_DISABLE_ALL_WARNINGS_POP
     ////////////////////////////////////////////////////////////////////////////////////
     NCPP_FORCE_INLINE u32 data2_dot(PA_data2_u32 a, PA_data2_u32 b) noexcept {
 
-        return a.x * a.x + a.y * a.y;
+        return a.x * b.x + a.y * b.y;
     }
     NCPP_FORCE_INLINE u32 data2_cross(PA_data2_u32 a, PA_data2_u32 b) noexcept {
 

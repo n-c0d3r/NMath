@@ -69,3 +69,22 @@ namespace nmath {
     }
 
 }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  u32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    template<>
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV T_convert<F_vector2_u32, F_vector3_u32>(PA_vector2_u32 m) noexcept {
+
+        return {
+            m.x,
+            m.y,
+            0
+        };
+    }
+
+}

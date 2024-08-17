@@ -63,4 +63,16 @@ namespace nmath {
 		return data4_dot(data_forward(a), data_forward(b));
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////
+	//  u32
+	////////////////////////////////////////////////////////////////////////////////////
+	NCPP_FORCE_INLINE u32 dot(PA_vector2_u32 a, PA_vector2_u32 b) noexcept {
+
+		return data2_dot(data_forward(a), data_forward(b));
+	}
+	NCPP_FORCE_INLINE u32 NMATH_CALL_CNV dot(PA_vector3_u32 a, PA_vector3_u32 b) noexcept {
+
+		return data3_dot(data_forward(a), data_forward(b));
+	}
+
 }

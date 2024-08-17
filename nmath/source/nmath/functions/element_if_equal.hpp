@@ -113,6 +113,22 @@ namespace nmath {
             element_if_equal(a.z, expect.z, desire.z)
         };
     }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV element_if_equal(PA_vector3_i32 a, PA_vector3_i32 expect, PA_vector3_i32 desire) noexcept {
+
+        return {
+            element_if_equal(a.x, expect.x, desire.x),
+            element_if_equal(a.y, expect.y, desire.y),
+            element_if_equal(a.z, expect.z, desire.z)
+        };
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV element_if_equal(PA_vector3_u32 a, PA_vector3_u32 expect, PA_vector3_u32 desire) noexcept {
+
+        return {
+            element_if_equal(a.x, expect.x, desire.x),
+            element_if_equal(a.y, expect.y, desire.y),
+            element_if_equal(a.z, expect.z, desire.z)
+        };
+    }
 
     NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV element_if_equal(PA_vector4_f32 a, PA_vector4_f32 expect, PA_vector4_f32 desire) noexcept {
 

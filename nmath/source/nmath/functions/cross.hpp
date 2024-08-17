@@ -50,6 +50,14 @@ namespace nmath {
 
 		return data2_cross(data_forward(a), data_forward(b));
 	}
+	NCPP_FORCE_INLINE i32 cross(PA_vector2_i32 a, PA_vector2_i32 b) noexcept {
+
+		return data2_cross(data_forward(a), data_forward(b));
+	}
+	NCPP_FORCE_INLINE u32 cross(PA_vector2_u32 a, PA_vector2_u32 b) noexcept {
+
+		return data2_cross(data_forward(a), data_forward(b));
+	}
 	NCPP_FORCE_INLINE F_vector3_f32 NMATH_CALL_CNV cross(PA_vector3_f32 a, PA_vector3_f32 b) noexcept {
 
 		return vecma_forward(

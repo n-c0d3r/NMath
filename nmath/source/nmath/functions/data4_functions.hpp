@@ -400,10 +400,10 @@ namespace nmath {
 #else
         return {
           
-            a[(u32)x_selector__ & 3],
-            a[(u32)y_selector__ & 3],
-            a[(u32)z_selector__ & 3],
-            a[(u32)w_selector__ & 3]
+            (x_selector__ > 4) ? b[(u32)x_selector__ % 4] : a[(u32)x_selector__],
+            (y_selector__ > 4) ? b[(u32)y_selector__ % 4] : a[(u32)y_selector__],
+            (z_selector__ > 4) ? b[(u32)z_selector__ % 4] : a[(u32)z_selector__],
+            (w_selector__ > 4) ? b[(u32)w_selector__ % 4] : a[(u32)w_selector__]
             
         };
 #endif

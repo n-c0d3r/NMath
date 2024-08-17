@@ -113,6 +113,22 @@ namespace nmath {
             element_clamp(a.z, min.z, max.z)
         };
     }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV element_clamp(PA_vector3_i32 a, PA_vector3_i32 min, PA_vector3_i32 max) noexcept {
+
+        return {
+            element_clamp(a.x, min.x, max.x),
+            element_clamp(a.y, min.y, max.y),
+            element_clamp(a.z, min.z, max.z)
+        };
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV element_clamp(PA_vector3_u32 a, PA_vector3_u32 min, PA_vector3_u32 max) noexcept {
+
+        return {
+            element_clamp(a.x, min.x, max.x),
+            element_clamp(a.y, min.y, max.y),
+            element_clamp(a.z, min.z, max.z)
+        };
+    }
 
     NCPP_FORCE_INLINE F_vector4_f32 NMATH_CALL_CNV element_clamp(PA_vector4_f32 a, PA_vector4_f32 min, PA_vector4_f32 max) noexcept {
 
