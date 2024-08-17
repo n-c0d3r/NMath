@@ -426,6 +426,194 @@ NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector3_f32, nmath::PA_vector3_f32
 
 
 ////////////////////////////////////////////////////////////////////////////////////
+//  nmath::F_vector3_i32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV minus(PA_vector3_i32 a) noexcept
+    {
+        return vecma_forward(
+            data3_minus(data_forward(a))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV add(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return vecma_forward(
+            data3_add(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV subtract(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return vecma_forward(
+            data3_subtract(data_forward(a), data_forward(b))
+        );
+    }
+
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV multiply(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return vecma_forward(
+            data3_multiply(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector3_i32 NMATH_CALL_CNV divide(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return vecma_forward(
+            data3_divide(data_forward(a), data_forward(b))
+        );
+    }
+
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+            && (a.z > b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater_equal(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+            && (a.z >= b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+            && (a.z < b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less_equal(PA_vector3_i32 a, PA_vector3_i32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+            && (a.z <= b.z)
+        );
+    }
+
+}
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector3_i32, nmath::F_vector3_i32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector3_i32, nmath::F_vector3_i32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32, nmath::F_vector3_i32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector3_i32, nmath::PA_vector3_i32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32, nmath::F_vector3_i32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector3_i32, nmath::PA_vector3_i32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32, nmath::F_vector3_i32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector3_i32, nmath::PA_vector3_i32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32, nmath::F_vector3_i32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_i32, nmath::PA_vector3_i32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector3_i32, nmath::PA_vector3_i32);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//  nmath::F_vector3_u32
+////////////////////////////////////////////////////////////////////////////////////
+namespace nmath {
+
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV minus(PA_vector3_u32 a) noexcept
+    {
+        return vecma_forward(
+            data3_minus(data_forward(a))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV add(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return vecma_forward(
+            data3_add(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV subtract(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return vecma_forward(
+            data3_subtract(data_forward(a), data_forward(b))
+        );
+    }
+
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV multiply(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return vecma_forward(
+            data3_multiply(data_forward(a), data_forward(b))
+        );
+    }
+    NCPP_FORCE_INLINE F_vector3_u32 NMATH_CALL_CNV divide(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return vecma_forward(
+            data3_divide(data_forward(a), data_forward(b))
+        );
+    }
+
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return (
+            (a.x > b.x)
+            && (a.y > b.y)
+            && (a.z > b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_greater_equal(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return (
+            (a.x >= b.x)
+            && (a.y >= b.y)
+            && (a.z >= b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return (
+            (a.x < b.x)
+            && (a.y < b.y)
+            && (a.z < b.z)
+        );
+    }
+    NCPP_FORCE_INLINE b8 NMATH_CALL_CNV is_less_equal(PA_vector3_u32 a, PA_vector3_u32 b) noexcept
+    {
+        return (
+            (a.x <= b.x)
+            && (a.y <= b.y)
+            && (a.z <= b.z)
+        );
+    }
+
+}
+
+NMATH_DEFINE_PLUS_OPERATOR(nmath::PA_vector3_u32, nmath::F_vector3_u32);
+NMATH_DEFINE_MINUS_OPERATOR(nmath::PA_vector3_u32, nmath::F_vector3_u32);
+
+NMATH_DEFINE_ADD_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32, nmath::F_vector3_u32);
+NMATH_DEFINE_SELF_ADD_OPERATOR(nmath::F_vector3_u32, nmath::PA_vector3_u32);
+
+NMATH_DEFINE_SUBTRACT_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32, nmath::F_vector3_u32);
+NMATH_DEFINE_SELF_SUBTRACT_OPERATOR(nmath::F_vector3_u32, nmath::PA_vector3_u32);
+
+NMATH_DEFINE_MULTIPLY_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32, nmath::F_vector3_u32);
+NMATH_DEFINE_SELF_MULTIPLY_OPERATOR(nmath::F_vector3_u32, nmath::PA_vector3_u32);
+
+NMATH_DEFINE_DIVIDE_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32, nmath::F_vector3_u32);
+NMATH_DEFINE_SELF_DIVIDE_OPERATOR(nmath::F_vector3_u32, nmath::PA_vector3_u32);
+
+NMATH_DEFINE_IS_GREATER_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32);
+NMATH_DEFINE_IS_GREATER_EQUAL_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32);
+NMATH_DEFINE_IS_LESS_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32);
+NMATH_DEFINE_IS_LESS_EQUAL_OPERATOR(nmath::PA_vector3_u32, nmath::PA_vector3_u32);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
 //  nmath::F_vector4_f32
 ////////////////////////////////////////////////////////////////////////////////////
 namespace nmath {
