@@ -79,35 +79,33 @@ namespace nmath {
 
 
 
-    private:
-        F_position center_;
-        F_direction direction_;
+    public:
+        F_position center;
+        F_direction direction;
 
     public:
-        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (length_sq(direction_) > T_default_tolerance<F_element>); }
-        NCPP_FORCE_INLINE PA_position center() const noexcept { return center_; }
-        NCPP_FORCE_INLINE PA_direction direction() const noexcept { return direction_; }
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (length_sq(direction) > T_default_tolerance<F_element>); }
 
 
 
     public:
         NCPP_FORCE_INLINE TF_plane() noexcept = default;
         NCPP_FORCE_INLINE TF_plane(PA_position center, PA_direction direction) noexcept :
-            center_(center),
-            direction_(direction)
+            center(center),
+            direction(direction)
         {}
         NCPP_FORCE_INLINE TF_plane(PA_direction direction) noexcept :
-            center_(F_position::zero()),
-            direction_(direction)
+            center(F_position::zero()),
+            direction(direction)
         {}
         NCPP_FORCE_INLINE TF_plane(const TF_plane& x) noexcept :
-            center_(x.center_),
-            direction_(x.direction_)
+            center(x.center),
+            direction(x.direction)
         {}
         NCPP_FORCE_INLINE TF_plane& operator = (const TF_plane& x) noexcept {
 
-            center_ = x.center_;
-            direction_ = x.direction_;
+            this->center = x.center;
+            this->direction = x.direction;
 
             return *this;
         }
@@ -122,8 +120,8 @@ namespace nmath {
         f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
 
             return (
-                dot(direction_, v)
-                - dot(direction_, center_)
+                dot(direction, v)
+                - dot(direction, center)
             );
         }
 

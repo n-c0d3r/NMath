@@ -59,6 +59,7 @@ namespace nmath { }
 #include <nmath/types/sphere.hpp>
 #include <nmath/types/plane.hpp>
 #include <nmath/types/box.hpp>
+#include <nmath/types/directional_box.hpp>
 
 #pragma endregion
 

@@ -71,33 +71,31 @@ namespace nmath {
 
 
 
-    private:
-        F_value min_;
-        F_value max_;
+    public:
+        F_value min;
+        F_value max;
 
     public:
-        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (min_ <= max_); }
-        NCPP_FORCE_INLINE PA_value min() const noexcept { return min_; }
-        NCPP_FORCE_INLINE PA_value max() const noexcept { return max_; }
-        NCPP_FORCE_INLINE F_value center() const noexcept { return (min_ + max_) * 0.5; }
-        NCPP_FORCE_INLINE F_value half_size() const noexcept { return (max_ - min_) * 0.5; }
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (min <= max); }
+        NCPP_FORCE_INLINE F_value center() const noexcept { return (min + max) * 0.5; }
+        NCPP_FORCE_INLINE F_value half_size() const noexcept { return (max - min) * 0.5; }
 
 
 
     public:
         NCPP_FORCE_INLINE TF_range() noexcept = default;
         NCPP_FORCE_INLINE TF_range(PA_value min, PA_value max) noexcept :
-            min_(min),
-            max_(max)
+            min(min),
+            max(max)
         {}
         NCPP_FORCE_INLINE TF_range(const TF_range& x) noexcept :
-            min_(x.min_),
-            max_(x.max_)
+            min(x.min),
+            max(x.max)
         {}
         NCPP_FORCE_INLINE TF_range& operator = (const TF_range& x) noexcept {
 
-            min_ = x.min_;
-            max_ = x.max_;
+            this->min = x.min;
+            this->max = x.max;
 
             return *this;
         }
@@ -111,8 +109,8 @@ namespace nmath {
         }
         f32 NMATH_CALL_CNV signed_distance(PA_value v) const noexcept {
 
-            F_value min_delta = min_ - v;
-            F_value max_delta = v - max_;
+            F_value min_delta = min - v;
+            F_value max_delta = v - max;
 
             F_value min_delta_abs = element_abs(min_delta);
             F_value max_delta_abs = element_abs(max_delta);
@@ -126,15 +124,15 @@ namespace nmath {
         b8 NMATH_CALL_CNV is_contains(PA_value v) const noexcept {
 
             return (
-                (v >= min_)
-                && (v <= max_)
+                (v >= min)
+                && (v <= max)
             );
         }
         TF_range NMATH_CALL_CNV expand(PA_value v) noexcept {
 
             return {
-                element_min(v, min_),
-                element_max(v, max_)
+                element_min(v, min),
+                element_max(v, max)
             };
         }
 

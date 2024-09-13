@@ -79,34 +79,33 @@ namespace nmath {
 
 
 
-    private:
-        F_center_and_radius center_and_radius_;
+    public:
+        F_center_and_radius center_and_radius;
 
     public:
-        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (center_and_radius_.w > T_default_tolerance<F_element>); }
-        NCPP_FORCE_INLINE F_center_and_radius center_and_radius() const noexcept { return center_and_radius_; }
-        NCPP_FORCE_INLINE F_center center() const noexcept { return center_and_radius_.xyz(); }
-        NCPP_FORCE_INLINE F_radius radius() const noexcept { return center_and_radius_.w; }
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (center_and_radius.w > T_default_tolerance<F_element>); }
+        NCPP_FORCE_INLINE F_center center() const noexcept { return center_and_radius.xyz(); }
+        NCPP_FORCE_INLINE F_radius radius() const noexcept { return center_and_radius.w; }
 
 
 
     public:
         NCPP_FORCE_INLINE TF_sphere() noexcept = default;
         NCPP_FORCE_INLINE TF_sphere(PA_center_and_radius center_and_radius) noexcept :
-            center_and_radius_(center_and_radius)
+            center_and_radius(center_and_radius)
         {}
         NCPP_FORCE_INLINE TF_sphere(F_radius radius) noexcept :
-            center_and_radius_({
+            center_and_radius({
                 F_center::zero(),
                 radius
             })
         {}
         NCPP_FORCE_INLINE TF_sphere(const TF_sphere& x) noexcept :
-            center_and_radius_(x.center_and_radius_)
+            center_and_radius(x.center_and_radius)
         {}
         NCPP_FORCE_INLINE TF_sphere& operator = (const TF_sphere& x) noexcept {
 
-            center_and_radius_ = x.center_and_radius_;
+            center_and_radius = x.center_and_radius;
 
             return *this;
         }
@@ -152,7 +151,6 @@ namespace nmath {
                 )
             };
         }
-
     };
 
 

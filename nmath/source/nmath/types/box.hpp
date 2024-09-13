@@ -56,10 +56,10 @@
 namespace nmath {
 
     template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
-    class TF_box : public TF_range<F_element__>
+    class TF_box : public TF_range<TF_vector3<F_element__>>
     {
     private:
-        using F_base = TF_range<F_element__>;
+        using F_base = TF_range<TF_vector3<F_element__>>;
 
 
 
@@ -67,8 +67,8 @@ namespace nmath {
         using typename F_base::F_value;
         using typename F_base::PA_value;
 
-        using F_base::min;
         using F_base::max;
+        using F_base::min;
 
     public:
         using F_element = F_element__;
@@ -78,14 +78,14 @@ namespace nmath {
     public:
         NCPP_FORCE_INLINE TF_box() noexcept = default;
         NCPP_FORCE_INLINE TF_box(PA_value min, PA_value max) noexcept :
-            TF_range<F_element__>(min, max)
+            TF_range<TF_vector3<F_element__>>(min, max)
         {}
         NCPP_FORCE_INLINE TF_box(const TF_box& x) noexcept :
-            TF_range<F_element__>(x.min(), x.max())
+            TF_range<TF_vector3<F_element__>>(x.min, x.max)
         {}
         NCPP_FORCE_INLINE TF_box& operator = (const TF_box& x) noexcept {
 
-            ((TF_range<F_element__>&)*this) = x;
+            ((TF_range<TF_vector3<F_element__>>&)*this) = x;
 
             return *this;
         }
@@ -93,12 +93,13 @@ namespace nmath {
     public:
         F_element volume() const noexcept {
 
-            return length(max() - min());
+            F_value delta = max - min;
+            return length(delta);
         }
         F_element volume_sq() const noexcept {
 
-            F_value value = max() - min();
-            return dot(value, value);
+            F_value delta = max - min;
+            return dot(delta, delta);
         }
     };
 
