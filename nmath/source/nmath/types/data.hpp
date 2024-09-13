@@ -49,47 +49,12 @@
 
 #include <nmath/types/data4x4.hpp>
 
+#include <nmath/utilities/passed_argument_helper.hpp>
+
 #pragma endregion
 
 
 
-namespace nmath {
-
-    namespace data_internal {
-
-        template<typename F_value__>
-        concept T_is_has_passed_arg_type = requires {
-
-            typename F_value__::F_passed_argument;
-
-        };
-
-        template<typename F_value__, b8 is_has_passed_arg_type__>
-        struct TF_passed_arg_type_helper;
-
-        template<typename F_value__>
-        struct TF_passed_arg_type_helper<F_value__, true> {
-
-            using F = typename F_value__::F_passed_argument;
-
-        };
-
-        template<typename F_value__>
-        struct TF_passed_arg_type_helper<F_value__, false> {
-
-            using F = F_value__;
-
-        };
-
-    }
-
-    template<typename F_value__>
-    using TF_passed_argument = typename data_internal::TF_passed_arg_type_helper<
-        F_value__,
-        data_internal::T_is_has_passed_arg_type<F_value__>
-    >;
-
-    template<typename F_value__>
-    using TPA = TF_passed_argument<F_value__>;
-
+namespace nmath
+{
 }

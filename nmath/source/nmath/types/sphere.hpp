@@ -38,6 +38,8 @@
 #include <nmath/operators/vector_scalar.hpp>
 #include <nmath/functions/element_min_max.hpp>
 #include <nmath/functions/length.hpp>
+#include <nmath/utilities/passed_argument_helper.hpp>
+#include <nmath/utilities/default_tolerance_helper.hpp>
 
 #pragma endregion
 
@@ -81,7 +83,7 @@ namespace nmath {
         F_center_and_radius center_and_radius_;
 
     public:
-        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (center_and_radius_.w > 0.0f); }
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (center_and_radius_.w > T_default_tolerance<F_element>); }
         NCPP_FORCE_INLINE F_center_and_radius center_and_radius() const noexcept { return center_and_radius_; }
         NCPP_FORCE_INLINE F_center center() const noexcept { return center_and_radius_.xyz(); }
         NCPP_FORCE_INLINE F_radius radius() const noexcept { return center_and_radius_.w; }
@@ -112,14 +114,18 @@ namespace nmath {
 
 
     public:
-        inline f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
+        NCPP_FORCE_INLINE operator b8 () const noexcept {
+
+            return is_valid();
+        }
+        f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
 
             return (
                 length(v - center())
                 - radius()
             );
         }
-        inline b8 NMATH_CALL_CNV is_contains(PA_position v) const noexcept {
+        b8 NMATH_CALL_CNV is_contains(PA_position v) const noexcept {
 
             f32 radius_sq = radius();
             radius_sq *= radius_sq;
@@ -129,7 +135,7 @@ namespace nmath {
                 <= radius_sq
             );
         }
-        NCPP_FORCE_INLINE TF_sphere NMATH_CALL_CNV expand(PA_position v) noexcept {
+        TF_sphere NMATH_CALL_CNV expand(PA_position v) noexcept {
 
             f32 radius_sq = radius();
             radius_sq *= radius_sq;
@@ -154,5 +160,4 @@ namespace nmath {
     using F_sphere = TF_sphere<>;
 
     using F_sphere_f32 = TF_sphere<f32>;
-
 }

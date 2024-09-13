@@ -43,6 +43,7 @@
 #include <nmath/functions/length.hpp>
 #include <nmath/functions/vector_to_vector.hpp>
 #include <nmath/functions/direction_position.hpp>
+#include <nmath/utilities/default_tolerance_helper.hpp>
 
 #pragma endregion
 
@@ -83,9 +84,9 @@ namespace nmath {
         F_direction direction_;
 
     public:
-        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (length_sq(direction_) != 0.0f); }
-        NCPP_FORCE_INLINE F_position center() const noexcept { return center_; }
-        NCPP_FORCE_INLINE F_direction direction() const noexcept { return direction_; }
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (length_sq(direction_) > T_default_tolerance<F_element>); }
+        NCPP_FORCE_INLINE PA_position center() const noexcept { return center_; }
+        NCPP_FORCE_INLINE PA_direction direction() const noexcept { return direction_; }
 
 
 
@@ -114,7 +115,11 @@ namespace nmath {
 
 
     public:
-        inline f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
+        NCPP_FORCE_INLINE operator b8 () const noexcept {
+
+            return is_valid();
+        }
+        f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
 
             return (
                 dot(direction_, v)
