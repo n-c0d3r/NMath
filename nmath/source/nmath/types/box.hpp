@@ -77,6 +77,9 @@ namespace nmath {
 
     public:
         NCPP_FORCE_INLINE TF_box() noexcept = default;
+        NCPP_FORCE_INLINE TF_box(PA_value max) noexcept :
+            TF_range<TF_vector3<F_element__>>(F_value::zero(), max)
+        {}
         NCPP_FORCE_INLINE TF_box(PA_value min, PA_value max) noexcept :
             TF_range<TF_vector3<F_element__>>(min, max)
         {}
@@ -113,6 +116,16 @@ namespace nmath {
                 { max.x, max.y, min.z },
                 { max.x, min.y, min.z }
             };
+        }
+
+    public:
+        static TF_box one() noexcept
+        {
+            return { F_value::one() };
+        }
+        static TF_box zero() noexcept
+        {
+            return { F_value::zero() };
         }
     };
 

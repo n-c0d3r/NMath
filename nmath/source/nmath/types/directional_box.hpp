@@ -130,6 +130,34 @@ namespace nmath {
 
             return result;
         }
+
+    public:
+        static TF_directional_box one() noexcept
+        {
+            return {
+                { F_value::one() }
+            };
+        }
+        static TF_directional_box zero() noexcept
+        {
+            return {
+                { F_value::zero() }
+            };
+        }
+        static TF_directional_box one(PA_rotation rotation) noexcept
+        {
+            return {
+                { F_value::one() },
+                rotation
+            };
+        }
+        static TF_directional_box zero(PA_rotation rotation) noexcept
+        {
+            return {
+                { F_value::zero() },
+                rotation
+            };
+        }
     };
 
 
