@@ -53,6 +53,7 @@ namespace nmath { }
 #include <nmath/utilities/fast_arithmetic.hpp>
 #include <nmath/utilities/passed_argument_helper.hpp>
 #include <nmath/utilities/default_tolerance_helper.hpp>
+#include <nmath/utilities/format_encode.hpp>
 
 #pragma endregion
 
