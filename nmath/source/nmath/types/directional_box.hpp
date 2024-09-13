@@ -38,6 +38,7 @@
 #include <nmath/functions/identity_template.hpp>
 #include <nmath/operators/matrix_matrix.hpp>
 #include <nmath/operators/quaternion_quaternion.hpp>
+#include <nmath/operators/quaternion_vector.hpp>
 
 #pragma endregion
 
@@ -69,6 +70,9 @@ namespace nmath {
 
     public:
         using F_element = F_element__;
+
+        using F_value = TF_vector3<F_element>;
+        using PA_value = PA_vector3<F_element>;
 
         using F_rotation = F_rotation__;
         using PA_rotation = TPA<F_rotation>;
@@ -110,6 +114,21 @@ namespace nmath {
         F_element volume_sq() const noexcept {
 
             return box.volume_sq();
+        }
+
+    public:
+        TG_array<F_value, 6> corners() const noexcept {
+
+            auto result = box.corners();
+
+            result[0] = rotation * result[0];
+            result[1] = rotation * result[1];
+            result[2] = rotation * result[2];
+            result[3] = rotation * result[3];
+            result[4] = rotation * result[4];
+            result[5] = rotation * result[5];
+
+            return result;
         }
     };
 

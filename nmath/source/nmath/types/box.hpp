@@ -101,6 +101,19 @@ namespace nmath {
             F_value delta = max - min;
             return dot(delta, delta);
         }
+
+    public:
+        TG_array<F_value, 6> corners() const noexcept {
+
+            return {
+                { min.x, min.y, min.z },
+                { min.x, min.y, max.z },
+                { min.x, max.y, max.z },
+                { max.x, max.y, max.z },
+                { max.x, max.y, min.z },
+                { max.x, min.y, min.z }
+            };
+        }
     };
 
 
