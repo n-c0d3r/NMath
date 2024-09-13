@@ -72,7 +72,7 @@ namespace nmath {
         using F_element = F_element__;
 
         using F_value = TF_vector3<F_element>;
-        using PA_value = PA_vector3<F_element>;
+        using PA_value = TPA_vector3<F_element>;
 
         using F_rotation = F_rotation__;
         using PA_rotation = TPA<F_rotation>;
