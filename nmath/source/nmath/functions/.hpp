@@ -96,5 +96,8 @@ namespace nmath { }
 #include <nmath/functions/element_atan.hpp>
 #include <nmath/functions/element_acot.hpp>
 #include <nmath/functions/element_atan2.hpp>
+#include <nmath/functions/element_ceil.hpp>
+#include <nmath/functions/element_floor.hpp>
+#include <nmath/functions/element_round.hpp>
 
 #pragma endregion
