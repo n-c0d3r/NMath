@@ -94,6 +94,12 @@ namespace nmath {
         NCPP_FORCE_INLINE TF_sphere(PA_center_and_radius center_and_radius) noexcept :
             center_and_radius(center_and_radius)
         {}
+        NCPP_FORCE_INLINE TF_sphere(PA_center center, f32 radius) noexcept :
+            center_and_radius({
+                center,
+                radius
+            })
+        {}
         NCPP_FORCE_INLINE TF_sphere(PA_center center) noexcept :
             center_and_radius({ center, 0.0f })
         {}
@@ -144,7 +150,7 @@ namespace nmath {
 
             return {
                 c,
-                eastl::max(
+                eastl::max<F_element>(
                     length(v - c),
                     r
                 )
@@ -172,7 +178,7 @@ namespace nmath {
 
             return {
                 c,
-                eastl::max(
+                eastl::max<F_element>(
                     (
                         length(x.center() - c)
                         + x.radius()
