@@ -144,7 +144,7 @@ namespace nmath {
 
             return {
                 c,
-                max(
+                eastl::max(
                     length(v - c),
                     r
                 )
@@ -172,7 +172,7 @@ namespace nmath {
 
             return {
                 c,
-                max(
+                eastl::max(
                     (
                         length(x.center() - c)
                         + x.radius()
