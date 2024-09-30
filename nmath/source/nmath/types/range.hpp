@@ -135,7 +135,20 @@ namespace nmath {
                 element_max(v, max)
             };
         }
+        b8 NMATH_CALL_CNV is_contains(const TF_range& v) const noexcept {
 
+            return (
+                (v.min >= min)
+                && (v.max <= max)
+            );
+        }
+        TF_range NMATH_CALL_CNV expand(const TF_range& v) noexcept {
+
+            return {
+                element_min(v.min, min),
+                element_max(v.max, max)
+            };
+        }
     };
 
 

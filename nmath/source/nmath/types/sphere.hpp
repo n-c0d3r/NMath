@@ -136,18 +136,45 @@ namespace nmath {
         }
         TF_sphere NMATH_CALL_CNV expand(PA_position v) noexcept {
 
-            f32 radius_sq = radius();
-            radius_sq *= radius_sq;
-
+            f32 r = radius();
             F_position c = center();
 
             return {
                 c,
-                sqrt(
-                    max(
-                        length_sq(v - c),
-                        radius_sq
-                    )
+                max(
+                    length(v - c),
+                    r
+                )
+            };
+        }
+        b8 NMATH_CALL_CNV is_contains(const TF_sphere& x) const noexcept {
+
+            f32 radius_sq = radius();
+            radius_sq *= radius_sq;
+
+            f32 x_radius = x.radius();
+
+            return (
+                (
+                    length_sq(x.center() - center())
+                    + x_radius * x_radius
+                )
+                <= radius_sq
+            );
+        }
+        TF_sphere NMATH_CALL_CNV expand(const TF_sphere& x) noexcept {
+
+            f32 r = radius();
+            F_position c = center();
+
+            return {
+                c,
+                max(
+                    (
+                        length(x.center() - c)
+                        + x.radius()
+                    ),
+                    r
                 )
             };
         }
