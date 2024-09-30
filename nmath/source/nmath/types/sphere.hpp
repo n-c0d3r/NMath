@@ -94,6 +94,9 @@ namespace nmath {
         NCPP_FORCE_INLINE TF_sphere(PA_center_and_radius center_and_radius) noexcept :
             center_and_radius(center_and_radius)
         {}
+        NCPP_FORCE_INLINE TF_sphere(PA_center center) noexcept :
+            center_and_radius({ center, 0.0f })
+        {}
         NCPP_FORCE_INLINE TF_sphere(F_radius radius) noexcept :
             center_and_radius({
                 F_center::zero(),
