@@ -107,7 +107,7 @@ namespace nmath {
 
             return is_valid();
         }
-        f32 NMATH_CALL_CNV signed_distance(PA_value v) const noexcept {
+        auto NMATH_CALL_CNV signed_distance(PA_value v) const noexcept {
 
             F_value min_delta = min - v;
             F_value max_delta = v - max;

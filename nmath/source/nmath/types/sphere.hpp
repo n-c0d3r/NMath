@@ -120,7 +120,7 @@ namespace nmath {
 
             return is_valid();
         }
-        f32 NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
+        F_element NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
 
             return (
                 length(v - center())
@@ -129,7 +129,7 @@ namespace nmath {
         }
         b8 NMATH_CALL_CNV is_contains(PA_position v) const noexcept {
 
-            f32 radius_sq = radius();
+            F_element radius_sq = radius();
             radius_sq *= radius_sq;
 
             return (
@@ -139,7 +139,7 @@ namespace nmath {
         }
         TF_sphere NMATH_CALL_CNV expand(PA_position v) noexcept {
 
-            f32 r = radius();
+            F_element r = radius();
             F_position c = center();
 
             return {
@@ -152,10 +152,10 @@ namespace nmath {
         }
         b8 NMATH_CALL_CNV is_contains(const TF_sphere& x) const noexcept {
 
-            f32 radius_sq = radius();
+            F_element radius_sq = radius();
             radius_sq *= radius_sq;
 
-            f32 x_radius = x.radius();
+            F_element x_radius = x.radius();
 
             return (
                 (
@@ -167,7 +167,7 @@ namespace nmath {
         }
         TF_sphere NMATH_CALL_CNV expand(const TF_sphere& x) noexcept {
 
-            f32 r = radius();
+            F_element r = radius();
             F_position c = center();
 
             return {
