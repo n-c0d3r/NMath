@@ -66,7 +66,9 @@ namespace nmath {
             return {
                 bitangent,
                 normal,
-                cross(bitangent, normal)
+                normalize(
+                    cross(bitangent, normal)
+                )
             };
         }
         else {
@@ -76,7 +78,9 @@ namespace nmath {
             );
 
             return {
-                cross(normal, tangent),
+                normalize(
+                    cross(normal, tangent)
+                ),
                 normal,
                 tangent
             };
@@ -105,7 +109,9 @@ namespace nmath {
                 cross(normal, F_vector3_f32::forward())
             );
 
-            return cross(bitangent, normal);
+            return normalize(
+                cross(bitangent, normal)
+            );
         }
     }
     inline F_vector3_f32 NMATH_CALL_CNV normal_to_bitangent(PA_vector3_f32 normal) noexcept {
@@ -122,7 +128,9 @@ namespace nmath {
                 cross(F_vector3_f32::right(), normal)
             );
 
-            return cross(normal, tangent);
+            return normalize(
+                cross(normal, tangent)
+            );
         }
     }
 
@@ -148,7 +156,9 @@ namespace nmath {
             );
 
             return {
-                cross(normal, tangent),
+                normalize(
+                    cross(normal, tangent)
+                ),
                 normal,
                 tangent
             };
@@ -161,7 +171,9 @@ namespace nmath {
 
             return {
                 bitangent,
-                cross(tangent, bitangent),
+                normalize(
+                    cross(tangent, bitangent)
+                ),
                 tangent
             };
         }
@@ -189,7 +201,9 @@ namespace nmath {
                 cross(tangent, F_vector3_f32::right())
             );
 
-            return cross(normal, tangent);
+            return normalize(
+                cross(normal, tangent)
+            );
         }
     }
     inline F_vector3_f32 NMATH_CALL_CNV tangent_to_normal(PA_vector3_f32 tangent) noexcept {
@@ -206,7 +220,9 @@ namespace nmath {
                 cross(F_vector3_f32::up(), tangent)
             );
 
-            return cross(tangent, bitangent);
+            return normalize(
+                cross(tangent, bitangent)
+            );
         }
     }
 
@@ -233,7 +249,9 @@ namespace nmath {
 
             return {
                 bitangent,
-                cross(tangent, bitangent),
+                normalize(
+                    cross(tangent, bitangent)
+                ),
                 tangent
             };
         }
@@ -246,7 +264,9 @@ namespace nmath {
             return {
                 bitangent,
                 normal,
-                cross(bitangent, normal)
+                normalize(
+                    cross(bitangent, normal)
+                )
             };
         }
 
@@ -273,7 +293,9 @@ namespace nmath {
                 cross(bitangent, F_vector3_f32::up())
             );
 
-            return cross(tangent, bitangent);
+            return normalize(
+                cross(tangent, bitangent)
+            );
         }
     }
     inline F_vector3_f32 NMATH_CALL_CNV bitangent_to_tangent(PA_vector3_f32 bitangent) noexcept {
@@ -290,7 +312,9 @@ namespace nmath {
                 cross(F_vector3_f32::forward(), bitangent)
             );
 
-            return cross(bitangent, normal);
+            return normalize(
+                cross(bitangent, normal)
+            );
         }
     }
 
