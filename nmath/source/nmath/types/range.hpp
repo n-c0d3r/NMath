@@ -88,17 +88,8 @@ namespace nmath {
             min(min),
             max(max)
         {}
-        NCPP_FORCE_INLINE TF_range(const TF_range& x) noexcept :
-            min(x.min),
-            max(x.max)
-        {}
-        NCPP_FORCE_INLINE TF_range& operator = (const TF_range& x) noexcept {
-
-            this->min = x.min;
-            this->max = x.max;
-
-            return *this;
-        }
+        NCPP_FORCE_INLINE TF_range(const TF_range& x) noexcept = default;
+        NCPP_FORCE_INLINE TF_range& operator = (const TF_range& x) noexcept = default;
 
 
 

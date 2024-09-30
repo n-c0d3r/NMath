@@ -92,6 +92,15 @@ namespace nmath {
 
             return *this;
         }
+        NCPP_FORCE_INLINE TF_box(const F_base& x) noexcept :
+            TF_range<TF_vector3<F_element__>>(x)
+        {}
+        NCPP_FORCE_INLINE TF_box& operator = (const F_base& x) noexcept {
+
+            ((F_base&)*this) = x;
+
+            return *this;
+        }
 
     public:
         F_element volume() const noexcept {

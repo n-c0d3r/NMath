@@ -109,15 +109,8 @@ namespace nmath {
                 radius
             })
         {}
-        NCPP_FORCE_INLINE TF_sphere(const TF_sphere& x) noexcept :
-            center_and_radius(x.center_and_radius)
-        {}
-        NCPP_FORCE_INLINE TF_sphere& operator = (const TF_sphere& x) noexcept {
-
-            center_and_radius = x.center_and_radius;
-
-            return *this;
-        }
+        NCPP_FORCE_INLINE TF_sphere(const TF_sphere& x) noexcept = default;
+        NCPP_FORCE_INLINE TF_sphere& operator = (const TF_sphere& x) noexcept = default;
 
 
 
