@@ -88,7 +88,7 @@ namespace nmath
 
         if constexpr (intersect_face__ == E_intersect_face::FRONT)
         {
-            if(denominator > 0.0)
+            if(denominator >= 0.0)
             {
                 out_t = 0.0;
                 return false;
@@ -96,7 +96,7 @@ namespace nmath
         }
         if constexpr (intersect_face__ == E_intersect_face::BACK)
         {
-            if(denominator < 0.0)
+            if(denominator <= 0.0)
             {
                 out_t = 0.0;
                 return false;
