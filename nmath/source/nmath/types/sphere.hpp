@@ -84,6 +84,7 @@ namespace nmath {
 
     public:
         NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (center_and_radius.w > T_default_tolerance<F_element>); }
+        NCPP_FORCE_INLINE b8 is_null() const noexcept { return (center_and_radius.w <= T_default_tolerance<F_element>); }
         NCPP_FORCE_INLINE F_center center() const noexcept { return center_and_radius.xyz(); }
         NCPP_FORCE_INLINE F_radius radius() const noexcept { return center_and_radius.w; }
 
@@ -115,19 +116,19 @@ namespace nmath {
 
 
     public:
-        NCPP_FORCE_INLINE operator b8 () const noexcept {
-
+        NCPP_FORCE_INLINE operator b8 () const noexcept
+        {
             return is_valid();
         }
-        F_element NMATH_CALL_CNV signed_distance(PA_position v) const noexcept {
-
+        F_element NMATH_CALL_CNV signed_distance(PA_position v) const noexcept
+        {
             return (
                 length(v - center())
                 - radius()
             );
         }
-        b8 NMATH_CALL_CNV is_contains(PA_position v) const noexcept {
-
+        b8 NMATH_CALL_CNV is_contains(PA_position v) const noexcept
+        {
             F_element radius_sq = radius();
             radius_sq *= radius_sq;
 
@@ -136,8 +137,8 @@ namespace nmath {
                 <= radius_sq
             );
         }
-        TF_sphere NMATH_CALL_CNV expand(PA_position v) noexcept {
-
+        TF_sphere NMATH_CALL_CNV expand(PA_position v) noexcept
+        {
             F_element r = radius();
             F_position c = center();
 
@@ -149,8 +150,8 @@ namespace nmath {
                 )
             };
         }
-        b8 NMATH_CALL_CNV is_contains(const TF_sphere& x) const noexcept {
-
+        b8 NMATH_CALL_CNV is_contains(const TF_sphere& x) const noexcept
+        {
             F_element radius_sq = radius();
             radius_sq *= radius_sq;
 
@@ -164,8 +165,18 @@ namespace nmath {
                 <= radius_sq
             );
         }
-        TF_sphere NMATH_CALL_CNV expand(const TF_sphere& x) noexcept {
-
+        b8 NMATH_CALL_CNV is_overlap(const TF_sphere& x) const noexcept
+        {
+            return (
+                (
+                    length(x.center() - center())
+                    - x.radius()
+                )
+                <= radius()
+            );
+        }
+        TF_sphere NMATH_CALL_CNV expand(const TF_sphere& x) noexcept
+        {
             F_element r = radius();
             F_position c = center();
 

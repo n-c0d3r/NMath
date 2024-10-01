@@ -99,5 +99,7 @@ namespace nmath { }
 #include <nmath/functions/element_ceil.hpp>
 #include <nmath/functions/element_floor.hpp>
 #include <nmath/functions/element_round.hpp>
+#include <nmath/functions/intersect.hpp>
+#include <nmath/functions/shrink.hpp>
 
 #pragma endregion

@@ -1,25 +1,9 @@
 #pragma once
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-/**
-*	The root namespace of nmath library.
+/** @file nmath/types/ray.hpp
+*
+*   Implement ray.
 */
-namespace nmath { }
 
 
 
@@ -49,19 +33,19 @@ namespace nmath { }
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nmath/types/data.hpp>
-
 #include <nmath/types/vector.hpp>
-#include <nmath/types/quaternion.hpp>
 #include <nmath/types/matrix.hpp>
-
-#include <nmath/types/ray.hpp>
-#include <nmath/types/range.hpp>
-#include <nmath/types/sphere.hpp>
-#include <nmath/types/plane.hpp>
-#include <nmath/types/cone.hpp>
-#include <nmath/types/box.hpp>
-#include <nmath/types/directional_box.hpp>
+#include <nmath/operators/matrix_vector.hpp>
+#include <nmath/operators/quaternion_vector.hpp>
+#include <nmath/operators/vector_vector.hpp>
+#include <nmath/operators/vector_scalar.hpp>
+#include <nmath/functions/element_min_max.hpp>
+#include <nmath/functions/length.hpp>
+#include <nmath/functions/vector_to_vector.hpp>
+#include <nmath/functions/direction_position.hpp>
+#include <nmath/utilities/default_tolerance_helper.hpp>
+#include <nmath/functions/cross.hpp>
+#include <nmath/functions/element_abs.hpp>
 
 #pragma endregion
 
@@ -83,6 +67,69 @@ namespace nmath { }
 
 namespace nmath {
 
-    
+    template<typename F_element__ = NMATH_DEFAULT_FP_TYPE>
+    class TF_ray {
 
+    public:
+        using F_element = F_element__;
+
+        using F_origin = TF_vector3<F_element__>;
+        using PA_origin = TPA_vector3<F_element__>;
+
+        using F_direction = TF_vector3<F_element__>;
+        using PA_direction = TPA_vector3<F_element__>;
+
+        using F_position = TF_vector3<F_element__>;
+        using PA_position = TPA_vector3<F_element__>;
+
+
+
+    public:
+        F_origin origin;
+        F_direction direction;
+
+    public:
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept
+        {
+            return (length(direction) > T_default_tolerance<F_element>);
+        }
+        NCPP_FORCE_INLINE b8 is_null() const noexcept
+        {
+            return (length(direction) <= T_default_tolerance<F_element>);
+        }
+
+
+
+    public:
+        NCPP_FORCE_INLINE TF_ray() noexcept = default;
+        NCPP_FORCE_INLINE TF_ray(PA_origin origin, PA_direction direction) noexcept :
+            origin(origin),
+            direction(direction)
+        {}
+        NCPP_FORCE_INLINE TF_ray(const TF_ray& x) noexcept = default;
+        NCPP_FORCE_INLINE TF_ray& operator = (const TF_ray& x) noexcept = default;
+
+
+
+    public:
+        NCPP_FORCE_INLINE operator b8 () const noexcept {
+
+            return is_valid();
+        }
+        F_element NMATH_CALL_CNV distance(PA_position v) const noexcept {
+
+            return length(
+                cross(
+                    (v - origin),
+                    direction()
+                )
+            );
+        }
+    };
+
+
+
+    using F_ray = TF_ray<>;
+
+    using F_ray_f32 = TF_ray<f32>;
 }

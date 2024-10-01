@@ -84,7 +84,8 @@ namespace nmath {
         F_direction direction;
 
     public:
-        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (length_sq(direction) > T_default_tolerance<F_element>); }
+        NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (abs(length(direction()) - 1.0) <= T_default_tolerance<F_element__>); }
+        NCPP_FORCE_INLINE b8 is_null() const noexcept { return (abs(length(direction()) - 1.0) > T_default_tolerance<F_element__>); }
 
 
 

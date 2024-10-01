@@ -37,6 +37,7 @@
 #include <nmath/types/matrix.hpp>
 #include <nmath/types/vector.hpp>
 #include <nmath/functions/data_functions.hpp>
+#include <nmath/functions/dot.hpp>
 #include <nmath/operators/helper.hpp>
 
 #pragma endregion
@@ -65,7 +66,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector2_f32 multiply(PA_matrix2x2_f32 a, PA_vector2_f32 b) noexcept
     {
         
-        return b.x * a.a + b.y * a.b;
+        return { dot(b, a.a), dot(b, a.b) };
     }
 
 }
@@ -82,7 +83,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector3_f32 multiply(PA_matrix3x3_f32 a, PA_vector3_f32 b) noexcept
     {
         
-        return b.x * a.a + b.y * a.b + b.z * a.c;
+        return { dot(b, a.a), dot(b, a.b), dot(b, a.c) };
     }
 
 }
@@ -99,7 +100,7 @@ namespace nmath {
     NCPP_FORCE_INLINE F_vector4_f32 multiply(PA_matrix4x4_f32 a, PA_vector4_f32 b) noexcept
     {
         
-        return b.x * a.a + b.y * a.b + b.z * a.c + b.w * a.d;
+        return { dot(b, a.a), dot(b, a.b), dot(b, a.c), dot(b, a.d) };
     }
 
 }

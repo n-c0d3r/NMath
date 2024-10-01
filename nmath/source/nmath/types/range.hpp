@@ -77,6 +77,7 @@ namespace nmath {
 
     public:
         NCPP_FORCE_INLINE b8 is_valid() const noexcept { return (min <= max); }
+        NCPP_FORCE_INLINE b8 is_null() const noexcept { return (min > max); }
         NCPP_FORCE_INLINE F_value center() const noexcept { return (min + max) * 0.5; }
         NCPP_FORCE_INLINE F_value half_size() const noexcept { return (max - min) * 0.5; }
 
@@ -94,12 +95,12 @@ namespace nmath {
 
 
     public:
-        NCPP_FORCE_INLINE operator b8 () const noexcept {
-
+        NCPP_FORCE_INLINE operator b8 () const noexcept
+        {
             return is_valid();
         }
-        auto NMATH_CALL_CNV signed_distance(PA_value v) const noexcept {
-
+        auto NMATH_CALL_CNV signed_distance(PA_value v) const noexcept
+        {
             F_value min_delta = min - v;
             F_value max_delta = v - max;
 
@@ -112,32 +113,52 @@ namespace nmath {
 
             return element_if_equal(result, max_delta_abs, max_delta);
         }
-        b8 NMATH_CALL_CNV is_contains(PA_value v) const noexcept {
-
+        b8 NMATH_CALL_CNV is_contains(PA_value v) const noexcept
+        {
             return (
                 (v >= min)
                 && (v <= max)
             );
         }
-        TF_range NMATH_CALL_CNV expand(PA_value v) noexcept {
-
+        TF_range NMATH_CALL_CNV expand(PA_value v) noexcept
+        {
             return {
                 element_min(v, min),
                 element_max(v, max)
             };
         }
-        b8 NMATH_CALL_CNV is_contains(const TF_range& v) const noexcept {
-
+        b8 NMATH_CALL_CNV is_contains(const TF_range& v) const noexcept
+        {
             return (
                 (v.min >= min)
                 && (v.max <= max)
             );
         }
-        TF_range NMATH_CALL_CNV expand(const TF_range& v) noexcept {
-
+        b8 NMATH_CALL_CNV is_overlap(const TF_range& v) const noexcept
+        {
+            return !(
+                (
+                    (v.min < min)
+                    && (v.max < min)
+                )
+                || (
+                    (v.min > max)
+                    && (v.max > max)
+                )
+            );
+        }
+        TF_range NMATH_CALL_CNV expand(const TF_range& v) noexcept
+        {
             return {
                 element_min(v.min, min),
                 element_max(v.max, max)
+            };
+        }
+        TF_range NMATH_CALL_CNV overlap(const TF_range& v) noexcept
+        {
+            return {
+                element_max(v.min, min),
+                element_min(v.max, max)
             };
         }
     };
