@@ -202,7 +202,7 @@ namespace nmath {
 
             F_position d = x_c - c;
             F_position d2 = normalize(d);
-            if(length_sq(d2) <= T_default_tolerance<f32>)
+            if(length_sq(d) <= T_default_tolerance<f32>)
             {
                 d2 = F_position::forward();
             }
