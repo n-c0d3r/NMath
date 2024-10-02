@@ -180,15 +180,24 @@ namespace nmath {
             F_element r = radius();
             F_position c = center();
 
-            return {
-                c,
-                eastl::max<F_element>(
-                    (
-                        length(x.center() - c)
-                        + x.radius()
-                    ),
-                    r
+            F_element x_r = radius();
+            F_position x_c = center();
+
+            F_position d = x_c - c;
+            F_position d2 = normalize(d);
+            F_element d_length = length(d);
+
+            F_element t = (
+                (
+                    eastl::max(d_length + x_r, r)
+                    - r
                 )
+                * 0.5f
+            );
+
+            return {
+                c + d2 * t,
+                t + r
             };
         }
     };
