@@ -208,17 +208,18 @@ namespace nmath {
             }
             F_element d_length = length(d);
 
-            F_element t = (
+            F_element t1 = eastl::max<F_element>(r, x_r - d_length);
+            F_element t2 = (
                 (
-                    r
+                    t1
                     + eastl::max<F_element>(d_length + x_r, r)
                 )
                 * F_element(0.5)
             );
 
             return {
-                c + d2 * (t - r),
-                t
+                c + d2 * (t2 - t1),
+                t2
             };
         }
     };
