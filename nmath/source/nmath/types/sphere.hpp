@@ -197,8 +197,8 @@ namespace nmath {
             F_element r = radius();
             F_position c = center();
 
-            F_element x_r = radius();
-            F_position x_c = center();
+            F_element x_r = x.radius();
+            F_position x_c = x.center();
 
             F_position d = x_c - c;
             F_position d2 = normalize(d);
