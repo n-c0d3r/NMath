@@ -93,8 +93,8 @@ namespace nmath
             else
             {
                 return TF_cone<F_element__>(
-                    F_vector3::zero(),
-                    F_vector3::zero(),
+                    cone_pivot,
+                    cone_direction,
                     (F_element__)1.0
                 );
             }
@@ -109,6 +109,7 @@ namespace nmath
 
         return {
             cone_pivot + cone_direction * offset,
+            cone_direction,
             eastl::max<F_element__>(
                 cone.min_angle_dot(),
                 length(
