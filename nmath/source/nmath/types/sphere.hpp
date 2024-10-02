@@ -202,12 +202,16 @@ namespace nmath {
 
             F_position d = x_c - c;
             F_position d2 = normalize(d);
+            if(length_sq(d2) <= T_default_tolerance<f32>)
+            {
+                d2 = F_position::forward();
+            }
             F_element d_length = length(d);
 
             F_element t = (
                 (
                     r
-                    + eastl::max(d_length + x_r, r)
+                    + eastl::max<F_element>(d_length + x_r, r)
                 )
                 * F_element(0.5)
             );
