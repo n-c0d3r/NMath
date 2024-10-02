@@ -187,6 +187,23 @@ namespace nmath {
             F_position d2 = normalize(d);
             F_element d_length = length(d);
 
+            return {
+                c,
+                eastl::max(d_length + x_r, r)
+            };
+        }
+        TF_sphere NMATH_CALL_CNV expand_movable(const TF_sphere& x) noexcept
+        {
+            F_element r = radius();
+            F_position c = center();
+
+            F_element x_r = radius();
+            F_position x_c = center();
+
+            F_position d = x_c - c;
+            F_position d2 = normalize(d);
+            F_element d_length = length(d);
+
             F_element t = (
                 (
                     r
