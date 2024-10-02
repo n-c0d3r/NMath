@@ -189,15 +189,15 @@ namespace nmath {
 
             F_element t = (
                 (
-                    eastl::max(d_length + x_r, r)
-                    - r
+                    r
+                    + eastl::max(d_length + x_r, r)
                 )
-                * 0.5f
+                * F_element(0.5)
             );
 
             return {
-                c + d2 * t,
-                t + r
+                c + d2 * (t - r),
+                t
             };
         }
     };
