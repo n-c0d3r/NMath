@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_ceil(a.x),
-            element_ceil(a.x)
+            element_ceil(a.y)
         };
     }
 

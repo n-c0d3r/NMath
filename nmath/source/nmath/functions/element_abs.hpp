@@ -87,7 +87,7 @@ namespace nmath {
 
         return {
             element_abs(a.x),
-            element_abs(a.x)
+            element_abs(a.y)
         };
     }
     NCPP_FORCE_INLINE F_vector2_i32 NMATH_CALL_CNV element_abs(PA_vector2_i32 a) noexcept {

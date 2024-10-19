@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_round(a.x),
-            element_round(a.x)
+            element_round(a.y)
         };
     }
 

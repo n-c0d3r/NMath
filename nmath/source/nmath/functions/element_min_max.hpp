@@ -87,7 +87,7 @@ namespace nmath {
 
         return {
             element_max(a.x, b.x),
-            element_max(a.x, b.x)
+            element_max(a.y, b.y)
         };
     }
     NCPP_FORCE_INLINE F_vector2_i32 NMATH_CALL_CNV element_max(PA_vector2_i32 a, PA_vector2_i32 b) noexcept {

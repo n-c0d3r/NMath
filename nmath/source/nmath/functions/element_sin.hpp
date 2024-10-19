@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_sin(a.x),
-            element_sin(a.x)
+            element_sin(a.y)
         };
     }
 

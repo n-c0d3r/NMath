@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_atan2(a.x, b.x),
-            element_atan2(a.x, b.x)
+            element_atan2(a.y, b.y)
         };
     }
 

@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_floor(a.x),
-            element_floor(a.x)
+            element_floor(a.y)
         };
     }
 

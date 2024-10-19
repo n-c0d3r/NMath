@@ -87,7 +87,7 @@ namespace nmath {
 
         return {
             element_sign(a.x),
-            element_sign(a.x)
+            element_sign(a.y)
         };
     }
     NCPP_FORCE_INLINE F_vector2_i32 NMATH_CALL_CNV element_sign(PA_vector2_i32 a) noexcept {

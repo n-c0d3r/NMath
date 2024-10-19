@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_cos(a.x),
-            element_cos(a.x)
+            element_cos(a.y)
         };
     }
 

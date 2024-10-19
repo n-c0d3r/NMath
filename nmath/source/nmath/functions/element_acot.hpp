@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_acot(a.x),
-            element_acot(a.x)
+            element_acot(a.y)
         };
     }
 

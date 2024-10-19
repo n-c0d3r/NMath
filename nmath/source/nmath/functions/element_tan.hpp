@@ -55,7 +55,7 @@ namespace nmath {
 
         return {
             element_tan(a.x),
-            element_tan(a.x)
+            element_tan(a.y)
         };
     }
 
